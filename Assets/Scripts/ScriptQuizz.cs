@@ -5,11 +5,18 @@ using UnityEngine;
 public class ScriptQuizz : MonoBehaviour {
 
     private int QuizzNumber;
+   // public GameObject TextQuizz;
+    public TextMesh TextQuizz;
 
     // Use this for initialization
     void Start () {
 
-       
+        QuizzNumber = 1;
+
+        if(QuizzNumber == 1)
+        {
+            
+        }
 
     }
 	
