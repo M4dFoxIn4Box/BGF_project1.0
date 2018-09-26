@@ -61,14 +61,14 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                  newStatus == TrackableBehaviour.Status.NO_POSE)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
-            OnTrackingLost();
+            //OnTrackingLost();
         }
         else
         {
             // For combo of previousStatus=UNKNOWN + newStatus=UNKNOWN|NOT_FOUND
             // Vuforia is starting, but tracking has not been lost or found yet
             // Call OnTrackingLost() to hide the augmentations
-            OnTrackingLost();
+            //OnTrackingLost();
         }
     }
 
