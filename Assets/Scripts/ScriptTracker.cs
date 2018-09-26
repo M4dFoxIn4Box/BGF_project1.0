@@ -11,9 +11,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public VuMarkTarget vumark;
 
-    public GameObject obj1;
-    public GameObject obj2;
-
     void Start()
     {
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
