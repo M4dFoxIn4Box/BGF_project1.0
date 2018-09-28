@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour {
 
-    public static UI_Manager instance { get; private set; }
+    public static UI_Manager Instance { get; private set; }
 
 
     [Header("Gallery")]

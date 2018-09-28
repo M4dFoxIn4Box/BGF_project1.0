@@ -9,7 +9,7 @@ public class Scoring_Item : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        UI_Manager.instance.AddScore(valueToAdd);
+        UI_Manager.Instance.AddScore(valueToAdd);
 	}
 	
 	// Update is called once per frame
