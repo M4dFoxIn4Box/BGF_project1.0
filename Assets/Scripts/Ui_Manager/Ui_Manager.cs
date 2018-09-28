@@ -16,7 +16,8 @@ public class UI_Manager : MonoBehaviour {
 
     public Text scoreText;
     private int score;
-    
+
+    public int[] nbxscan;
 
 
     private void Awake()
@@ -37,9 +38,15 @@ public class UI_Manager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
+
+    public void AddArtefact()
+    {
+
+    }
 
 
     public void AddScore(int newScoreValue)
@@ -52,10 +59,15 @@ public class UI_Manager : MonoBehaviour {
     void UpdateScore()
     {
         scoreText.text = "Score: " + score;
-        if (score == 2)
+        if (score == 42)
         {
             Victory();
         }
+    }
+
+    public void TableauGallerie (int chien)
+    {
+
     }
 
     public void ClickSwitchMenu ()
