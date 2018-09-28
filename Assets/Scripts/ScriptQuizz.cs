@@ -1,22 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScriptQuizz : MonoBehaviour {
 
-    private int QuizzNumber;
-   // public GameObject TextQuizz;
-    public TextMesh TextQuizz;
+    private Text textToDisplay;
 
     // Use this for initialization
     void Start () {
 
-        QuizzNumber = 1;
-
-        if(QuizzNumber == 1)
-        {
-            
-        }
+        textToDisplay = "Hello";
+        //textObject.text = textToDisplay;
 
     }
 	
