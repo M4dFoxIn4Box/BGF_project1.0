@@ -10,15 +10,14 @@ public class UI_Manager : MonoBehaviour {
 
     [Header("Gallery")]
 
-    public GameObject gallery;
+    public Transform gallery;//gallery.GetChild(idx)
+    private List<int> scanIdx = new List<int>();
 
     [Header("Scoring")]
 
     public Text scoreText;
     private int score;
     public int limitToWin;
-
-    public int[] nbxscan;
 
 
     private void Awake()
@@ -41,12 +40,16 @@ public class UI_Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
+
 	}
 
-    public void AddArtefact()
+    public void FillInScanIdx(int idx)
     {
-
+        if (!scanIdx.Contains(idx))
+        {
+            scanIdx.Add(idx);
+            gallery.GetChild(idx).gameObject.SetActive(true);
+        }
     }
 
 

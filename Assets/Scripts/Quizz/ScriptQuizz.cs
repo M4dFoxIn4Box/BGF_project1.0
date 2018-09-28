@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ScriptQuizz : MonoBehaviour {
 
+    public Image questionBackground;
+
     public Text quizzText;
     public Text answer1;
     public Text answer2;
@@ -25,7 +27,8 @@ public class ScriptQuizz : MonoBehaviour {
     public ScriptableQuizz scriptableQuizzClass;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 
         quizzText.text = scriptableQuizzClass.quizzQuestion;
         answer1Text = scriptableQuizzClass.answer1;
@@ -55,10 +58,13 @@ public class ScriptQuizz : MonoBehaviour {
             button2.GetComponent<Image>().color = Color.red;
             button3.GetComponent<Image>().color = Color.red;
             button4.GetComponent<Image>().color = Color.red;
+
+            RightAnswer();
         }
         else
         {
             button1.GetComponent<Image>().color = Color.red;
+            button1.interactable = false;
         }
     }
 
@@ -70,10 +76,13 @@ public class ScriptQuizz : MonoBehaviour {
             button2.GetComponent<Image>().color = Color.green;
             button3.GetComponent<Image>().color = Color.red;
             button4.GetComponent<Image>().color = Color.red;
+
+            RightAnswer();
         }
         else
         {
             button2.GetComponent<Image>().color = Color.red;
+            button2.interactable = false;
         }
     }
 
@@ -85,10 +94,13 @@ public class ScriptQuizz : MonoBehaviour {
             button2.GetComponent<Image>().color = Color.red;
             button3.GetComponent<Image>().color = Color.green;
             button4.GetComponent<Image>().color = Color.red;
+
+            RightAnswer();
         }
         else
         {
             button3.GetComponent<Image>().color = Color.red;
+            button3.interactable = false;
         }
     }
 
@@ -100,12 +112,26 @@ public class ScriptQuizz : MonoBehaviour {
             button2.GetComponent<Image>().color = Color.red;
             button3.GetComponent<Image>().color = Color.red;
             button4.GetComponent<Image>().color = Color.green;
+
+            RightAnswer();
         }
         else
         {
             button4.GetComponent<Image>().color = Color.red;
+            button4.interactable = false;
         }
     }
+
+    public void RightAnswer()
+    {
+        button1.interactable = false;
+        button2.interactable = false;
+        button3.interactable = false;
+        button4.interactable = false;
+
+        questionBackground.color = Color.green;
+    }
+
 
     void Update () {
 		
