@@ -5,21 +5,29 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour {
 
-    public static UI_Manager Instance { get; private set; }
+    public static UI_Manager instance { get; private set; }
+
+
+    [Header("Gallery")]
+
+    public GameObject gallery;
+
+    [Header("Scoring")]
+
     public Text scoreText;
     private int score;
-    public GameObject gallery;
-    private int chien;
+    
+
 
     private void Awake()
     {
-        if (Instance != null)
+        if (instance != null)
         {
             Destroy(gameObject);
         }
         else
         {
-            Instance = this;
+            instance = this;
         }
     }
 
@@ -36,17 +44,27 @@ public class UI_Manager : MonoBehaviour {
 
     public void AddScore(int newScoreValue)
     {
-        score += 1;
+        score = score + newScoreValue;
+
         UpdateScore();
     }
 
     void UpdateScore()
     {
         scoreText.text = "Score: " + score;
+        if (score == 2)
+        {
+            Victory();
+        }
     }
 
     public void ClickSwitchMenu ()
     {
 
+    }
+
+    void Victory ()
+    {
+        Debug.Log("YOU WIN");
     }
 }
