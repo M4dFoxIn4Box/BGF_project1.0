@@ -127,7 +127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &78896779
 Transform:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 373443885}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd4987d6d780dbd418e2a16d8e189e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniJeu: {fileID: 0}
+  ChambouleTout: {fileID: 78896778}
 --- !u!114 &599805401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 646254606}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 1033573857}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -881,6 +881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 1750145597}
   ball: {fileID: 1831876818772942, guid: d112164b5262aa34586e20bfb89b1363, type: 2}
+  miniJeu: {fileID: 78896778}
 --- !u!65 &1159415074
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1183,7 +1184,7 @@ GameObject:
   - component: {fileID: 1753525352}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

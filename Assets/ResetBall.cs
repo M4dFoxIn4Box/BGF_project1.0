@@ -6,7 +6,8 @@ public class ResetBall : MonoBehaviour {
 
     public Transform spawn;
     public GameObject ball;
-
+    private float ScoreToWin;
+    public GameObject miniJeu;
 
 	// Use this for initialization
 	void Start () {
@@ -14,8 +15,12 @@ public class ResetBall : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+	    if (ScoreToWin == 4)
+        {
+            miniJeu.SetActive(false);
+        }
 	}
 
     void OnTriggerEnter (Collider other)
@@ -24,6 +29,12 @@ public class ResetBall : MonoBehaviour {
         {
             Destroy(other.gameObject);
             Instantiate(ball, spawn.transform.position, spawn.transform.rotation);
+        }
+
+        if (other.CompareTag("point"))
+        {
+            Destroy(other.gameObject);
+            ScoreToWin += 1;
         }
     }
 }

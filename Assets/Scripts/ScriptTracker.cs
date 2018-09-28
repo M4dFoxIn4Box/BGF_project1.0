@@ -9,6 +9,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     TrackableBehaviour mTrackableBehaviour;
     VuMarkManager mVuMarkManager;
 
+    public GameObject ChambouleTout;
+
     public VuMarkTarget vumark;
 
     void Start()
@@ -32,6 +34,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if (newStatus == TrackableBehaviour.Status.DETECTED || newStatus == TrackableBehaviour.Status.TRACKED || newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             OnTrackerFound();
+            ChambouleTout.SetActive(true);
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED && newStatus == TrackableBehaviour.Status.NO_POSE)
         {
