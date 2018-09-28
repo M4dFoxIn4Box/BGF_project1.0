@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class ScriptQuizz : MonoBehaviour {
 
-    private Text textToDisplay;
+    public Text quizzText;
+    public string questionText;
 
     // Use this for initialization
     void Start () {
 
-        textToDisplay = "Hello";
-        //textObject.text = textToDisplay;
+        quizzText.text = questionText;
 
     }
 	
