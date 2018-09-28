@@ -10,8 +10,9 @@ public class ResetBall : MonoBehaviour {
     public GameObject miniJeu;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        ScoreToWin = 0;
 	}
 	
 	// Update is called once per frame
@@ -19,7 +20,9 @@ public class ResetBall : MonoBehaviour {
     {
 	    if (ScoreToWin == 4)
         {
-            miniJeu.SetActive(false);
+            Destroy(ball);
+            Debug.Log("zz");
+            Destroy(miniJeu);
         }
 	}
 

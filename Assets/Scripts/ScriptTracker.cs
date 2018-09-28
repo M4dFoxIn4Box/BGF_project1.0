@@ -34,7 +34,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if (newStatus == TrackableBehaviour.Status.DETECTED || newStatus == TrackableBehaviour.Status.TRACKED || newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             OnTrackerFound();
-            ChambouleTout.SetActive(true);
+            Instantiate(ChambouleTout, new Vector3(0.02f,-0.4f,2.95f), Quaternion.identity);
+            
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED && newStatus == TrackableBehaviour.Status.NO_POSE)
         {
