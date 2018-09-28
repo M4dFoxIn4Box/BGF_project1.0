@@ -7,6 +7,9 @@ public class ScriptQuizz : MonoBehaviour {
 
     public Image questionBackground;
 
+    public Canvas quizzCanvas;
+    public Button leaveCanvas;
+
     public Text quizzText;
     public Text answer1;
     public Text answer2;
@@ -45,6 +48,8 @@ public class ScriptQuizz : MonoBehaviour {
         button2.onClick.AddListener(taskOnClick2);
         button3.onClick.AddListener(taskOnClick3);
         button4.onClick.AddListener(taskOnClick4);
+
+        leaveCanvas.onClick.AddListener(LeaveQuizz);
 
 
     }
@@ -120,6 +125,11 @@ public class ScriptQuizz : MonoBehaviour {
             button4.GetComponent<Image>().color = Color.red;
             button4.interactable = false;
         }
+    }
+
+    public void LeaveQuizz()
+    {
+        quizzCanvas.enabled = false;
     }
 
     public void RightAnswer()
