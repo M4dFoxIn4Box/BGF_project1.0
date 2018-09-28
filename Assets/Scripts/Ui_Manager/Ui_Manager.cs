@@ -16,6 +16,7 @@ public class UI_Manager : MonoBehaviour {
 
     public Text scoreText;
     private int score;
+    public int limitToWin;
 
     public int[] nbxscan;
 
@@ -59,7 +60,7 @@ public class UI_Manager : MonoBehaviour {
     void UpdateScore()
     {
         scoreText.text = "Score: " + score;
-        if (score == 42)
+        if (score == limitToWin)
         {
             Victory();
         }
