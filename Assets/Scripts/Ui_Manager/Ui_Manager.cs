@@ -23,13 +23,13 @@ public class UI_Manager : MonoBehaviour {
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 
