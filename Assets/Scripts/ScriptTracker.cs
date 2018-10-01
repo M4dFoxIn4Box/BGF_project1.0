@@ -10,6 +10,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     VuMarkManager mVuMarkManager;
 
     public GameObject ChambouleTout;
+    public Transform spawnPoint;
 
     public VuMarkTarget vumark;
 
@@ -34,7 +35,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if (newStatus == TrackableBehaviour.Status.DETECTED || newStatus == TrackableBehaviour.Status.TRACKED || newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             OnTrackerFound();
-            Instantiate(ChambouleTout, new Vector3(0.02f,-0.4f,2.95f), Quaternion.identity);
+            Instantiate(ChambouleTout, new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z), Quaternion.identity);
             
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED && newStatus == TrackableBehaviour.Status.NO_POSE)
