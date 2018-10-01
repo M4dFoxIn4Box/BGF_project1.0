@@ -179,6 +179,16 @@ public class ScriptQuizz : MonoBehaviour {
         questionBackground.color = Color.green;
 
         isAnswered = true;
+
+        StartCoroutine(WaitForSeconds());
+        
+    }
+
+    IEnumerator WaitForSeconds()
+    {
+
+        yield return new WaitForSeconds(2);
+        quizzOnlyPanel.SetActive(false);
     }
 
 
@@ -188,6 +198,7 @@ public class ScriptQuizz : MonoBehaviour {
         {
 
             quizzCanvas.enabled = true;
+            screenBackground.enabled = true;
 
         }
 
