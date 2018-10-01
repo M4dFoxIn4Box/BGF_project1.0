@@ -47,27 +47,21 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
-        /*foreach (var bhvr in mVuMarkManager.GetActiveBehaviours())
+        foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
-            //int targetObj = System.Convert.ToInt32 (item.VuMarkTarget.InstanceId.NumericValue);
-          //  transform.GetChild(targetObj - 1).gameObject.SetActive(true);
-          //  UI_Manager.Instance.FillInScanIdx(targetObj-1);
-
-            vumark = bhvr.VuMarkTarget;
-
-        }*/
-        foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
-        {
-            if (vumark.InstanceId.NumericValue == 2)
-            {
-                Instantiate(ChambouleTout, new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z), Quaternion.identity);
-                //teapot.SetActive(true);
-                Debug.Log("ID1");
-            }
+            int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
+            transform.GetChild(targetObj - 1).gameObject.SetActive(true);
+            UI_Manager.Instance.FillInScanIdx(targetObj - 1);
         }
-
-
-
+        //foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
+        //{
+        //    if (vumark.InstanceId.NumericValue == 2)
+        //    {
+        //        Instantiate(ChambouleTout, new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z), Quaternion.identity);
+        //        //teapot.SetActive(true);
+        //        Debug.Log("ID1");
+        //    }
+        //}
 
     }
     
