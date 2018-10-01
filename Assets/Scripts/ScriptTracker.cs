@@ -51,7 +51,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
             transform.GetChild(targetObj - 1).gameObject.SetActive(true);
-            UI_Manager.Instance.FillInScanIdx(targetObj - 1);
+
+
+           // UI_Manager.Instance.FillInScanIdx(targetObj - 1);
         }
         //foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         //{
