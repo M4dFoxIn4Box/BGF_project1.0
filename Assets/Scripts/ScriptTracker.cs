@@ -11,6 +11,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public GameObject ChambouleTout;
     public Transform spawnPoint;
+    public GameObject teapot;
 
     public VuMarkTarget vumark;
 
@@ -22,6 +23,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
         }
         mVuMarkManager = TrackerManager.Instance.GetStateManager().GetVuMarkManager();
+
     }
 
     // Update is called once per frame
@@ -46,13 +48,29 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
-        foreach (var item in mVuMarkManager.GetActiveBehaviours())
+        /*foreach (var bhvr in mVuMarkManager.GetActiveBehaviours())
         {
-            int targetObj = System.Convert.ToInt32 (item.VuMarkTarget.InstanceId.NumericValue);
-            transform.GetChild(targetObj - 1).gameObject.SetActive(true);
-            UI_Manager.Instance.FillInScanIdx(targetObj-1);
-          
+            //int targetObj = System.Convert.ToInt32 (item.VuMarkTarget.InstanceId.NumericValue);
+          //  transform.GetChild(targetObj - 1).gameObject.SetActive(true);
+          //  UI_Manager.Instance.FillInScanIdx(targetObj-1);
+
+            vumark = bhvr.VuMarkTarget;
+
+        }*/
+        foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
+        {
+            if (vumark.InstanceId.NumericValue == 2)
+            {
+
+                teapot.SetActive(true);
+                Debug.Log("ID1");
+
+            }
         }
+
+
+
+
     }
     
 
