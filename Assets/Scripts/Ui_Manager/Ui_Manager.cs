@@ -43,6 +43,16 @@ public class UI_Manager : MonoBehaviour {
 
 	}
 
+    public void ShowElement(GameObject elementToActive)
+    {
+        elementToActive.SetActive(true);
+    }
+
+    public void UnShowElement(GameObject elementToDesactive)
+    {
+        elementToDesactive.SetActive(false);
+    }
+
     public void FillInScanIdx(int idx)
     {
         if (!scanIdx.Contains(idx))
@@ -81,6 +91,8 @@ public class UI_Manager : MonoBehaviour {
 
     void Victory ()
     {
-        Debug.Log("YOU WIN");
+        Debug.Log("YOU WIN TU AS L AIR MALIN MAINTENANT COOOOOOONNARD !");
     }
+
+
 }
