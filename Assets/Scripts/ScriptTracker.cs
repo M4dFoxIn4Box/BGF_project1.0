@@ -11,7 +11,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public GameObject ChambouleTout;
     public Transform spawnPoint;
-    public GameObject teapot;
+    //public GameObject teapot;
 
     public VuMarkTarget vumark;
 
@@ -37,7 +37,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if (newStatus == TrackableBehaviour.Status.DETECTED || newStatus == TrackableBehaviour.Status.TRACKED || newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             OnTrackerFound();
-            Instantiate(ChambouleTout, new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z), Quaternion.identity);
             
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED && newStatus == TrackableBehaviour.Status.NO_POSE)
@@ -61,10 +60,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             if (vumark.InstanceId.NumericValue == 2)
             {
-
-                teapot.SetActive(true);
+                Instantiate(ChambouleTout, new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z), Quaternion.identity);
+                //teapot.SetActive(true);
                 Debug.Log("ID1");
-
             }
         }
 
