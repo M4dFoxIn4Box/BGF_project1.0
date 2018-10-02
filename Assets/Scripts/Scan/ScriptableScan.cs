@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Scan", menuName = "Inventory/Scan", order = 1)]
+[CreateAssetMenu(fileName = "Scan", menuName = "Scriptable Scan/Scan", order = 1)]
 
 public class ScriptableScan : MonoBehaviour {
 
