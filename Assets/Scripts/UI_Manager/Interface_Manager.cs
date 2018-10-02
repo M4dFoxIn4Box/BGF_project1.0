@@ -74,7 +74,7 @@ public class Interface_Manager : MonoBehaviour
 
     void UpdateScore()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = score +" / " + limitToWin ;
         if (score == limitToWin)
         {
             Victory();
@@ -93,7 +93,7 @@ public class Interface_Manager : MonoBehaviour
 
     void Victory()
     {
-        Debug.Log("YOU WIN TU AS L AIR MALIN MAINTENANT COOOOOOONNARD !");
+        Debug.Log("YOU WIN !");
     }
 
 
