@@ -51,13 +51,34 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     private bool isAnswered = false;
 
+    //public ScriptableQuizz scriptableQuizzClass;
+
+    // Tableau
+
+
+        // Quizz //
+
+    public GameObject[] vuMarkTriggerQuizz;
     public ScriptableQuizz scriptableQuizzClass;
+
+        // Mini Game //
+
+    public GameObject[] vuMarkTriggerMiniGame;
+    public ScriptableChamboule scriptableMiniGameClass;
+
+    // Scan //
+
+    public GameObject[] vuMarkTriggerScan;
+
+
+    
 
     //QUIZZ
 
 
     void Start()
     {
+        
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour != null)
         {
