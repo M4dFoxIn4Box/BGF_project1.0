@@ -39,7 +39,6 @@ public class ScriptQuizz : MonoBehaviour {
 
     private bool isAnswered = false;
 
-    //public string questionText;
     public ScriptableQuizz scriptableQuizzClass;
 
     // Use this for initialization

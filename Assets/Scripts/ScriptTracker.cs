@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Vuforia;
 
 public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
@@ -15,6 +16,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public VuMarkTarget vumark;
 
+
     void Start()
     {
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -24,12 +26,13 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
         mVuMarkManager = TrackerManager.Instance.GetStateManager().GetVuMarkManager();
 
+
     }
 
     // Update is called once per frame
     void Update()
     {
-   
+
     }
 
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
@@ -52,7 +55,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
             transform.GetChild(targetObj - 1).gameObject.SetActive(true);
 
-
+            
            // UI_Manager.Instance.FillInScanIdx(targetObj - 1);
         }
         //foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
@@ -76,4 +79,5 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             transform.GetChild(targetObj - 1).gameObject.SetActive(false);
         }
     }
+
 }
