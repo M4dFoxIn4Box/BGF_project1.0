@@ -67,8 +67,8 @@ public class Interface_Manager : MonoBehaviour
     
     public void MainCamera ()
     {
-        cams[0].enabled = false;
-        cams[1].enabled = true;
+        cams[1].enabled = false;
+        cams[0].enabled = true;
     }
 
     public void FillInScanIdx(int idx)
