@@ -7,10 +7,10 @@ public class ResetBall : MonoBehaviour {
     public Transform spawn;
     public GameObject ball;
     private float ScoreToWin;
-    public GameObject miniJeu;
 
-	// Use this for initialization
-	void Start ()
+
+    // Use this for initialization
+    void Start ()
     {
         ScoreToWin = 0;
 	}
@@ -21,8 +21,7 @@ public class ResetBall : MonoBehaviour {
 	    if (ScoreToWin == 4)
         {
             Destroy(ball);
-            Debug.Log("zz");
-            Destroy(miniJeu);
+            Testou.Instance.Tesmort();
         }
 	}
 
