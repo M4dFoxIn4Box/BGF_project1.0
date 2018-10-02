@@ -20,6 +20,10 @@ public class Interface_Manager : MonoBehaviour
     private int score;
     public int limitToWin;
 
+    [Header("Caméra")]
+
+    public Camera[] cams;
+
 
     private void Awake()
     {
@@ -53,6 +57,18 @@ public class Interface_Manager : MonoBehaviour
     public void UnShowElement(GameObject elementToDesactive)
     {
         elementToDesactive.SetActive(false);
+    }
+
+    public void ARCamera ()
+    {
+        cams[1].enabled = true;
+        cams[0].enabled = false;
+    }
+    
+    public void MainCamera ()
+    {
+        cams[0].enabled = false;
+        cams[1].enabled = true;
     }
 
     public void FillInScanIdx(int idx)
