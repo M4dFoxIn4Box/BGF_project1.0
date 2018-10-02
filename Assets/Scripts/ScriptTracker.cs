@@ -16,7 +16,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public VuMarkTarget vumark;
 
-    //QUIZZ
+    [Header("Quizz")]
     public UnityEngine.UI.Image questionBackground;
     public UnityEngine.UI.Image screenBackground;
 
@@ -126,7 +126,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             if (vumark.InstanceId.NumericValue == 1)
             {
                 mainCanvas.SetActive(true);
-                currentScriptableQuizz = scriptableQuizzList[0];
+                currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue];
+                Debug.Log(vumark.InstanceId.NumericValue);
                 quizzText.text = currentScriptableQuizz.quizzQuestion;
                 answer1Text = currentScriptableQuizz.answer1;
                 answer2Text = currentScriptableQuizz.answer2;
@@ -237,7 +238,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void LeaveQuizz()
     {
-        quizzCanvas.enabled = false;
 
         if (isAnswered == true)
         {
