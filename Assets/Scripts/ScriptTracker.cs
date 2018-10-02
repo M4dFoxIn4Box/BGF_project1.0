@@ -59,19 +59,17 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         // Quizz //
 
     public GameObject[] vuMarkTriggerQuizz;
-    public ScriptableQuizz scriptableQuizzClass;
+    public ScriptableQuizz[] scriptableQuizzClass;
 
         // Mini Game //
 
     public GameObject[] vuMarkTriggerMiniGame;
-    public ScriptableChamboule scriptableMiniGameClass;
+    public ScriptableChamboule[] scriptableMiniGameClass;
 
     // Scan //
 
     public GameObject[] vuMarkTriggerScan;
-
-
-    
+    public ScriptableScan[] scriptableScanClass;
 
     //QUIZZ
 
@@ -87,12 +85,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         mVuMarkManager = TrackerManager.Instance.GetStateManager().GetVuMarkManager();
 
         //QUIZZ
-        quizzText.text = scriptableQuizzClass.quizzQuestion;
-        answer1Text = scriptableQuizzClass.answer1;
-        answer2Text = scriptableQuizzClass.answer2;
-        answer3Text = scriptableQuizzClass.answer3;
-        answer4Text = scriptableQuizzClass.answer4;
-        funFactText = scriptableQuizzClass.funFact;
+        //quizzText.text = scriptableQuizzClass.quizzQuestion;
+        //answer1Text = scriptableQuizzClass.answer1;
+        //answer2Text = scriptableQuizzClass.answer2;
+        //answer3Text = scriptableQuizzClass.answer3;
+        //answer4Text = scriptableQuizzClass.answer4;
+        //funFactText = scriptableQuizzClass.funFact;
 
         answer1.text = answer1Text;
         answer2.text = answer2Text;
