@@ -8,6 +8,7 @@ public class ScriptableChamboule : ScriptableObject
 {
 
     public GameObject prefabMiniJeux;
+    public int numberToWin;
 
     // Use this for initialization
     void Start()
