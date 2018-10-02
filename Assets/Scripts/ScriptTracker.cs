@@ -23,8 +23,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public Canvas quizzCanvas;
     public GameObject mainCanvas;
     public GameObject quizzOnlyPanel;
-    public Button leaveCanvas;
 
+    [Header("Textes")]
     public Text quizzText;
     public Text answer1;
     public Text answer2;
@@ -32,10 +32,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public Text answer4;
     public Text funFact;
 
+    [Header("Boutons")]
     public Button button1;
     public Button button2;
     public Button button3;
     public Button button4;
+    public Button leaveCanvas;
 
     private float r = 0.4509804f;
     private float g = 0.4509804f;
@@ -47,18 +49,20 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private string answer4Text;
     private string funFactText;
 
+    [Header("Récompense")]
     public GameObject congratulationsImage;
     public UnityEngine.UI.Image trophyImage;
 
     private bool isAnswered = false;
 
-    public ScriptableQuizz currentScriptableQuizz;
-
     public Transform rewardSpawnPoint;
+
+    [Header("Scriptable n° Quizz")]
+    public ScriptableQuizz currentScriptableQuizz;
 
     // Tableau
 
-        [Header("Quizz Section")]
+    [Header("Quizz Section")]
     public ScriptableQuizz[] scriptableQuizzList;
 
         [Header("Mini Game Section")]
