@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Scan", menuName = "Scriptable Scan/Scan", order = 1)]
+[CreateAssetMenu(fileName = "Scriptable_Scan", menuName = "Scriptable/Scan", order = 1)]
 
-public class ScriptableScan : MonoBehaviour {
+public class ScriptableScan : ScriptableObject {
 
     public GameObject reward;
 

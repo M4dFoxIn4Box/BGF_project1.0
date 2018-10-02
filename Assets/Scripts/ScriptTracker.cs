@@ -21,6 +21,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public UnityEngine.UI.Image screenBackground;
 
     public Canvas quizzCanvas;
+    public GameObject mainCanvas;
     public GameObject quizzOnlyPanel;
     public Button leaveCanvas;
 
@@ -51,24 +52,17 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     private bool isAnswered = false;
 
-    //public ScriptableQuizz scriptableQuizzClass;
+    public ScriptableQuizz currentScriptableQuizz;
 
     // Tableau
 
+        [Header("Quizz Section")]
+    public ScriptableQuizz[] scriptableQuizzList;
 
-        // Quizz //
-
-    public GameObject[] vuMarkTriggerQuizz;
-    public ScriptableQuizz[] scriptableQuizzClass;
-
-        // Mini Game //
-
-    public GameObject[] vuMarkTriggerMiniGame;
+        [Header("Mini Game Section")]
     public ScriptableChamboule[] scriptableMiniGameClass;
 
-    // Scan //
-
-    public GameObject[] vuMarkTriggerScan;
+        [Header("Scan Section")]
     public ScriptableScan[] scriptableScanClass;
 
     //QUIZZ
@@ -85,25 +79,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         mVuMarkManager = TrackerManager.Instance.GetStateManager().GetVuMarkManager();
 
         //QUIZZ
-        //quizzText.text = scriptableQuizzClass.quizzQuestion;
-        //answer1Text = scriptableQuizzClass.answer1;
-        //answer2Text = scriptableQuizzClass.answer2;
-        //answer3Text = scriptableQuizzClass.answer3;
-        //answer4Text = scriptableQuizzClass.answer4;
-        //funFactText = scriptableQuizzClass.funFact;
 
-        //answer1.text = answer1Text;
-        //answer2.text = answer2Text;
-        //answer3.text = answer3Text;
-        //answer4.text = answer4Text;
-        //funFact.text = funFactText;
-
-        //button1.onClick.AddListener(TaskOnClick1);
-        //button2.onClick.AddListener(TaskOnClick2);
-        //button3.onClick.AddListener(TaskOnClick3);
-        //button4.onClick.AddListener(TaskOnClick4);
-
-        //leaveCanvas.onClick.AddListener(LeaveQuizz);
         //QUIZZ
 
 
@@ -138,27 +114,44 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
-        foreach (var item in mVuMarkManager.GetActiveBehaviours())
-        {
-            int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
-            transform.GetChild(targetObj - 1).gameObject.SetActive(true);
-
-            
-           // UI_Manager.Instance.FillInScanIdx(targetObj - 1);
-        }
-        //foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
+        //foreach (var item in mVuMarkManager.GetActiveBehaviours())
         //{
-        //    if (vumark.InstanceId.NumericValue == 2)
-        //    {
-        //        Instantiate(ChambouleTout, new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z), Quaternion.identity);
-        //        //teapot.SetActive(true);
-        //        Debug.Log("ID1");
-        //    }
+        //    int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
+        //    transform.GetChild(targetObj - 1).gameObject.SetActive(true);         
+        //   // UI_Manager.Instance.FillInScanIdx(targetObj - 1);
         //}
+
+        foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
+        {
+            if (vumark.InstanceId.NumericValue == 1)
+            {
+                mainCanvas.SetActive(true);
+                currentScriptableQuizz = scriptableQuizzList[0];
+                quizzText.text = currentScriptableQuizz.quizzQuestion;
+                answer1Text = currentScriptableQuizz.answer1;
+                answer2Text = currentScriptableQuizz.answer2;
+                answer3Text = currentScriptableQuizz.answer3;
+                answer4Text = currentScriptableQuizz.answer4;
+                funFactText = currentScriptableQuizz.funFact;
+
+                answer1.text = answer1Text;
+                answer2.text = answer2Text;
+                answer3.text = answer3Text;
+                answer4.text = answer4Text;
+                funFact.text = funFactText;
+
+                button1.onClick.AddListener(TaskOnClick1);
+                button2.onClick.AddListener(TaskOnClick2);
+                button3.onClick.AddListener(TaskOnClick3);
+                button4.onClick.AddListener(TaskOnClick4);
+
+                leaveCanvas.onClick.AddListener(LeaveQuizz);
+                Debug.Log("Test scriptable board");
+            }
+        }
 
     }
     
-
     void OnTrackerLost()
     {
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
@@ -169,127 +162,127 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     }
 
     //QUIZZ
-    //public void TaskOnClick1() // BOUTON 1
-    //{
-    //    if (scriptableQuizzClass.rightAnswer == 1)
-    //    {
-    //        button1.GetComponent<UnityEngine.UI.Image>().color = Color.green;
-    //        button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+    public void TaskOnClick1() // BOUTON 1
+    {
+        if (currentScriptableQuizz.rightAnswer == 1)
+        {
+            button1.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+            button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
 
-    //        RightAnswer();
-    //    }
-    //    else
-    //    {
-    //        button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button1.interactable = false;
-    //    }
-    //}
+            RightAnswer();
+        }
+        else
+        {
+            button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button1.interactable = false;
+        }
+    }
 
-    //public void TaskOnClick2() // BOUTON 2
-    //{
-    //    if (scriptableQuizzClass.rightAnswer == 2)
-    //    {
-    //        button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button2.GetComponent<UnityEngine.UI.Image>().color = Color.green;
-    //        button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+    public void TaskOnClick2() // BOUTON 2
+    {
+        if (currentScriptableQuizz.rightAnswer == 2)
+        {
+            button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button2.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+            button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
 
-    //        RightAnswer();
-    //    }
-    //    else
-    //    {
-    //        button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button2.interactable = false;
-    //    }
-    //}
+            RightAnswer();
+        }
+        else
+        {
+            button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button2.interactable = false;
+        }
+    }
 
-    //public void TaskOnClick3() // BOUTON 3
-    //{
-    //    if (scriptableQuizzClass.rightAnswer == 3)
-    //    {
-    //        button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button3.GetComponent<UnityEngine.UI.Image>().color = Color.green;
-    //        button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+    public void TaskOnClick3() // BOUTON 3
+    {
+        if (currentScriptableQuizz.rightAnswer == 3)
+        {
+            button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button3.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+            button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
 
-    //        RightAnswer();
-    //    }
-    //    else
-    //    {
-    //        button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button3.interactable = false;
-    //    }
-    //}
+            RightAnswer();
+        }
+        else
+        {
+            button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button3.interactable = false;
+        }
+    }
 
-    //public void TaskOnClick4() // BOUTON 4
-    //{
-    //    if (scriptableQuizzClass.rightAnswer == 4)
-    //    {
-    //        button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button4.GetComponent<UnityEngine.UI.Image>().color = Color.green;
+    public void TaskOnClick4() // BOUTON 4
+    {
+        if (currentScriptableQuizz.rightAnswer == 4)
+        {
+            button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button4.GetComponent<UnityEngine.UI.Image>().color = Color.green;
 
-    //        RightAnswer();
-    //    }
-    //    else
-    //    {
-    //        button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button4.interactable = false;
-    //    }
-    //}
-
-
-    //public void LeaveQuizz()
-    //{
-    //    quizzCanvas.enabled = false;
-
-    //    if (isAnswered == true)
-    //    {
-    //        quizzOnlyPanel.SetActive(false);
-    //        screenBackground.enabled = false;
+            RightAnswer();
+        }
+        else
+        {
+            button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            button4.interactable = false;
+        }
+    }
 
 
-    //    }
+    public void LeaveQuizz()
+    {
+        quizzCanvas.enabled = false;
 
-    //    button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-    //    button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-    //    button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-    //    button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+        if (isAnswered == true)
+        {
+            quizzOnlyPanel.SetActive(false);
+            screenBackground.enabled = false;
 
-    //    questionBackground.color = new Color(0.7254902f, 0.7254902f, 0.7254902f);
 
-    //    button1.interactable = true;
-    //    button2.interactable = true;
-    //    button3.interactable = true;
-    //    button4.interactable = true;
-    //}
+        }
 
-    //public void RightAnswer()
-    //{
-    //    button1.interactable = false;
-    //    button2.interactable = false;
-    //    button3.interactable = false;
-    //    button4.interactable = false;
+        button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+        button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+        button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+        button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
 
-    //    congratulationsImage.SetActive(true);
+        questionBackground.color = new Color(0.7254902f, 0.7254902f, 0.7254902f);
 
-    //    questionBackground.color = Color.green;
+        button1.interactable = true;
+        button2.interactable = true;
+        button3.interactable = true;
+        button4.interactable = true;
+    }
 
-    //    isAnswered = true;
+    public void RightAnswer()
+    {
+        button1.interactable = false;
+        button2.interactable = false;
+        button3.interactable = false;
+        button4.interactable = false;
 
-    //    StartCoroutine(WaitForSeconds());
+        congratulationsImage.SetActive(true);
 
-    //}
+        questionBackground.color = Color.green;
 
-    //IEnumerator WaitForSeconds()
-    //{
+        isAnswered = true;
 
-    //    yield return new WaitForSeconds(2);
-    //    quizzOnlyPanel.SetActive(false);
-    //}
+        StartCoroutine(WaitForSeconds());
+
+    }
+
+    IEnumerator WaitForSeconds()
+    {
+
+        yield return new WaitForSeconds(2);
+        quizzOnlyPanel.SetActive(false);
+    }
     //QUIZZ
 
 }
