@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Manager : MonoBehaviour {
+public class UI_Manager : MonoBehaviour
+{
 
     public static UI_Manager Instance { get; private set; }
 
@@ -33,15 +34,16 @@ public class UI_Manager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    void Start()
     {
 
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void ShowElement(GameObject elementToActive)
     {
@@ -79,17 +81,17 @@ public class UI_Manager : MonoBehaviour {
         }
     }
 
-    public void TableauGallerie (int chien)
+    public void TableauGallerie(int chien)
     {
 
     }
 
-    public void ClickSwitchMenu ()
+    public void ClickSwitchMenu()
     {
 
     }
 
-    void Victory ()
+    void Victory()
     {
         Debug.Log("YOU WIN TU AS L AIR MALIN MAINTENANT COOOOOOONNARD !");
     }
