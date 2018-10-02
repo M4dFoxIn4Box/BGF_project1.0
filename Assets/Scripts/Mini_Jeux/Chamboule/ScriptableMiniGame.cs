@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "MiniJeux", menuName = "Scriptable/MiniJeux", order = 1)]
 
-public class ScriptableChamboule : ScriptableObject
+public class ScriptableMiniGame : ScriptableObject
 {
 
     public GameObject prefabMiniJeux;

@@ -13,6 +13,8 @@ public class ScriptableQuizz : ScriptableObject {
     public string answer3;
     public string answer4;
 
+    public GameObject rewardObj;
+
     public string funFact;
     [Tooltip("1 correspond à answer1, etc")]
     public int rightAnswer; // 1 à 4, 1 correspondant à answer1, etc...

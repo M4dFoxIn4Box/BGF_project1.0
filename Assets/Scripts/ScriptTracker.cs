@@ -54,13 +54,15 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public ScriptableQuizz currentScriptableQuizz;
 
+    public Transform rewardSpawnPoint;
+
     // Tableau
 
         [Header("Quizz Section")]
     public ScriptableQuizz[] scriptableQuizzList;
 
         [Header("Mini Game Section")]
-    public ScriptableChamboule[] scriptableMiniGameClass;
+    public ScriptableMiniGame[] scriptableMiniGameClass;
 
         [Header("Scan Section")]
     public ScriptableScan[] scriptableScanClass;
@@ -268,6 +270,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         button4.interactable = false;
 
         congratulationsImage.SetActive(true);
+
+        Instantiate(currentScriptableQuizz.rewardObj, new Vector3(rewardSpawnPoint.position.x, rewardSpawnPoint.position.y, rewardSpawnPoint.position.z), Quaternion.identity);
 
         questionBackground.color = Color.green;
 
