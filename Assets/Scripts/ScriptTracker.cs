@@ -60,8 +60,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
    
     private bool isAnswered = false;
 
-    public Transform rewardSpawnPoint;
-
     [Header("Scriptable n° Quizz")]
     public ScriptableQuizz currentScriptableQuizz;
 
@@ -122,19 +120,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
-        //foreach (var item in mVuMarkManager.GetActiveBehaviours())
-        //{
-        //    int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
-        //    transform.GetChild(targetObj - 1).gameObject.SetActive(true);         
-        //   // UI_Manager.Instance.FillInScanIdx(targetObj - 1);
-        //}
 
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
             if (vumark.InstanceId.NumericValue <= quizzLimit)
             {
                 quizzInterface.SetActive(true);
-                quizzOnlyPanel.SetActive(true);
                 currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue - 1];
                 Debug.Log(vumark.InstanceId.NumericValue);
                 quizzText.text = currentScriptableQuizz.quizzQuestion;
@@ -286,11 +277,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         congratulationsImage.SetActive(true);
 
-        Instantiate(currentScriptableQuizz.rewardObj, new Vector3(rewardSpawnPoint.position.x, rewardSpawnPoint.position.y, rewardSpawnPoint.position.z), Quaternion.identity);
-
         isAnswered = true;
-        
+
+ 
+
         StartCoroutine(WaitForSeconds());
+
 
     }
 
@@ -298,7 +290,14 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
 
         yield return new WaitForSeconds(2);
-        quizzOnlyPanel.SetActive(false);
+        quizzInterface.SetActive(false);
+        foreach (var item in mVuMarkManager.GetActiveBehaviours())
+        {
+            int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
+            transform.GetChild(targetObj - 1).gameObject.SetActive(true);
+            // UI_Manager.Instance.FillInScanIdx(targetObj - 1);
+        }
+
     }
     //QUIZZ
 
