@@ -8,6 +8,20 @@ public class ResetBall : MonoBehaviour {
     public GameObject ball;
     private float ScoreToWin;
 
+    public static ResetBall Instance { get; private set; }
+
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     // Use this for initialization
     void Start ()
@@ -18,19 +32,15 @@ public class ResetBall : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	    if (ScoreToWin == 4)
-        {
-            Destroy(ball);
-            Testou.Instance.Tesmort();
-        }
+
 	}
 
     void OnTriggerEnter (Collider other)
     {
         if (other.CompareTag("ball"))
         {
-            Destroy(other.gameObject);
             Instantiate(ball, spawn.transform.position, spawn.transform.rotation);
+            Destroy(other.gameObject);            
         }
 
         if (other.CompareTag("point"))
@@ -38,5 +48,10 @@ public class ResetBall : MonoBehaviour {
             Destroy(other.gameObject);
             ScoreToWin += 1;
         }
+    }
+
+    public void ScoreToHave (int numberToWin)
+    {
+        ScoreToWin = numberToWin;
     }
 }
