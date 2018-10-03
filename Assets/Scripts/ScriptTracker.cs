@@ -161,7 +161,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             }
             else if (vumark.InstanceId.NumericValue <= scanLimit)
             {
-
+                StartCoroutine(GameWon());
             }
             else if(vumark.InstanceId.NumericValue <= miniGameLimit)
             {
@@ -291,11 +291,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         isAnswered = true; 
 
-        StartCoroutine(WaitForSeconds());
+        StartCoroutine(GameWon());
 
     }
 
-    IEnumerator WaitForSeconds()
+    IEnumerator GameWon()
     {
 
         yield return new WaitForSeconds(2);
