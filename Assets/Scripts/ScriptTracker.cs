@@ -16,13 +16,20 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public VuMarkTarget vumark;
 
+    [Header("Mini Game")]
+    public ulong miniGameLimit;
+
+    [Header("Scan")]
+    public ulong scanLimit;
+
     [Header("Quizz")]
+    public ulong quizzLimit;
     public UnityEngine.UI.Image questionBackground;
     public UnityEngine.UI.Image screenBackground;
 
-    public Canvas quizzCanvas;
-    public GameObject mainCanvas;
+    public GameObject quizzInterface;
     public GameObject quizzOnlyPanel;
+    public GameObject congratulationsImage;
 
     [Header("Textes")]
     public Text quizzText;
@@ -50,9 +57,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private string funFactText;
 
     [Header("Récompense")]
-    public GameObject congratulationsImage;
-    public UnityEngine.UI.Image trophyImage;
-
+   
     private bool isAnswered = false;
 
     public Transform rewardSpawnPoint;
@@ -97,10 +102,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         //QUIZZ
         if (Input.GetKeyDown("q"))
         {
-
-            quizzCanvas.enabled = true;
             screenBackground.enabled = true;
-
         }
         //QUIZZ
     }
@@ -129,9 +131,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
-            if (vumark.InstanceId.NumericValue == 1)
+            if (vumark.InstanceId.NumericValue <= quizzLimit)
             {
-                mainCanvas.SetActive(true);
+                quizzInterface.SetActive(true);
                 currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue];
                 Debug.Log(vumark.InstanceId.NumericValue);
                 quizzText.text = currentScriptableQuizz.quizzQuestion;
@@ -154,6 +156,14 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
                 leaveCanvas.onClick.AddListener(LeaveQuizz);
                 Debug.Log("Test scriptable board");
+            }
+            else if (vumark.InstanceId.NumericValue <= scanLimit)
+            {
+
+            }
+            else if(vumark.InstanceId.NumericValue <= miniGameLimit)
+            {
+
             }
         }
 
