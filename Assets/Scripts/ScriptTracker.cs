@@ -134,7 +134,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             if (vumark.InstanceId.NumericValue <= quizzLimit)
             {
                 quizzInterface.SetActive(true);
-                currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue];
+                currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue - 1];
                 Debug.Log(vumark.InstanceId.NumericValue);
                 quizzText.text = currentScriptableQuizz.quizzQuestion;
                 answer1Text = currentScriptableQuizz.answer1;
