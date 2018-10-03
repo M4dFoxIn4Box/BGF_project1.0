@@ -11,7 +11,7 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Gallery")]
 
-    public Transform gallery;//gallery.GetChild(idx)
+    public Transform galleryPannel;//gallery.GetChild(idx)
     private List<int> scanIdx = new List<int>();
 
     [Header("Scoring")]
@@ -76,7 +76,7 @@ public class Interface_Manager : MonoBehaviour
         if (!scanIdx.Contains(idx))
         {
             scanIdx.Add(idx);
-            gallery.GetChild(idx).gameObject.SetActive(true);
+            galleryPannel.GetChild(idx).gameObject.SetActive(true);
         }
     }
 
