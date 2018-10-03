@@ -134,6 +134,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             if (vumark.InstanceId.NumericValue <= quizzLimit)
             {
                 quizzInterface.SetActive(true);
+                quizzOnlyPanel.SetActive(true);
                 currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue - 1];
                 Debug.Log(vumark.InstanceId.NumericValue);
                 quizzText.text = currentScriptableQuizz.quizzQuestion;
@@ -287,10 +288,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         Instantiate(currentScriptableQuizz.rewardObj, new Vector3(rewardSpawnPoint.position.x, rewardSpawnPoint.position.y, rewardSpawnPoint.position.z), Quaternion.identity);
 
-        questionBackground.color = Color.green;
-
         isAnswered = true;
-
+        
         StartCoroutine(WaitForSeconds());
 
     }
