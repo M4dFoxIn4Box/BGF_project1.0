@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Interface_Manager : MonoBehaviour
 {
 
+
     public static Interface_Manager Instance { get; private set; }
 
 
@@ -22,7 +23,8 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Caméra")]
 
-    public Camera[] cams;
+    public VuforiaMonoBehaviour arCan;
+
 
 
     private void Awake()
@@ -59,17 +61,6 @@ public class Interface_Manager : MonoBehaviour
         elementToDesactive.SetActive(false);
     }
 
-    public void ARCamera ()
-    {
-        cams[1].enabled = true;
-        cams[0].enabled = false;
-    }
-    
-    public void MainCamera ()
-    {
-        cams[1].enabled = false;
-        cams[0].enabled = true;
-    }
 
     public void FillInScanIdx(int idx)
     {
@@ -112,5 +103,14 @@ public class Interface_Manager : MonoBehaviour
         Debug.Log("YOU WIN !");
     }
 
+    public void OpenARCamera()
+    {
+        arCan.enabled = true;
+    }
+
+    public void CloseARCamera()
+    {
+        arCan.enabled = false;
+    }
 
 }
