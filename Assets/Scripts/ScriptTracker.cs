@@ -24,8 +24,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     [Header("Quizz")]
     public ulong quizzLimit;
-    public UnityEngine.UI.Image questionBackground;
-    public UnityEngine.UI.Image screenBackground;
+    //public UnityEngine.UI.Image questionBackground;
+    //public UnityEngine.UI.Image screenBackground;
 
     public GameObject quizzInterface;
     public GameObject quizzOnlyPanel;
@@ -100,7 +100,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         //QUIZZ
         if (Input.GetKeyDown("q"))
         {
-            screenBackground.enabled = true;
+            //screenBackground.enabled = true;
         }
         //QUIZZ
     }
@@ -125,6 +125,16 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             if (vumark.InstanceId.NumericValue <= quizzLimit)
             {
+                button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+                button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+                button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+                button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+
+                button1.interactable = true;
+                button2.interactable = true;
+                button3.interactable = true;
+                button4.interactable = true;
+
                 quizzInterface.SetActive(true);
                 currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue - 1];
                 Debug.Log(vumark.InstanceId.NumericValue);
@@ -168,6 +178,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             int targetObj = System.Convert.ToInt32 (item.VuMarkTarget.InstanceId.NumericValue);
             transform.GetChild(targetObj - 1).gameObject.SetActive(false);
         }
+
+        quizzInterface.SetActive(false);
     }
 
     //QUIZZ
@@ -247,20 +259,20 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void LeaveQuizz()
     {
 
-        if (isAnswered == true)
-        {
-            quizzOnlyPanel.SetActive(false);
-            screenBackground.enabled = false;
+        //if (isAnswered == true)
+        //{
+        //    quizzOnlyPanel.SetActive(false);
+        //    screenBackground.enabled = false;
 
 
-        }
+        //}
 
         button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
         button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
         button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
         button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
 
-        questionBackground.color = new Color(0.7254902f, 0.7254902f, 0.7254902f);
+        //questionBackground.color = new Color(0.7254902f, 0.7254902f, 0.7254902f);
 
         button1.interactable = true;
         button2.interactable = true;
@@ -277,12 +289,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         congratulationsImage.SetActive(true);
 
-        isAnswered = true;
-
- 
+        isAnswered = true; 
 
         StartCoroutine(WaitForSeconds());
-
 
     }
 
