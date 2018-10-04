@@ -33,8 +33,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public int currentScore;
     public int scoreToReach;
 
-    //[Header("Scan")]
-    //public ulong scanLimit;
+    [Header("Scan")]
+    public ulong scanLimit;
 
     [Header("Quizz")]
     public ulong quizzLimit;
@@ -76,17 +76,15 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     [Header("Scriptable n° Quizz")]
     public ScriptableQuizz currentScriptableQuizz;
+    public ScriptableQuizz[] scriptableQuizzList;
 
     [Header("Scriptable n° Mini Game")]
     public ScriptableMiniGame currentScriptableMiniGame;
+    public ScriptableMiniGame[] scriptableMiniGameList;
 
-    [Header("Quizz Section")]
-    public ScriptableQuizz[] scriptableQuizzList;
-
-    [Header("Mini Game Section")]
-    public ScriptableMiniGame[] scriptableMiniGameClass;
-
-
+    [Header("Scriptable Section Scan")]
+    public ScriptableScan currentScriptableScan;
+    public ScriptableScan[] scriptableScanList;
     
     void Start()
     {
@@ -162,18 +160,17 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             }
             else if (vumark.InstanceId.NumericValue >= quizzLimit && vumark.InstanceId.NumericValue <= miniGameLimit)
             {
-                currentScriptableMiniGame = scriptableMiniGameClass[(vumark.InstanceId.NumericValue - quizzLimit) - 1];
+                currentScriptableMiniGame = scriptableMiniGameList[(vumark.InstanceId.NumericValue - quizzLimit) - 1];
                 Debug.Log(currentScriptableMiniGame);
                 scoreToReach = currentScriptableMiniGame.scoreLimit;
                 miniGameToDestroy = currentScriptableMiniGame.prefabMiniJeux;
-                miniGameToDestroy = Instantiate(currentScriptableMiniGame.prefabMiniJeux, miniGameSpawnPoint);
-                
-                
+                miniGameToDestroy = Instantiate(currentScriptableMiniGame.prefabMiniJeux, miniGameSpawnPoint);                        
         
             }
 
             else if (vumark.InstanceId.NumericValue >= miniGameLimit)
             {
+                currentScriptableScan = scriptableScanList[(vumark.InstanceId.NumericValue - (quizzLimit + miniGameLimit)) - 1];
                 StartCoroutine(GameWon());
             }
         }
