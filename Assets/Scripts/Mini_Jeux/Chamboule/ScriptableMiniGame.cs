@@ -8,7 +8,7 @@ public class ScriptableMiniGame : ScriptableObject
 {
 
     public GameObject prefabMiniJeux;
-    public int numberToWin;
+    public int scoreLimit;
 
     // Use this for initialization
     void Start()

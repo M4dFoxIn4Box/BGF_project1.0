@@ -6,27 +6,12 @@ public class ResetBall : MonoBehaviour {
 
     public Transform spawn;
     public GameObject ball;
-    private float ScoreToWin;
-
-    public static ResetBall Instance { get; private set; }
-
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
+    private int pointValue;
 
     // Use this for initialization
     void Start ()
     {
-        ScoreToWin = 0;
+        pointValue = 1;
 	}
 	
 	// Update is called once per frame
@@ -46,12 +31,12 @@ public class ResetBall : MonoBehaviour {
         if (other.CompareTag("point"))
         {
             Destroy(other.gameObject);
-            ScoreToWin += 1;
+            AddScore();
         }
     }
 
-    public void ScoreToHave (int numberToWin)
+    public void AddScore ()
     {
-        ScoreToWin = numberToWin;
+        ScriptTracker.Instance.MiniGameScore(pointValue);
     }
 }

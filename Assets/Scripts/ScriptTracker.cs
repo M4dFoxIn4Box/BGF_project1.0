@@ -7,20 +7,34 @@ using Vuforia;
 public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
 {
+    public static ScriptTracker Instance { get; private set; }
+
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     TrackableBehaviour mTrackableBehaviour;
     VuMarkManager mVuMarkManager;
-
-    public GameObject ChambouleTout;
-    public Transform spawnPoint;
-    //public GameObject teapot;
-
     public VuMarkTarget vumark;
 
     [Header("Mini Game")]
     public ulong miniGameLimit;
+    public Transform miniGameSpawnPoint;
+    public GameObject miniGameToDestroy;
+    public int currentScore;
+    public int scoreToReach;
 
-    [Header("Scan")]
-    public ulong scanLimit;
+    //[Header("Scan")]
+    //public ulong scanLimit;
 
     [Header("Quizz")]
     public ulong quizzLimit;
@@ -63,20 +77,17 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     [Header("Scriptable n° Quizz")]
     public ScriptableQuizz currentScriptableQuizz;
 
-    // Tableau
+    [Header("Scriptable n° Mini Game")]
+    public ScriptableMiniGame currentScriptableMiniGame;
 
     [Header("Quizz Section")]
     public ScriptableQuizz[] scriptableQuizzList;
 
-        [Header("Mini Game Section")]
+    [Header("Mini Game Section")]
     public ScriptableMiniGame[] scriptableMiniGameClass;
 
-        [Header("Scan Section")]
-    public ScriptableScan[] scriptableScanClass;
 
-    //QUIZZ
-
-
+    
     void Start()
     {
         
@@ -86,23 +97,13 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
         }
         mVuMarkManager = TrackerManager.Instance.GetStateManager().GetVuMarkManager();
-
-        //QUIZZ
-
-        //QUIZZ
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //QUIZZ
-        if (Input.GetKeyDown("q"))
-        {
-            //screenBackground.enabled = true;
-        }
-        //QUIZZ
+
+
     }
 
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
@@ -120,7 +121,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
-
+   
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
             if (vumark.InstanceId.NumericValue <= quizzLimit)
@@ -159,13 +160,21 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 leaveCanvas.onClick.AddListener(LeaveQuizz);
                 Debug.Log("Test scriptable board");
             }
-            else if (vumark.InstanceId.NumericValue <= scanLimit)
+            else if (vumark.InstanceId.NumericValue >= quizzLimit && vumark.InstanceId.NumericValue <= miniGameLimit)
+            {
+                currentScriptableMiniGame = scriptableMiniGameClass[(vumark.InstanceId.NumericValue - quizzLimit) - 1];
+                Debug.Log(currentScriptableMiniGame);
+                scoreToReach = currentScriptableMiniGame.scoreLimit;
+                miniGameToDestroy = currentScriptableMiniGame.prefabMiniJeux;
+                miniGameToDestroy = Instantiate(currentScriptableMiniGame.prefabMiniJeux, miniGameSpawnPoint);
+                
+                
+        
+            }
+
+            else if (vumark.InstanceId.NumericValue >= miniGameLimit)
             {
                 StartCoroutine(GameWon());
-            }
-            else if(vumark.InstanceId.NumericValue <= miniGameLimit)
-            {
-
             }
         }
 
@@ -263,8 +272,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         //{
         //    quizzOnlyPanel.SetActive(false);
         //    screenBackground.enabled = false;
-
-
         //}
 
         button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
@@ -295,10 +302,24 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     }
 
+    public void MiniGameScore(int scoreAdd)
+    {
+        currentScore = scoreAdd + currentScore;
+        if(currentScore >= scoreToReach)
+        {
+            Destroy(miniGameToDestroy);
+            StartCoroutine(GameWon());      
+        }
+    }
+
     IEnumerator GameWon()
     {
-
+        
+  
+        Debug.Log("You Win");
         yield return new WaitForSeconds(2);
+        currentScore = 0;
+
         quizzInterface.SetActive(false);
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
