@@ -1718,6 +1718,7 @@ MonoBehaviour:
   miniGameToDestroy: {fileID: 0}
   currentScore: 0
   scoreToReach: 0
+  scanLimit: 0
   quizzLimit: 2
   quizzInterface: {fileID: 0}
   quizzOnlyPanel: {fileID: 0}
@@ -1734,13 +1735,17 @@ MonoBehaviour:
   button4: {fileID: 0}
   leaveCanvas: {fileID: 0}
   currentScriptableQuizz: {fileID: 0}
-  currentScriptableMiniGame: {fileID: 0}
   scriptableQuizzList:
   - {fileID: 11400000, guid: 9695033954f6dce4783f24fae7059502, type: 2}
   - {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd, type: 2}
-  scriptableMiniGameClass:
+  currentScriptableMiniGame: {fileID: 0}
+  scriptableMiniGameList:
   - {fileID: 11400000, guid: 373e03a32b8823547b910ff12265fc35, type: 2}
   - {fileID: 11400000, guid: da63f4283df934e43bdebcef691aae67, type: 2}
+  currentScriptableScan: {fileID: 0}
+  scriptableScanList:
+  - {fileID: 11400000, guid: 5a7f9712e8a3a6a4c9cfc6b1c9baa090, type: 2}
+  - {fileID: 11400000, guid: ebf2a14235ac8cf458300317bd8f9f0f, type: 2}
 --- !u!135 &135214122985990888
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -74,11 +74,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
    
     private bool isAnswered = false;
 
-    [Header("Scriptable n° Quizz")]
+    [Header("Scriptable Section Quizz")]
     public ScriptableQuizz currentScriptableQuizz;
     public ScriptableQuizz[] scriptableQuizzList;
 
-    [Header("Scriptable n° Mini Game")]
+    [Header("Scriptable Section Mini Game")]
     public ScriptableMiniGame currentScriptableMiniGame;
     public ScriptableMiniGame[] scriptableMiniGameList;
 
@@ -170,7 +170,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
             else if (vumark.InstanceId.NumericValue >= miniGameLimit)
             {
-                currentScriptableScan = scriptableScanList[(vumark.InstanceId.NumericValue - (quizzLimit + miniGameLimit)) - 1];
+                currentScriptableScan = scriptableScanList[(vumark.InstanceId.NumericValue - miniGameLimit) - 1];
                 StartCoroutine(GameWon());
             }
         }

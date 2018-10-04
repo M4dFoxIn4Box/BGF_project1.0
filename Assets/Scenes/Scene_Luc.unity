@@ -113,6 +113,33 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: f80d1f6789ca23148b54250acfa1e0f1, type: 2}
+--- !u!21 &47948358
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 'BGFMaterial
+
+    -1104'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &113160357
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +357,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114321036569396536, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: scriptableScanList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114321036569396536, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: scriptableMiniGameList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.8
@@ -366,12 +403,12 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1465859454}
+      objectReference: {fileID: 47948358}
     - target: {fileID: 33759449354752750, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1939483275}
+      objectReference: {fileID: 2019612092}
     - target: {fileID: 1672895316672764, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
       propertyPath: m_Name
       value: VuMark_BGF
@@ -451,6 +488,30 @@ Prefab:
       propertyPath: leaveCanvas
       value: 
       objectReference: {fileID: 868744945}
+    - target: {fileID: 114321036569396536, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: scriptableScanList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a7f9712e8a3a6a4c9cfc6b1c9baa090,
+        type: 2}
+    - target: {fileID: 114321036569396536, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: scriptableScanList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ebf2a14235ac8cf458300317bd8f9f0f,
+        type: 2}
+    - target: {fileID: 114321036569396536, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: scriptableMiniGameList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 373e03a32b8823547b910ff12265fc35,
+        type: 2}
+    - target: {fileID: 114321036569396536, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: scriptableMiniGameList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: da63f4283df934e43bdebcef691aae67,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
   m_IsPrefabAsset: 0
@@ -1394,33 +1455,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224059695523396998, guid: 1827c58500709474e9615c68b74806ac,
     type: 2}
   m_PrefabInternal: {fileID: 1243977256}
---- !u!21 &1465859454
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 'BGFMaterial
-
-    -1066'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1669049497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,12 +1564,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!43 &1939483275
+--- !u!43 &2019612092
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Vumark-1066
+  m_Name: Vumark-1104
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
