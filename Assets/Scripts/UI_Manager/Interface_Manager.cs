@@ -13,6 +13,7 @@ public class Interface_Manager : MonoBehaviour
     [Header("Gallery")]
 
     public Transform galleryPannel;//gallery.GetChild(idx)
+    public Button buttonGallery;
     private List<int> scanIdx = new List<int>();
 
     [Header("Scoring")]
@@ -51,6 +52,9 @@ public class Interface_Manager : MonoBehaviour
 
     }
 
+
+    //UI MANAGER 
+
     public void ShowElement(GameObject elementToActive)
     {
         elementToActive.SetActive(true);
@@ -62,15 +66,21 @@ public class Interface_Manager : MonoBehaviour
     }
 
 
+    //GALLERY
+
     public void FillInScanIdx(int idx)
     {
         if (!scanIdx.Contains(idx))
         {
             scanIdx.Add(idx);
-            galleryPannel.GetChild(idx).gameObject.SetActive(true);
+            galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
         }
     }
 
+
+
+
+    //SCORING
 
     public void AddScore(int newScoreValue)
     {
@@ -88,20 +98,12 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
-    public void TableauGallerie(int chien)
-    {
-
-    }
-
-    public void ClickSwitchMenu()
-    {
-
-    }
-
     void Victory()
     {
         Debug.Log("YOU WIN !");
     }
+
+    //CAMERA
 
     public void OpenARCamera()
     {
