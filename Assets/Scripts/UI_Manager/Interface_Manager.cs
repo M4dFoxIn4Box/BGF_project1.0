@@ -38,6 +38,8 @@ public class Interface_Manager : MonoBehaviour
         {
             Instance = this;
         }
+
+
     }
 
     // Use this for initialization
