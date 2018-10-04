@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Vuforia;
 
-public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
+public class NewScriptTracker : MonoBehaviour, ITrackableEventHandler
 
 {
-    public static ScriptTracker Instance { get; private set; }
+    public static NewScriptTracker Instance { get; private set; }
 
 
     private void Awake()
@@ -32,6 +32,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public GameObject miniGameToDestroy;
     public int currentScore;
     public int scoreToReach;
+
+
 
     [Header("Quizz")]
     public ulong quizzLimit;
@@ -185,7 +187,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     }
 
     // QUIZZ // answer button section
-
     public void TaskOnClick1() // BOUTON 1
     {
         if (currentScriptableQuizz.rightAnswer == 1)
