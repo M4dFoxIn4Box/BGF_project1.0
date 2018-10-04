@@ -33,13 +33,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public int currentScore;
     public int scoreToReach;
 
-    [Header("Scan")]
-    public ulong scanLimit;
+
 
     [Header("Quizz")]
     public ulong quizzLimit;
-    //public UnityEngine.UI.Image questionBackground;
-    //public UnityEngine.UI.Image screenBackground;
 
     public GameObject quizzInterface;
     public GameObject quizzOnlyPanel;
@@ -70,10 +67,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private string answer4Text;
     private string funFactText;
 
-    [Header("Récompense")]
-   
-    private bool isAnswered = false;
-
     [Header("Scriptable Section Quizz")]
     public ScriptableQuizz currentScriptableQuizz;
     public ScriptableQuizz[] scriptableQuizzList;
@@ -85,6 +78,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     [Header("Scriptable Section Scan")]
     public ScriptableScan currentScriptableScan;
     public ScriptableScan[] scriptableScanList;
+
+
+    [Header("Récompense")]
+   
+    private bool isAnswered = false;
     
     void Start()
     {
@@ -164,7 +162,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 Debug.Log(currentScriptableMiniGame);
                 scoreToReach = currentScriptableMiniGame.scoreLimit;
                 miniGameToDestroy = currentScriptableMiniGame.prefabMiniJeux;
-                miniGameToDestroy = Instantiate(currentScriptableMiniGame.prefabMiniJeux, miniGameSpawnPoint);                        
+                miniGameToDestroy = Instantiate(currentScriptableMiniGame.prefabMiniJeux, miniGameSpawnPoint);                      
         
             }
 
@@ -184,7 +182,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             int targetObj = System.Convert.ToInt32 (item.VuMarkTarget.InstanceId.NumericValue);
             transform.GetChild(targetObj - 1).gameObject.SetActive(false);
         }
-
+        Destroy(miniGameToDestroy);
         quizzInterface.SetActive(false);
     }
 
@@ -265,18 +263,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void LeaveQuizz()
     {
 
-        //if (isAnswered == true)
-        //{
-        //    quizzOnlyPanel.SetActive(false);
-        //    screenBackground.enabled = false;
-        //}
-
         button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
         button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
         button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
         button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-
-        //questionBackground.color = new Color(0.7254902f, 0.7254902f, 0.7254902f);
 
         button1.interactable = true;
         button2.interactable = true;

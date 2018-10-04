@@ -22,9 +22,9 @@ public class Interface_Manager : MonoBehaviour
     private int score;
     public int limitToWin;
 
-    [Header("Caméra")]
+    [Header("Camera")]
 
-    public VuforiaMonoBehaviour arCan;
+    public VuforiaMonoBehaviour arCam;
 
 
 
@@ -109,12 +109,12 @@ public class Interface_Manager : MonoBehaviour
 
     public void OpenARCamera()
     {
-        arCan.enabled = true;
+        arCam.enabled = true;
     }
 
     public void CloseARCamera()
     {
-        arCan.enabled = false;
+        arCam.enabled = false;
     }
 
 }
