@@ -37,7 +37,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public ulong quizzLimit;
 
     public GameObject quizzInterface;
-    public GameObject quizzOnlyPanel;
     public GameObject congratulationsImage;
 
     [Header("Textes")]
@@ -300,10 +299,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     IEnumerator GameWon()
     {
-         
-        Debug.Log("You Win");
+        
         yield return new WaitForSeconds(2);
+
         currentScore = 0;
+        congratulationsImage.SetActive(false);
 
         quizzInterface.SetActive(false);
         foreach (var item in mVuMarkManager.GetActiveBehaviours())

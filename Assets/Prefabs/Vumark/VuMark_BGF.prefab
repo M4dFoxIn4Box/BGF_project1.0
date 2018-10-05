@@ -457,9 +457,9 @@ GameObject:
   - component: {fileID: 114051854216693064}
   - component: {fileID: 23154150541529358}
   - component: {fileID: 33759449354752750}
-  - component: {fileID: 114321036569396536}
+  - component: {fileID: 114428691650512684}
   m_Layer: 0
-  m_Name: VuMark
+  m_Name: VuMark_BGF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1047,8 +1047,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1798580302660074}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.54444, y: 0.54444, z: 0.54444}
+  m_LocalPosition: {x: 0, y: 0.577, z: 0}
+  m_LocalScale: {x: 0.27972782, y: 0.27972782, z: 0.27972782}
   m_Children: []
   m_Father: {fileID: 4966808575554108}
   m_RootOrder: 3
@@ -1091,8 +1091,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173669428594616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.54444, y: 0.54444, z: 0.54444}
+  m_LocalPosition: {x: 0, y: 0.577, z: 0}
+  m_LocalScale: {x: 0.27972782, y: 0.27972782, z: 0.27972782}
   m_Children: []
   m_Father: {fileID: 4966808575554108}
   m_RootOrder: 5
@@ -1173,8 +1173,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027074170316752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.54444, y: 0.54444, z: 0.54444}
+  m_LocalPosition: {x: 0, y: 0.577, z: 0}
+  m_LocalScale: {x: 0.27972782, y: 0.27972782, z: 0.27972782}
   m_Children: []
   m_Father: {fileID: 4966808575554108}
   m_RootOrder: 2
@@ -1219,8 +1219,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1607653012736612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.54444, y: 0.54444, z: 0.54444}
+  m_LocalPosition: {x: 0, y: 0.577, z: 0}
+  m_LocalScale: {x: 0.27972782, y: 0.27972782, z: 0.27972782}
   m_Children: []
   m_Father: {fileID: 4966808575554108}
   m_RootOrder: 4
@@ -1240,7 +1240,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 691be9cd7aa7f7e4881cdba5a1fac70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1310,7 +1310,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 691be9cd7aa7f7e4881cdba5a1fac70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1345,7 +1345,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 691be9cd7aa7f7e4881cdba5a1fac70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1477,7 +1477,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 691be9cd7aa7f7e4881cdba5a1fac70c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1702,7 +1702,7 @@ MonoBehaviour:
     height: 720
   mOrigin: {x: 277, y: 356}
   mTrackingFromRuntimeAppearance: 0
---- !u!114 &114321036569396536
+--- !u!114 &114428691650512684
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1713,13 +1713,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd4987d6d780dbd418e2a16d8e189e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniGameLimit: 4
+  miniGameLimit: 0
   miniGameSpawnPoint: {fileID: 0}
   miniGameToDestroy: {fileID: 0}
   currentScore: 0
   scoreToReach: 0
-  scanLimit: 0
-  quizzLimit: 2
+  quizzLimit: 0
   quizzInterface: {fileID: 0}
   quizzOnlyPanel: {fileID: 0}
   congratulationsImage: {fileID: 0}
@@ -1735,17 +1734,11 @@ MonoBehaviour:
   button4: {fileID: 0}
   leaveCanvas: {fileID: 0}
   currentScriptableQuizz: {fileID: 0}
-  scriptableQuizzList:
-  - {fileID: 11400000, guid: 9695033954f6dce4783f24fae7059502, type: 2}
-  - {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd, type: 2}
+  scriptableQuizzList: []
   currentScriptableMiniGame: {fileID: 0}
-  scriptableMiniGameList:
-  - {fileID: 11400000, guid: 373e03a32b8823547b910ff12265fc35, type: 2}
-  - {fileID: 11400000, guid: da63f4283df934e43bdebcef691aae67, type: 2}
+  scriptableMiniGameList: []
   currentScriptableScan: {fileID: 0}
-  scriptableScanList:
-  - {fileID: 11400000, guid: 5a7f9712e8a3a6a4c9cfc6b1c9baa090, type: 2}
-  - {fileID: 11400000, guid: ebf2a14235ac8cf458300317bd8f9f0f, type: 2}
+  scriptableScanList: []
 --- !u!135 &135214122985990888
 SphereCollider:
   m_ObjectHideFlags: 1

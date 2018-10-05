@@ -26,17 +26,19 @@ public class NewScriptTracker : MonoBehaviour, ITrackableEventHandler
     VuMarkManager mVuMarkManager;
     public VuMarkTarget vumark;
 
-    [Header("Mini Game")]
+    [Header("Games Limits")]
+    
+    public ulong quizzLimit;
     public ulong miniGameLimit;
+    
+    [Header("Mini Game")]
+    
     public Transform miniGameSpawnPoint;
     public GameObject miniGameToDestroy;
     public int currentScore;
     public int scoreToReach;
-
-
-
+    
     [Header("Quizz")]
-    public ulong quizzLimit;
 
     public GameObject quizzInterface;
     public GameObject quizzOnlyPanel;
@@ -67,16 +69,21 @@ public class NewScriptTracker : MonoBehaviour, ITrackableEventHandler
     private string answer4Text;
     private string funFactText;
 
-    [Header("Scriptable Section Quizz")]
+    [Header("Current Scriptables")]
     public ScriptableQuizz currentScriptableQuizz;
+    public ScriptableMiniGame currentScriptableMiniGame;
+    public ScriptableScan currentScriptableScan;
+
+    [Header("Scriptable Section Quizz")]
+ 
     public ScriptableQuizz[] scriptableQuizzList;
 
     [Header("Scriptable Section Mini Game")]
-    public ScriptableMiniGame currentScriptableMiniGame;
+  
     public ScriptableMiniGame[] scriptableMiniGameList;
 
     [Header("Scriptable Section Scan")]
-    public ScriptableScan currentScriptableScan;
+  
     public ScriptableScan[] scriptableScanList;
 
 

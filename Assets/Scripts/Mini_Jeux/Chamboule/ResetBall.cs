@@ -24,8 +24,9 @@ public class ResetBall : MonoBehaviour {
     {
         if (other.CompareTag("ball"))
         {
-            Instantiate(ball, spawn.transform.position, spawn.transform.rotation);
-            Destroy(other.gameObject);            
+            Destroy(other.gameObject);
+            StartCoroutine(BallSpawn());
+             
         }
 
         if (other.CompareTag("point"))
@@ -33,6 +34,12 @@ public class ResetBall : MonoBehaviour {
             Destroy(other.gameObject);
             AddScore();
         }
+    }
+
+    IEnumerator BallSpawn ()
+    {
+        yield return new WaitForSeconds(2);
+        Instantiate(ball, spawn.transform.position, spawn.transform.rotation);
     }
 
     public void AddScore ()
