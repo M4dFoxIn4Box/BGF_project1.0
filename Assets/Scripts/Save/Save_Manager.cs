@@ -7,8 +7,11 @@ using System.IO;
 
 public class Save_Manager : MonoBehaviour
 {
-    List<bool> galleryButtonsStates;
-    public static Save_Manager saving;
+    //public static Save_Manager saving;
+
+    public static Save_Manager saving { get; private set; }
+
+    private int buttonIdx;
 
     private void Awake()
     {
@@ -24,37 +27,70 @@ public class Save_Manager : MonoBehaviour
     }
 
 
-    void Start ()
+    void Start()
     {
-       /* if(galleryButtonsStates < 42)
+        if (buttonIdx == 0)
         {
-            List<bool> galleryButtonsStates;
             for (int i = 0; i < 42; i++)
             {
-                galleryButtonsStates.Add(false);
+                //galleryButtonsStates.Add(false);
                 Save();
             }
-        }*/
+        }
+        else
+        {
+            Load();
+        }
+    }
 
-        
-	}
 
-	void Update () {
+    void CheckSave()
+    {
+        if (buttonIdx < 42)
+        {
+            Save();
+        }
+    }
+
+    void Update ()
+    {
 		
 	}
+
+    public void IntEnBool (int chien)
+    {
+
+    }
 
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.data", FileMode.Open);
+        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.data");
 
-        SaveData data = new SaveData();
+        PlayerData data = new PlayerData();
+        //data.galleryButtonsStates = galleryButtonsStates;
 
+        bf.Serialize(file, data);
+        file.Close();
+
+    }
+
+    public void Load()
+    {
+        if(File.Exists(Application.persistentDataPath + "/playerInfo.data"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.data", FileMode.Open);
+            PlayerData data = (PlayerData)bf.Deserialize(file);
+            file.Close();
+
+            //galleryButtonsStates = data.galleryButtonsStates;
+        }
     }
 }
 
 [Serializable]
-class SaveData
+class PlayerData
 {
     public List<bool> galleryButtonsStates = new List<bool>();
 }

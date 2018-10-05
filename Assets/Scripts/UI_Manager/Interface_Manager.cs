@@ -15,6 +15,7 @@ public class Interface_Manager : MonoBehaviour
     public Transform galleryPannel;//gallery.GetChild(idx)
     public Button buttonGallery;
     private List<int> scanIdx = new List<int>();
+    private List<bool> buttonState = new List<bool>();
 
     [Header("Scoring")]
 
@@ -70,13 +71,26 @@ public class Interface_Manager : MonoBehaviour
 
     //GALLERY
 
-    public void FillInScanIdx(int idx)
+    public void CheckStateButton(int idx)
     {
         if (!scanIdx.Contains(idx))
         {
             scanIdx.Add(idx);
-            galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
+            if(galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = false)
+            {
+                galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
+                Save_Manager.saving.transform.SetSiblingIndex(idx);
+            }
         }
+    }
+
+    public void ButtonState(List<bool> isTrue)
+    {
+        for (int i = 0; i < 42; i++)// ou 41
+        {
+            //galleryPannel.GetChild(isTrue).gameObject.GetComponent<Button>().interactable();
+        }
+
     }
 
 
