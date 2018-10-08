@@ -181,6 +181,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
         Destroy(miniGameToDestroy);
         quizzInterface.SetActive(false);
+        congratulationsImage.SetActive(false);
     }
 
     // QUIZZ // answer button section
