@@ -85,6 +85,7 @@ public class Save_Manager : MonoBehaviour
             file.Close();
 
             //galleryButtonsStates = data.galleryButtonsStates;
+            //Interface_Manager.Instance.ButtonState();
         }
     }
 }

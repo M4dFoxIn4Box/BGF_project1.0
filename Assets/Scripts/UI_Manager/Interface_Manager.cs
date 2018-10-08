@@ -69,7 +69,7 @@ public class Interface_Manager : MonoBehaviour
     }
 
 
-    //GALLERY
+    //GALLERY + SAVE
 
     public void CheckStateButton(int idx)
     {
@@ -79,6 +79,7 @@ public class Interface_Manager : MonoBehaviour
             if(galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = false)
             {
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
+                Save_Manager.saving.Save();
                 Save_Manager.saving.transform.SetSiblingIndex(idx);
             }
         }
