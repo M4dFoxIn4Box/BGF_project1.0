@@ -172,7 +172,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     }
     
-    void OnTrackerLost()
+    public void OnTrackerLost()
     {
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
