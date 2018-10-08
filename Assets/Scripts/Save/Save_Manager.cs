@@ -12,6 +12,7 @@ public class Save_Manager : MonoBehaviour
     public static Save_Manager saving { get; private set; }
 
     private int buttonIdx;
+    private List<bool> galleryButtonsStates;
 
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class Save_Manager : MonoBehaviour
         {
             for (int i = 0; i < 42; i++)
             {
-                //galleryButtonsStates.Add(false);
+                galleryButtonsStates.Add(false);
                 Save();
             }
         }
@@ -43,13 +44,10 @@ public class Save_Manager : MonoBehaviour
         }
     }
 
-
-    void CheckSave()
+    public void SetToTrue (int buttonIdx)
     {
-        if (buttonIdx < 42)
-        {
-            Save();
-        }
+        galleryButtonsStates[buttonIdx] = true;
+        Save();
     }
 
     void Update ()
@@ -57,18 +55,14 @@ public class Save_Manager : MonoBehaviour
 		
 	}
 
-    public void IntEnBool (int chien)
-    {
-
-    }
-
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.data");
 
         PlayerData data = new PlayerData();
-        //data.galleryButtonsStates = galleryButtonsStates;
+        data.galleryButtonsStates = galleryButtonsStates;
+        data.buttonIdx = buttonIdx;
 
         bf.Serialize(file, data);
         file.Close();
@@ -84,8 +78,8 @@ public class Save_Manager : MonoBehaviour
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
 
-            //galleryButtonsStates = data.galleryButtonsStates;
-            //Interface_Manager.Instance.ButtonState();
+            galleryButtonsStates = data.galleryButtonsStates;
+            Interface_Manager.Instance.ButtonState(galleryButtonsStates);
         }
     }
 }
@@ -94,4 +88,5 @@ public class Save_Manager : MonoBehaviour
 class PlayerData
 {
     public List<bool> galleryButtonsStates = new List<bool>();
+    public int buttonIdx;
 }
