@@ -1388,23 +1388,23 @@ Prefab:
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowElement
+      value: OpenARCamera
       objectReference: {fileID: 0}
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 873681340}
+      objectReference: {fileID: 0}
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1413,7 +1413,7 @@ Prefab:
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: UnShowElement
+      value: ShowElement
       objectReference: {fileID: 0}
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
@@ -1423,22 +1423,22 @@ Prefab:
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: OpenARCamera
+      value: UnShowElement
       objectReference: {fileID: 0}
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 596489582}
     - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1996375131408132, guid: 1827c58500709474e9615c68b74806ac, type: 2}
       propertyPath: m_IsActive
@@ -1572,6 +1572,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: CloseARCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 114759368423524646, guid: 1827c58500709474e9615c68b74806ac,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 873681340}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1827c58500709474e9615c68b74806ac, type: 2}
   m_IsPrefabAsset: 0
