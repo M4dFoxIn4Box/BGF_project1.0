@@ -6,7 +6,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Quizz", menuName = "Scriptable/VuMark", order = 1)]
 
-public class VumarkScriptable : ScriptableObject
+public class NewScriptableQuizz : ScriptableObject
 {
     [Header("Quizz")]
 
@@ -22,6 +22,8 @@ public class VumarkScriptable : ScriptableObject
     public string funFact;
     [Tooltip("1 correspond à answer1, etc")]
     public int rightAnswer; // 1 à 4, 1 correspondant à answer1, etc...
+
+    public string vuMarkType;
 
 
     // Use this for initialization
