@@ -11,8 +11,10 @@ public class Save_Manager : MonoBehaviour
 
     public static Save_Manager saving { get; private set; }
 
-    private int buttonIdx;
+    [Header ("Save")]
+
     private List<bool> galleryButtonsStates;
+    private int buttonIdx2;
 
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class Save_Manager : MonoBehaviour
 
     void Start()
     {
-        if (buttonIdx == 0)
+        if (buttonIdx2 == 0)
         {
             for (int i = 0; i < 42; i++)
             {
@@ -47,6 +49,7 @@ public class Save_Manager : MonoBehaviour
     public void SetToTrue (int buttonIdx)
     {
         galleryButtonsStates[buttonIdx] = true;
+        buttonIdx = buttonIdx2;
         Save();
     }
 
@@ -62,7 +65,7 @@ public class Save_Manager : MonoBehaviour
 
         PlayerData data = new PlayerData();
         data.galleryButtonsStates = galleryButtonsStates;
-        data.buttonIdx = buttonIdx;
+        data.buttonIdx2 = buttonIdx2;
 
         bf.Serialize(file, data);
         file.Close();
@@ -79,6 +82,7 @@ public class Save_Manager : MonoBehaviour
             file.Close();
 
             galleryButtonsStates = data.galleryButtonsStates;
+            buttonIdx2 = data.buttonIdx2;
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
         }
     }
@@ -88,5 +92,5 @@ public class Save_Manager : MonoBehaviour
 class PlayerData
 {
     public List<bool> galleryButtonsStates = new List<bool>();
-    public int buttonIdx;
+    public int buttonIdx2;
 }

@@ -16,6 +16,7 @@ public class Interface_Manager : MonoBehaviour
     public Button buttonGallery;
     private List<int> scanIdx = new List<int>();
     private List<bool> buttonState = new List<bool>();
+    private int idxScan;
 
     [Header("Scoring")]
 
@@ -80,6 +81,7 @@ public class Interface_Manager : MonoBehaviour
             {
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
                 Save_Manager.saving.SetToTrue(idx);
+                idx = idxScan;
                 //Save_Manager.saving.transform.GetSiblingIndex(idx);
             }
         }
@@ -89,7 +91,7 @@ public class Interface_Manager : MonoBehaviour
     {
         for (int i = 0; i < 42; i++)// ou 41
         {
-            //galleryPannel.GetChild(isTrue).gameObject.GetComponent<Button>().interactable();
+            //galleryPannel.GetChild(idxScan).gameObject.GetComponent<Button>().interactable(isTrue);
         }
 
     }
@@ -129,6 +131,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void CloseARCamera()
     {
+        ScriptTracker.Instance.OnTrackerLost();
         arCam.enabled = false;
     }
 
