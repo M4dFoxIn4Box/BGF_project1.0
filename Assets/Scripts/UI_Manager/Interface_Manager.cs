@@ -77,7 +77,7 @@ public class Interface_Manager : MonoBehaviour
         if (!scanIdx.Contains(idx))
         {
             scanIdx.Add(idx);
-            if(galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = false)
+            if(galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
             {
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
                 Save_Manager.saving.SetToTrue(idx);
