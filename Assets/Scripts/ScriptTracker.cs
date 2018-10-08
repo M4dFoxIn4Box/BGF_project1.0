@@ -7,6 +7,7 @@ using Vuforia;
 public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
 {
+	public GameObject screenShare;
     public static ScriptTracker Instance { get; private set; }
 
 
@@ -119,6 +120,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             if (vumark.InstanceId.NumericValue <= quizzLimit)
             {
+            	screenShare.SetActive(false);
                 button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
                 button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
                 button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
@@ -303,6 +305,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         
         yield return new WaitForSeconds(2);
 
+        screenShare.SetActive(true);
         currentScore = 0;
         congratulationsImage.SetActive(false);
 
