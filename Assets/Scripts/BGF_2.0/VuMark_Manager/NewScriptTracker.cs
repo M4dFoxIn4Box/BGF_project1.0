@@ -41,7 +41,6 @@ public class NewScriptTracker : MonoBehaviour, ITrackableEventHandler
     [Header("Quizz")]
 
     public GameObject quizzInterface;
-    public GameObject quizzOnlyPanel;
     public GameObject congratulationsImage;
 
     [Header("Textes")]
