@@ -81,16 +81,16 @@ public class Interface_Manager : MonoBehaviour
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
                 Save_Manager.saving.SetToTrue(idx);
                 idx = idxScan;
-                //Save_Manager.saving.transform.GetSiblingIndex(idx);
+                
             }
         }
     }
 
     public void ButtonState(List<bool> isTrue)
     {
-        for (int i = 0; i < 42; i++)// ou 41
-        {
-            //galleryPannel.GetChild(idxScan).gameObject.GetComponent<Button>().interactable(isTrue);
+        for (int i = 0; i < isTrue.Count; i++)// ou 41
+        {   
+            galleryPannel.GetChild(i).gameObject.GetComponent<Button>().interactable = isTrue[i];
         }
 
     }
