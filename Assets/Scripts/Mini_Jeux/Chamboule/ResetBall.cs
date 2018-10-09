@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ResetBall : MonoBehaviour {
 
-    public Transform spawn;
-    public GameObject ball;
     private int pointValue;
 
     // Use this for initialization
@@ -22,13 +20,6 @@ public class ResetBall : MonoBehaviour {
 
     void OnTriggerEnter (Collider other)
     {
-        if (other.CompareTag("ball"))
-        {
-            Destroy(other.gameObject);
-            StartCoroutine(BallSpawn());
-             
-        }
-
         if (other.CompareTag("point"))
         {
             Destroy(other.gameObject);
@@ -36,11 +27,6 @@ public class ResetBall : MonoBehaviour {
         }
     }
 
-    IEnumerator BallSpawn ()
-    {
-        yield return new WaitForSeconds(2);
-        Instantiate(ball, spawn.transform.position, spawn.transform.rotation);
-    }
 
     public void AddScore ()
     {
