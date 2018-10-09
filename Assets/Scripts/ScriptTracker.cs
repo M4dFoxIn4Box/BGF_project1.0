@@ -7,7 +7,7 @@ using Vuforia;
 public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
 {
-	public GameObject screenShare;
+    public GameObject screenShare;
     public static ScriptTracker Instance { get; private set; }
 
 
@@ -64,6 +64,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private string answer3Text;
     private string answer4Text;
     private string funFactText;
+
+    [Header("Spawns & Rewards")]
+    public Transform[] spawnList;
+    public GameObject[] rewardList;
 
     [Header("Scriptable Section Quizz")]
     public ScriptableQuizz currentScriptableQuizz;
@@ -132,7 +136,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
                 quizzInterface.SetActive(true);
                 currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue - 1];
-                Debug.Log(vumark.InstanceId.NumericValue);
                 quizzText.text = currentScriptableQuizz.quizzQuestion;
                 answer1Text = currentScriptableQuizz.answer1;
                 answer2Text = currentScriptableQuizz.answer2;
@@ -152,7 +155,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 button4.onClick.AddListener(TaskOnClick4);
 
                 leaveCanvas.onClick.AddListener(LeaveQuizz);
-                Debug.Log("Test scriptable board");
             }
             else if (vumark.InstanceId.NumericValue >= quizzLimit && vumark.InstanceId.NumericValue <= miniGameLimit)
             {
@@ -309,12 +311,18 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         congratulationsImage.SetActive(false);
 
         quizzInterface.SetActive(false);
-        foreach (var item in mVuMarkManager.GetActiveBehaviours())
+        foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
-            int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
-            transform.GetChild(targetObj - 1).gameObject.SetActive(true);
-            Interface_Manager.Instance.CheckStateButton(targetObj - 1);
+            Instantiate(rewardList[vumark.InstanceId.NumericValue - 1], spawnList[vumark.InstanceId.NumericValue - 1]);
+            Debug.Log(vumark.InstanceId.NumericValue - 1);
         }
+
+        //foreach (var item in mVuMarkManager.GetActiveBehaviours())
+        //{          
+        //    int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
+        //    transform.GetChild(targetObj - 1).gameObject.SetActive(true);
+        //    Interface_Manager.Instance.CheckStateButton(targetObj - 1);
+        //}
 
     }
 
