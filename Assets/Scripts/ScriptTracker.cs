@@ -84,7 +84,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     
     void Start()
     {
-        
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour != null)
         {
