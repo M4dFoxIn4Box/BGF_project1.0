@@ -13,7 +13,6 @@ public class Interface_Manager : MonoBehaviour
     [Header("Gallery")]
 
     public Transform galleryPannel;//gallery.GetChild(idx)
-    public Button buttonGallery;
     private List<int> scanIdx = new List<int>();
     private List<bool> buttonState = new List<bool>();
     private int idxScan;
