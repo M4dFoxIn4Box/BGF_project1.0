@@ -345,19 +345,19 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         quizzInterface.SetActive(false);
         //
 
-                 // IMPORTANT !!! //
+        // IMPORTANT !!! //
 
-          // A décommenter pour la version cliente //
+        // A décommenter pour la version cliente 
 
-        //if(currentScriptableQuizz)
+        //if (currentScriptableQuizz)
         //{
         //    currentScriptableQuizz.hasBeenDone = true;
         //}
-        //else if(currentScriptableMiniGame)
+        //else if (currentScriptableMiniGame)
         //{
         //    currentScriptableMiniGame.hasBeenDone = true;
         //}
-      
+
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
             int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
