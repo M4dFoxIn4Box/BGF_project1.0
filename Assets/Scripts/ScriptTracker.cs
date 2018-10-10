@@ -308,10 +308,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         
         yield return new WaitForSeconds(2);
 
+        // Reset du quizz
         screenShare.SetActive(true);
         currentScore = 0;
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);
+        //
 
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
