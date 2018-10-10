@@ -19,6 +19,8 @@ public class ScriptableQuizz : ScriptableObject {
     [Tooltip("1 correspond à answer1, etc")]
     public int rightAnswer; // 1 à 4, 1 correspondant à answer1, etc...
 
+    public bool hasBeenDone;
+
 	// Use this for initialization
 	void Start () {
 		
