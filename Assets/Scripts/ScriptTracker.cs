@@ -180,7 +180,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             int targetObj = System.Convert.ToInt32 (item.VuMarkTarget.InstanceId.NumericValue);
             transform.GetChild(targetObj - 1).gameObject.SetActive(false);
         }
-        Destroy(miniGameToDestroy);
+        if(miniGameToDestroy)
+        {
+            Destroy(miniGameToDestroy);
+        }
+       
         quizzInterface.SetActive(false);
         congratulationsImage.SetActive(false);
     }
