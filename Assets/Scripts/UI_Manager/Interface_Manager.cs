@@ -80,8 +80,6 @@ public class Interface_Manager : MonoBehaviour
             {
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
                 Save_Manager.saving.SetToTrue(idx);
-                idx = idxScan;
-                
             }
         }
     }
