@@ -176,6 +176,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                     scoreToReach = currentScriptableMiniGame.scoreLimit;
                     miniGameToDestroy = currentScriptableMiniGame.prefabMiniJeux;
                     miniGameToDestroy = Instantiate(currentScriptableMiniGame.prefabMiniJeux, miniGameSpawnPoint);
+                    Destroy(GameObject.FindWithTag("ball"));
                 }
                                 
         
@@ -202,6 +203,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if(miniGameToDestroy)
         {
             Destroy(miniGameToDestroy);
+            Destroy(GameObject.FindWithTag("ball"));
         }
        
         if(quizzInterface)
@@ -325,6 +327,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if(currentScore >= scoreToReach)
         {
             Destroy(miniGameToDestroy);
+            Destroy(GameObject.FindWithTag("ball"));
             StartCoroutine(GameWon());      
         }
     }
