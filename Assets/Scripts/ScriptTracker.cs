@@ -13,6 +13,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     private void Awake()
     {
+        
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -344,14 +345,18 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         quizzInterface.SetActive(false);
         //
 
-        if(currentScriptableQuizz)
-        {
-            currentScriptableQuizz.hasBeenDone = true;
-        }
-        else if(currentScriptableMiniGame)
-        {
-            currentScriptableMiniGame.hasBeenDone = true;
-        }
+                 // IMPORTANT !!! //
+
+          // A décommenter pour la version cliente //
+
+        //if(currentScriptableQuizz)
+        //{
+        //    currentScriptableQuizz.hasBeenDone = true;
+        //}
+        //else if(currentScriptableMiniGame)
+        //{
+        //    currentScriptableMiniGame.hasBeenDone = true;
+        //}
       
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
