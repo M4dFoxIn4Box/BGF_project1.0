@@ -29,8 +29,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public VuMarkTarget vumark;
 
     [Header("Game Limits")]
-    public ulong miniGameLimit;
-    public ulong quizzLimit;
+    public ulong miniGameLimit; // est égale à la somme de quizz et de mini jeux présent
+    public ulong quizzLimit;    // est égale au nombre de quizz présent
 
     [Header("Mini Game")]    
     public Transform miniGameSpawnPoint;
@@ -322,6 +322,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     }
 
+  
+        // Gère le gain de point des mini jeux 
+
     public void MiniGameScore(int scoreAdd)
     {
         currentScore = scoreAdd + currentScore;
@@ -357,6 +360,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         //{
         //    currentScriptableMiniGame.hasBeenDone = true;
         //}
+
+
+        // Fais apparaître les récompenses liés au VuMark scanné
 
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
