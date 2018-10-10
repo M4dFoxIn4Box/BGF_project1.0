@@ -10,6 +10,8 @@ public class ScriptableMiniGame : ScriptableObject
     public GameObject prefabMiniJeux;
     public int scoreLimit;
 
+    public bool hasBeenDone;
+
     // Use this for initialization
     void Start()
     {

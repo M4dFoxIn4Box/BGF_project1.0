@@ -121,46 +121,63 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             if (vumark.InstanceId.NumericValue <= quizzLimit)
             {
-         
-                button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-                button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-                button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-                button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-
-                button1.interactable = true;
-                button2.interactable = true;
-                button3.interactable = true;
-                button4.interactable = true;
-
-                quizzInterface.SetActive(true);
                 currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue - 1];
-                quizzText.text = currentScriptableQuizz.quizzQuestion;
-                answer1Text = currentScriptableQuizz.answer1;
-                answer2Text = currentScriptableQuizz.answer2;
-                answer3Text = currentScriptableQuizz.answer3;
-                answer4Text = currentScriptableQuizz.answer4;
-                funFactText = currentScriptableQuizz.funFact;
+                if(currentScriptableQuizz.hasBeenDone == true)
+                {
+                    StartCoroutine(GameWon());
+                }
+                else
+                {
+                    button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+                    button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+                    button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+                    button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
 
-                answer1.text = answer1Text;
-                answer2.text = answer2Text;
-                answer3.text = answer3Text;
-                answer4.text = answer4Text;
-                funFact.text = funFactText;
+                    button1.interactable = true;
+                    button2.interactable = true;
+                    button3.interactable = true;
+                    button4.interactable = true;
 
-                button1.onClick.AddListener(TaskOnClick1);
-                button2.onClick.AddListener(TaskOnClick2);
-                button3.onClick.AddListener(TaskOnClick3);
-                button4.onClick.AddListener(TaskOnClick4);
+                    quizzInterface.SetActive(true);
 
-                leaveCanvas.onClick.AddListener(LeaveQuizz);
+                    quizzText.text = currentScriptableQuizz.quizzQuestion;
+                    answer1Text = currentScriptableQuizz.answer1;
+                    answer2Text = currentScriptableQuizz.answer2;
+                    answer3Text = currentScriptableQuizz.answer3;
+                    answer4Text = currentScriptableQuizz.answer4;
+                    funFactText = currentScriptableQuizz.funFact;
+
+                    answer1.text = answer1Text;
+                    answer2.text = answer2Text;
+                    answer3.text = answer3Text;
+                    answer4.text = answer4Text;
+                    funFact.text = funFactText;
+
+                    button1.onClick.AddListener(TaskOnClick1);
+                    button2.onClick.AddListener(TaskOnClick2);
+                    button3.onClick.AddListener(TaskOnClick3);
+                    button4.onClick.AddListener(TaskOnClick4);
+
+                    leaveCanvas.onClick.AddListener(LeaveQuizz);
+                }
+             
             }
             else if (vumark.InstanceId.NumericValue >= quizzLimit && vumark.InstanceId.NumericValue <= miniGameLimit)
             {
                 currentScriptableMiniGame = scriptableMiniGameList[(vumark.InstanceId.NumericValue - quizzLimit) - 1];
-                Debug.Log(currentScriptableMiniGame);
-                scoreToReach = currentScriptableMiniGame.scoreLimit;
-                miniGameToDestroy = currentScriptableMiniGame.prefabMiniJeux;
-                miniGameToDestroy = Instantiate(currentScriptableMiniGame.prefabMiniJeux, miniGameSpawnPoint);                      
+
+                if(currentScriptableMiniGame.hasBeenDone == true)
+                {
+                    StartCoroutine(GameWon());
+                }
+                else
+                {
+                    Debug.Log(currentScriptableMiniGame);
+                    scoreToReach = currentScriptableMiniGame.scoreLimit;
+                    miniGameToDestroy = currentScriptableMiniGame.prefabMiniJeux;
+                    miniGameToDestroy = Instantiate(currentScriptableMiniGame.prefabMiniJeux, miniGameSpawnPoint);
+                }
+                                
         
             }
 
@@ -175,6 +192,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     
     public void OnTrackerLost()
     {
+
     	screenShare.SetActive(false);
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
@@ -186,8 +204,15 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             Destroy(miniGameToDestroy);
         }
        
-        quizzInterface.SetActive(false);
-        congratulationsImage.SetActive(false);
+        if(quizzInterface)
+        {
+            quizzInterface.SetActive(false);
+        }
+        if(congratulationsImage)
+        {
+            congratulationsImage.SetActive(false);
+        }
+      
     }
 
     // QUIZZ // answer button section
@@ -316,6 +341,15 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         quizzInterface.SetActive(false);
         //
 
+        if(currentScriptableQuizz)
+        {
+            currentScriptableQuizz.hasBeenDone = true;
+        }
+        else if(currentScriptableMiniGame)
+        {
+            currentScriptableMiniGame.hasBeenDone = true;
+        }
+      
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
             int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
