@@ -121,7 +121,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             if (vumark.InstanceId.NumericValue <= quizzLimit)
             {
-            	screenShare.SetActive(false);
+         
                 button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
                 button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
                 button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
