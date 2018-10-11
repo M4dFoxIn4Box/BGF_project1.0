@@ -9,10 +9,10 @@ public class VumarkZoner : MonoBehaviour {
     public justeZone zoneType;
 
 
-    public void Awake()
+    /*public void Awake()
     {
         Interface_Manager.Instance.Zone1((int)zoneType);
-    }
+    }*/
     // Use this for initialization
     void Start () {
 		

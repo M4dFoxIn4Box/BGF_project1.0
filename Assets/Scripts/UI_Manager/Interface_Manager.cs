@@ -135,7 +135,7 @@ public class Interface_Manager : MonoBehaviour
 
     //MAP
 
-    public void Zone1 (int vumarkInZone1)
+    /*public void Zone1 (int vumarkInZone1)
     {
         vumarkByZone[0] = vumarkInZone1 + vumarkByZone[0];
         Debug.Log(vumarkByZone[0]);
@@ -164,5 +164,5 @@ public class Interface_Manager : MonoBehaviour
     public void Zone6(int vumarkInZone6)
     {
 
-    }
+    }*/
 }
