@@ -194,8 +194,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     
     public void OnTrackerLost()
     {
+        if(screenShare)
+        {
+            screenShare.SetActive(false);
+        }
 
-    	screenShare.SetActive(false);
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
             int targetObj = System.Convert.ToInt32 (item.VuMarkTarget.InstanceId.NumericValue);
