@@ -27,6 +27,16 @@ public class Interface_Manager : MonoBehaviour
 
     public VuforiaMonoBehaviour arCam;
 
+    [Header("Map")]
+    
+    public int idxScanZone1;
+    public int idxScanZone2;
+    public int idxScanZone3;
+    public int idxScanZone4;
+    public int idxScanZone5;
+    public int idxScanZone6;
+    public int idxScanCount; 
+    public Image[] imageZone;
 
 
     private void Awake()
@@ -79,6 +89,7 @@ public class Interface_Manager : MonoBehaviour
             if(galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
             {
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
+                ZonesUnlock();
                 Save_Manager.saving.SetToTrue(idx);
             }
         }
@@ -130,6 +141,28 @@ public class Interface_Manager : MonoBehaviour
     {
         ScriptTracker.Instance.OnTrackerLost();
         arCam.enabled = false;
+    }
+
+    //MAP
+
+    void ZonesUnlock()
+    {
+        Debug.Log("Je suis là");
+        idxScanCount = 0;
+        
+        for (int i=scanIdx[0]; i<scanIdx[idxScanZone1]; i++ ) 
+        {
+            if (galleryPannel.GetChild(i).gameObject.GetComponent<Button>().interactable == true)
+            {
+                idxScanCount++;
+                Debug.Log(idxScanCount);
+            }
+        }
+
+        if (idxScanCount == idxScanZone1)
+        {
+            Debug.Log("Zone 1 débloqué");
+        }
     }
 
 }
