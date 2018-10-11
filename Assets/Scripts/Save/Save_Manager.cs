@@ -33,7 +33,7 @@ public class Save_Manager : MonoBehaviour
 
     void Start()
     {
-        if (galleryButtonsStates == null)
+        if (!File.Exists(Application.persistentDataPath + "/playerInfo.data"))
         {
             for (int i = 0; i < 42; i++)
             {
@@ -51,6 +51,7 @@ public class Save_Manager : MonoBehaviour
     {
         galleryButtonsStates[buttonIdx] = true;
         Save();
+        Debug.Log(galleryButtonsStates);
     }
 
     void Update ()
