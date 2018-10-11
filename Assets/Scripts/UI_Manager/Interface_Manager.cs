@@ -29,13 +29,7 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Map")]
     
-    public int idxScanZone1;
-    public int idxScanZone2;
-    public int idxScanZone3;
-    public int idxScanZone4;
-    public int idxScanZone5;
-    public int idxScanZone6;
-    public int idxScanCount; 
+    public int[] vumarkByZone;
     public Image[] imageZone;
 
 
@@ -89,7 +83,6 @@ public class Interface_Manager : MonoBehaviour
             if(galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
             {
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
-                ZonesUnlock();
                 Save_Manager.saving.SetToTrue(idx);
             }
         }
@@ -103,9 +96,6 @@ public class Interface_Manager : MonoBehaviour
         }
 
     }
-
-
-
 
     //SCORING
 
@@ -145,24 +135,34 @@ public class Interface_Manager : MonoBehaviour
 
     //MAP
 
-    void ZonesUnlock()
+    public void Zone1 (int vumarkInZone1)
     {
-        Debug.Log("Je suis là");
-        idxScanCount = 0;
-        
-        for (int i=scanIdx[0]; i<scanIdx[idxScanZone1]; i++ ) 
-        {
-            if (galleryPannel.GetChild(i).gameObject.GetComponent<Button>().interactable == true)
-            {
-                idxScanCount++;
-                Debug.Log(idxScanCount);
-            }
-        }
-
-        if (idxScanCount == idxScanZone1)
-        {
-            Debug.Log("Zone 1 débloqué");
-        }
+        vumarkByZone[0] = vumarkInZone1 + vumarkByZone[0];
+        Debug.Log(vumarkByZone[0]);
     }
 
+    public void Zone2(int vumarkInZone2)
+    {
+
+    }
+
+    public void Zone3(int vumarkInZone3)
+    {
+
+    }
+
+    public void Zone4(int vumarkInZone4)
+    {
+
+    }
+
+    public void Zone5(int vumarkInZone5)
+    {
+
+    }
+
+    public void Zone6(int vumarkInZone6)
+    {
+
+    }
 }
