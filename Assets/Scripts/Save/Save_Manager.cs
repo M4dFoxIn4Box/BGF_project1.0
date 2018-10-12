@@ -14,6 +14,8 @@ public class Save_Manager : MonoBehaviour
     [Header ("Save")]
 
     public List<bool> galleryButtonsStates;
+    public GameObject[] rewardToSpawn;
+    public string[] funFactToDisplay;
 
     private void Awake()
     {
@@ -51,19 +53,30 @@ public class Save_Manager : MonoBehaviour
     {
         galleryButtonsStates[buttonIdx] = true;
         Save();
-        Debug.Log(galleryButtonsStates);
     }
 
-    void Update ()
+    public void RewardSave(GameObject[] rewardToSave, string[] funFactToSave)
     {
-		
+        rewardToSpawn = rewardToSave;
+        funFactToDisplay = funFactToSave;
+        Save();
+        Debug.Log(rewardToSpawn);
+    }
+
+    void FixedUpdate ()
+    {
+        if (Input.GetKeyDown("d"))
+        {
+            ResetClearList();
+        }
 	}
 
 
-    /*public void ResetClearList()
+    public void ResetClearList()
     {
         File.Delete(Application.persistentDataPath + "/playerInfo.data");
-    }*/
+        Debug.Log("FILEDELETED");
+    }
 
     public void Save()
     {
@@ -72,6 +85,8 @@ public class Save_Manager : MonoBehaviour
 
         PlayerData data = new PlayerData();
         data.galleryButtonsStates = galleryButtonsStates;
+        data.rewardToSpawn = rewardToSpawn;
+        data.funFactToDisplay = funFactToDisplay;
 
         bf.Serialize(file, data);
         file.Close();
@@ -86,8 +101,11 @@ public class Save_Manager : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.data", FileMode.Open);
             PlayerData data = (PlayerData)bf.Deserialize(file);
             file.Close();
-
+            
             galleryButtonsStates = data.galleryButtonsStates;
+            rewardToSpawn = data.rewardToSpawn;
+            funFactToDisplay = data.funFactToDisplay;
+
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
         }
     }
@@ -97,4 +115,6 @@ public class Save_Manager : MonoBehaviour
 class PlayerData
 {
     public List<bool> galleryButtonsStates = new List<bool>();
+    public GameObject[] rewardToSpawn;
+    public string[] funFactToDisplay;
 }

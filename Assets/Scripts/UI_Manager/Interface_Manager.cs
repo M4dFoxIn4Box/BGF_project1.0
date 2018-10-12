@@ -90,7 +90,7 @@ public class Interface_Manager : MonoBehaviour
             {
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
                 Save_Manager.saving.SetToTrue(idx);
-                //idxButton = idx;
+                idxButton = idx;
             }
         }
     }
@@ -175,7 +175,6 @@ public class Interface_Manager : MonoBehaviour
 
     public void RewardButton()
     {
-        
         Instantiate(rewardToSpawnBoard[idxButton], spawnPointReward);
         spawnPointFunFact.text = funFactToDisplayBoard[idxButton];
     }
@@ -184,5 +183,6 @@ public class Interface_Manager : MonoBehaviour
     {
         rewardToSpawnBoard[idxButton] = rewardSpawn;
         funFactToDisplayBoard[idxButton] = funFactDisplay;
+        //Save_Manager.saving.RewardSave(rewardToSpawnBoard, funFactToDisplayBoard);
     }
 }

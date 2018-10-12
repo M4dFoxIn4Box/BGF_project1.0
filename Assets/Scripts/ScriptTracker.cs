@@ -27,6 +27,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     TrackableBehaviour mTrackableBehaviour;
     VuMarkManager mVuMarkManager;
     public VuMarkTarget vumark;
+    public ulong vumarkID;
 
     [Header("Game Limits")]
     public ulong miniGameLimit; // est égale à la somme de quizz et de mini jeux présent
@@ -120,6 +121,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
    
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
+            vumarkID = vumark.InstanceId.NumericValue;
             if (vumark.InstanceId.NumericValue <= quizzLimit)
             {
                 currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue - 1];
@@ -372,22 +374,22 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
             transform.GetChild(targetObj - 1).gameObject.SetActive(true);
             Interface_Manager.Instance.CheckStateButton(targetObj - 1);
+        }
 
-            if (vumark.InstanceId.NumericValue <= quizzLimit)
-            {
-                Interface_Manager.Instance.RewardManager(currentScriptableQuizz.quizzReward, currentScriptableQuizz.quizzFunFact);
-            }
+        if (vumarkID <= quizzLimit)
+        {
+            Interface_Manager.Instance.RewardManager(currentScriptableQuizz.quizzReward, currentScriptableQuizz.quizzFunFact);
 
-            else if (vumark.InstanceId.NumericValue >= quizzLimit && vumark.InstanceId.NumericValue <= miniGameLimit)
-            {
-                Interface_Manager.Instance.RewardManager(currentScriptableMiniGame.miniGameReward, currentScriptableMiniGame.miniGameFunFact);
-            }
+        }
 
-            else if (vumark.InstanceId.NumericValue >= miniGameLimit)
-            {
-                Interface_Manager.Instance.RewardManager(currentScriptableScan.scanReward, currentScriptableScan.scanFunFact);
-            }
+        else if (vumarkID >= quizzLimit && vumarkID <= miniGameLimit)
+        {
+            Interface_Manager.Instance.RewardManager(currentScriptableMiniGame.miniGameReward, currentScriptableMiniGame.miniGameFunFact);
+        }
 
+        else if (vumarkID >= miniGameLimit)
+        {
+            Interface_Manager.Instance.RewardManager(currentScriptableScan.scanReward, currentScriptableScan.scanFunFact);
         }
 
     }
