@@ -146,7 +146,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                     answer2Text = currentScriptableQuizz.answer2;
                     answer3Text = currentScriptableQuizz.answer3;
                     answer4Text = currentScriptableQuizz.answer4;
-                    funFactText = currentScriptableQuizz.funFact;
+                    funFactText = currentScriptableQuizz.quizzFunFact;
 
                     answer1.text = answer1Text;
                     answer2.text = answer2Text;
