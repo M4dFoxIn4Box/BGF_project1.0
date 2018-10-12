@@ -13,6 +13,7 @@ public class ScriptableMiniGame : ScriptableObject
     public bool hasBeenDone;
     public GameObject miniGameReward;
     public string miniGameFunFact;
+
     // Use this for initialization
     void Start()
     {
