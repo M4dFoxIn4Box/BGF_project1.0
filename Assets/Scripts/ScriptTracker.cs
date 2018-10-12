@@ -372,6 +372,22 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
             transform.GetChild(targetObj - 1).gameObject.SetActive(true);
             Interface_Manager.Instance.CheckStateButton(targetObj - 1);
+
+            if (vumark.InstanceId.NumericValue <= quizzLimit)
+            {
+                Interface_Manager.Instance.RewardManager(currentScriptableQuizz.quizzReward, currentScriptableQuizz.quizzFunFact);
+            }
+
+            else if (vumark.InstanceId.NumericValue >= quizzLimit && vumark.InstanceId.NumericValue <= miniGameLimit)
+            {
+                Interface_Manager.Instance.RewardManager(currentScriptableMiniGame.miniGameReward, currentScriptableMiniGame.miniGameFunFact);
+            }
+
+            else if (vumark.InstanceId.NumericValue >= miniGameLimit)
+            {
+                Interface_Manager.Instance.RewardManager(currentScriptableScan.scanReward, currentScriptableScan.scanFunFact);
+            }
+
         }
 
     }

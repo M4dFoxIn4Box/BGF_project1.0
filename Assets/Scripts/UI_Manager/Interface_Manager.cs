@@ -15,7 +15,7 @@ public class Interface_Manager : MonoBehaviour
     public Transform galleryPannel;//gallery.GetChild(idx)
     private List<int> scanIdx = new List<int>();
     private List<bool> buttonState = new List<bool>();
-    private int idxScan;
+    private int idxButton;
 
     [Header("Scoring")]
 
@@ -32,6 +32,12 @@ public class Interface_Manager : MonoBehaviour
     public int[] vumarkByZone;
     public Image[] imageZone;
 
+    [Header("Reward")]
+
+    public Transform spawnPointReward;
+    public Text spawnPointFunFact;
+    public GameObject[] rewardToSpawnBoard;
+    public string[] funFactToDisplayBoard;
 
     private void Awake()
     {
@@ -84,6 +90,7 @@ public class Interface_Manager : MonoBehaviour
             {
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
                 Save_Manager.saving.SetToTrue(idx);
+                //idxButton = idx;
             }
         }
     }
@@ -165,4 +172,17 @@ public class Interface_Manager : MonoBehaviour
     {
 
     }*/
+
+    public void RewardButton()
+    {
+        
+        Instantiate(rewardToSpawnBoard[idxButton], spawnPointReward);
+        spawnPointFunFact.text = funFactToDisplayBoard[idxButton];
+    }
+
+    public void RewardManager(GameObject rewardSpawn, string funFactDisplay)
+    {
+        rewardToSpawnBoard[idxButton] = rewardSpawn;
+        funFactToDisplayBoard[idxButton] = funFactDisplay;
+    }
 }
