@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class VumarkZoner : MonoBehaviour {
 
-    public enum justeZone { zone1, zone2, zone3, zone4, zone5, zone6 }
-
-    public justeZone zoneType;
+    public int mapLocation;
 
 
     public void Awake()
     {
-        //Interface_Manager.Instance.Zone1((int)zoneType);
+       
     }
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        Interface_Manager.Instance.MapActivation(mapLocation);
+    }
 	
 	// Update is called once per frame
 	void Update () {
