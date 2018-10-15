@@ -28,9 +28,8 @@ public class Interface_Manager : MonoBehaviour
     public VuforiaMonoBehaviour arCam;
 
     [Header("Map")]
-    
-    public int[] vumarkByZone;
-    public Image[] imageZone;
+
+    public GameObject[] imageZone;
 
     [Header("Reward")]
 
@@ -142,36 +141,15 @@ public class Interface_Manager : MonoBehaviour
 
     //MAP
 
-    /*public void Zone1 (int vumarkInZone1)
+    public void MapActivation (int imageNumber)
     {
-        vumarkByZone[0] = vumarkInZone1 + vumarkByZone[0];
-        Debug.Log(vumarkByZone[0]);
+
+            Debug.Log("enabled");
+            imageZone[imageNumber].SetActive(true);
+
+           
+ 
     }
-
-    public void Zone2(int vumarkInZone2)
-    {
-
-    }
-
-    public void Zone3(int vumarkInZone3)
-    {
-
-    }
-
-    public void Zone4(int vumarkInZone4)
-    {
-
-    }
-
-    public void Zone5(int vumarkInZone5)
-    {
-
-    }
-
-    public void Zone6(int vumarkInZone6)
-    {
-
-    }*/
 
     public void RewardButton()
     {
