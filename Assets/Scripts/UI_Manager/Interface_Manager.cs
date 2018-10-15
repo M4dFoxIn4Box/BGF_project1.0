@@ -29,7 +29,7 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Map")]
 
-    public Image[] imageZone;
+    public GameObject[] imageZone;
 
     [Header("Reward")]
 
@@ -143,10 +143,12 @@ public class Interface_Manager : MonoBehaviour
 
     public void MapActivation (int imageNumber)
     {
-        if (imageZone[imageNumber] == null) 
-        {           
-            imageZone[imageNumber].enabled = true;
-        }
+
+            Debug.Log("enabled");
+            imageZone[imageNumber].SetActive(true);
+
+           
+ 
     }
 
     public void RewardButton()

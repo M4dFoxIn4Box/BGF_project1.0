@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class VumarkZoner : MonoBehaviour {
 
-    public int mapLocation;
-
+    public int imageNumber;
 
     public void Awake()
     {
@@ -14,11 +13,7 @@ public class VumarkZoner : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        Interface_Manager.Instance.MapActivation(mapLocation);
+        Interface_Manager.Instance.MapActivation(imageNumber);
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
