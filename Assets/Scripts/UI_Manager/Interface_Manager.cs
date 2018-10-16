@@ -35,8 +35,9 @@ public class Interface_Manager : MonoBehaviour
 
     public Transform spawnPointReward;
     public Text spawnPointFunFact;
-    public GameObject[] rewardToSpawnBoard;
-    public string[] funFactToDisplayBoard;
+    public ScriptableReward[] rewardBoard;
+    //public GameObject[] rewardToSpawnBoard;
+    //public string[] funFactToDisplayBoard;
 
     private void Awake()
     {
@@ -146,23 +147,21 @@ public class Interface_Manager : MonoBehaviour
 
             Debug.Log("enabled");
             imageZone[imageNumber].SetActive(true);
-
-           
- 
     }
 
     //REWARD + SAVE
 
     public void RewardButton() //Click sur le bouton de la galerie
     {
-        Instantiate(rewardToSpawnBoard[idxButton], spawnPointReward);
-        spawnPointFunFact.text = funFactToDisplayBoard[idxButton];
+        //transform.GetSiblingIndex();
+        Instantiate(rewardBoard[idxButton].rewardToSpawn, spawnPointReward);
+        spawnPointFunFact.text = rewardBoard[idxButton].funFactToDisplay;
     }
 
-    public void RewardManager(GameObject rewardSpawn, string funFactDisplay) //Suite au ScriptTracker
+    /*public void RewardManager(GameObject rewardSpawn, string funFactDisplay) //Suite au ScriptTracker
     {
         rewardToSpawnBoard[idxButton] = rewardSpawn;
         funFactToDisplayBoard[idxButton] = funFactDisplay;
         //Save_Manager.saving.RewardSave(rewardToSpawnBoard, funFactToDisplayBoard);
-    }
+    }*/
 }

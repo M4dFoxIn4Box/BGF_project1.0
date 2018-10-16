@@ -14,8 +14,8 @@ public class Save_Manager : MonoBehaviour
     [Header ("Save")]
 
     public List<bool> galleryButtonsStates;
-    public GameObject[] rewardToSpawn;
-    public string[] funFactToDisplay;
+    //public GameObject[] rewardToSpawn;
+    //public string[] funFactToDisplay;
 
     private void Awake()
     {
@@ -55,12 +55,12 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
-    public void RewardSave(GameObject[] rewardToSave, string[] funFactToSave)
-    {
-        rewardToSpawn = rewardToSave;
-        funFactToDisplay = funFactToSave;
-        Save();
-    }
+    //public void RewardSave(GameObject[] rewardToSave, string[] funFactToSave)
+    //{
+    //    rewardToSpawn = rewardToSave;
+    //    funFactToDisplay = funFactToSave;
+    //    Save();
+    //}
 
     void FixedUpdate ()
     {
@@ -84,8 +84,8 @@ public class Save_Manager : MonoBehaviour
 
         PlayerData data = new PlayerData();
         data.galleryButtonsStates = galleryButtonsStates;
-        data.rewardToSpawn = rewardToSpawn;
-        data.funFactToDisplay = funFactToDisplay;
+        //data.rewardToSpawn = rewardToSpawn;
+        //data.funFactToDisplay = funFactToDisplay;
 
         bf.Serialize(file, data);
         file.Close();
@@ -102,8 +102,8 @@ public class Save_Manager : MonoBehaviour
             file.Close();
             
             galleryButtonsStates = data.galleryButtonsStates;
-            rewardToSpawn = data.rewardToSpawn;
-            funFactToDisplay = data.funFactToDisplay;
+            //rewardToSpawn = data.rewardToSpawn;
+            //funFactToDisplay = data.funFactToDisplay;
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
         }
@@ -114,6 +114,6 @@ public class Save_Manager : MonoBehaviour
 class PlayerData
 {
     public List<bool> galleryButtonsStates = new List<bool>();
-    public GameObject[] rewardToSpawn;
-    public string[] funFactToDisplay;
+    //public GameObject[] rewardToSpawn;
+    //public string[] funFactToDisplay;
 }

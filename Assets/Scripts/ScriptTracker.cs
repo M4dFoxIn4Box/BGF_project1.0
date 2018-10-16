@@ -376,7 +376,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             Interface_Manager.Instance.CheckStateButton(targetObj - 1);
         }
 
-        if (vumarkID <= quizzLimit)
+        /*if (vumarkID <= quizzLimit)
         {
             Interface_Manager.Instance.RewardManager(currentScriptableQuizz.quizzReward, currentScriptableQuizz.quizzFunFact);
 
@@ -390,7 +390,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         else if (vumarkID >= miniGameLimit)
         {
             Interface_Manager.Instance.RewardManager(currentScriptableScan.scanReward, currentScriptableScan.scanFunFact);
-        }
+        }*/
 
     }
 
