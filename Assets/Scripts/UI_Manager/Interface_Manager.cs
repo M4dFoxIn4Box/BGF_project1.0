@@ -57,7 +57,7 @@ public class Interface_Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
@@ -160,10 +160,11 @@ public class Interface_Manager : MonoBehaviour
 
     //REWARD + SAVE
 
-    public void RewardButton() //Click sur le bouton de la galerie
-    {
-        Instantiate(rewardBoard[idxButton].rewardToSpawn, spawnPointReward);
-        spawnPointFunFact.text = rewardBoard[idxButton].funFactToDisplay;
+    public void RewardButton(int rewardIdx_00) //Click sur le bouton de la galerie
+    {       
+        Instantiate(rewardBoard[rewardIdx_00].rewardToSpawn, spawnPointReward);
+        spawnPointFunFact.text = rewardBoard[rewardIdx_00].funFactToDisplay;
+        Debug.Log(rewardIdx_00);
     }
 
     /*public void RewardManager(GameObject rewardSpawn, string funFactDisplay) //Suite au ScriptTracker
