@@ -14,6 +14,7 @@ public class Save_Manager : MonoBehaviour
     [Header ("Save")]
 
     public List<bool> galleryButtonsStates;
+    public List<bool> mappingImageStates;
     //public GameObject[] rewardToSpawn;
     //public string[] funFactToDisplay;
 
@@ -40,6 +41,7 @@ public class Save_Manager : MonoBehaviour
             for (int i = 0; i < 42; i++)
             {
                 galleryButtonsStates.Add(false);
+                mappingImageStates.Add(false);
                 Save();
             }
         }
@@ -52,6 +54,12 @@ public class Save_Manager : MonoBehaviour
     public void SetToTrue (int buttonIdx) // Sauvegarder le bouton qui s'est activé
     {
         galleryButtonsStates[buttonIdx] = true;
+        Save();
+    }
+
+    public void ImageToTrue(int imageIdx) // Sauvegarder le bouton qui s'est activé
+    {
+        mappingImageStates[imageIdx] = true;
         Save();
     }
 
@@ -84,6 +92,7 @@ public class Save_Manager : MonoBehaviour
 
         PlayerData data = new PlayerData();
         data.galleryButtonsStates = galleryButtonsStates;
+        data.mappingImageStates = mappingImageStates;
         //data.rewardToSpawn = rewardToSpawn;
         //data.funFactToDisplay = funFactToDisplay;
 
@@ -102,10 +111,12 @@ public class Save_Manager : MonoBehaviour
             file.Close();
             
             galleryButtonsStates = data.galleryButtonsStates;
+            mappingImageStates = data.mappingImageStates;
             //rewardToSpawn = data.rewardToSpawn;
             //funFactToDisplay = data.funFactToDisplay;
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
+            Interface_Manager.Instance.ImageState(mappingImageStates);
         }
     }
 }
@@ -114,6 +125,7 @@ public class Save_Manager : MonoBehaviour
 class PlayerData
 {
     public List<bool> galleryButtonsStates = new List<bool>();
+    public List<bool> mappingImageStates = new List<bool>();
     //public GameObject[] rewardToSpawn;
     //public string[] funFactToDisplay;
 }

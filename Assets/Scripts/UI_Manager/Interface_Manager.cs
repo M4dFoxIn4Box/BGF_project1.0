@@ -13,6 +13,7 @@ public class Interface_Manager : MonoBehaviour
     [Header("Gallery")]
 
     public Transform galleryPannel;//gallery.GetChild(idx)
+    public Transform mapList;
     private List<int> scanIdx = new List<int>();
     private List<bool> buttonState = new List<bool>();
     private int idxButton;
@@ -101,8 +102,17 @@ public class Interface_Manager : MonoBehaviour
         {   
             galleryPannel.GetChild(i).gameObject.GetComponent<Button>().interactable = isTrue[i];
         }
-
     }
+
+    public void ImageState(List<bool> isCheck)
+    {
+        for (int i = 0; i < isCheck.Count; i++)// ou 41
+        {
+            mapList.GetChild(i).gameObject.GetComponent<Image>().enabled = isCheck[i];
+        }
+    }
+
+
 
     //SCORING
 
@@ -144,9 +154,8 @@ public class Interface_Manager : MonoBehaviour
 
     public void MapActivation (int imageNumber)//Maping
     {
-
-            Debug.Log("enabled");
-            imageZone[imageNumber].SetActive(true);
+        Debug.Log("enabled");
+        imageZone[imageNumber].GetComponent<Image>().enabled = true;
     }
 
     //REWARD + SAVE

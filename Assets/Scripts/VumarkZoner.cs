@@ -14,6 +14,7 @@ public class VumarkZoner : MonoBehaviour {
     void Start ()
     {
         Interface_Manager.Instance.MapActivation(imageNumber);
+        Save_Manager.saving.ImageToTrue(imageNumber);
     }
 
 }
