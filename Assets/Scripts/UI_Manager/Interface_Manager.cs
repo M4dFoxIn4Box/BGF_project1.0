@@ -153,7 +153,6 @@ public class Interface_Manager : MonoBehaviour
 
     public void RewardButton() //Click sur le bouton de la galerie
     {
-        //transform.GetSiblingIndex();
         Instantiate(rewardBoard[idxButton].rewardToSpawn, spawnPointReward);
         spawnPointFunFact.text = rewardBoard[idxButton].funFactToDisplay;
     }
