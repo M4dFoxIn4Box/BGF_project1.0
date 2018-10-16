@@ -33,7 +33,7 @@ public class Save_Manager : MonoBehaviour
     }
 
 
-    void Start()
+    void Start()// Regarde si le fichier de sauvegarde existe
     {
         if (!File.Exists(Application.persistentDataPath + "/playerInfo.data"))
         {
@@ -49,7 +49,7 @@ public class Save_Manager : MonoBehaviour
         }
     }
 
-    public void SetToTrue (int buttonIdx)
+    public void SetToTrue (int buttonIdx) // Sauvegarder le bouton qui s'est activé
     {
         galleryButtonsStates[buttonIdx] = true;
         Save();
@@ -60,7 +60,6 @@ public class Save_Manager : MonoBehaviour
         rewardToSpawn = rewardToSave;
         funFactToDisplay = funFactToSave;
         Save();
-        Debug.Log(rewardToSpawn);
     }
 
     void FixedUpdate ()

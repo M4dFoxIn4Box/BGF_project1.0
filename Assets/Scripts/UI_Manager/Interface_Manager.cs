@@ -141,7 +141,7 @@ public class Interface_Manager : MonoBehaviour
 
     //MAP
 
-    public void MapActivation (int imageNumber)
+    public void MapActivation (int imageNumber)//Maping
     {
 
             Debug.Log("enabled");
@@ -151,13 +151,15 @@ public class Interface_Manager : MonoBehaviour
  
     }
 
-    public void RewardButton()
+    //REWARD + SAVE
+
+    public void RewardButton() //Click sur le bouton de la galerie
     {
         Instantiate(rewardToSpawnBoard[idxButton], spawnPointReward);
         spawnPointFunFact.text = funFactToDisplayBoard[idxButton];
     }
 
-    public void RewardManager(GameObject rewardSpawn, string funFactDisplay)
+    public void RewardManager(GameObject rewardSpawn, string funFactDisplay) //Suite au ScriptTracker
     {
         rewardToSpawnBoard[idxButton] = rewardSpawn;
         funFactToDisplayBoard[idxButton] = funFactDisplay;
