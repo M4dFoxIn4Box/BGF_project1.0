@@ -172,4 +172,9 @@ public class Interface_Manager : MonoBehaviour
         funFactToDisplayBoard[idxButton] = funFactDisplay;
         //Save_Manager.saving.RewardSave(rewardToSpawnBoard, funFactToDisplayBoard);
     }*/
+
+    public void DestroyTuto(GameObject gameObjectToDestroy)
+    {
+    	Destroy(gameObjectToDestroy, 1f);
+    }
 }
