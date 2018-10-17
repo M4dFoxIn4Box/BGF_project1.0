@@ -57,7 +57,7 @@ public class Interface_Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -92,23 +92,26 @@ public class Interface_Manager : MonoBehaviour
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
                 Save_Manager.saving.SetToTrue(idx);
                 idxButton = idx;
+                Debug.Log(idx);
             }
         }
     }
 
-    public void ButtonState(List<bool> isTrue)
+    public void ButtonState(List<bool> interactableButton)
     {
-        for (int i = 0; i < isTrue.Count; i++)// ou 41
+        for (int i = 0; i < interactableButton.Count; i++)// ou 41
         {   
-            galleryPannel.GetChild(i).gameObject.GetComponent<Button>().interactable = isTrue[i];
+            galleryPannel.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
+            Debug.Log(interactableButton.Count);
+            Debug.Log(i);
         }
     }
 
     public void ImageState(List<bool> isCheck)
     {
-        for (int i = 0; i < isCheck.Count; i++)// ou 41
+        for (int j = 0; j < isCheck.Count; j++)// ou 41
         {
-            mapList.GetChild(i).gameObject.GetComponent<Image>().enabled = isCheck[i];
+            mapList.GetChild(j).gameObject.GetComponent<Image>().enabled = isCheck[j];
             Debug.Log(isCheck.Count);
         }
     }
