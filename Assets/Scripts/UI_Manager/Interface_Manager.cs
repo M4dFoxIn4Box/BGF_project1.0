@@ -92,7 +92,7 @@ public class Interface_Manager : MonoBehaviour
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
                 Save_Manager.saving.SetToTrue(idx);
                 idxButton = idx;
-                Debug.Log(idx);
+                Debug.Log(idx + 1);
             }
         }
     }
@@ -102,8 +102,6 @@ public class Interface_Manager : MonoBehaviour
         for (int i = 0; i < interactableButton.Count; i++)// ou 41
         {   
             galleryPannel.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
-            Debug.Log(interactableButton.Count);
-            Debug.Log(i);
         }
     }
 
@@ -112,7 +110,6 @@ public class Interface_Manager : MonoBehaviour
         for (int j = 0; j < isCheck.Count; j++)// ou 41
         {
             mapList.GetChild(j).gameObject.GetComponent<Image>().enabled = isCheck[j];
-            Debug.Log(isCheck.Count);
         }
     }
 
