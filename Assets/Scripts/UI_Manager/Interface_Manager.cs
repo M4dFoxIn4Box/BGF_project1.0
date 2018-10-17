@@ -109,6 +109,7 @@ public class Interface_Manager : MonoBehaviour
         for (int i = 0; i < isCheck.Count; i++)// ou 41
         {
             mapList.GetChild(i).gameObject.GetComponent<Image>().enabled = isCheck[i];
+            Debug.Log(isCheck.Count);
         }
     }
 
