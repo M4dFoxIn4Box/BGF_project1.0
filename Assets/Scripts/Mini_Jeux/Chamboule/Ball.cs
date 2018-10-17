@@ -26,6 +26,10 @@ public class Ball : MonoBehaviour
     public Camera cam;
 
 
+    //Add Score
+    private int pointValue;
+
+
 
     void OnEnable()
     {
@@ -139,7 +143,7 @@ public class Ball : MonoBehaviour
         while (!ballThrowed)
         {
 
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(6f);
 
             transform.position = initialPosition;
 
@@ -209,6 +213,21 @@ public class Ball : MonoBehaviour
         jumpCoroutine = JumpAround(0.3f);
 
         StartCoroutine(jumpCoroutine);
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("point"))
+        {
+            Destroy(other.gameObject, 1f);
+            AddScore();
+        }
+    }
+
+
+    public void AddScore()
+    {
+        ScriptTracker.Instance.MiniGameScore(pointValue);
     }
 
 }
