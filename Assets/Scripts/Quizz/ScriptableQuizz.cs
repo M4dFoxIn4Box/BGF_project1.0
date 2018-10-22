@@ -12,8 +12,6 @@ public class ScriptableQuizz : ScriptableObject {
     public string answer2;
     public string answer3;
     public string answer4;
-
-    public GameObject quizzReward;
     public string quizzFunFact;
 
     [Tooltip("1 correspond à answer1, etc")]

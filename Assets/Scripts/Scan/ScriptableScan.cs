@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class ScriptableScan : ScriptableObject {
 
-    public GameObject scanReward;
     public string scanFunFact;
 
 	// Use this for initialization
