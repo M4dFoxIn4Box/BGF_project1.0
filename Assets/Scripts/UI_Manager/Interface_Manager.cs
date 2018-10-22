@@ -93,7 +93,7 @@ public class Interface_Manager : MonoBehaviour
                 galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
                 Save_Manager.saving.SetToTrue(idx);
                 idxButton = idx;
-                Debug.Log(idx + 1);
+                AddScore(1);
             }
         }
     }
@@ -103,6 +103,11 @@ public class Interface_Manager : MonoBehaviour
         for (int i = 0; i < interactableButton.Count; i++)// ou 41
         {   
             galleryPannel.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
+            if(interactableButton[i] == true)
+            {
+                AddScore(1);
+                Debug.Log(interactableButton[i]);
+            }
         }
     }
 
