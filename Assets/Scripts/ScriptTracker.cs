@@ -31,13 +31,14 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     [Header("Game Limits")]
     public ulong miniGameLimit; // est égale à la somme de quizz et de mini jeux présent
-    public ulong quizzLimit;    // est égale au nombre de quizz présent
+    public ulong quizzLimit; // est égale au nombre de quizz présent
+
 
     [Header("Mini Game")]    
     public Transform miniGameSpawnPoint;
     public GameObject miniGameToDestroy;
-    public int currentScore;
-    public int scoreToReach;
+    //public int currentScore;
+    //public int scoreToReach;
 
     [Header("Quizz")]
     public GameObject quizzInterface;
@@ -176,10 +177,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 else
                 {
                     Debug.Log(currentScriptableMiniGame);
-                    scoreToReach = currentScriptableMiniGame.scoreLimit;
+                    //scoreToReach = currentScriptableMiniGame.scoreLimit;
                     miniGameToDestroy = currentScriptableMiniGame.prefabMiniJeux;
                     miniGameToDestroy = Instantiate(currentScriptableMiniGame.prefabMiniJeux, miniGameSpawnPoint);
-                    Destroy(GameObject.FindWithTag("ball"));
+                    //Destroy(GameObject.FindWithTag("ball"));
+
                 }
                                 
         
@@ -330,15 +332,21 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
   
         // Gère le gain de point des mini jeux 
 
-    public void MiniGameScore(int scoreAdd)
+    //public void MiniGameScore(int scoreAdd)
+    //{
+    //    currentScore = scoreAdd + currentScore;
+    //    if(currentScore >= scoreToReach)
+    //    {
+    //        Destroy(miniGameToDestroy);
+    //        Destroy(GameObject.FindWithTag("ball"));
+    //        StartCoroutine(GameWon());      
+    //    }
+    //}
+
+        public void MiniGameScore ()
     {
-        currentScore = scoreAdd + currentScore;
-        if(currentScore >= scoreToReach)
-        {
-            Destroy(miniGameToDestroy);
-            Destroy(GameObject.FindWithTag("ball"));
-            StartCoroutine(GameWon());      
-        }
+        Destroy(miniGameToDestroy);
+        StartCoroutine(GameWon());   
     }
 
     IEnumerator GameWon()
@@ -348,7 +356,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         // Reset du quizz
         screenShare.SetActive(true);
-        currentScore = 0;
+        //currentScore = 0;
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);
         //

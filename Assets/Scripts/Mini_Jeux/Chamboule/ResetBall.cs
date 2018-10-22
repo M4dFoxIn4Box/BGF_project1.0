@@ -30,6 +30,6 @@ public class ResetBall : MonoBehaviour {
 
     public void AddScore ()
     {
-        ScriptTracker.Instance.MiniGameScore(pointValue);
+     //   ScriptTracker.Instance.MiniGameScore(pointValue);
     }
 }

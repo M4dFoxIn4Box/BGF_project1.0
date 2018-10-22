@@ -227,7 +227,7 @@ public class Ball : MonoBehaviour
 
     public void AddScore()
     {
-        ScriptTracker.Instance.MiniGameScore(pointValue);
+     //   ScriptTracker.Instance.MiniGameScore(pointValue);
     }
 
 }

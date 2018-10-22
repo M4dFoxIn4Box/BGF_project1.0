@@ -66,11 +66,12 @@ public class ThrowBallManager : MonoBehaviour
     {
         Debug.Log("Spawming new Ball..");
         //wait for few seconds then spawn ball when game starts
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         if (currentBall != null)
         {
             //destroy old ball
             Destroy(currentBall);
+            Debug.Log("la balle est détruite");
         }
         //spawn new ball
         currentBall = Instantiate(ball, ball.transform.position, Quaternion.identity);// as GameObject;
