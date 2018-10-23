@@ -25,11 +25,17 @@ public class Camera_Manager : MonoBehaviour
 
     }
 
+    IEnumerator WaitForVumarkReactivation()
+    {
+        yield return new WaitForSeconds(0.1f);
+        vumarkBGF.SetActive(true);
+    }
+
     public void SetActiveARCamera()
     {
-        vumarkBGF.SetActive(true);
         mainCamera.enabled = false;
         cameraAR.SetActive(true);
+        StartCoroutine(WaitForVumarkReactivation());
     }
 
     public void CloseARCamera()
