@@ -8,6 +8,7 @@ using System.IO;
 public class Save_Manager : MonoBehaviour
 {
     //public static Save_Manager saving;
+    public int rewardNumbers;
 
     public static Save_Manager saving { get; private set; }
 
@@ -38,7 +39,7 @@ public class Save_Manager : MonoBehaviour
     {
         if (!File.Exists(Application.persistentDataPath + "/playerInfo.data"))
         {
-            for (int i = 0; i < 42; i++)
+            for (int i = 0; i < rewardNumbers; i++)
             {
                 galleryButtonsStates.Add(false);
                 mappingImageStates.Add(false);
@@ -82,9 +83,15 @@ public class Save_Manager : MonoBehaviour
     public void ResetClearList()
     {
         File.Delete(Application.persistentDataPath + "/playerInfo.data");
-        Debug.Log("FILEDELETED");
     }
 
+    IEnumerator CHIEN()
+    {
+        Debug.Log("Loading");
+        yield return new WaitForSeconds(2);
+        Load();
+
+    }
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
