@@ -173,6 +173,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 if(currentScriptableMiniGame.hasBeenDone == true)
                 {
                     StartCoroutine(GameWon());
+                    Debug.Log("Win");
                 }
                 else
                 {

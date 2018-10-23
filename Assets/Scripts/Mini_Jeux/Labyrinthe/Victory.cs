@@ -17,8 +17,12 @@ public class Victory : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter (Collision ball)
+    void OnTriggerEnter (Collider ball)
     {
-        ScriptTracker.Instance.MiniGameScore();
+
+        if(ball.CompareTag("ball"))
+        {
+            ScriptTracker.Instance.MiniGameScore();
+        }
     }
 }
