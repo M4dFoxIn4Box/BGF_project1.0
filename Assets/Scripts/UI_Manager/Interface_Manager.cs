@@ -101,9 +101,9 @@ public class Interface_Manager : MonoBehaviour
     public void ButtonState(List<bool> interactableButton)
     {
         for (int i = 0; i < interactableButton.Count; i++)// ou 41
-        {   
+        {
             galleryPannel.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
-            if(interactableButton[i] == true)
+            if (interactableButton[i] == true)
             {
                 AddScore(1);
                 Debug.Log(interactableButton[i]);
@@ -111,14 +111,14 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
-    public void ImageState(List<bool> isCheck)
+
+    public void ImageState(List<bool> isCheck) 
     {
-        for (int j = 0; j < isCheck.Count; j++)// ou 41
+        for (int j = 0; j < isCheck.Count; j++)
         {
             mapList.GetChild(j).gameObject.GetComponent<Image>().enabled = isCheck[j];
         }
     }
-
 
 
     //SCORING
@@ -177,10 +177,5 @@ public class Interface_Manager : MonoBehaviour
     public void DestroyRewardSpawn()
     {
         Destroy(currentReward);
-    }
-
-    public void DestroyTuto(GameObject gameObjectToDestroy)
-    {
-    	Destroy(gameObjectToDestroy, 0f);
     }
 }
