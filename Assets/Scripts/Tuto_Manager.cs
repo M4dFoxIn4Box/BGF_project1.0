@@ -1,15 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tuto_Manager : MonoBehaviour
 {
-
+    public ScriptableTuto[] tutoScriptableBoard;
     public ScriptableTuto currentScriptableTuto;
+    public GameObject tutoInterface;
+    public Image tutoImg;
+    public Text tutoTxt;
 
-
-
-
+    public void ActivatingTuto (ScriptableTuto tutoToActive)
+    {
+        currentScriptableTuto = tutoToActive;
+        tutoInterface.SetActive(true);
+        tutoImg.sprite = currentScriptableTuto.tutoImageBoard[0];
+        tutoTxt.text = currentScriptableTuto.tutoTextBoard[0];
+        Debug.Log("done");
+    }
 
 
 

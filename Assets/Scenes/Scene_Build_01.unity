@@ -921,7 +921,7 @@ GameObject:
   - component: {fileID: 58903831}
   - component: {fileID: 58903830}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Image_Tuto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -966,7 +966,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1499,6 +1499,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef052839c08fbbe4a86ea2866111bb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutoScriptableBoard:
+  - {fileID: 11400000, guid: abd73b896209d374f882514711c54b03, type: 2}
+  - {fileID: 11400000, guid: 4ee8ddb9e7bfe8f42a56ec092d92dbc0, type: 2}
+  currentScriptableTuto: {fileID: 0}
+  tutoInterface: {fileID: 1470796430}
+  tutoImg: {fileID: 58903830}
+  tutoTxt: azzrzr
 --- !u!1 &103981055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,12 +2001,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1310647162}
-        m_MethodName: ShowElement
+      - m_Target: {fileID: 102066280}
+        m_MethodName: ActivatingTuto
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: abd73b896209d374f882514711c54b03,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: ScriptableTuto, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6392,8 +6400,8 @@ RectTransform:
   m_Father: {fileID: 1858329928}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.42973226, y: 0.04418972}
-  m_AnchorMax: {x: 0.56774026, y: 0.1211742}
+  m_AnchorMin: {x: 0.34553364, y: 0.04418972}
+  m_AnchorMax: {x: 0.6497772, y: 0.12477699}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13615,7 +13623,7 @@ GameObject:
   - component: {fileID: 1311333954}
   - component: {fileID: 1311333953}
   m_Layer: 0
-  m_Name: Text
+  m_Name: Text_Tuto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15023,12 +15031,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1470796431}
   m_Layer: 0
-  m_Name: Tuto_Manager
+  m_Name: Tuto_Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1470796431
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21538,7 +21546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2064386191
 RectTransform:
   m_ObjectHideFlags: 0
