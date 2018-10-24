@@ -37,6 +37,7 @@ public class Interface_Manager : MonoBehaviour
     public Transform spawnPointReward;
     public Text spawnPointFunFact;
     public ScriptableReward[] rewardBoard;
+    private GameObject currentReward;
     //public GameObject[] rewardToSpawnBoard;
     //public string[] funFactToDisplayBoard;
 
@@ -168,9 +169,14 @@ public class Interface_Manager : MonoBehaviour
 
     public void RewardButton(int rewardIdx) //Click sur le bouton de la galerie
     {
-        Instantiate(rewardBoard[rewardIdx].rewardToSpawn, spawnPointReward);
+        currentReward = Instantiate(rewardBoard[rewardIdx].rewardToSpawn, spawnPointReward);
         spawnPointFunFact.text = rewardBoard[rewardIdx].funFactToDisplay;
         Debug.Log(transform.GetSiblingIndex());
+    }
+
+    public void DestroyRewardSpawn()
+    {
+        Destroy(currentReward);
     }
 
     public void DestroyTuto(GameObject gameObjectToDestroy)
