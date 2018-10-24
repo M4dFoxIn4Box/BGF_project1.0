@@ -5,21 +5,39 @@ using UnityEngine.UI;
 
 public class Tuto_Manager : MonoBehaviour
 {
-    public ScriptableTuto[] tutoScriptableBoard;
     public ScriptableTuto currentScriptableTuto;
     public GameObject tutoInterface;
     public Image tutoImg;
     public Text tutoTxt;
+    public int tutoIdx;
 
     public void ActivatingTuto (ScriptableTuto tutoToActive)
     {
         currentScriptableTuto = tutoToActive;
         tutoInterface.SetActive(true);
-        tutoImg.sprite = currentScriptableTuto.tutoImageBoard[0];
-        tutoTxt.text = currentScriptableTuto.tutoTextBoard[0];
-        Debug.Log("done");
+        tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
+        tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
     }
 
+    public void MoveToNextSlide ()
+    {
+        Debug.Log(currentScriptableTuto.tutoLimit);
+
+        if(tutoIdx == currentScriptableTuto.tutoLimit - 1)
+        {
+            tutoIdx = 0;
+            tutoInterface.SetActive(false);
+            Debug.Log("Done");
+        }
+        else 
+        {
+            tutoIdx++;
+            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
+            tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
+            Debug.Log(tutoIdx);
+        } 
+
+    }
 
 
 

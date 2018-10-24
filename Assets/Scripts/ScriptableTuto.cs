@@ -8,5 +8,6 @@ public class ScriptableTuto : ScriptableObject {
 
     public Sprite[] tutoImageBoard;
     public string[] tutoTextBoard;
+    public int tutoLimit;
 
 }
