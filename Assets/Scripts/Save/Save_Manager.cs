@@ -79,7 +79,6 @@ public class Save_Manager : MonoBehaviour
         }
 	}
 
-
     public void ResetClearList()
     {
         File.Delete(Application.persistentDataPath + "/playerInfo.data");
