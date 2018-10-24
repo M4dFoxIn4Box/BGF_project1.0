@@ -175,6 +175,6 @@ public class Interface_Manager : MonoBehaviour
 
     public void DestroyTuto(GameObject gameObjectToDestroy)
     {
-    	Destroy(gameObjectToDestroy, 1f);
+    	Destroy(gameObjectToDestroy, 0f);
     }
 }
