@@ -13,7 +13,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     private void Awake()
     {
-        
+
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -29,18 +29,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public VuMarkTarget vumark;
     public ulong vumarkID;
 
-    [Header("Game Limits")]
-    public ulong miniGameLimit; // est égale à la somme de quizz et de mini jeux présent
-    public ulong quizzLimit; // est égale au nombre de quizz présent
-
-
-    [Header("Mini Game")]    
-    public Transform miniGameSpawnPoint;
-    public GameObject miniGameToDestroy;
-    //public int currentScore;
-    //public int scoreToReach;
-
     [Header("Quizz")]
+    public bool quizzDone = false;
     public GameObject quizzInterface;
     public GameObject congratulationsImage;
 
@@ -69,22 +59,28 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private string answer4Text;
     private string funFactText;
 
-    [Header("Scriptable Section Quizz")]   
-    public ScriptableQuizz[] scriptableQuizzList;
+    [Header("Scriptable Section Quizz")]
+    public ScriptableQuizzManager[] quizzLists;
 
-    [Header("Scriptable Section Mini Game")]    
-    public ScriptableMiniGame[] scriptableMiniGameList;
+    public List<ScriptableQuizz> quizzAvailable;
+    //public ScriptableQuizz[] scriptableQuizzList;
 
-    [Header("Scriptable Section Scan")]   
-    public ScriptableScan[] scriptableScanList;
+    //[Header("Scriptable Section Mini Game")]    
+    //public ScriptableMiniGame[] scriptableMiniGameList;
+
+    //[Header("Scriptable Section Scan")]   
+    //public ScriptableScan[] scriptableScanList;
 
     [Header("Current Scriptables")]
     public ScriptableQuizz currentScriptableQuizz;
-    public ScriptableMiniGame currentScriptableMiniGame;
-    public ScriptableScan currentScriptableScan;
+    public ScriptableQuizzManager currentQuizzList;
+    //public ScriptableMiniGame currentScriptableMiniGame;
+    //public ScriptableScan currentScriptableScan;
 
     [Header("Récompense")]
-   
+
+    private int currentQuizzScore = 0;
+    public int scoreToReach;
     private bool isAnswered = false;
     
     void Start()
@@ -95,13 +91,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
         }
         mVuMarkManager = TrackerManager.Instance.GetStateManager().GetVuMarkManager();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
     }
 
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
@@ -123,83 +112,15 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
             vumarkID = vumark.InstanceId.NumericValue;
-            if (vumark.InstanceId.NumericValue <= quizzLimit)
-            {
-                currentScriptableQuizz = scriptableQuizzList[vumark.InstanceId.NumericValue - 1];
-                if(currentScriptableQuizz.hasBeenDone == true)
-                {
-                    StartCoroutine(GameWon());
-                }
-                else
-                {
-                    button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-                    button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-                    button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-                    button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-
-                    button1.interactable = true;
-                    button2.interactable = true;
-                    button3.interactable = true;
-                    button4.interactable = true;
-
-                    quizzInterface.SetActive(true);
-
-                    quizzText.text = currentScriptableQuizz.quizzQuestion;
-                    answer1Text = currentScriptableQuizz.answer1;
-                    answer2Text = currentScriptableQuizz.answer2;
-                    answer3Text = currentScriptableQuizz.answer3;
-                    answer4Text = currentScriptableQuizz.answer4;
-                    funFactText = currentScriptableQuizz.quizzFunFact;
-
-                    answer1.text = answer1Text;
-                    answer2.text = answer2Text;
-                    answer3.text = answer3Text;
-                    answer4.text = answer4Text;
-                    funFact.text = funFactText;
-
-                    button1.onClick.AddListener(TaskOnClick1);
-                    button2.onClick.AddListener(TaskOnClick2);
-                    button3.onClick.AddListener(TaskOnClick3);
-                    button4.onClick.AddListener(TaskOnClick4);
-
-                    leaveCanvas.onClick.AddListener(LeaveQuizz);
-                }
-             
-            }
-            else if (vumark.InstanceId.NumericValue >= quizzLimit && vumark.InstanceId.NumericValue <= miniGameLimit)
-            {
-                currentScriptableMiniGame = scriptableMiniGameList[(vumark.InstanceId.NumericValue - quizzLimit) - 1];
-
-                if(currentScriptableMiniGame.hasBeenDone == true)
-                {
-                    StartCoroutine(GameWon());
-                    Debug.Log("Win");
-                }
-                else
-                {
-                    Debug.Log(currentScriptableMiniGame);
-                    //scoreToReach = currentScriptableMiniGame.scoreLimit;
-                    miniGameToDestroy = currentScriptableMiniGame.prefabMiniJeux;
-                    miniGameToDestroy = Instantiate(currentScriptableMiniGame.prefabMiniJeux, miniGameSpawnPoint);
-                    //Destroy(GameObject.FindWithTag("ball"));
-
-                }
-                                
-        
-            }
-
-            else if (vumark.InstanceId.NumericValue >= miniGameLimit)
-            {
-                currentScriptableScan = scriptableScanList[(vumark.InstanceId.NumericValue - miniGameLimit) - 1];
-                StartCoroutine(GameWon());
-            }
         }
 
+        QuizzDisplaying();
     }
     
     public void OnTrackerLost()
     {
-        if(screenShare)
+
+        if (screenShare)
         {
             screenShare.SetActive(false);
         }
@@ -209,21 +130,72 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             int targetObj = System.Convert.ToInt32 (item.VuMarkTarget.InstanceId.NumericValue);
             transform.GetChild(targetObj - 1).gameObject.SetActive(false);
         }
-        if(miniGameToDestroy)
-        {
-            Destroy(miniGameToDestroy);
-            Destroy(GameObject.FindWithTag("ball"));
-        }
-       
-        if(quizzInterface)
+
+        if (quizzInterface)
         {
             quizzInterface.SetActive(false);
+            currentQuizzScore = 0;
+            quizzDone = false; 
         }
+
         if(congratulationsImage)
         {
             congratulationsImage.SetActive(false);
         }
       
+    }
+
+    public void QuizzDisplaying ()
+    {
+        currentQuizzList = quizzLists[vumarkID - 1];
+
+        if(!quizzDone)
+        {
+            quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
+        }
+
+        if (quizzAvailable == null)
+        {
+            LeaveQuizz();
+        }
+
+        currentScriptableQuizz = currentQuizzList.scriptableQuizzList[(Random.Range(0, currentQuizzList.scriptableQuizzList.Count))];
+
+        quizzDone = true;
+
+                button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+                button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+                button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+                button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+
+                button1.interactable = true;
+                button2.interactable = true;
+                button3.interactable = true;
+                button4.interactable = true;
+
+                quizzInterface.SetActive(true);
+
+                quizzText.text = currentScriptableQuizz.quizzQuestion;
+                answer1Text = currentScriptableQuizz.answer1;
+                answer2Text = currentScriptableQuizz.answer2;
+                answer3Text = currentScriptableQuizz.answer3;
+                answer4Text = currentScriptableQuizz.answer4;
+                funFactText = currentScriptableQuizz.quizzFunFact;
+
+                answer1.text = answer1Text;
+                answer2.text = answer2Text;
+                answer3.text = answer3Text;
+                answer4.text = answer4Text;
+                funFact.text = funFactText;
+
+                button1.onClick.AddListener(TaskOnClick1);
+                button2.onClick.AddListener(TaskOnClick2);
+                button3.onClick.AddListener(TaskOnClick3);
+                button4.onClick.AddListener(TaskOnClick4);
+
+                leaveCanvas.onClick.AddListener(LeaveQuizz);
+
+        quizzAvailable.Remove(currentScriptableQuizz);
     }
 
     // QUIZZ // answer button section
@@ -300,7 +272,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
     }
 
-
     public void LeaveQuizz()
     {
 
@@ -313,6 +284,21 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         button2.interactable = true;
         button3.interactable = true;
         button4.interactable = true;
+
+        quizzInterface.SetActive(false);
+        currentQuizzScore = 0;
+        quizzDone = false;
+    }
+
+    public void BadAnswer()
+    {
+        button1.interactable = false;
+        button2.interactable = false;
+        button3.interactable = false;
+        button4.interactable = false;
+
+
+        StartCoroutine(TimeBeforeNextQuizz());
     }
 
     public void RightAnswer()
@@ -322,45 +308,39 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         button3.interactable = false;
         button4.interactable = false;
 
-        congratulationsImage.SetActive(true);
+        currentQuizzScore++;
 
-        isAnswered = true; 
+        currentScriptableQuizz.hasBeenDone = true;
 
-        StartCoroutine(GameWon());
-
+        if(currentQuizzScore == scoreToReach)
+        {
+            congratulationsImage.SetActive(true);
+            Debug.Log("You Win");
+            StartCoroutine(GameWon());
+        }
+        else if (currentQuizzScore < scoreToReach)
+        {
+            StartCoroutine(TimeBeforeNextQuizz());
+        }
     }
 
-  
-        // Gère le gain de point des mini jeux 
-
-    //public void MiniGameScore(int scoreAdd)
-    //{
-    //    currentScore = scoreAdd + currentScore;
-    //    if(currentScore >= scoreToReach)
-    //    {
-    //        Destroy(miniGameToDestroy);
-    //        Destroy(GameObject.FindWithTag("ball"));
-    //        StartCoroutine(GameWon());      
-    //    }
-    //}
-
-        public void MiniGameScore ()
+    IEnumerator TimeBeforeNextQuizz ()
     {
-        Destroy(miniGameToDestroy);
-        StartCoroutine(GameWon());   
+
+        yield return new WaitForSeconds(2);
+        QuizzDisplaying();
     }
 
     IEnumerator GameWon()
     {
-        
         yield return new WaitForSeconds(2);
 
         // Reset du quizz
         screenShare.SetActive(true);
-        //currentScore = 0;
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);
-        //
+        currentQuizzScore = 0;
+        quizzDone = false; ;
 
         // IMPORTANT !!! //
 

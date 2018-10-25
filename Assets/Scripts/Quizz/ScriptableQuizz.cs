@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ScriptableQuizz : ScriptableObject {
         
-    public string quizzName = "newQuizz";
+    public string quizzName;
     public string quizzQuestion;
     public string answer1;
     public string answer2;
@@ -18,16 +18,4 @@ public class ScriptableQuizz : ScriptableObject {
     public int rightAnswer; // 1 à 4, 1 correspondant à answer1, etc...
 
     public bool hasBeenDone;
-
-	// Use this for initialization
-	void Start () {
-		
-
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

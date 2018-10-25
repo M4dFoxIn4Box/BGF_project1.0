@@ -22,7 +22,7 @@ public class Victory : MonoBehaviour {
 
         if(ball.CompareTag("ball"))
         {
-            ScriptTracker.Instance.MiniGameScore();
+            //ScriptTracker.Instance.MiniGameScore();
         }
     }
 }
