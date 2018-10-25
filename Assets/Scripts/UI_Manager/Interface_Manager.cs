@@ -37,7 +37,7 @@ public class Interface_Manager : MonoBehaviour
     public Transform spawnPointReward;
     public Text spawnPointFunFact;
     public ScriptableReward[] rewardBoard;
-    private GameObject currentReward;
+    public GameObject currentReward;
     //public GameObject[] rewardToSpawnBoard;
     //public string[] funFactToDisplayBoard;
 
