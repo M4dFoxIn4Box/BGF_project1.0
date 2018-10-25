@@ -16,7 +16,7 @@ public class Save_Manager : MonoBehaviour
 
     public List<bool> galleryButtonsStates;
     public List<bool> mappingImageStates;
-    public List<bool> tutoStates;
+    //public List<bool> tutoStates;
     //public GameObject[] rewardToSpawn;
     //public string[] funFactToDisplay;
 
@@ -44,7 +44,7 @@ public class Save_Manager : MonoBehaviour
             {
                 galleryButtonsStates.Add(false);
                 mappingImageStates.Add(false);
-                tutoStates.Add(false);
+                //tutoStates.Add(false);
                 Save();
             }
         }
@@ -52,6 +52,8 @@ public class Save_Manager : MonoBehaviour
         {
             Load();
         }
+
+        //Tuto_Manager.Tuto.AwakeTuto(tutoStates);
     }
 
     public void SetToTrue (int buttonIdx) // Sauvegarder le bouton qui s'est activé
@@ -66,11 +68,11 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
-    public void TutoToDestroy(int tutoIdx)
-    {
-        tutoStates[tutoIdx] = true;
-        Save();
-    }
+    //public void TutoToDestroy(int tutoIdx)
+    //{
+    //    tutoStates[tutoIdx] = true;
+    //    Save();
+    //}
 
     //public void RewardSave(GameObject[] rewardToSave, string[] funFactToSave)
     //{
@@ -108,7 +110,7 @@ public class Save_Manager : MonoBehaviour
         PlayerData data = new PlayerData();
         data.galleryButtonsStates = galleryButtonsStates;
         data.mappingImageStates = mappingImageStates;
-        data.tutoStates = tutoStates;
+        //data.tutoStates = tutoStates;
         //data.rewardToSpawn = rewardToSpawn;
         //data.funFactToDisplay = funFactToDisplay;
 
@@ -128,13 +130,13 @@ public class Save_Manager : MonoBehaviour
             
             galleryButtonsStates = data.galleryButtonsStates;
             mappingImageStates = data.mappingImageStates;
-            tutoStates = data.tutoStates;
+            //tutoStates = data.tutoStates;
             //rewardToSpawn = data.rewardToSpawn;
             //funFactToDisplay = data.funFactToDisplay;
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
-            //Interface_Manager.Instance.LoadingTutoToDestroy(tutoStates);
+            //Tuto_Manager.Tuto.LoadingTuto();
         }
     }
 }
@@ -144,7 +146,7 @@ class PlayerData
 {
     public List<bool> galleryButtonsStates = new List<bool>();
     public List<bool> mappingImageStates = new List<bool>();
-    public List<bool> tutoStates = new List<bool>();
+    //public List<bool> tutoStates = new List<bool>();
     //public GameObject[] rewardToSpawn;
     //public string[] funFactToDisplay;
 }

@@ -10,13 +10,41 @@ public class Tuto_Manager : MonoBehaviour
     public Image tutoImg;
     public Text tutoTxt;
     private int tutoIdx;
+    private List<bool> isAlreadyDone;
+
+    //public static Tuto_Manager Tuto { get; private set; }
+
+    //private void Awake()
+    //{
+    //    if (Tuto != null)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //    else
+    //    {
+    //        Tuto = this;
+    //    }
+    //}
+
+    //public void AwakeTuto(List<bool> isTutoCheck)
+    //{
+    //    isTutoCheck = isAlreadyDone;
+    //}
+
+    //public void LoadingTuto()
+    //{
+    //    for (int i = 0; i < isAlreadyDone.Count; i++)
+    //    {
+    //        isAlreadyDone[i] = currentScriptableTuto.isTutoDone[i];
+    //    }
+    //}
 
     public void ActivatingTuto (ScriptableTuto tutoToActive)
     {
-        currentScriptableTuto = tutoToActive;
-        tutoInterface.SetActive(true);
-        tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
-        tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
+            currentScriptableTuto = tutoToActive;
+            tutoInterface.SetActive(true);
+            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
+            tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
     }
 
     public void MoveToNextSlide ()
@@ -27,6 +55,8 @@ public class Tuto_Manager : MonoBehaviour
         {
             tutoIdx = 0;
             tutoInterface.SetActive(false);
+            tutoIdx = currentScriptableTuto.nbxTuto;
+            //Save_Manager.saving.TutoToDestroy(tutoIdx);
             Debug.Log("Done");
         }
         else 
@@ -38,9 +68,6 @@ public class Tuto_Manager : MonoBehaviour
         } 
 
     }
-
-
-
 
 
 //    [Header("Tuto")]
