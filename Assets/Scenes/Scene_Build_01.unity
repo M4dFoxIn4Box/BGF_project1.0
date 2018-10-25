@@ -727,17 +727,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1310647162}
-        m_MethodName: ShowElement
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &45489710
@@ -933,16 +922,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 58903828}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1858329928}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.0683409, y: 0.32136282}
-  m_AnchorMax: {x: 0.9244866, y: 0.9534963}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.076328464, y: 0.32136282}
+  m_AnchorMax: {x: 0.9244866, y: 0.79846865}
+  m_AnchoredPosition: {x: 0.035464287, y: 0.0016479492}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &58903830
@@ -1499,14 +1488,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef052839c08fbbe4a86ea2866111bb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutoScriptableBoard:
-  - {fileID: 11400000, guid: abd73b896209d374f882514711c54b03, type: 2}
-  - {fileID: 11400000, guid: 4ee8ddb9e7bfe8f42a56ec092d92dbc0, type: 2}
   currentScriptableTuto: {fileID: 0}
   tutoInterface: {fileID: 1470796430}
   tutoImg: {fileID: 58903830}
   tutoTxt: {fileID: 1311333953}
-  tutoIdx: 0
 --- !u!1 &103981055
 GameObject:
   m_ObjectHideFlags: 0
@@ -19203,7 +19188,7 @@ GameObject:
   - component: {fileID: 1858329930}
   - component: {fileID: 1858329929}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

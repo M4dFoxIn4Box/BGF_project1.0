@@ -9,7 +9,7 @@ public class Tuto_Manager : MonoBehaviour
     public GameObject tutoInterface;
     public Image tutoImg;
     public Text tutoTxt;
-    public int tutoIdx;
+    private int tutoIdx;
 
     public void ActivatingTuto (ScriptableTuto tutoToActive)
     {
@@ -21,9 +21,9 @@ public class Tuto_Manager : MonoBehaviour
 
     public void MoveToNextSlide ()
     {
-        Debug.Log(currentScriptableTuto.tutoLimit);
+        Debug.Log(currentScriptableTuto.numberOfSlides);
 
-        if(tutoIdx == currentScriptableTuto.tutoLimit - 1)
+        if(tutoIdx == currentScriptableTuto.numberOfSlides - 1)
         {
             tutoIdx = 0;
             tutoInterface.SetActive(false);
