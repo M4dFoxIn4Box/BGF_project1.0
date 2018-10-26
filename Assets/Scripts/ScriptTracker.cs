@@ -57,7 +57,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private string answer2Text;
     private string answer3Text;
     private string answer4Text;
-    private string funFactText;
 
     [Header("Scriptable Section Quizz")]
     public ScriptableQuizzManager[] quizzLists;
@@ -65,17 +64,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public List<ScriptableQuizz> quizzAvailable;
     //public ScriptableQuizz[] scriptableQuizzList;
 
-    //[Header("Scriptable Section Mini Game")]    
-    //public ScriptableMiniGame[] scriptableMiniGameList;
-
-    //[Header("Scriptable Section Scan")]   
-    //public ScriptableScan[] scriptableScanList;
-
     [Header("Current Scriptables")]
     public ScriptableQuizz currentScriptableQuizz;
     public ScriptableQuizzManager currentQuizzList;
-    //public ScriptableMiniGame currentScriptableMiniGame;
-    //public ScriptableScan currentScriptableScan;
 
     [Header("Récompense")]
 
@@ -131,17 +122,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             transform.GetChild(targetObj - 1).gameObject.SetActive(false);
         }
 
-        if (quizzInterface)
-        {
-            quizzInterface.SetActive(false);
-            currentQuizzScore = 0;
-            quizzDone = false; 
-        }
+        LeaveQuizz();
 
-        if(congratulationsImage)
-        {
-            congratulationsImage.SetActive(false);
-        }
+
       
     }
 
@@ -149,14 +132,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         currentQuizzList = quizzLists[vumarkID - 1];
 
-        if(!quizzDone)
+        if (!quizzDone)
         {
             quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
-        }
-
-        if (quizzAvailable == null)
-        {
-            LeaveQuizz();
         }
 
         currentScriptableQuizz = currentQuizzList.scriptableQuizzList[(Random.Range(0, currentQuizzList.scriptableQuizzList.Count))];
@@ -180,13 +158,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 answer2Text = currentScriptableQuizz.answer2;
                 answer3Text = currentScriptableQuizz.answer3;
                 answer4Text = currentScriptableQuizz.answer4;
-                funFactText = currentScriptableQuizz.quizzFunFact;
 
                 answer1.text = answer1Text;
                 answer2.text = answer2Text;
                 answer3.text = answer3Text;
                 answer4.text = answer4Text;
-                funFact.text = funFactText;
 
                 button1.onClick.AddListener(TaskOnClick1);
                 button2.onClick.AddListener(TaskOnClick2);
@@ -196,6 +172,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 leaveCanvas.onClick.AddListener(LeaveQuizz);
 
         quizzAvailable.Remove(currentScriptableQuizz);
+
+        if (quizzAvailable.Count == 0)
+        {
+            Debug.Log("List is empty");
+            LeaveQuizz();
+        }
     }
 
     // QUIZZ // answer button section
@@ -213,6 +195,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
         else
         {
+            BadAnswer();
             button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
             button1.interactable = false;
         }
@@ -231,6 +214,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
         else
         {
+            BadAnswer();
             button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
             button2.interactable = false;
         }
@@ -249,6 +233,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
         else
         {
+            BadAnswer();
             button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
             button3.interactable = false;
         }
@@ -267,6 +252,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
         else
         {
+            BadAnswer();
             button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
             button4.interactable = false;
         }
@@ -274,6 +260,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void LeaveQuizz()
     {
+        quizzAvailable.Clear();
 
         button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
         button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
@@ -285,9 +272,19 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         button3.interactable = true;
         button4.interactable = true;
 
+
         quizzInterface.SetActive(false);
         currentQuizzScore = 0;
         quizzDone = false;
+       
+        if (congratulationsImage)
+        {
+            congratulationsImage.SetActive(false);
+        }
+
+        currentQuizzList = null;
+        currentScriptableQuizz = null;
+
     }
 
     public void BadAnswer()
@@ -296,7 +293,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         button2.interactable = false;
         button3.interactable = false;
         button4.interactable = false;
-
 
         StartCoroutine(TimeBeforeNextQuizz());
     }
@@ -310,8 +306,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         currentQuizzScore++;
 
-        currentScriptableQuizz.hasBeenDone = true;
-
         if(currentQuizzScore == scoreToReach)
         {
             congratulationsImage.SetActive(true);
@@ -322,12 +316,14 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             StartCoroutine(TimeBeforeNextQuizz());
         }
+
+     
     }
 
     IEnumerator TimeBeforeNextQuizz ()
     {
-
         yield return new WaitForSeconds(2);
+
         QuizzDisplaying();
     }
 
