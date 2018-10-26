@@ -7,5 +7,6 @@ using UnityEngine;
 public class ScriptableQuizzManager : ScriptableObject
 {
     public List<ScriptableQuizz> scriptableQuizzList;
+    public int errorLimit;
 
 }

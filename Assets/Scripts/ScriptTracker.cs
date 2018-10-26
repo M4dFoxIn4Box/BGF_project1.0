@@ -65,7 +65,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     //public ScriptableQuizz[] scriptableQuizzList;
 
     [Header("Current Scriptables")]
-    public ScriptableQuizz currentScriptableQuizz;
+    public ScriptableQuizz currentQuizz;
     public ScriptableQuizzManager currentQuizzList;
 
     [Header("Récompense")]
@@ -105,6 +105,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             vumarkID = vumark.InstanceId.NumericValue;
         }
 
+        quizzDone = false;
         QuizzDisplaying();
     }
     
@@ -123,68 +124,70 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
 
         LeaveQuizz();
-
-
-      
+        Debug.Log(currentQuizzList);
     }
 
     public void QuizzDisplaying ()
     {
-        currentQuizzList = quizzLists[vumarkID - 1];
-
-        if (!quizzDone)
+        if (quizzDone == false)
         {
+            currentQuizzList = quizzLists[vumarkID - 1];
             quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+            quizzDone = true;
         }
-
-        currentScriptableQuizz = currentQuizzList.scriptableQuizzList[(Random.Range(0, currentQuizzList.scriptableQuizzList.Count))];
-
-        quizzDone = true;
-
-                button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-                button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-                button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-                button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-
-                button1.interactable = true;
-                button2.interactable = true;
-                button3.interactable = true;
-                button4.interactable = true;
-
-                quizzInterface.SetActive(true);
-
-                quizzText.text = currentScriptableQuizz.quizzQuestion;
-                answer1Text = currentScriptableQuizz.answer1;
-                answer2Text = currentScriptableQuizz.answer2;
-                answer3Text = currentScriptableQuizz.answer3;
-                answer4Text = currentScriptableQuizz.answer4;
-
-                answer1.text = answer1Text;
-                answer2.text = answer2Text;
-                answer3.text = answer3Text;
-                answer4.text = answer4Text;
-
-                button1.onClick.AddListener(TaskOnClick1);
-                button2.onClick.AddListener(TaskOnClick2);
-                button3.onClick.AddListener(TaskOnClick3);
-                button4.onClick.AddListener(TaskOnClick4);
-
-                leaveCanvas.onClick.AddListener(LeaveQuizz);
-
-        quizzAvailable.Remove(currentScriptableQuizz);
 
         if (quizzAvailable.Count == 0)
         {
             Debug.Log("List is empty");
             LeaveQuizz();
         }
+        else
+        {
+            Debug.Log("Quizz available =   " + quizzAvailable.Count);
+
+            currentQuizz = quizzAvailable[(Random.Range(0, quizzAvailable.Count))];
+
+            button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+            button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+            button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+            button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+
+            button1.interactable = true;
+            button2.interactable = true;
+            button3.interactable = true;
+            button4.interactable = true;
+
+            quizzInterface.SetActive(true);
+
+            quizzText.text = currentQuizz.quizzQuestion;
+            answer1Text = currentQuizz.answer1;
+            answer2Text = currentQuizz.answer2;
+            answer3Text = currentQuizz.answer3;
+            answer4Text = currentQuizz.answer4;
+
+            answer1.text = answer1Text;
+            answer2.text = answer2Text;
+            answer3.text = answer3Text;
+            answer4.text = answer4Text;
+
+            button1.onClick.AddListener(TaskOnClick1);
+            button2.onClick.AddListener(TaskOnClick2);
+            button3.onClick.AddListener(TaskOnClick3);
+            button4.onClick.AddListener(TaskOnClick4);
+
+            leaveCanvas.onClick.AddListener(LeaveQuizz);
+        }
+
+              
+                
     }
 
     // QUIZZ // answer button section
 
     public void TaskOnClick1() // BOUTON 1
     {
-        if (currentScriptableQuizz.rightAnswer == 1)
+        if (currentQuizz.rightAnswer == 1)
         {
             button1.GetComponent<UnityEngine.UI.Image>().color = Color.green;
             button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
@@ -203,7 +206,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void TaskOnClick2() // BOUTON 2
     {
-        if (currentScriptableQuizz.rightAnswer == 2)
+        if (currentQuizz.rightAnswer == 2)
         {
             button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
             button2.GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -222,7 +225,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void TaskOnClick3() // BOUTON 3
     {
-        if (currentScriptableQuizz.rightAnswer == 3)
+        if (currentQuizz.rightAnswer == 3)
         {
             button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
             button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
@@ -241,7 +244,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void TaskOnClick4() // BOUTON 4
     {
-        if (currentScriptableQuizz.rightAnswer == 4)
+        if (currentQuizz.rightAnswer == 4)
         {
             button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
             button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
@@ -272,19 +275,15 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         button3.interactable = true;
         button4.interactable = true;
 
-
         quizzInterface.SetActive(false);
         currentQuizzScore = 0;
-        quizzDone = false;
-       
+
+
         if (congratulationsImage)
         {
             congratulationsImage.SetActive(false);
         }
-
-        currentQuizzList = null;
-        currentScriptableQuizz = null;
-
+        
     }
 
     public void BadAnswer()
@@ -293,7 +292,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         button2.interactable = false;
         button3.interactable = false;
         button4.interactable = false;
-
+     
         StartCoroutine(TimeBeforeNextQuizz());
     }
 
@@ -306,10 +305,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         currentQuizzScore++;
 
-        if(currentQuizzScore == scoreToReach)
+        if (currentQuizzScore == scoreToReach)
         {
             congratulationsImage.SetActive(true);
-            Debug.Log("You Win");
             StartCoroutine(GameWon());
         }
         else if (currentQuizzScore < scoreToReach)
@@ -322,8 +320,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     IEnumerator TimeBeforeNextQuizz ()
     {
+        quizzAvailable.Remove(currentQuizz);
         yield return new WaitForSeconds(2);
-
+        currentQuizz = null;
+        yield return new WaitForSeconds(2);
         QuizzDisplaying();
     }
 
@@ -337,20 +337,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         quizzInterface.SetActive(false);
         currentQuizzScore = 0;
         quizzDone = false; ;
-
-        // IMPORTANT !!! //
-
-        // A décommenter pour la version cliente 
-
-        //if (currentScriptableQuizz)
-        //{
-        //    currentScriptableQuizz.hasBeenDone = true;
-        //}
-        //else if (currentScriptableMiniGame)
-        //{
-        //    currentScriptableMiniGame.hasBeenDone = true;
-        //}
-
 
         // Fais apparaître les récompenses liés au VuMark scanné
 
