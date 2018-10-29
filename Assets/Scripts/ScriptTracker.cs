@@ -164,21 +164,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
             }
 
-            //answer1Text = currentQuizz.answer1;
-            //answer2Text = currentQuizz.answer2;
-            //answer3Text = currentQuizz.answer3;
-            //answer4Text = currentQuizz.answer4;
-
-            //answer1.text = answer1Text;
-            //answer2.text = answer2Text;
-            //answer3.text = answer3Text;
-            //answer4.text = answer4Text;
-
-            //button1.onClick.AddListener(TaskOnClick1);
-            //button2.onClick.AddListener(TaskOnClick2);
-            //button3.onClick.AddListener(TaskOnClick3);
-            //button4.onClick.AddListener(TaskOnClick4);
-
             leaveCanvas.onClick.AddListener(LeaveQuizz);
         }              
                 
@@ -203,82 +188,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
     }
 
-    //public void TaskOnClick1() // BOUTON 1
-    //{
-    //    if (currentQuizz.rightAnswer == 1)
-    //    {
-    //        button1.GetComponent<UnityEngine.UI.Image>().color = Color.green;
-    //        button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-
-    //        RightAnswer();
-    //    }
-    //    else
-    //    {
-    //        BadAnswer();
-    //        button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button1.interactable = false;
-    //    }
-    //}
-
-    //public void TaskOnClick2() // BOUTON 2
-    //{
-    //    if (currentQuizz.rightAnswer == 2)
-    //    {
-    //        button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button2.GetComponent<UnityEngine.UI.Image>().color = Color.green;
-    //        button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-
-    //        RightAnswer();
-    //    }
-    //    else
-    //    {
-    //        BadAnswer();
-    //        button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button2.interactable = false;
-    //    }
-    //}
-
-    //public void TaskOnClick3() // BOUTON 3
-    //{
-    //    if (currentQuizz.rightAnswer == 3)
-    //    {
-    //        button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button3.GetComponent<UnityEngine.UI.Image>().color = Color.green;
-    //        button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-
-    //        RightAnswer();
-    //    }
-    //    else
-    //    {
-    //        BadAnswer();
-    //        button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button3.interactable = false;
-    //    }
-    //}
-
-    //public void TaskOnClick4() // BOUTON 4
-    //{
-    //    if (currentQuizz.rightAnswer == 4)
-    //    {
-    //        button1.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button2.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button3.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button4.GetComponent<UnityEngine.UI.Image>().color = Color.green;
-
-    //        RightAnswer();
-    //    }
-    //    else
-    //    {
-    //        BadAnswer();
-    //        button4.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-    //        button4.interactable = false;
-    //    }
-    //}
-
     public void LeaveQuizz()
     {
         quizzAvailable.Clear();
@@ -288,16 +197,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             buttonList[i].GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
             buttonList[i].interactable = true;
         }
-
-        //button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-        //button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-        //button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-        //button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-
-        //button1.interactable = true;
-        //button2.interactable = true;
-        //button3.interactable = true;
-        //button4.interactable = true;
 
         quizzInterface.SetActive(false);
         currentQuizzScore = 0;
