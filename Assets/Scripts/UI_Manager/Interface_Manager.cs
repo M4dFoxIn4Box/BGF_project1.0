@@ -38,8 +38,6 @@ public class Interface_Manager : MonoBehaviour
     public Text spawnPointFunFact;
     public ScriptableReward[] rewardBoard;
     public GameObject currentReward;
-    //public GameObject[] rewardToSpawnBoard;
-    //public string[] funFactToDisplayBoard;
 
     private void Awake()
     {
