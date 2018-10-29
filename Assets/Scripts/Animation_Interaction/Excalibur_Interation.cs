@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Excalibur_Interation : MonoBehaviour {
 
-    public Animator animExcalibur;
-    public int toDestroy; 
+    // Animator animExcalibur;
+    private int toDestroy;
+    private Animation currentAnimation;
 
 	// Use this for initialization
 	void Start ()
     {
-        animExcalibur = gameObject.GetComponent<Animator>();
+        //animExcalibur = gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -36,16 +37,32 @@ public class Excalibur_Interation : MonoBehaviour {
     //    }
     //}
 
-    private void OnMouseDown()
-    {
-        
-        toDestroy--;
-        Debug.Log(toDestroy);
+    //private void onmousedown()
+    //{
+    //    todestroy--;
+    //    debug.log(todestroy);
 
-        if(toDestroy == 0)
-        {
-            animExcalibur.SetBool("IsTaped", true);
-            Debug.Log("merde");
-        }
+    //    if (todestroy == 0)
+    //    {
+    //        animexcalibur.setbool("istaped", true);
+    //        debug.log("merde");
+    //    }
+    //}
+
+    public void PauseAnimation(Animation animation)
+    {
+        animation = currentAnimation;
+        Debug.Log("ET DE 1");
+        currentAnimation["Excalibur_Anime"].speed = 0;
+        Debug.Log("ET DE 2");
+        //currentAnimation.enabled = false;
+        OnMouseDown();
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("OH HISSE !");
+        currentAnimation["Excalibur_Anime"].speed = 1;
+
     }
 }
