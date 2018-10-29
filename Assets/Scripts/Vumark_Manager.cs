@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VumarkZoner : MonoBehaviour {
+public class Vumark_Manager : MonoBehaviour {
 
-    public int imageNumber;
+    public int mapIdx;
 
     public void Awake()
     {
@@ -13,8 +13,8 @@ public class VumarkZoner : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        Interface_Manager.Instance.MapActivation(imageNumber);
-        Save_Manager.saving.ImageToTrue(imageNumber);
+        Interface_Manager.Instance.MapActivation(mapIdx);
+        Save_Manager.saving.ImageToTrue(mapIdx);
     }
 
 }
