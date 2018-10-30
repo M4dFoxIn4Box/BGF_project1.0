@@ -38,7 +38,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public Text quizzText;
     private string[] answerString;
     public Text[] answerBoardText;
-    public Text funFact;
+
+    [Header("FunFact")]
+    public GameObject funFactParent;
+    public Text funFactTxt;
 
     [Header("Boutons")]
     public Button[] buttonList;
@@ -49,14 +52,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private float g = 0.4509804f;
     private float b = 0.4509804f;
 
-
-
-
     [Header("Scriptable Section Quizz")]
     public ScriptableQuizzManager[] quizzLists;
 
     public List<ScriptableQuizz> quizzAvailable;
-    //public ScriptableQuizz[] scriptableQuizzList;
 
     [Header("Current Scriptables")]
     public ScriptableQuizz currentQuizz;
@@ -139,16 +138,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
             currentQuizz = quizzAvailable[(Random.Range(0, quizzAvailable.Count))];
 
-            //button1.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-            //button2.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-            //button3.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-            //button4.GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-
-            //button1.interactable = true;
-            //button2.interactable = true;
-            //button3.interactable = true;
-            //button4.interactable = true;
-
             quizzInterface.SetActive(true);
 
             quizzText.text = currentQuizz.quizzQuestion;
@@ -198,6 +187,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             buttonList[i].interactable = true;
         }
 
+        funFactParent.SetActive(false);
+        
         quizzInterface.SetActive(false);
         currentQuizzScore = 0;
 
@@ -232,6 +223,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         if (currentQuizzScore == scoreToReach)
         {
+            funFactTxt.text = currentQuizzList.funFact;
+            funFactParent.SetActive(true);
             congratulationsImage.SetActive(true);
             currentQuizzScore = 0;
             Debug.Log("You're score = " + currentQuizzScore);
@@ -257,11 +250,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         yield return new WaitForSeconds(2);
 
         // Reset du quizz
+      
+ 
         screenShare.SetActive(true);
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);       
         quizzDone = false;
-        LeaveQuizz();
 
         // Fais apparaître les récompenses liés au VuMark scanné
 
