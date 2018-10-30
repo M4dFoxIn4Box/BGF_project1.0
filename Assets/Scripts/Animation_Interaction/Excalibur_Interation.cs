@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Excalibur_Interation : MonoBehaviour {
 
-    // Animator animExcalibur;
-    private int toDestroy;
-    private Animation currentAnimation;
+    private Animator currentAnimation;
+    private bool isOKTap = true;
 
 	// Use this for initialization
 	void Start ()
     {
-        //animExcalibur = gameObject.GetComponent<Animator>();
+        currentAnimation = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -24,45 +23,18 @@ public class Excalibur_Interation : MonoBehaviour {
         
     }
 
-    //public void OnCollisoonEnter(Collision other)
-    //{
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        toDestroy--;
-    //        Debug.Log(toDestroy);
-    //        if (toDestroy == 0)
-    //        {
-    //            animExcalibur.SetTrigger("isTaped");
-    //        }
-    //    }
-    //}
-
-    //private void onmousedown()
-    //{
-    //    todestroy--;
-    //    debug.log(todestroy);
-
-    //    if (todestroy == 0)
-    //    {
-    //        animexcalibur.setbool("istaped", true);
-    //        debug.log("merde");
-    //    }
-    //}
-
-    public void PauseAnimation(Animation animation)
-    {
-        animation = currentAnimation;
-        Debug.Log("ET DE 1");
-        currentAnimation["Excalibur_Anime"].speed = 0;
-        Debug.Log("ET DE 2");
-        //currentAnimation.enabled = false;
-        OnMouseDown();
-    }
-
     void OnMouseDown()
     {
-        Debug.Log("OH HISSE !");
-        currentAnimation["Excalibur_Anime"].speed = 1;
+        if(isOKTap)
+        {
+            isOKTap = false;
+            currentAnimation.SetTrigger("Excalibur_Make_Step");
+        }
+    }
 
+    public void PlayerCanTap()
+    {
+        isOKTap = true;
+        //il faut créer un bool et un event lié à lui
     }
 }
