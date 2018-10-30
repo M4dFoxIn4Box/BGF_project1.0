@@ -35,6 +35,5 @@ public class Excalibur_Interation : MonoBehaviour {
     public void PlayerCanTap()
     {
         isOKTap = true;
-        //il faut créer un bool et un event lié à lui
     }
 }
