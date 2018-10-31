@@ -215,21 +215,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1310327074761142
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4766770357313340}
-  m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1334293230349526
 GameObject:
   m_ObjectHideFlags: 1
@@ -413,7 +398,7 @@ GameObject:
   - component: {fileID: 114277512278995060}
   - component: {fileID: 114533462502746558}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Excalibur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1087,19 +1072,6 @@ Transform:
   m_Father: {fileID: 4306082818315862}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4766770357313340
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1310327074761142}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4966808575554108}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4818226468374348
 Transform:
   m_ObjectHideFlags: 1
@@ -1197,7 +1169,6 @@ Transform:
   - {fileID: 4840264899822014}
   - {fileID: 4226312670225808}
   - {fileID: 4521831999808380}
-  - {fileID: 4766770357313340}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
@@ -1675,7 +1646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapIdx: 0
+  mapIdx: 2
 --- !u!114 &114303175344509618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1718,6 +1689,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenShare: {fileID: 0}
   vumarkID: 0
+  errorCountTxt: {fileID: 0}
+  currentErrorCount: 0
+  errorImage: {fileID: 0}
   quizzDone: 0
   quizzInterface: {fileID: 0}
   congratulationsImage: {fileID: 0}
@@ -1754,7 +1728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapIdx: 0
+  mapIdx: 4
 --- !u!114 &114533462502746558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1778,7 +1752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapIdx: 0
+  mapIdx: 3
 --- !u!114 &114818031527298398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1790,7 +1764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapIdx: 0
+  mapIdx: 1
 --- !u!114 &114907696684110420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1802,7 +1776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapIdx: 0
+  mapIdx: 5
 --- !u!135 &135374736708459662
 SphereCollider:
   m_ObjectHideFlags: 1
