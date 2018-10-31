@@ -30,7 +30,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public ulong vumarkID;
 
     [Header("Quizz")]
+    public Text errorCountTxt;
     public int currentErrorCount;
+    public GameObject errorImage;
     public bool quizzDone = false;
     public GameObject quizzInterface;
     public GameObject congratulationsImage;
@@ -126,9 +128,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if (quizzDone == false)
         {
             currentQuizzList = quizzLists[vumarkID - 1];
+            
             quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
             quizzDone = true;
         }
+
+        errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
 
         if (quizzAvailable.Count == 0)
         {
@@ -194,7 +199,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
 
         funFactParent.SetActive(false);
-        
+        errorImage.SetActive(false);
         quizzInterface.SetActive(false);
         currentErrorCount = 0;
         currentQuizzScore = 0;
@@ -214,10 +219,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void BadAnswer()
     {
         currentErrorCount++;
-        if(currentErrorCount == currentQuizzList.errorLimit)
-        {
-            LeaveQuizz();
-        }
+        errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
+
 
         for (int i = 0; i < buttonList.Length; i++)
         {
@@ -258,8 +261,13 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         quizzAvailable.Remove(currentQuizz);
         yield return new WaitForSeconds(1);
-        currentQuizz = null;
-        yield return new WaitForSeconds(1);
+        if (currentErrorCount == currentQuizzList.errorLimit)
+        {
+            errorImage.SetActive(true);
+            yield return new WaitForSeconds(1);
+            LeaveQuizz();
+        }
+        currentQuizz = null;    
         QuizzDisplaying();
     }
 
