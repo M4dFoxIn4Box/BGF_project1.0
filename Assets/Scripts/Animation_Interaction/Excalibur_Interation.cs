@@ -6,7 +6,8 @@ public class Excalibur_Interation : MonoBehaviour {
 
     private Animator currentAnimation;
     private bool isOKTap = true;
-
+    public GameObject fakeARObject;
+    
 	// Use this for initialization
 	void Start ()
     {
@@ -35,5 +36,11 @@ public class Excalibur_Interation : MonoBehaviour {
     public void PlayerCanTap()
     {
         isOKTap = true;
+    }
+
+    public void ExcaliburIsFinished()
+    {
+        ScriptTracker.Instance.FakeARToDeactivate(fakeARObject);
+        Debug.Log(fakeARObject);
     }
 }

@@ -66,6 +66,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private int currentQuizzScore = 0;
     public int scoreToReach;
     private bool isAnswered = false;
+    private GameObject currentFakeARObject;
     
     void Start()
     {
@@ -158,6 +159,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 
     }
 
+    public void FakeARToDeactivate(GameObject fakeARObject)
+    {
+        currentFakeARObject = fakeARObject;
+    }
+
     // QUIZZ // answer button section
 
 
@@ -195,6 +201,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if (congratulationsImage)
         {
             congratulationsImage.SetActive(false);
+        }
+
+        if(currentFakeARObject != null)
+        {
+            currentFakeARObject.SetActive(false);
         }
         
     }
