@@ -216,8 +216,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         currentErrorCount++;
         if(currentErrorCount == currentQuizzList.errorLimit)
         {
-
+            LeaveQuizz();
         }
+
         for (int i = 0; i < buttonList.Length; i++)
         {
             buttonList[i].interactable = false;
