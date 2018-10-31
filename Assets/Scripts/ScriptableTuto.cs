@@ -8,7 +8,7 @@ public class ScriptableTuto : ScriptableObject {
 
     public Sprite[] tutoImageBoard;
     public string[] tutoTextBoard;
-    public List<bool> isTutoDone;
+    public bool isTutoDone;
     public int nbxTuto;
     public int numberOfSlides;
 

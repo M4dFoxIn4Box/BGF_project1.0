@@ -3096,6 +3096,26 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0.54251
       objectReference: {fileID: 0}
+    - target: {fileID: 114418117574705148, guid: 1827c58500709474e9615c68b74806ac,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: ActivatingTuto
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418117574705148, guid: 1827c58500709474e9615c68b74806ac,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418117574705148, guid: 1827c58500709474e9615c68b74806ac,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418117574705148, guid: 1827c58500709474e9615c68b74806ac,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1827c58500709474e9615c68b74806ac, type: 2}
   m_IsPrefabAsset: 0
@@ -4648,6 +4668,21 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoHasBeenDone.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoHasNotBeenDone.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4940,6 +4975,38 @@ Prefab:
       propertyPath: spawnPointFunFact
       value: 
       objectReference: {fileID: 1580485433}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoHasNotBeenDone.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoHasNotBeenDone.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoHasNotBeenDone.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoHasNotBeenDone.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: abd73b896209d374f882514711c54b03,
+        type: 2}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ee8ddb9e7bfe8f42a56ec092d92dbc0,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
   m_IsPrefabAsset: 0
