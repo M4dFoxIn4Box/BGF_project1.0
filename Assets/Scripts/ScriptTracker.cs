@@ -30,6 +30,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public ulong vumarkID;
 
     [Header("Quizz")]
+    public int currentErrorCount;
     public bool quizzDone = false;
     public GameObject quizzInterface;
     public GameObject congratulationsImage;
@@ -54,7 +55,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     [Header("Scriptable Section Quizz")]
     public ScriptableQuizzManager[] quizzLists;
-
     public List<ScriptableQuizz> quizzAvailable;
 
     [Header("Current Scriptables")]
@@ -196,6 +196,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         funFactParent.SetActive(false);
         
         quizzInterface.SetActive(false);
+        currentErrorCount = 0;
         currentQuizzScore = 0;
 
         if (congratulationsImage)
@@ -212,6 +213,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void BadAnswer()
     {
+        currentErrorCount++;
+        if(currentErrorCount == currentQuizzList.errorLimit)
+        {
+
+        }
         for (int i = 0; i < buttonList.Length; i++)
         {
             buttonList[i].interactable = false;
