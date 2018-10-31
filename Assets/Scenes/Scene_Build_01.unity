@@ -449,34 +449,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1438090472243944, guid: 1827c58500709474e9615c68b74806ac,
     type: 2}
   m_PrefabInternal: {fileID: 938651419}
---- !u!1 &780360971
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 780360972}
-  m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &780360972
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 780360971}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1582455091}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &825887141 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1843135726597926, guid: 1827c58500709474e9615c68b74806ac,
@@ -2002,11 +1974,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 938651419}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!4 &1582455091 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-    type: 2}
-  m_PrefabInternal: {fileID: 2090225340}
 --- !u!43 &1607560282
 Mesh:
   m_ObjectHideFlags: 0
@@ -2287,41 +2254,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: quizzLists.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: buttonList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoard.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoardText.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableScanList.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableMiniGameList.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.8
@@ -2354,26 +2286,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 23154150541529358, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 712663161}
     - target: {fileID: 33759449354752750, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1607560282}
+    - target: {fileID: 23154150541529358, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 712663161}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: screenShare
       value: 
       objectReference: {fileID: 2016398390}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: miniGameSpawnPoint
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzInterface
@@ -2391,203 +2318,34 @@ Prefab:
       objectReference: {fileID: 1905457599}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
-      propertyPath: answer1
+      propertyPath: answerBoardText.Array.data[0]
       value: 
       objectReference: {fileID: 1187500089}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
-      propertyPath: answer2
+      propertyPath: answerBoardText.Array.data[1]
       value: 
       objectReference: {fileID: 1187500087}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
-      propertyPath: answer3
+      propertyPath: answerBoardText.Array.data[2]
       value: 
       objectReference: {fileID: 1187500085}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
-      propertyPath: answer4
+      propertyPath: answerBoardText.Array.data[3]
       value: 
       objectReference: {fileID: 1187500083}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
-      propertyPath: funFact
+      propertyPath: funFactParent
+      value: 
+      objectReference: {fileID: 421275791}
+    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: funFactTxt
       value: 
       objectReference: {fileID: 22391914}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: button1
-      value: 
-      objectReference: {fileID: 1187500090}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: button2
-      value: 
-      objectReference: {fileID: 1187500088}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: button3
-      value: 
-      objectReference: {fileID: 1187500086}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: button4
-      value: 
-      objectReference: {fileID: 1187500084}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: leaveCanvas
-      value: 
-      objectReference: {fileID: 1544745373}
-    - target: {fileID: 114430918219456324, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: imageNumber
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114907696684110420, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: imageNumber
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1672895316672764, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4521831999808380, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableMiniGameList.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: be26394ee9ae7bc419d104314fbe4ed2,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableMiniGameList.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: ca6eb3b751e0ad548906ece5fbf42565,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableMiniGameList.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7a956698831186b4599bdcb5aebdf3c4,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableMiniGameList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 478fdef292354a94b8b638e005f2b3fb,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableMiniGameList.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 9cd80ff6feaaf47448278b8f494d6250,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[9]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[10]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[11]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[12]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[13]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableQuizzList.Array.data[14]
-      value: 
-      objectReference: {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableScanList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5a7f9712e8a3a6a4c9cfc6b1c9baa090,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scriptableScanList.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: ebf2a14235ac8cf458300317bd8f9f0f,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: quizzLists.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: fd0e1eb2798164d4180a73ddfef67a23,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: scoreToReach
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: buttonList.Array.data[0]
@@ -2610,117 +2368,12 @@ Prefab:
       objectReference: {fileID: 1187500084}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
-      propertyPath: quizzLists.Array.data[1]
+      propertyPath: leaveCanvas
       value: 
-      objectReference: {fileID: 11400000, guid: 70527c52cec3b37448c668bc2fa3599a,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: quizzLists.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: quizzLists.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: b92654971b0fdac42b5a65acf69581de,
-        type: 2}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoard.Array.data[0]
-      value: 
-      objectReference: {fileID: 1187500089}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoard.Array.data[1]
-      value: 
-      objectReference: {fileID: 1187500087}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoard.Array.data[2]
-      value: 
-      objectReference: {fileID: 1187500085}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoard.Array.data[3]
-      value: 
-      objectReference: {fileID: 1187500083}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoard.Array.data[4]
-      value: 
-      objectReference: {fileID: 1187500089}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoard.Array.data[5]
-      value: 
-      objectReference: {fileID: 1187500087}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoard.Array.data[6]
-      value: 
-      objectReference: {fileID: 1187500085}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoard.Array.data[7]
-      value: 
-      objectReference: {fileID: 1187500083}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoardText.Array.data[0]
-      value: 
-      objectReference: {fileID: 1187500089}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoardText.Array.data[1]
-      value: 
-      objectReference: {fileID: 1187500087}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoardText.Array.data[2]
-      value: 
-      objectReference: {fileID: 1187500085}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoardText.Array.data[3]
-      value: 
-      objectReference: {fileID: 1187500083}
-    - target: {fileID: 1672895316672764, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000,
-        type: 0}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: funFactParent
-      value: 
-      objectReference: {fileID: 421275791}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: funFactTxt
-      value: 
-      objectReference: {fileID: 22391914}
+      objectReference: {fileID: 1544745373}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &2090225341 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1620452437172474, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-    type: 2}
-  m_PrefabInternal: {fileID: 2090225340}
---- !u!114 &2090225342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2090225341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78bc8efa62478c4c8d7ebc2f39cf4d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idxVumark: 0
 --- !u!1001 &2094363558
 Prefab:
   m_ObjectHideFlags: 0

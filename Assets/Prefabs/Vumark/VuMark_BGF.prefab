@@ -215,6 +215,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1310327074761142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4766770357313340}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1334293230349526
 GameObject:
   m_ObjectHideFlags: 1
@@ -395,10 +410,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4148240739876650}
-  - component: {fileID: 33065569528553338}
-  - component: {fileID: 23578788520063108}
-  - component: {fileID: 65000432320495542}
   - component: {fileID: 114277512278995060}
+  - component: {fileID: 114533462502746558}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -452,7 +465,7 @@ GameObject:
   m_Layer: 0
   m_Name: VuMark_BGF
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1074,6 +1087,19 @@ Transform:
   m_Father: {fileID: 4306082818315862}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4766770357313340
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310327074761142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4966808575554108}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4818226468374348
 Transform:
   m_ObjectHideFlags: 1
@@ -1171,6 +1197,7 @@ Transform:
   - {fileID: 4840264899822014}
   - {fileID: 4226312670225808}
   - {fileID: 4521831999808380}
+  - {fileID: 4766770357313340}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
@@ -1398,41 +1425,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23578788520063108
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620452437172474}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: 691be9cd7aa7f7e4881cdba5a1fac70c, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!23 &23681842108725840
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1503,13 +1495,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33065569528553338
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620452437172474}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33278570030185718
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1552,18 +1537,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1672895316672764}
   m_Mesh: {fileID: 0}
---- !u!65 &65000432320495542
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620452437172474}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65213476350143988
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1690,7 +1663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageNumber: 0
+  mapIdx: 0
 --- !u!114 &114277512278995060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1702,7 +1675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageNumber: 2
+  mapIdx: 0
 --- !u!114 &114303175344509618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1745,37 +1718,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenShare: {fileID: 0}
   vumarkID: 0
-  miniGameLimit: 4
-  quizzLimit: 2
-  miniGameSpawnPoint: {fileID: 0}
-  miniGameToDestroy: {fileID: 0}
-  currentScore: 0
-  scoreToReach: 0
+  quizzDone: 0
   quizzInterface: {fileID: 0}
   congratulationsImage: {fileID: 0}
   quizzText: {fileID: 0}
-  answer1: {fileID: 0}
-  answer2: {fileID: 0}
-  answer3: {fileID: 0}
-  answer4: {fileID: 0}
-  funFact: {fileID: 0}
-  button1: {fileID: 0}
-  button2: {fileID: 0}
-  button3: {fileID: 0}
-  button4: {fileID: 0}
+  answerBoardText:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  funFactParent: {fileID: 0}
+  funFactTxt: {fileID: 0}
+  buttonList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   leaveCanvas: {fileID: 0}
-  scriptableQuizzList:
-  - {fileID: 11400000, guid: 9695033954f6dce4783f24fae7059502, type: 2}
-  - {fileID: 11400000, guid: fff189917d026e94a89382f7648dedcd, type: 2}
-  scriptableMiniGameList:
-  - {fileID: 11400000, guid: 07d80bd4838e6454cb5e3c7bb611e347, type: 2}
-  - {fileID: 11400000, guid: 52560ec776c9abe419942e8baf21115e, type: 2}
-  scriptableScanList:
-  - {fileID: 11400000, guid: 5a7f9712e8a3a6a4c9cfc6b1c9baa090, type: 2}
-  - {fileID: 11400000, guid: ebf2a14235ac8cf458300317bd8f9f0f, type: 2}
-  currentScriptableQuizz: {fileID: 0}
-  currentScriptableMiniGame: {fileID: 0}
-  currentScriptableScan: {fileID: 0}
+  quizzLists:
+  - {fileID: 11400000, guid: fd0e1eb2798164d4180a73ddfef67a23, type: 2}
+  - {fileID: 11400000, guid: 70527c52cec3b37448c668bc2fa3599a, type: 2}
+  - {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793, type: 2}
+  quizzAvailable: []
+  currentQuizz: {fileID: 0}
+  currentQuizzList: {fileID: 0}
+  scoreToReach: 2
 --- !u!114 &114430918219456324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1787,7 +1754,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageNumber: 0
+  mapIdx: 0
+--- !u!114 &114533462502746558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620452437172474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78bc8efa62478c4c8d7ebc2f39cf4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idxVumark: 0
 --- !u!114 &114552082576487660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1799,7 +1778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageNumber: 3
+  mapIdx: 0
 --- !u!114 &114818031527298398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1811,7 +1790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageNumber: 1
+  mapIdx: 0
 --- !u!114 &114907696684110420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1823,7 +1802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageNumber: 0
+  mapIdx: 0
 --- !u!135 &135374736708459662
 SphereCollider:
   m_ObjectHideFlags: 1
