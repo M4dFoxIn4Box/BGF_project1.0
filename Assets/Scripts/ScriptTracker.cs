@@ -211,7 +211,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         if(currentFakeARObject != null)
         {
-            currentFakeARObject.SetActive(false);
+            Destroy(currentFakeARObject);
         }
         
     }

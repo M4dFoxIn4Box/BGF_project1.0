@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class Set_Active_Fake_AR : MonoBehaviour {
 
-    public int idxVumark;
+    public int fakeArIdx;
 
-	// Use this for initialization
-	void Start ()
+    public void OnEnable()
     {
-        Fake_AR_Manager.FakeAR.FakeARToActivate(idxVumark);
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
+        Fake_AR_Manager.FakeAR.FakeARToSpawn(fakeArIdx);
+
+    }
 }

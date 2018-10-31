@@ -11,6 +11,7 @@ public class Excalibur_Interation : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        ScriptTracker.Instance.FakeARToDeactivate(fakeARObject);
         currentAnimation = GetComponent<Animator>();
 	}
 	
@@ -38,9 +39,9 @@ public class Excalibur_Interation : MonoBehaviour {
         isOKTap = true;
     }
 
-    public void ExcaliburIsFinished()
-    {
-        ScriptTracker.Instance.FakeARToDeactivate(fakeARObject);
-        Debug.Log(fakeARObject);
-    }
+    //public void ExcaliburIsFinished()
+    //{
+        
+    //    Debug.Log(fakeARObject);
+    //}
 }
