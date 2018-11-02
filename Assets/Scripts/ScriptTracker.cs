@@ -154,9 +154,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             {
                 Debug.Log("Compteur de boucle" + i);
                 buttonList[i].interactable = true;
-                answerBoardText[i].text = currentQuizz.answerList[i]; 
-                buttonList[i].GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);            
-
+                answerBoardText[i].text = currentQuizz.answerList[i];
+                buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
             }
 
             leaveCanvas.onClick.AddListener(LeaveQuizz);
