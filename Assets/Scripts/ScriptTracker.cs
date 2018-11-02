@@ -88,26 +88,26 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         mVuMarkManager = TrackerManager.Instance.GetStateManager().GetVuMarkManager();
     }
 
-    void Update ()
-    {
-    	if (questStart == questValue)
-    	{
-    		QuestSys();
-    		questStart = 0;
-    		Debug.Log ("questStart");
-    	}
-    }
+    //void Update ()
+    //{
+    //	if (questStart == questValue)
+    //	{
+    //		QuestSys();
+    //		questStart = 0;
+    //		Debug.Log ("questStart");
+    //	}
+    //}
 
-    public void QuestSys ()
-    {
-    	choiceFace ++;
-    	if (choiceFace == 1)
-    	questGoal1.SetActive(true);
-    	if (choiceFace == 2)
-    	questGoal2.SetActive(true);
-    	if (choiceFace == 3)
-    	questGoal2.SetActive(true);
-    }
+    //public void QuestSys ()
+    //{
+    //	choiceFace ++;
+    //	if (choiceFace == 1)
+    //	questGoal1.SetActive(true);
+    //	if (choiceFace == 2)
+    //	questGoal2.SetActive(true);
+    //	if (choiceFace == 3)
+    //	questGoal2.SetActive(true);
+    //}
 
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
     {
