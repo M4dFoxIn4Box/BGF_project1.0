@@ -7,6 +7,7 @@ public class Tuto_Manager : MonoBehaviour
 {
     public ScriptableTuto currentScriptableTuto;
     public GameObject tutoInterface;
+    public Text tutoTitleTxt;
     public Image tutoImg;
     public Text tutoTxt;
     private int tutoIdx;
@@ -17,14 +18,14 @@ public class Tuto_Manager : MonoBehaviour
     {
 
         if (tutoHasBeenDone[tutoToActive] == false)
-        {
+        {       
             currentScriptableTuto = tutoList[tutoToActive];
+            tutoTitleTxt.text = currentScriptableTuto.tutoTitle;
             tutoInterface.SetActive(true);
             tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
             tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
             tutoHasBeenDone[tutoToActive] = true;
         }
-
     }
 
     public void MoveToNextSlide ()
@@ -35,7 +36,6 @@ public class Tuto_Manager : MonoBehaviour
         {
             tutoIdx = 0;
             tutoInterface.SetActive(false);
-            tutoIdx = currentScriptableTuto.nbxTuto;
             Debug.Log("Done");
         }
         else 

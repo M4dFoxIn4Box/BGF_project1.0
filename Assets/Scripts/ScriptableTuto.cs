@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class ScriptableTuto : ScriptableObject {
 
+    public string tutoTitle;
     public Sprite[] tutoImageBoard;
     public string[] tutoTextBoard;
-    public int nbxTuto;
     public int numberOfSlides;
 
 }
