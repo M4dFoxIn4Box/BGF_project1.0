@@ -771,7 +771,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 1310647162}
+      objectReference: {fileID: 328857441}
     - target: {fileID: 114511766679436624, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1206,7 +1206,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
-      objectReference: {fileID: 1310647162}
+      objectReference: {fileID: 328857441}
     - target: {fileID: 114245598851725524, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1406,7 +1406,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 1310647162}
+      objectReference: {fileID: 328857441}
     - target: {fileID: 114571559602108332, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1632,7 +1632,22 @@ Prefab:
     - target: {fileID: 114827619959031122, guid: 1827c58500709474e9615c68b74806ac,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114759306959895454, guid: 1827c58500709474e9615c68b74806ac,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: DestroyRewardSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 114920108739654846, guid: 1827c58500709474e9615c68b74806ac,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: RewardButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 114996617376272430, guid: 1827c58500709474e9615c68b74806ac,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: RewardButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1827c58500709474e9615c68b74806ac, type: 2}
@@ -2297,6 +2312,16 @@ Prefab:
       propertyPath: QuestValue
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: spawnPointReward
+      value: 
+      objectReference: {fileID: 505130806}
+    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: spawnPointFunFact
+      value: 
+      objectReference: {fileID: 1580485433}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
   m_IsPrefabAsset: 0
