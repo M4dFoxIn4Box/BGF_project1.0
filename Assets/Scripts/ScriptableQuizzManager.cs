@@ -8,6 +8,7 @@ public class ScriptableQuizzManager : ScriptableObject
 {
     public List<ScriptableQuizz> scriptableQuizzList;
     public string funFact;
+    public GameObject rewardToSpawn;
     public int errorLimit;
 
 }

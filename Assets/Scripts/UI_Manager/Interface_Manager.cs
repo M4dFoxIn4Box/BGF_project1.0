@@ -31,13 +31,7 @@ public class Interface_Manager : MonoBehaviour
     [Header("Map")]
 
     public GameObject[] imageZone;
-
-    [Header("Reward")]
-
-    public Transform spawnPointReward;
-    public Text spawnPointFunFact;
-    public ScriptableReward[] rewardBoard;
-    public GameObject currentReward;
+    
 
     private void Awake()
     {
@@ -163,17 +157,4 @@ public class Interface_Manager : MonoBehaviour
         imageZone[imageNumber].GetComponent<Image>().enabled = true;
     }
 
-    //REWARD + SAVE
-
-    public void RewardButton(int rewardIdx) //Click sur le bouton de la galerie
-    {
-        currentReward = Instantiate(rewardBoard[rewardIdx].rewardToSpawn, spawnPointReward);
-        spawnPointFunFact.text = rewardBoard[rewardIdx].funFactToDisplay;
-        Debug.Log(transform.GetSiblingIndex());
-    }
-
-    public void DestroyRewardSpawn()
-    {
-        Destroy(currentReward);
-    }
 }

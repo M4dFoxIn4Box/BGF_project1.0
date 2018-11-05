@@ -73,6 +73,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     [Header("Récompense")]
 
+    public Transform spawnPointReward;
+    public Text spawnPointFunFact;
+    public GameObject currentReward;
     private int currentQuizzScore = 0;
     public int scoreToReach;
     private bool isAnswered = false;
@@ -321,6 +324,18 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             Interface_Manager.Instance.CheckStateButton(targetObj - 1);
         }
 
+    }
+
+    public void RewardButton(int rewardIdx) //Click sur le bouton de la galerie
+    {
+        currentReward = Instantiate(quizzLists[rewardIdx].rewardToSpawn, spawnPointReward);
+        spawnPointFunFact.text = quizzLists[rewardIdx].funFact;
+        Debug.Log(transform.GetSiblingIndex());
+    }
+
+    public void DestroyRewardSpawn()
+    {
+        Destroy(currentReward);
     }
 
 }
