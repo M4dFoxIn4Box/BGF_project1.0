@@ -80,7 +80,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public int scoreToReach;
     private bool isAnswered = false;
     private GameObject currentFakeARObject;
-    
+
+    [Header("Quest")]
+    public InputField answer;
+    public string passwordToEdit;
+
     void Start()
     {
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -111,6 +115,27 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     //	if (choiceFace == 3)
     //	questGoal2.SetActive(true);
     //}
+
+    public void Password()
+    {
+        Debug.Log(answer.text);
+        if(answer.text == passwordToEdit)
+        {
+            Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            answer.text = "Bien joué";
+            StartCoroutine(ResetPassword());
+        }
+    }
+
+    IEnumerator ResetPassword ()
+    {
+        yield return new WaitForSeconds(1);
+        answer.text = null;
+    }
+
+        
+
+
 
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
     {
@@ -275,8 +300,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         if (currentQuizzScore == scoreToReach)
         {
-            funFactTxt.text = currentQuizzList.funFact;
-            funFactParent.SetActive(true);
+            //funFactTxt.text = currentQuizzList.funFact;
+            //funFactParent.SetActive(true);
             congratulationsImage.SetActive(true);
             currentQuizzScore = 0;
             Debug.Log("You're score = " + currentQuizzScore);
