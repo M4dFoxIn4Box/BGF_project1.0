@@ -34,9 +34,9 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Fonctionnel")]
 
-    private int currentIdxMenu = 0;
+    private int currentIdxMenu = 1;
     public GameObject[] menuToActivate;
-    public GameObject ARMode;
+    public GameObject ARModeMenu;
     
 
     private void Awake()
@@ -68,12 +68,18 @@ public class Interface_Manager : MonoBehaviour
 
     //UI MANAGER 
 
-    public void ChangeMenu(int idxMenu)
+    public void ChangeMenuPlus()
     {
         menuToActivate[currentIdxMenu].SetActive(false);
         currentIdxMenu++;
         menuToActivate[currentIdxMenu].SetActive(true);
+    }
 
+    public void ChangeMenuMoins()
+    {
+        menuToActivate[currentIdxMenu].SetActive(false);
+        currentIdxMenu--;
+        menuToActivate[currentIdxMenu].SetActive(true);
     }
 
     public void ShowElement(GameObject elementToActive)
@@ -155,15 +161,16 @@ public class Interface_Manager : MonoBehaviour
     public void OpenARCamera()
     {
         menuToActivate[currentIdxMenu].SetActive(false);
-        ARMode.SetActive(true);
+        ARModeMenu.SetActive(true);
         arCam.enabled = true;
     }
 
     public void CloseARCamera()
     {
-        ScriptTracker.Instance.OnTrackerLost();
+        //ScriptTracker.Instance.OnTrackerLost();
         arCam.enabled = false;
-        ARMode.SetActive(false);
+        ARModeMenu.SetActive(false);
+        menuToActivate[currentIdxMenu].SetActive(true);
     }
 
     //MAP
