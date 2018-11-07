@@ -251,7 +251,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
 
         funFactParent.SetActive(false);
-        errorImage.SetActive(false);
         quizzInterface.SetActive(false);
         currentErrorCount = 0;
         currentQuizzScore = 0;
