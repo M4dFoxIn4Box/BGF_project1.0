@@ -165,10 +165,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void OnTrackerLost()
     {
 
-        if (screenShare)
-        {
-            screenShare.SetActive(false);
-        }
+    
 
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
@@ -215,7 +212,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
             }
 
-            leaveCanvas.onClick.AddListener(LeaveQuizz);
         }              
                 
     }
@@ -259,6 +255,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         quizzInterface.SetActive(false);
         currentErrorCount = 0;
         currentQuizzScore = 0;
+
+        if (screenShare)
+        {
+            screenShare.SetActive(false);
+        }
 
         if (congratulationsImage)
         {

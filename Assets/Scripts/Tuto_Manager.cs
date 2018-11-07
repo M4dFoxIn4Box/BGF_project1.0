@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Tuto_Manager : MonoBehaviour
 {
     public ScriptableTuto currentScriptableTuto;
-    public GameObject tutoInterface;
+    public GameObject menuTuto;
     public Text tutoTitleTxt;
     public Image tutoImg;
     public Text tutoTxt;
@@ -21,7 +21,7 @@ public class Tuto_Manager : MonoBehaviour
         {       
             currentScriptableTuto = tutoList[tutoToActive];
             tutoTitleTxt.text = currentScriptableTuto.tutoTitle;
-            tutoInterface.SetActive(true);
+            menuTuto.SetActive(true);
             tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
             tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
             tutoHasBeenDone[tutoToActive] = true;
@@ -35,7 +35,7 @@ public class Tuto_Manager : MonoBehaviour
         if(tutoIdx == currentScriptableTuto.numberOfSlides - 1)
         {
             tutoIdx = 0;
-            tutoInterface.SetActive(false);
+            menuTuto.SetActive(false);
             Debug.Log("Done");
         }
         else 

@@ -12,7 +12,7 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Gallery")]
 
-    public Transform galleryPannel;//gallery.GetChild(idx)
+    public Transform artifactsGallery;//gallery.GetChild(idx)
     public Transform mapList;
     private List<int> scanIdx = new List<int>();
     private List<bool> buttonState = new List<bool>();
@@ -100,9 +100,9 @@ public class Interface_Manager : MonoBehaviour
         if (!scanIdx.Contains(idx))
         {
             scanIdx.Add(idx);
-            if(galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
+            if(artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
             {
-                galleryPannel.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
+                artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
                 Save_Manager.saving.SetToTrue(idx);
                 idxButton = idx;
                 AddScore(1);
@@ -114,7 +114,7 @@ public class Interface_Manager : MonoBehaviour
     {
         for (int i = 0; i < interactableButton.Count; i++)// ou 41
         {
-            galleryPannel.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
+            artifactsGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
             if (interactableButton[i] == true)
             {
                 AddScore(1);
