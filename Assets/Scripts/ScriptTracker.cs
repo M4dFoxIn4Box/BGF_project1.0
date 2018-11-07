@@ -29,13 +29,13 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public VuMarkTarget vumark;
     public ulong vumarkID;
 
-    [Header("Quest")]
-	private int questStart = 0;
-	public int questValue;
-	private int choiceFace = 0;
-	public GameObject questGoal1;
-	public GameObject questGoal2;
-	public GameObject questGoal3;
+ //   [Header("Quest")]
+	//private int questStart = 0;
+	//public int questValue;
+	//private int choiceFace = 0;
+	//public GameObject questGoal1;
+	//public GameObject questGoal2;
+	//public GameObject questGoal3;
 
     [Header("Quizz")]
     public Text errorCountTxt;
@@ -336,7 +336,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);       
         quizzDone = false;
-        questStart ++;
+        //questStart ++;
 
         // Fais apparaître les récompenses liés au VuMark scanné
 
