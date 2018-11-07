@@ -26,7 +26,13 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Camera")]
 
-    public VuforiaMonoBehaviour arCam;
+    public Camera arCam;
+    public Camera uiCam;
+    public Canvas mainCanvas;
+
+    [Header ("AR Mode")]
+
+    public GameObject vumarkPrefab;
 
     [Header("Map")]
 
@@ -160,15 +166,22 @@ public class Interface_Manager : MonoBehaviour
 
     public void OpenARCamera()
     {
+        mainCanvas.worldCamera = arCam;
         menuToActivate[currentIdxMenu].SetActive(false);
         ARModeMenu.SetActive(true);
-        arCam.enabled = true;
+        vumarkPrefab.SetActive(true);
+        uiCam.gameObject.SetActive(false);
+
+        arCam.gameObject.SetActive(true);
     }
 
     public void CloseARCamera()
     {
         //ScriptTracker.Instance.OnTrackerLost();
-        arCam.enabled = false;
+        mainCanvas.worldCamera = uiCam;
+        vumarkPrefab.SetActive(false);
+        uiCam.gameObject.SetActive(true);
+        arCam.gameObject.SetActive(false);
         ARModeMenu.SetActive(false);
         menuToActivate[currentIdxMenu].SetActive(true);
     }
