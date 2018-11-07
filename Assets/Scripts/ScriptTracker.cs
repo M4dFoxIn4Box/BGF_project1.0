@@ -206,7 +206,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
             for (int i = 0; i < buttonList.Length; i++)
             {
-                Debug.Log("Compteur de boucle" + i);
                 buttonList[i].interactable = true;
                 answerBoardText[i].text = currentQuizz.answerList[i];
                 buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
@@ -250,7 +249,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             buttonList[i].interactable = true;
         }
 
-        funFactParent.SetActive(false);
         quizzInterface.SetActive(false);
         currentErrorCount = 0;
         currentQuizzScore = 0;
