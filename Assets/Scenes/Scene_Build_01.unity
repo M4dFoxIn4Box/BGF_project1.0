@@ -1404,6 +1404,77 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 238836252}
   m_CullTransparentMesh: 0
+--- !u!1 &270663100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 270663101}
+  - component: {fileID: 270663102}
+  - component: {fileID: 270663103}
+  m_Layer: 0
+  m_Name: Save_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &270663101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 270663100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 359805771}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &270663102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 270663100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 562379847, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveIsEasyConfig:
+    PasswordHash: 0
+    PasswordKey: 
+    PasswordKey16Bytes: 
+  Config:
+    FileName: BgfScene
+    autoSaving: 1
+    autoLoadOnPlay: 1
+    onExitSave: 1
+    duplicateSaveFile: 0
+    exclusiveFiles: 0
+    encrypt: 0
+    autoSavingRunInThread: 0
+    autoSavingInterval: 300
+    currentTimeToSave: 0
+    encryptionConfig: 0
+  Load_Prefabs:
+  - {fileID: 114722586552158970, guid: c3e13744cd05ba44f804034e9cde30da, type: 2}
+  - {fileID: 114232354994320794, guid: 9d3e55a541d678e45932325c90a1a94b, type: 2}
+--- !u!114 &270663103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 270663100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a314e06e6503a345a83b5d515f38bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &291558448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,6 +1814,41 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 357154103}
   m_CullTransparentMesh: 0
+--- !u!1 &359805770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1163391694815750, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 359805771}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &359805771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359805770}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 736725998}
+  - {fileID: 1266037878}
+  - {fileID: 1512805630}
+  - {fileID: 1476038470}
+  - {fileID: 270663101}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371528026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,6 +2190,7 @@ GameObject:
   - component: {fileID: 411109051}
   - component: {fileID: 411109050}
   - component: {fileID: 411109049}
+  - component: {fileID: 411109052}
   m_Layer: 5
   m_Name: Zone_07
   m_TagString: Untagged
@@ -2146,6 +2253,166 @@ RectTransform:
   m_AnchoredPosition: {x: 357.20544, y: 309.48776}
   m_SizeDelta: {x: 200.55502, y: 178.7656}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &411109052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 411109048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 411109049}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 23
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: 1034310913
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!114 &413593682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2621,6 +2888,7 @@ GameObject:
   - component: {fileID: 479595889}
   - component: {fileID: 479595888}
   - component: {fileID: 479595887}
+  - component: {fileID: 479595890}
   m_Layer: 5
   m_Name: Zone_05
   m_TagString: Untagged
@@ -2683,6 +2951,166 @@ RectTransform:
   m_AnchoredPosition: {x: 31.338013, y: 107.34}
   m_SizeDelta: {x: 270.37244, y: 225.53787}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &479595890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479595886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 479595887}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: 110885829
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &482725559
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,7 +3359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5964967, y: 0.38120946}
   m_AnchorMax: {x: 0.9704787, y: 0.8886897}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0.00012207031}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0.00012207031}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520635520
@@ -3685,6 +4113,7 @@ GameObject:
   - component: {fileID: 649895504}
   - component: {fileID: 649895503}
   - component: {fileID: 649895502}
+  - component: {fileID: 649895505}
   m_Layer: 5
   m_Name: Zone_11
   m_TagString: Untagged
@@ -3747,6 +4176,166 @@ RectTransform:
   m_AnchoredPosition: {x: 289.8, y: -55.471985}
   m_SizeDelta: {x: 250.10004, y: 159.4}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &649895505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 649895501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 649895502}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: -1793947747
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &656967632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,6 +4620,7 @@ GameObject:
   - component: {fileID: 730209422}
   - component: {fileID: 730209421}
   - component: {fileID: 730209420}
+  - component: {fileID: 730209423}
   m_Layer: 5
   m_Name: Zone_04
   m_TagString: Untagged
@@ -4093,6 +4683,166 @@ RectTransform:
   m_AnchoredPosition: {x: 156.65, y: 309.49}
   m_SizeDelta: {x: 200.55502, y: 178.7656}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &730209423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730209419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 730209420}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: 360540377
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &730260023
 GameObject:
   m_ObjectHideFlags: 0
@@ -4172,6 +4922,42 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 730260023}
   m_CullTransparentMesh: 0
+--- !u!1 &736725997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1364951043403184, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736725998}
+  - component: {fileID: 1310647162}
+  m_Layer: 0
+  m_Name: Interface_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &736725998
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224087666885904438, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 736725997}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 359805771}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &748210179
 GameObject:
   m_ObjectHideFlags: 0
@@ -4670,6 +5456,7 @@ GameObject:
   - component: {fileID: 933429067}
   - component: {fileID: 933429066}
   - component: {fileID: 933429065}
+  - component: {fileID: 933429068}
   m_Layer: 5
   m_Name: Zone_10
   m_TagString: Untagged
@@ -4732,6 +5519,166 @@ RectTransform:
   m_AnchoredPosition: {x: 31.338013, y: 107.340004}
   m_SizeDelta: {x: 270.37244, y: 225.53787}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &933429068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 933429064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 933429065}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: 1892914333
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &947511903
 GameObject:
   m_ObjectHideFlags: 0
@@ -4743,6 +5690,7 @@ GameObject:
   - component: {fileID: 947511906}
   - component: {fileID: 947511905}
   - component: {fileID: 947511904}
+  - component: {fileID: 947511907}
   m_Layer: 5
   m_Name: Zone_06
   m_TagString: Untagged
@@ -4805,6 +5753,166 @@ RectTransform:
   m_AnchoredPosition: {x: 289.8, y: -55.47199}
   m_SizeDelta: {x: 250.10004, y: 159.4}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &947511907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 947511903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 947511904}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: -31989536
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &952458200
 GameObject:
   m_ObjectHideFlags: 0
@@ -5062,6 +6170,7 @@ GameObject:
   - component: {fileID: 976053334}
   - component: {fileID: 976053333}
   - component: {fileID: 976053332}
+  - component: {fileID: 976053335}
   m_Layer: 5
   m_Name: Zone_15
   m_TagString: Untagged
@@ -5124,6 +6233,166 @@ RectTransform:
   m_AnchoredPosition: {x: 357.20544, y: 309.48776}
   m_SizeDelta: {x: 200.55502, y: 178.7656}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &976053335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976053331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 976053332}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: 348480661
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &992115589
 GameObject:
   m_ObjectHideFlags: 0
@@ -5135,6 +6404,7 @@ GameObject:
   - component: {fileID: 992115592}
   - component: {fileID: 992115591}
   - component: {fileID: 992115590}
+  - component: {fileID: 992115593}
   m_Layer: 5
   m_Name: Zone_03
   m_TagString: Untagged
@@ -5197,6 +6467,166 @@ RectTransform:
   m_AnchoredPosition: {x: 216.64896, y: -214.9097}
   m_SizeDelta: {x: 292.73718, y: 159.43753}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &992115593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 992115589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 992115590}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 11
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: 1786834292
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &992342876
 GameObject:
   m_ObjectHideFlags: 0
@@ -5599,6 +7029,7 @@ GameObject:
   - component: {fileID: 1041455888}
   - component: {fileID: 1041455887}
   - component: {fileID: 1041455886}
+  - component: {fileID: 1041455889}
   m_Layer: 5
   m_Name: Zone_09
   m_TagString: Untagged
@@ -5661,6 +7092,166 @@ RectTransform:
   m_AnchoredPosition: {x: 216.64896, y: -214.90971}
   m_SizeDelta: {x: 292.73718, y: 159.43753}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1041455889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1041455885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 1041455886}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: -951444714
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &1041980669
 GameObject:
   m_ObjectHideFlags: 0
@@ -6008,7 +7599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07890629, y: 0.30057758}
   m_AnchorMax: {x: 0.91997665, y: 0.6980115}
-  m_AnchoredPosition: {x: 0.01159668, y: 0.10498047}
+  m_AnchoredPosition: {x: 0.01171875, y: 0.10498047}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1064720280
@@ -6161,6 +7752,7 @@ GameObject:
   - component: {fileID: 1088043691}
   - component: {fileID: 1088043690}
   - component: {fileID: 1088043689}
+  - component: {fileID: 1088043692}
   m_Layer: 5
   m_Name: Zone_14
   m_TagString: Untagged
@@ -6223,6 +7815,166 @@ RectTransform:
   m_AnchoredPosition: {x: 289.8, y: -55.471985}
   m_SizeDelta: {x: 250.10004, y: 159.4}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1088043692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1088043688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 1088043689}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: 2014592678
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &1114438955
 GameObject:
   m_ObjectHideFlags: 0
@@ -6354,33 +8106,6 @@ MonoBehaviour:
   m_Spacing: {x: 80, y: 40}
   m_Constraint: 1
   m_ConstraintCount: 3
---- !u!21 &1139322367
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 'BGFMaterial
-
-    -1080'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!224 &1140591949
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7066,6 +8791,58 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1264460272}
   m_CullTransparentMesh: 0
+--- !u!1 &1266037877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1635784279253168, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1266037878}
+  - component: {fileID: 1266037879}
+  m_Layer: 0
+  m_Name: Tuto_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1266037878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4655167934840850, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1266037877}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 748, y: 1284, z: -1012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 359805771}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1266037879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1266037877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef052839c08fbbe4a86ea2866111bb0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScriptableTuto: {fileID: 0}
+  menuTuto: {fileID: 834534526}
+  tutoTitleTxt: {fileID: 293265390}
+  tutoImg: {fileID: 128822168}
+  tutoTxt: {fileID: 413593682}
+  tutoHasBeenDone: 0000
+  tutoList:
+  - {fileID: 11400000, guid: abd73b896209d374f882514711c54b03, type: 2}
+  - {fileID: 11400000, guid: 4ee8ddb9e7bfe8f42a56ec092d92dbc0, type: 2}
 --- !u!1 &1276533206
 GameObject:
   m_ObjectHideFlags: 0
@@ -7198,6 +8975,7 @@ GameObject:
   - component: {fileID: 1279139239}
   - component: {fileID: 1279139238}
   - component: {fileID: 1279139237}
+  - component: {fileID: 1279139240}
   m_Layer: 5
   m_Name: Zone_02
   m_TagString: Untagged
@@ -7260,6 +9038,166 @@ RectTransform:
   m_AnchoredPosition: {x: -239.03491, y: 46.737537}
   m_SizeDelta: {x: 270.37244, y: 225.53787}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1279139240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1279139236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 1279139237}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 11
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: -871492823
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &1288385044
 GameObject:
   m_ObjectHideFlags: 0
@@ -7494,12 +9432,49 @@ RectTransform:
   m_AnchoredPosition: {x: -0.23291016, y: -0.20019531}
   m_SizeDelta: {x: -0.09259, y: 0.11011}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1310647162 stripped
+--- !u!114 &1310647162
 MonoBehaviour:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
     type: 2}
-  m_PrefabInternal: {fileID: 2094363558}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 736725997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cebc167e4bc403f4dafcfedb7def6973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  artifactsGallery: {fileID: 1140591949}
+  mapList: {fileID: 2065088227}
+  scoreText: {fileID: 1173768231}
+  limitToWin: 15
+  arCam: {fileID: 634819966}
+  uiCam: {fileID: 1806422368}
+  mainCanvas: {fileID: 1195051473}
+  vumarkPrefab: {fileID: 2090257548}
+  imageZone:
+  - {fileID: 1626309680}
+  - {fileID: 1279139236}
+  - {fileID: 992115589}
+  - {fileID: 730209419}
+  - {fileID: 479595886}
+  - {fileID: 947511903}
+  - {fileID: 411109048}
+  - {fileID: 1519236434}
+  - {fileID: 1041455885}
+  - {fileID: 933429064}
+  - {fileID: 649895501}
+  - {fileID: 2011329310}
+  - {fileID: 1731056315}
+  - {fileID: 1088043688}
+  - {fileID: 976053331}
+  menuToActivate:
+  - {fileID: 2108094651}
+  - {fileID: 1015901411}
+  - {fileID: 1370197364}
+  - {fileID: 1016788598}
+  - {fileID: 1520662832}
+  ARModeMenu: {fileID: 1408632156}
 --- !u!1001 &1312340419
 Prefab:
   m_ObjectHideFlags: 0
@@ -7638,7 +9613,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1139322367}
+      objectReference: {fileID: 1783381169}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: QuestValue
@@ -8285,7 +10260,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1527139939}
+      - m_Target: {fileID: 0}
         m_MethodName: ResetClearList
         m_Mode: 1
         m_Arguments:
@@ -8461,6 +10436,179 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1468639225}
   m_CullTransparentMesh: 0
+--- !u!1 &1476038469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1751703371627720, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1476038470}
+  - component: {fileID: 1476038471}
+  m_Layer: 0
+  m_Name: Main_Music_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1476038470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4749607493296408, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476038469}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 748.0067, y: 1284.4065, z: -1012.01154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 359805771}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1476038471
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 82841097143310112, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476038469}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3251d95cac2df844d9f059f0fedc65f8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &1512805629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1576022023148544, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1512805630}
+  - component: {fileID: 1512805631}
+  m_Layer: 0
+  m_Name: Fake_AR_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1512805630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4495859045442910, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1512805629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 359805771}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1512805631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114519517695116492, guid: 045cdaacd05f98a459080f8035e50857,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1512805629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8703f5abc56f37846bb41e31eed1b858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPointFakeAR: {fileID: 1425266640}
+  fakeArObjectToSpawn:
+  - {fileID: 1513966125414362, guid: 783ae661395f53241bc3753c5162687b, type: 2}
 --- !u!1 &1512901402
 GameObject:
   m_ObjectHideFlags: 0
@@ -8622,6 +10770,7 @@ GameObject:
   - component: {fileID: 1519236437}
   - component: {fileID: 1519236436}
   - component: {fileID: 1519236435}
+  - component: {fileID: 1519236438}
   m_Layer: 5
   m_Name: Zone_08
   m_TagString: Untagged
@@ -8684,6 +10833,166 @@ RectTransform:
   m_AnchoredPosition: {x: -239.03493, y: 46.737537}
   m_SizeDelta: {x: 270.37244, y: 225.53787}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1519236438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1519236434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 1519236435}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: -2110535732
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &1520662832
 GameObject:
   m_ObjectHideFlags: 0
@@ -8721,12 +11030,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1527139939 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114755241418511204, guid: 045cdaacd05f98a459080f8035e50857,
-    type: 2}
-  m_PrefabInternal: {fileID: 2094363558}
-  m_Script: {fileID: 11500000, guid: 8e053ade5cba7d84bbd743c00bfa1918, type: 3}
 --- !u!1 &1580785160
 GameObject:
   m_ObjectHideFlags: 0
@@ -8977,6 +11280,7 @@ GameObject:
   - component: {fileID: 1626309683}
   - component: {fileID: 1626309682}
   - component: {fileID: 1626309681}
+  - component: {fileID: 1626309684}
   m_Layer: 5
   m_Name: Zone_01
   m_TagString: Untagged
@@ -9039,6 +11343,166 @@ RectTransform:
   m_AnchoredPosition: {x: 357.20544, y: 309.48773}
   m_SizeDelta: {x: 200.55502, y: 178.7656}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1626309684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1626309680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 1626309681}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 25
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: -611638507
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &1651076998
 GameObject:
   m_ObjectHideFlags: 0
@@ -9356,6 +11820,7 @@ GameObject:
   - component: {fileID: 1731056318}
   - component: {fileID: 1731056317}
   - component: {fileID: 1731056316}
+  - component: {fileID: 1731056319}
   m_Layer: 5
   m_Name: Zone_13
   m_TagString: Untagged
@@ -9418,6 +11883,166 @@ RectTransform:
   m_AnchoredPosition: {x: 156.65, y: 309.49002}
   m_SizeDelta: {x: 200.55502, y: 178.7656}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1731056319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1731056315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 1731056316}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: 1060592249
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1 &1740035098
 GameObject:
   m_ObjectHideFlags: 0
@@ -9692,6 +12317,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!21 &1783381169
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 'BGFMaterial
+
+    -119724'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1792570789
 GameObject:
   m_ObjectHideFlags: 0
@@ -11384,6 +14036,7 @@ GameObject:
   - component: {fileID: 2011329313}
   - component: {fileID: 2011329312}
   - component: {fileID: 2011329311}
+  - component: {fileID: 2011329314}
   m_Layer: 5
   m_Name: Zone_12
   m_TagString: Untagged
@@ -11446,6 +14099,166 @@ RectTransform:
   m_AnchoredPosition: {x: 216.64896, y: -214.90971}
   m_SizeDelta: {x: 292.73718, y: 159.43753}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2011329314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2011329310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -499960783, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FieldsEnable:
+    PathsEnabled:
+    - Image/m_Sprite/name
+    - Image/m_Sprite
+    - Image/m_OverrideSprite/name
+    - Image/m_OverrideSprite
+    - Image/m_Type
+    - Image/m_PreserveAspect
+    - Image/m_FillCenter
+    - Image/m_FillMethod
+    - Image/m_FillAmount
+    - Image/m_FillClockwise
+    - Image/m_FillOrigin
+    - Image/m_AlphaHitTestMinimumThreshold
+    - Image/m_Tracked
+    - Image/m_ShouldRecalculateStencil
+    - Image/m_StencilValue
+    - Image/m_OnDirtyLayoutCallback
+    - Image/m_OnDirtyVertsCallback
+    - Image/m_OnDirtyMaterialCallback
+    - Image/sprite/name
+    - Image/sprite
+    - Image/overrideSprite/name
+    - Image/overrideSprite
+    - Image/type
+    - Image/preserveAspect
+    - Image/fillCenter
+    - Image/fillMethod
+    - Image/fillAmount
+    - Image/fillClockwise
+    - Image/fillOrigin
+    - Image/alphaHitTestMinimumThreshold
+    - Image/onCullStateChanged
+    - Image/maskable
+    - Image/color/r
+    - Image/color/g
+    - Image/color/b
+    - Image/color/a
+    - Image/color
+    - Image/raycastTarget
+    - Image/useLegacyMeshGeneration
+    - Image/enabled
+    - Image
+    - Image/m_Sprite/
+    - Image/m_OverrideSprite/
+    - Image/sprite/
+    - Image/overrideSprite/
+    - Image/color/
+    ComponentsEnabled:
+    - {fileID: 2011329311}
+    HashFieldsEnabled:
+    - HashCodePath: -365611227
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -80661371
+    - HashCodePath: 163859217
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: 448809073
+    - HashCodePath: -1659535263
+      HashCodeMember: 2026402936
+    - HashCodePath: -1659535263
+      HashCodeMember: 436038446
+    - HashCodePath: -1659535263
+      HashCodeMember: 1603445674
+    - HashCodePath: -1659535263
+      HashCodeMember: 2124862998
+    - HashCodePath: -1659535263
+      HashCodeMember: 268637667
+    - HashCodePath: -1659535263
+      HashCodeMember: 1180808539
+    - HashCodePath: -1659535263
+      HashCodeMember: -1055754063
+    - HashCodePath: -1659535263
+      HashCodeMember: -143817346
+    - HashCodePath: -1659535263
+      HashCodeMember: 550973756
+    - HashCodePath: -1659535263
+      HashCodeMember: 2077113194
+    - HashCodePath: -1659535263
+      HashCodeMember: -1858745235
+    - HashCodePath: -1659535263
+      HashCodeMember: 1427122856
+    - HashCodePath: -1659535263
+      HashCodeMember: -19865078
+    - HashCodePath: -1659535263
+      HashCodeMember: -1015267497
+    - HashCodePath: -1924899469
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -1639949613
+    - HashCodePath: -352665825
+      HashCodeMember: 1042465325
+    - HashCodePath: -1659535263
+      HashCodeMember: -67715969
+    - HashCodePath: -1659535263
+      HashCodeMember: -1520393706
+    - HashCodePath: -1659535263
+      HashCodeMember: -80486596
+    - HashCodePath: -1659535263
+      HashCodeMember: 1761597912
+    - HashCodePath: -1659535263
+      HashCodeMember: -2011952060
+    - HashCodePath: -1659535263
+      HashCodeMember: 426789905
+    - HashCodePath: -1659535263
+      HashCodeMember: -1608705771
+    - HashCodePath: -1659535263
+      HashCodeMember: -897601825
+    - HashCodePath: -1659535263
+      HashCodeMember: 44622428
+    - HashCodePath: -1659535263
+      HashCodeMember: 450631828
+    - HashCodePath: -1659535263
+      HashCodeMember: -1359150634
+    - HashCodePath: 1619190977
+      HashCodeMember: -2096843594
+    - HashCodePath: 1945262665
+      HashCodeMember: -2101729915
+    - HashCodePath: 2094885609
+      HashCodeMember: -2103950970
+    - HashCodePath: -1116424183
+      HashCodeMember: -2104395181
+    - HashCodePath: -1659535263
+      HashCodeMember: -1915131831
+    - HashCodePath: -1659535263
+      HashCodeMember: 229733494
+    - HashCodePath: -1659535263
+      HashCodeMember: 529963403
+    - HashCodePath: -1659535263
+      HashCodeMember: 14619687
+    - HashCodePath: 0
+      HashCodeMember: -1659535263
+    ObjectsEnabled: 253735ea114bc409735d448d1fbffaeae96add7c
+    ModificationVersion: 10
+  Position: 0
+  Rotation: 0
+  Scale: 0
+  Name: 0
+  Tag: 0
+  Active: 0
+  Static: 0
+  Layer: 0
+  GAMEOBJECT_STATIC_ID: 0
+  GAMEOBJECT_PATH: 
+  Private_prefabId: 60589688
+  PrefabSetTime: 1541671727
+  CreateInRuntime: 1
+  onLoad: 0
 --- !u!1001 &2023690000
 Prefab:
   m_ObjectHideFlags: 0
@@ -11742,413 +14555,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1672895316672764, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
     type: 2}
   m_PrefabInternal: {fileID: 1312340419}
---- !u!1001 &2094363558
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: menuToActivate.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114755241418511204, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: mappingImageStates.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114755241418511204, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: galleryButtonsStates.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114519517695116492, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: spawnPointFakeAR
-      value: 
-      objectReference: {fileID: 1425266640}
-    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: tutoInterface
-      value: 
-      objectReference: {fileID: 834534526}
-    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: tutoTitleTxt
-      value: 
-      objectReference: {fileID: 293265390}
-    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: tutoImg
-      value: 
-      objectReference: {fileID: 128822168}
-    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: tutoTxt
-      value: 
-      objectReference: {fileID: 413593682}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: galleryPannel
-      value: 
-      objectReference: {fileID: 774462046}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: mapList
-      value: 
-      objectReference: {fileID: 2065088227}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: scoreText
-      value: 
-      objectReference: {fileID: 1173768231}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: arCam
-      value: 
-      objectReference: {fileID: 634819966}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[0]
-      value: 
-      objectReference: {fileID: 1626309680}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[1]
-      value: 
-      objectReference: {fileID: 1279139236}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[2]
-      value: 
-      objectReference: {fileID: 992115589}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[3]
-      value: 
-      objectReference: {fileID: 730209419}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[4]
-      value: 
-      objectReference: {fileID: 479595886}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[5]
-      value: 
-      objectReference: {fileID: 947511903}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[6]
-      value: 
-      objectReference: {fileID: 411109048}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[7]
-      value: 
-      objectReference: {fileID: 1519236434}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[8]
-      value: 
-      objectReference: {fileID: 1041455885}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[9]
-      value: 
-      objectReference: {fileID: 933429064}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[10]
-      value: 
-      objectReference: {fileID: 649895501}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[11]
-      value: 
-      objectReference: {fileID: 2011329310}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[12]
-      value: 
-      objectReference: {fileID: 1731056315}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[13]
-      value: 
-      objectReference: {fileID: 1088043688}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[14]
-      value: 
-      objectReference: {fileID: 976053331}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[15]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[16]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[17]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[18]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[19]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[20]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[21]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[22]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[23]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[24]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[25]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[26]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[27]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[28]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[29]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[30]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[31]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[32]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[33]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[34]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[35]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[36]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[37]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[38]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[39]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[40]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: imageZone.Array.data[41]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: spawnPointReward
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: spawnPointFunFact
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: menuToActivate.Array.data[0]
-      value: 
-      objectReference: {fileID: 2108094651}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: menuToActivate.Array.data[1]
-      value: 
-      objectReference: {fileID: 1015901411}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: menuToActivate.Array.data[2]
-      value: 
-      objectReference: {fileID: 1370197364}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: menuToActivate.Array.data[3]
-      value: 
-      objectReference: {fileID: 1016788598}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: menuToActivate.Array.data[4]
-      value: 
-      objectReference: {fileID: 1520662832}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: ARMode
-      value: 
-      objectReference: {fileID: 1408632156}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: ARModeMenu
-      value: 
-      objectReference: {fileID: 1408632156}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: artifactsGallery
-      value: 
-      objectReference: {fileID: 1140591949}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: limitToWin
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: menuTuto
-      value: 
-      objectReference: {fileID: 834534526}
-    - target: {fileID: 82841097143310112, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114755241418511204, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: rewardNumbers
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: vumarkPrefab
-      value: 
-      objectReference: {fileID: 2090257548}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: uiCam
-      value: 
-      objectReference: {fileID: 1806422368}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: currentRenderCamera
-      value: 
-      objectReference: {fileID: 1195051473}
-    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
-        type: 2}
-      propertyPath: mainCanvas
-      value: 
-      objectReference: {fileID: 1195051473}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &2108094651
 GameObject:
   m_ObjectHideFlags: 0

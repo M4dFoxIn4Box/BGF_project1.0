@@ -14,7 +14,7 @@ public class Vumark_Manager : MonoBehaviour {
     void Start ()
     {
         Interface_Manager.Instance.MapActivation(mapIdx);
-        Save_Manager.saving.ImageToTrue(mapIdx);
+        //Save_Manager.saving.ImageToTrue(mapIdx);
     }
 
 }

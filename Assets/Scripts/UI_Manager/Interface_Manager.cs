@@ -109,7 +109,7 @@ public class Interface_Manager : MonoBehaviour
             if(artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
             {
                 artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
-                Save_Manager.saving.SetToTrue(idx);
+                //Save_Manager.saving.SetToTrue(idx);
                 idxButton = idx;
                 AddScore(1);
             }
