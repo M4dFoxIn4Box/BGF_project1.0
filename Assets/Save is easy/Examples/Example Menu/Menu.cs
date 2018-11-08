@@ -17,10 +17,10 @@ public class Menu : MonoBehaviour {
     private List<LoadPart> allLoadParts = new List<LoadPart>();
     private List<SceneFile> allSceneFiles;
 
-    private void Start() {
+    private void Start()
+    {
         allSceneFiles = new List<SceneFile>(SaveIsEasyAPI.ListOfValidSaves());
         totalPages = (int)Mathf.Ceil((float)this.allSceneFiles.Count / PointsToLoadPrefabs.Count);
-
 
         foreach (GameObject point in PointsToLoadPrefabs) {
             GameObject go = Instantiate<GameObject>(PrefabToLoad.gameObject, point.transform.position, Quaternion.identity);
@@ -72,7 +72,8 @@ public class Menu : MonoBehaviour {
         UpdatePage();
     }
 
-    public void OpenLevel(int sceneBuildIndex) {
+    public void OpenLevel(int sceneBuildIndex)
+    {
         SceneManager.LoadScene(sceneBuildIndex);
     }
 }
