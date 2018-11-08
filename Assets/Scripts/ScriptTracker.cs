@@ -81,9 +81,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private bool isAnswered = false;
     private GameObject currentFakeARObject;
 
-    [Header("Quest")]
-    public InputField answer;
-    public string passwordToEdit;
+    //[Header("Quest")]
+    //public InputField answer;
+    //public string passwordToEdit;
 
     void Start()
     {
@@ -116,24 +116,22 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     //	questGoal2.SetActive(true);
     //}
 
-    public void Password()
-    {
-        Debug.Log(answer.text);
-        if(answer.text == passwordToEdit)
-        {
-            Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            answer.text = "Bien joué";
-            StartCoroutine(ResetPassword());
-        }
-    }
+    //public void Password()
+    //{
+    //    Debug.Log(answer.text);
+    //    if(answer.text == passwordToEdit)
+    //    {
+    //        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    //        answer.text = "Bien joué";
+    //        StartCoroutine(ResetPassword());
+    //    }
+    //}
 
-    IEnumerator ResetPassword ()
-    {
-        yield return new WaitForSeconds(1);
-        answer.text = null;
-    }
-
-        
+    //IEnumerator ResetPassword ()
+    //{
+    //    yield return new WaitForSeconds(1);
+    //    answer.text = null;
+    //}
 
 
 
@@ -182,7 +180,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if (quizzDone == false)
         {
             currentQuizzList = quizzLists[vumarkID - 1];
-            
+            scoreToReach = quizzLists[vumarkID - 1].scoreToWin;
+            Debug.Log(scoreToReach);
             quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
             quizzDone = true;
         }
@@ -195,7 +194,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
         else
         {
-
+            
             currentQuizz = quizzAvailable[(Random.Range(0, quizzAvailable.Count))];
 
             quizzInterface.SetActive(true);

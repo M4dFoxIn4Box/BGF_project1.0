@@ -10,5 +10,6 @@ public class ScriptableQuizzManager : ScriptableObject
     public string funFact;
     public GameObject rewardToSpawn;
     public int errorLimit;
+    public int scoreToWin;
 
 }
