@@ -216,7 +216,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 270663101}
-  - component: {fileID: 270663102}
   m_Layer: 0
   m_Name: Save_Manager
   m_TagString: Untagged
@@ -237,34 +236,6 @@ Transform:
   m_Father: {fileID: 359805771}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &270663102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 270663100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 562379847, guid: c3ab396f3f53d1c4ebc7bae03391b186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveIsEasyConfig:
-    PasswordHash: 0
-    PasswordKey: 
-    PasswordKey16Bytes: 
-  Config:
-    FileName: BgfScene
-    autoSaving: 0
-    autoLoadOnPlay: 1
-    onExitSave: 1
-    duplicateSaveFile: 0
-    exclusiveFiles: 0
-    encrypt: 0
-    autoSavingRunInThread: 0
-    autoSavingInterval: 300
-    currentTimeToSave: 0
-    encryptionConfig: 0
-  Load_Prefabs: []
 --- !u!114 &293265390 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114423930023782238, guid: 0f02cff67c6fda142a39e9f799e29404,
