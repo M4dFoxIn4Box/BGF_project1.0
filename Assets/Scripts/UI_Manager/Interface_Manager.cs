@@ -130,14 +130,13 @@ public class Interface_Manager : MonoBehaviour
     }
 
 
-    public void ImageState(List<bool> isCheck) 
+    public void ImageState(List<bool> isImageCheck) 
     {
-        for (int j = 0; j < isCheck.Count; j++)
+        for (int j = 0; j < isImageCheck.Count; j++)
         {
-            mapList.GetChild(j).gameObject.GetComponent<Image>().enabled = isCheck[j];
+            mapList.GetChild(j).gameObject.GetComponent<Image>().enabled = isImageCheck[j];
         }
     }
-
 
     //SCORING
 

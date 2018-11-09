@@ -16,7 +16,6 @@ public class Tuto_Manager : MonoBehaviour
 
     public void ActivatingTuto(int tutoToActive)
     {
-
         if (tutoHasBeenDone[tutoToActive] == false)
         {       
             currentScriptableTuto = tutoList[tutoToActive];
@@ -46,6 +45,14 @@ public class Tuto_Manager : MonoBehaviour
             Debug.Log(tutoIdx);
         } 
 
+    }
+
+    public void TutoState(List<bool> isTutoCheck)
+    {
+        for (int k = 0; k < isTutoCheck.Count; k++)
+        {
+            //.GetChild(j).gameObject.GetComponent<Image>().enabled = isTutoCheck[k];
+        }
     }
 
 }

@@ -16,6 +16,7 @@ public class Save_Manager : MonoBehaviour
 
     public List<bool> galleryButtonsStates;
     public List<bool> mappingImageStates;
+    public List<bool> galleryTutoStates;
     //public List<bool> tutoStates;
     //public GameObject[] rewardToSpawn;
     //public string[] funFactToDisplay;
@@ -110,6 +111,7 @@ public class Save_Manager : MonoBehaviour
         PlayerData data = new PlayerData();
         data.galleryButtonsStates = galleryButtonsStates;
         data.mappingImageStates = mappingImageStates;
+        data.galleryTutoStates = galleryTutoStates;
         //data.tutoStates = tutoStates;
         //data.rewardToSpawn = rewardToSpawn;
         //data.funFactToDisplay = funFactToDisplay;
@@ -130,12 +132,14 @@ public class Save_Manager : MonoBehaviour
             
             galleryButtonsStates = data.galleryButtonsStates;
             mappingImageStates = data.mappingImageStates;
+            galleryTutoStates = data.galleryTutoStates;
             //tutoStates = data.tutoStates;
             //rewardToSpawn = data.rewardToSpawn;
             //funFactToDisplay = data.funFactToDisplay;
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
+            //Interface_Manager.Instance.
             //Tuto_Manager.Tuto.LoadingTuto();
         }
     }
@@ -146,6 +150,7 @@ class PlayerData
 {
     public List<bool> galleryButtonsStates = new List<bool>();
     public List<bool> mappingImageStates = new List<bool>();
+    public List<bool> galleryTutoStates = new List<bool>();
     //public List<bool> tutoStates = new List<bool>();
     //public GameObject[] rewardToSpawn;
     //public string[] funFactToDisplay;
