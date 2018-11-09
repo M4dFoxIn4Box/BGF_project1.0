@@ -14,9 +14,9 @@ public class Save_Manager : MonoBehaviour
 
     [Header ("Save")]
 
-    public List<bool> galleryButtonsStates;
-    public List<bool> mappingImageStates;
-    public List<bool> galleryTutoStates;
+    private List<bool> galleryButtonsStates;
+    private List<bool> mappingImageStates;
+    private List<bool> galleryTutoStates;
     //public List<bool> tutoStates;
     //public GameObject[] rewardToSpawn;
     //public string[] funFactToDisplay;
@@ -43,6 +43,7 @@ public class Save_Manager : MonoBehaviour
             {
                 galleryButtonsStates.Add(false);
                 mappingImageStates.Add(false);
+                galleryTutoStates.Add(false);
                 //tutoStates.Add(false);
                 Save();
             }
