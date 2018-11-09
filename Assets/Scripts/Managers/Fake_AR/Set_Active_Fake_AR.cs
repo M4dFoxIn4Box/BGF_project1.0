@@ -9,5 +9,6 @@ public class Set_Active_Fake_AR : MonoBehaviour {
     public void OnEnable()
     {
         Fake_AR_Manager.FakeAR.FakeARToSpawn(fakeArIdx);
+
     }
 }
