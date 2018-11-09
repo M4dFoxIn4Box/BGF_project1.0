@@ -13,17 +13,19 @@ public class Tuto_Manager : MonoBehaviour
     private int tutoIdx;
     public List<bool> tutoHasBeenDone;
     public List<ScriptableTuto> tutoList;
+    private int tutoToDeactive;
 
     public void ActivatingTuto(int tutoToActive)
     {
+        tutoToDeactive = tutoToActive;
+
         if (tutoHasBeenDone[tutoToActive] == false)
         {       
             currentScriptableTuto = tutoList[tutoToActive];
             tutoTitleTxt.text = currentScriptableTuto.tutoTitle;
             menuTuto.SetActive(true);
             tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
-            tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
-            tutoHasBeenDone[tutoToActive] = true;
+            tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];   
         }
     }
 
@@ -36,6 +38,7 @@ public class Tuto_Manager : MonoBehaviour
             tutoIdx = 0;
             menuTuto.SetActive(false);
             Debug.Log("Done");
+            tutoHasBeenDone[tutoToDeactive] = true;
         }
         else 
         {
