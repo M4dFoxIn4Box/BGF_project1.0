@@ -310,6 +310,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1027424634254228, guid: 0f02cff67c6fda142a39e9f799e29404,
     type: 2}
   m_PrefabInternal: {fileID: 1612524775}
+--- !u!21 &479827598
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 'BGFMaterial
+
+    -1294'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!114 &622304346 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114086682142173630, guid: 0f02cff67c6fda142a39e9f799e29404,
@@ -915,7 +942,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1440157703}
+      objectReference: {fileID: 479827598}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: QuestValue
@@ -1007,33 +1034,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4047763814160188, guid: ccf30dd0fbdd70341a396c8bee2c4b34,
     type: 2}
   m_PrefabInternal: {fileID: 2023690000}
---- !u!21 &1440157703
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 'BGFMaterial
-
-    -1082'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!114 &1445156774 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114246598591447572, guid: 0f02cff67c6fda142a39e9f799e29404,
