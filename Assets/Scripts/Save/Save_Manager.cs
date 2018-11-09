@@ -32,8 +32,6 @@ public class Save_Manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
     }
 
 
@@ -66,6 +64,12 @@ public class Save_Manager : MonoBehaviour
     public void ImageToTrue(int imageIdx) // Sauvegarder le bouton qui s'est activé
     {
         mappingImageStates[imageIdx] = true;
+        Save();
+    }
+
+    public void TutoIsDone(List<bool> tutoIdx)
+    {
+        galleryTutoStates = tutoIdx;
         Save();
     }
 
@@ -139,7 +143,7 @@ public class Save_Manager : MonoBehaviour
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
-            //Interface_Manager.Instance.
+            Tuto_Manager.tuto.TutoState(galleryTutoStates);
             //Tuto_Manager.Tuto.LoadingTuto();
         }
     }

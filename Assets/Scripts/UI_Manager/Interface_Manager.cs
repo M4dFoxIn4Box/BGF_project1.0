@@ -124,7 +124,6 @@ public class Interface_Manager : MonoBehaviour
             if (interactableButton[i] == true)
             {
                 AddScore(1);
-                Debug.Log(interactableButton[i]);
             }
         }
     }

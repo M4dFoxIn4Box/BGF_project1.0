@@ -15,6 +15,21 @@ public class Tuto_Manager : MonoBehaviour
     public List<ScriptableTuto> tutoList;
     private int tutoToDeactive;
 
+    public static Tuto_Manager tuto {get; private set;}
+
+    private void Awake()
+    {
+        if (tuto == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            tuto = this;
+        }
+        else if (tuto != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void ActivatingTuto(int tutoToActive)
     {
         tutoToDeactive = tutoToActive;
@@ -39,6 +54,7 @@ public class Tuto_Manager : MonoBehaviour
             menuTuto.SetActive(false);
             Debug.Log("Done");
             tutoHasBeenDone[tutoToDeactive] = true;
+            Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
         }
         else 
         {
@@ -52,9 +68,10 @@ public class Tuto_Manager : MonoBehaviour
 
     public void TutoState(List<bool> isTutoCheck)
     {
-        for (int k = 0; k < isTutoCheck.Count; k++)
+        for (int k = 0; k < tutoHasBeenDone.Count; k++)
         {
-            //.GetChild(j).gameObject.GetComponent<Image>().enabled = isTutoCheck[k];
+            Debug.Log("TUUUUUUUUUUTO" + isTutoCheck);
+            tutoHasBeenDone[k] = isTutoCheck[k];
         }
     }
 
