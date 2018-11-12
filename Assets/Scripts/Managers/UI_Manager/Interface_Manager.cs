@@ -24,6 +24,9 @@ public class Interface_Manager : MonoBehaviour
     private int score;
     public int limitToWin;
 
+    private int currentQuestValue;
+    public Image questImage;
+
     [Header("Camera")]
 
     public Camera arCam;
@@ -116,7 +119,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void ButtonState(List<bool> interactableButton)
     {
-        for (int i = 0; i < interactableButton.Count; i++)// ou 41
+        for (int i = 0; i < interactableButton.Count; i++)
         {
             artifactsGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
             if (interactableButton[i] == true)
@@ -140,13 +143,16 @@ public class Interface_Manager : MonoBehaviour
     public void AddScore(int newScoreValue)
     {
         score = score + newScoreValue;
+        currentQuestValue = score / limitToWin;
 
         UpdateScore();
     }
 
     void UpdateScore()
     {
+        Debug.Log("GROSSSSSE MERDE" + questImage.fillAmount);
         scoreText.text = score +" / " + limitToWin ;
+        questImage.fillAmount = currentQuestValue;
         if (score == limitToWin)
         {
             Victory();
