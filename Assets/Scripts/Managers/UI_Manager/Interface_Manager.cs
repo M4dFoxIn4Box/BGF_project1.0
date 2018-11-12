@@ -21,10 +21,10 @@ public class Interface_Manager : MonoBehaviour
     [Header("Scoring")]
 
     public Text scoreText;
-    private int score;
-    public int limitToWin;
+    private float score;
+    public float limitToWin;
 
-    private int currentQuestValue;
+    private float currentQuestValue;
     public Image questImage;
 
     [Header("Camera")]
@@ -150,7 +150,7 @@ public class Interface_Manager : MonoBehaviour
 
     void UpdateScore()
     {
-        Debug.Log("GROSSSSSE MERDE" + questImage.fillAmount);
+        Debug.Log(questImage.fillAmount);
         scoreText.text = score +" / " + limitToWin ;
         questImage.fillAmount = currentQuestValue;
         if (score == limitToWin)
