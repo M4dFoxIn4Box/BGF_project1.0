@@ -664,6 +664,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1027424634254228, guid: 0f02cff67c6fda142a39e9f799e29404,
     type: 2}
   m_PrefabInternal: {fileID: 351989118}
+--- !u!1 &509814995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100006, guid: 45aeeeb624138eb4f96181282bc0c8f6,
+    type: 3}
+  m_PrefabInternal: {fileID: 1637291835}
+--- !u!114 &509814997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509814995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapIdx: 3
 --- !u!114 &529197754 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114246598591447572, guid: 0f02cff67c6fda142a39e9f799e29404,
@@ -850,6 +867,33 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 351989118}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!21 &1085161406
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 'BGFMaterial
+
+    -305410'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1088043688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1212783095719062, guid: 0f02cff67c6fda142a39e9f799e29404,
@@ -934,7 +978,6 @@ MonoBehaviour:
   tutoList:
   - {fileID: 11400000, guid: abd73b896209d374f882514711c54b03, type: 2}
   - {fileID: 11400000, guid: 4ee8ddb9e7bfe8f42a56ec092d92dbc0, type: 2}
-  tutoQuizzIdx: 1
 --- !u!1 &1279139236 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1707631249993992, guid: 0f02cff67c6fda142a39e9f799e29404,
@@ -992,6 +1035,7 @@ MonoBehaviour:
   - {fileID: 1016788598}
   - {fileID: 1520662832}
   ARModeMenu: {fileID: 1408632156}
+  quizzDone: 0
 --- !u!1001 &1312340419
 Prefab:
   m_ObjectHideFlags: 0
@@ -1130,7 +1174,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1515421627}
+      objectReference: {fileID: 1085161406}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: QuestValue
@@ -1279,33 +1323,6 @@ MonoBehaviour:
   spawnPointFakeAR: {fileID: 1425266640}
   fakeArObjectToSpawn:
   - {fileID: 1513966125414362, guid: 783ae661395f53241bc3753c5162687b, type: 2}
---- !u!21 &1515421627
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 'BGFMaterial
-
-    -2052'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1519236434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1356019244696326, guid: 0f02cff67c6fda142a39e9f799e29404,
@@ -1387,27 +1404,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 45aeeeb624138eb4f96181282bc0c8f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.0000005262284
+      value: 1.4164429
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 45aeeeb624138eb4f96181282bc0c8f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 3.818105e-15
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 45aeeeb624138eb4f96181282bc0c8f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 5.632738e-15
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 45aeeeb624138eb4f96181282bc0c8f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.000009342402
+      value: 0.000008872156
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 45aeeeb624138eb4f96181282bc0c8f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -1.06144635e-10
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 45aeeeb624138eb4f96181282bc0c8f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -1.8600824e-16
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 45aeeeb624138eb4f96181282bc0c8f6, type: 3}
       propertyPath: m_LocalScale.x
