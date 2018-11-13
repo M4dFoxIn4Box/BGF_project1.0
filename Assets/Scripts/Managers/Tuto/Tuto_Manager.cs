@@ -55,12 +55,10 @@ public class Tuto_Manager : MonoBehaviour
         {
             tutoIdx = 0;
             menuTuto.SetActive(false);
-            Debug.Log("Done");
             tutoHasBeenDone[tutoToDeactive] = true;
             Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
             if (currentScriptableTuto == tutoList[tutoQuizzIdx])
             {
-                Debug.Log("PREMIER TUTO");
                 ScriptTracker.Instance.QuizzDisplaying();
             }
         }
@@ -78,7 +76,6 @@ public class Tuto_Manager : MonoBehaviour
     {
         for (int k = 0; k < tutoHasBeenDone.Count; k++)
         {
-            Debug.Log("TUUUUUUUUUUTO" + isTutoCheck);
             tutoHasBeenDone[k] = isTutoCheck[k];
         }
     }
