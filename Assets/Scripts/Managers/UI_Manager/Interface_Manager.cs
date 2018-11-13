@@ -52,6 +52,7 @@ public class Interface_Manager : MonoBehaviour
     public GameObject ARModeMenu;
 
     [Header("Tutoriel quizz")]
+
     public bool quizzDone;
     
 
@@ -107,7 +108,7 @@ public class Interface_Manager : MonoBehaviour
     }
 
 
-    //GALLERY + SAVE
+    //LOADING VARIABLE
 
     public void CheckStateButton(int idx)
     {
@@ -143,6 +144,11 @@ public class Interface_Manager : MonoBehaviour
         {
             mapList.GetChild(j).gameObject.GetComponent<Image>().enabled = isImageCheck[j];
         }
+    }
+
+    public void TutoIsDone(bool isTutoDone)
+    {
+        quizzDone = isTutoDone;
     }
 
     //SCORING
@@ -196,6 +202,7 @@ public class Interface_Manager : MonoBehaviour
         {
             Tuto_Manager.tuto.ActivatingTuto(1);
             quizzDone = true;
+            Save_Manager.saving.TutoQuizzIsDone(quizzDone);
         }
         else
         {
