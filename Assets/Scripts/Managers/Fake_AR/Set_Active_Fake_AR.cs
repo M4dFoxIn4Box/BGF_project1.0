@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Set_Active_Fake_AR : MonoBehaviour {
 
-    public int fakeArIdx;
+    public int animationInteractableIdx;
 
     public void OnEnable()
     {
-        Fake_AR_Manager.FakeAR.FakeARToSpawn(fakeArIdx);
+        Fake_AR_Manager.FakeAR.FakeARToSpawn(animationInteractableIdx);
 
     }
 }
