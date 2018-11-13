@@ -17,6 +17,7 @@ public class Save_Manager : MonoBehaviour
     public List<bool> galleryButtonsStates;
     public List<bool> mappingImageStates;
     public List<bool> galleryTutoStates;
+    public bool quizzDoneToSave;
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class Save_Manager : MonoBehaviour
                 galleryButtonsStates.Add(false);
                 mappingImageStates.Add(false);
                 galleryTutoStates.Add(false);
+                quizzDoneToSave = false;
                 Save();
             }
         }
@@ -69,6 +71,12 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
+    public void TutoQuizzIsDone(bool quizzTutoIsDone)
+    {
+        quizzDoneToSave = quizzTutoIsDone;
+        Save();
+    }
+
 
     void FixedUpdate ()
     {
@@ -92,6 +100,7 @@ public class Save_Manager : MonoBehaviour
         data.galleryButtonsStates = galleryButtonsStates;
         data.mappingImageStates = mappingImageStates;
         data.galleryTutoStates = galleryTutoStates;
+        data.quizzDoneToSave = quizzDoneToSave;
 
 
         bf.Serialize(file, data);
@@ -111,9 +120,11 @@ public class Save_Manager : MonoBehaviour
             galleryButtonsStates = data.galleryButtonsStates;
             mappingImageStates = data.mappingImageStates;
             galleryTutoStates = data.galleryTutoStates;
+            quizzDoneToSave = data.quizzDoneToSave;
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
+            Interface_Manager.Instance.TutoIsDone(quizzDoneToSave);
             Tuto_Manager.tuto.TutoState(galleryTutoStates);
 
         }
@@ -126,4 +137,5 @@ class PlayerData
     public List<bool> galleryButtonsStates = new List<bool>();
     public List<bool> mappingImageStates = new List<bool>();
     public List<bool> galleryTutoStates = new List<bool>();
+    public bool quizzDoneToSave;
 }
