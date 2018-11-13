@@ -23,9 +23,13 @@ public class Interface_Manager : MonoBehaviour
     public Text scoreText;
     private float score;
     public float limitToWin;
+    public GameObject victoryText;
 
     private float currentQuestValue;
     public Image questImage;
+    public List<int> intStepToIRLReward;
+    public List<GameObject> gameobjectStepToIRLReward;
+    public Button buttonARMode;
 
     [Header("Camera")]
 
@@ -150,9 +154,17 @@ public class Interface_Manager : MonoBehaviour
 
     void UpdateScore()
     {
-        Debug.Log(questImage.fillAmount);
         scoreText.text = score +" / " + limitToWin ;
         questImage.fillAmount = currentQuestValue;
+
+        if (currentQuestValue == intStepToIRLReward[1])
+        {
+            BlockARCamera();
+            gameobjectStepToIRLReward.Remove(gameobjectStepToIRLReward[1]);
+            intStepToIRLReward.Remove(1);
+            gameobjectStepToIRLReward[1].SetActive(true);
+        }
+
         if (score == limitToWin)
         {
             Victory();
@@ -162,6 +174,16 @@ public class Interface_Manager : MonoBehaviour
     void Victory()
     {
         Debug.Log("YOU WIN !");
+        victoryText.SetActive(true);
+    }
+
+    public void BlockARCamera()
+    {
+        if(buttonARMode.interactable == true)
+            buttonARMode.interactable = false;
+
+        if (buttonARMode.interactable == false)
+            buttonARMode.interactable = true;
     }
 
     //CAMERA
