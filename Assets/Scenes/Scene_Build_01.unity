@@ -868,13 +868,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1900323461327042, guid: 0f02cff67c6fda142a39e9f799e29404,
     type: 2}
   m_PrefabInternal: {fileID: 351989118}
---- !u!114 &1062693199 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114630380595996168, guid: 0f02cff67c6fda142a39e9f799e29404,
-    type: 2}
-  m_PrefabInternal: {fileID: 351989118}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!21 &1085161406
+--- !u!21 &1047784887
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -882,7 +876,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: 'BGFMaterial
 
-    -305410'
+    -2050'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -901,6 +895,12 @@ Material:
     m_Floats: []
     m_Colors:
     - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
+--- !u!114 &1062693199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114630380595996168, guid: 0f02cff67c6fda142a39e9f799e29404,
+    type: 2}
+  m_PrefabInternal: {fileID: 351989118}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1088043688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1212783095719062, guid: 0f02cff67c6fda142a39e9f799e29404,
@@ -985,6 +985,7 @@ MonoBehaviour:
   tutoList:
   - {fileID: 11400000, guid: abd73b896209d374f882514711c54b03, type: 2}
   - {fileID: 11400000, guid: 4ee8ddb9e7bfe8f42a56ec092d92dbc0, type: 2}
+  tutoQuizzIdx: 1
 --- !u!1 &1279139236 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1707631249993992, guid: 0f02cff67c6fda142a39e9f799e29404,
@@ -1042,6 +1043,7 @@ MonoBehaviour:
   - {fileID: 1016788598}
   - {fileID: 1520662832}
   ARModeMenu: {fileID: 1408632156}
+  tutoQuizzIdx: 1
   quizzDone: 0
 --- !u!1001 &1312340419
 Prefab:
@@ -1181,7 +1183,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1085161406}
+      objectReference: {fileID: 1047784887}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: QuestValue

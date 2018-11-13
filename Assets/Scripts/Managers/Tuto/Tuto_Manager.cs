@@ -53,6 +53,7 @@ public class Tuto_Manager : MonoBehaviour
 
         if(tutoIdx == currentScriptableTuto.numberOfSlides - 1)
         {
+            Debug.Log(currentScriptableTuto);
             tutoIdx = 0;
             menuTuto.SetActive(false);
             tutoHasBeenDone[tutoToDeactive] = true;

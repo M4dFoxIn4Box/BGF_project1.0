@@ -53,6 +53,7 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Tutoriel quizz")]
 
+    public int tutoQuizzIdx;
     public bool quizzDone;
     
 
@@ -198,9 +199,9 @@ public class Interface_Manager : MonoBehaviour
 
     public void OpenARCamera()
     {
-        if(!quizzDone)
+        if(quizzDone == false)
         {
-            Tuto_Manager.tuto.ActivatingTuto(1);
+            Tuto_Manager.tuto.ActivatingTuto(tutoQuizzIdx);
             quizzDone = true;
             Save_Manager.saving.TutoQuizzIsDone(quizzDone);
         }
