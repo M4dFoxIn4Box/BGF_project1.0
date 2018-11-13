@@ -35,13 +35,14 @@ public class Tuto_Manager : MonoBehaviour
         tutoToDeactive = tutoToActive;
 
         if (tutoHasBeenDone[tutoToActive] == false)
-        {       
+        {
             currentScriptableTuto = tutoList[tutoToActive];
             tutoTitleTxt.text = currentScriptableTuto.tutoTitle;
             menuTuto.SetActive(true);
             tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
-            tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];   
+            tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
         }
+
     }
 
     public void MoveToNextSlide ()
@@ -55,6 +56,11 @@ public class Tuto_Manager : MonoBehaviour
             Debug.Log("Done");
             tutoHasBeenDone[tutoToDeactive] = true;
             Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
+            if (currentScriptableTuto == tutoList[1])
+            {
+                Debug.Log("PREMIER TUTO");
+                ScriptTracker.Instance.QuizzDisplaying();
+            }
         }
         else 
         {

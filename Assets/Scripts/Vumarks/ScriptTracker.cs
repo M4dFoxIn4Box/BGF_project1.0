@@ -29,13 +29,16 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public VuMarkTarget vumark;
     public ulong vumarkID;
 
- //   [Header("Quest")]
-	//private int questStart = 0;
-	//public int questValue;
-	//private int choiceFace = 0;
-	//public GameObject questGoal1;
-	//public GameObject questGoal2;
-	//public GameObject questGoal3;
+    //   [Header("Quest")]
+    //private int questStart = 0;
+    //public int questValue;
+    //private int choiceFace = 0;
+    //public GameObject questGoal1;
+    //public GameObject questGoal2;
+    //public GameObject questGoal3;
+
+    [Header("Tutoriel")]
+    public bool firstScan = true;
 
     [Header("Quizz")]
     public Text errorCountTxt;
@@ -96,45 +99,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         mVuMarkManager = TrackerManager.Instance.GetStateManager().GetVuMarkManager();
     }
 
-    //void Update ()
-    //{
-    //	if (questStart == questValue)
-    //	{
-    //		QuestSys();
-    //		questStart = 0;
-    //		Debug.Log ("questStart");
-    //	}
-    //}
-
-    //public void QuestSys ()
-    //{
-    //	choiceFace ++;
-    //	if (choiceFace == 1)
-    //	questGoal1.SetActive(true);
-    //	if (choiceFace == 2)
-    //	questGoal2.SetActive(true);
-    //	if (choiceFace == 3)
-    //	questGoal2.SetActive(true);
-    //}
-
-    //public void Password()
-    //{
-    //    Debug.Log(answer.text);
-    //    if(answer.text == passwordToEdit)
-    //    {
-    //        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    //        answer.text = "Bien joué";
-    //        StartCoroutine(ResetPassword());
-    //    }
-    //}
-
-    //IEnumerator ResetPassword ()
-    //{
-    //    yield return new WaitForSeconds(1);
-    //    answer.text = null;
-    //}
-
-
 
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
     {
@@ -163,9 +127,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     
     public void OnTrackerLost()
     {
-
-    
-
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
             int targetObj = System.Convert.ToInt32 (item.VuMarkTarget.InstanceId.NumericValue);
@@ -178,41 +139,52 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void QuizzDisplaying ()
     {
-        if (quizzDone == false)
+        if (firstScan)
         {
-            currentQuizzList = quizzLists[vumarkID - 1];
-            scoreToReach = quizzLists[vumarkID - 1].scoreToWin;
-            Debug.Log(scoreToReach);
-            quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
-            quizzDone = true;
-            errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
-            scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
-        }
+            firstScan = false;
+            Debug.Log(firstScan);
+            Tuto_Manager.tuto.ActivatingTuto(1);
 
-
-        if (quizzAvailable.Count == 0)
-        {
-            LeaveQuizz();
         }
         else
         {
-            
-            currentQuizz = quizzAvailable[(Random.Range(0, quizzAvailable.Count))];
-
-            quizzInterface.SetActive(true);
-
-            quizzText.text = currentQuizz.quizzQuestion;
-
-            // QUIZZ INITIALISATION
-
-            for (int i = 0; i < buttonList.Length; i++)
+            if (quizzDone == false)
             {
-                buttonList[i].interactable = true;
-                answerBoardText[i].text = currentQuizz.answerList[i];
-                buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+                currentQuizzList = quizzLists[vumarkID - 1];
+                scoreToReach = quizzLists[vumarkID - 1].scoreToWin;
+                Debug.Log(scoreToReach);
+                quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
+                quizzDone = true;
+                errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
+                scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
             }
 
-        }              
+
+            if (quizzAvailable.Count == 0)
+            {
+                LeaveQuizz();
+            }
+            else
+            {
+
+                currentQuizz = quizzAvailable[(Random.Range(0, quizzAvailable.Count))];
+
+                quizzInterface.SetActive(true);
+
+                quizzText.text = currentQuizz.quizzQuestion;
+
+                // QUIZZ INITIALISATION
+
+                for (int i = 0; i < buttonList.Length; i++)
+                {
+                    buttonList[i].interactable = true;
+                    answerBoardText[i].text = currentQuizz.answerList[i];
+                    buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+                }
+
+            }
+        }
+             
                 
     }
 
