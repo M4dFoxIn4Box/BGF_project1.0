@@ -173,7 +173,6 @@ public class Interface_Manager : MonoBehaviour
 
     void Victory()
     {
-        Debug.Log("YOU WIN !");
         victoryText.SetActive(true);
     }
 
@@ -213,7 +212,6 @@ public class Interface_Manager : MonoBehaviour
 
     public void MapActivation (int imageNumber)//Maping
     {
-        Debug.Log("enabled");
         imageZone[imageNumber].GetComponent<Image>().enabled = true;
     }
 

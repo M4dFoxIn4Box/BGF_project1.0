@@ -127,15 +127,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void QuizzDisplaying ()
     {
-        if (firstScan)
-        {
-            firstScan = false;
-            Debug.Log(firstScan);
-            Tuto_Manager.tuto.ActivatingTuto(1);
-
-        }
-        else
-        {
+           
             if (quizzDone == false)
             {
                 currentQuizzList = quizzLists[vumarkID - 1];
@@ -171,7 +163,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 }
 
             }
-        }
+        
              
                 
     }

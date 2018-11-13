@@ -15,8 +15,6 @@ public class Tuto_Manager : MonoBehaviour
     public List<ScriptableTuto> tutoList;
     private int tutoToDeactive;
 
-    public int tutoQuizzIdx;
-
     public static Tuto_Manager tuto {get; private set;}
 
     private void Awake()
@@ -57,10 +55,6 @@ public class Tuto_Manager : MonoBehaviour
             menuTuto.SetActive(false);
             tutoHasBeenDone[tutoToDeactive] = true;
             Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
-            if (currentScriptableTuto == tutoList[tutoQuizzIdx])
-            {
-                ScriptTracker.Instance.QuizzDisplaying();
-            }
         }
         else 
         {
