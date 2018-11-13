@@ -29,14 +29,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public VuMarkTarget vumark;
     public ulong vumarkID;
 
-    //   [Header("Quest")]
-    //private int questStart = 0;
-    //public int questValue;
-    //private int choiceFace = 0;
-    //public GameObject questGoal1;
-    //public GameObject questGoal2;
-    //public GameObject questGoal3;
-
     [Header("Tutoriel")]
     public bool firstScan = true;
 
@@ -84,10 +76,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public int scoreToReach;
     private bool isAnswered = false;
     private GameObject currentFakeARObject;
-
-    //[Header("Quest")]
-    //public InputField answer;
-    //public string passwordToEdit;
 
     void Start()
     {
@@ -198,7 +186,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void ButtonClick (int buttonIdx)
     {
-        Debug.Log("And the right answer is... " + currentQuizz.rightAnswer);
         if(buttonIdx + 1 == currentQuizz.rightAnswer)
         {
             buttonList[buttonIdx].GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -206,7 +193,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
         else
         {
-            Debug.Log("BAD ANSWER");
             buttonList[buttonIdx].GetComponent<UnityEngine.UI.Image>().color = Color.red;
             BadAnswer();
         }
@@ -266,16 +252,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
 
         currentQuizzScore++;
-        scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
-        Debug.Log("Current Quizz Score = " + currentQuizzScore);
 
         if (currentQuizzScore == scoreToReach)
         {
-            //funFactTxt.text = currentQuizzList.funFact;
-            //funFactParent.SetActive(true);
             congratulationsImage.SetActive(true);
             currentQuizzScore = 0;
-            Debug.Log("You're score = " + currentQuizzScore);
             StartCoroutine(GameWon());
         }
         else if (currentQuizzScore < scoreToReach)
@@ -309,7 +290,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);       
         quizzDone = false;
-        //questStart ++;
 
         // Fais apparaître les récompenses liés au VuMark scanné
 

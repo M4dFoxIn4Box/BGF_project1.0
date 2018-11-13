@@ -17,9 +17,6 @@ public class Save_Manager : MonoBehaviour
     public List<bool> galleryButtonsStates;
     public List<bool> mappingImageStates;
     public List<bool> galleryTutoStates;
-    //public List<bool> tutoStates;
-    //public GameObject[] rewardToSpawn;
-    //public string[] funFactToDisplay;
 
     private void Awake()
     {
@@ -44,7 +41,6 @@ public class Save_Manager : MonoBehaviour
                 galleryButtonsStates.Add(false);
                 mappingImageStates.Add(false);
                 galleryTutoStates.Add(false);
-                //tutoStates.Add(false);
                 Save();
             }
         }
@@ -53,7 +49,6 @@ public class Save_Manager : MonoBehaviour
             Load();
         }
 
-        //Tuto_Manager.Tuto.AwakeTuto(tutoStates);
     }
 
     public void SetToTrue (int buttonIdx) // Sauvegarder le bouton qui s'est activé
@@ -74,18 +69,6 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
-    //public void TutoToDestroy(int tutoIdx)
-    //{
-    //    tutoStates[tutoIdx] = true;
-    //    Save();
-    //}
-
-    //public void RewardSave(GameObject[] rewardToSave, string[] funFactToSave)
-    //{
-    //    rewardToSpawn = rewardToSave;
-    //    funFactToDisplay = funFactToSave;
-    //    Save();
-    //}
 
     void FixedUpdate ()
     {
@@ -98,16 +81,8 @@ public class Save_Manager : MonoBehaviour
     public void ResetClearList()
     {
         File.Delete(Application.persistentDataPath + "/playerInfo.data");
-        Debug.Log("DELETE");
     }
 
-    IEnumerator CHIEN()
-    {
-        Debug.Log("Loading");
-        yield return new WaitForSeconds(2);
-        Load();
-
-    }
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -117,9 +92,7 @@ public class Save_Manager : MonoBehaviour
         data.galleryButtonsStates = galleryButtonsStates;
         data.mappingImageStates = mappingImageStates;
         data.galleryTutoStates = galleryTutoStates;
-        //data.tutoStates = tutoStates;
-        //data.rewardToSpawn = rewardToSpawn;
-        //data.funFactToDisplay = funFactToDisplay;
+
 
         bf.Serialize(file, data);
         file.Close();
@@ -138,14 +111,11 @@ public class Save_Manager : MonoBehaviour
             galleryButtonsStates = data.galleryButtonsStates;
             mappingImageStates = data.mappingImageStates;
             galleryTutoStates = data.galleryTutoStates;
-            //tutoStates = data.tutoStates;
-            //rewardToSpawn = data.rewardToSpawn;
-            //funFactToDisplay = data.funFactToDisplay;
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
             Tuto_Manager.tuto.TutoState(galleryTutoStates);
-            //Tuto_Manager.Tuto.LoadingTuto();
+
         }
     }
 }
@@ -156,7 +126,4 @@ class PlayerData
     public List<bool> galleryButtonsStates = new List<bool>();
     public List<bool> mappingImageStates = new List<bool>();
     public List<bool> galleryTutoStates = new List<bool>();
-    //public List<bool> tutoStates = new List<bool>();
-    //public GameObject[] rewardToSpawn;
-    //public string[] funFactToDisplay;
 }
