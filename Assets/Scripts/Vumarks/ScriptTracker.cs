@@ -244,6 +244,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
 
         currentQuizzScore++;
+        scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
 
         if (currentQuizzScore == scoreToReach)
         {

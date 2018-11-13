@@ -124,6 +124,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1911791562967780, guid: 0f02cff67c6fda142a39e9f799e29404,
     type: 2}
   m_PrefabInternal: {fileID: 351989118}
+--- !u!114 &22271427 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114576430073524078, guid: 0f02cff67c6fda142a39e9f799e29404,
+    type: 2}
+  m_PrefabInternal: {fileID: 351989118}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &70512732 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
@@ -258,6 +264,7 @@ MonoBehaviour:
   galleryButtonsStates: 
   mappingImageStates: 
   galleryTutoStates: 
+  quizzDoneToSave: 0
 --- !u!114 &293265390 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114423930023782238, guid: 0f02cff67c6fda142a39e9f799e29404,
@@ -964,7 +971,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  buttonARMode: {fileID: 0}
+  buttonARMode: {fileID: 22271427}
   arCam: {fileID: 634819966}
   uiCam: {fileID: 1806422368}
   mainCanvas: {fileID: 1195051473}
@@ -992,6 +999,7 @@ MonoBehaviour:
   - {fileID: 1016788598}
   - {fileID: 1520662832}
   ARModeMenu: {fileID: 1408632156}
+  quizzDone: 0
 --- !u!1001 &1312340419
 Prefab:
   m_ObjectHideFlags: 0
