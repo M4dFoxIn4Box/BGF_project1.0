@@ -50,6 +50,9 @@ public class Interface_Manager : MonoBehaviour
     private int currentIdxMenu = 1;
     public GameObject[] menuToActivate;
     public GameObject ARModeMenu;
+
+    [Header("Tutoriel quizz")]
+    public bool quizzDone;
     
 
     private void Awake()
@@ -189,13 +192,22 @@ public class Interface_Manager : MonoBehaviour
 
     public void OpenARCamera()
     {
-        mainCanvas.worldCamera = arCam;
-        menuToActivate[currentIdxMenu].SetActive(false);
-        ARModeMenu.SetActive(true);
-        vumarkPrefab.SetActive(true);
-        uiCam.gameObject.SetActive(false);
+        if(!quizzDone)
+        {
+            Tuto_Manager.tuto.ActivatingTuto(1);
+            quizzDone = true;
+        }
+        else
+        {
+            mainCanvas.worldCamera = arCam;
+            menuToActivate[currentIdxMenu].SetActive(false);
+            ARModeMenu.SetActive(true);
+            vumarkPrefab.SetActive(true);
+            uiCam.gameObject.SetActive(false);
 
-        arCam.gameObject.SetActive(true);
+            arCam.gameObject.SetActive(true);
+        }
+  
     }
 
     public void CloseARCamera()
