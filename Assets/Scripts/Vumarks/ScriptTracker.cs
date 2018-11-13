@@ -41,6 +41,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public Text errorCountTxt;
     public int currentErrorCount;
     public GameObject errorImage;
+    public Text scoreDisplay;
     public bool quizzDone = false;
     public GameObject quizzInterface;
     public GameObject congratulationsImage;
@@ -184,9 +185,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             Debug.Log(scoreToReach);
             quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
             quizzDone = true;
+            errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
+            scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
         }
 
-        errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
 
         if (quizzAvailable.Count == 0)
         {
@@ -292,7 +294,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
 
         currentQuizzScore++;
-
+        scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
         Debug.Log("Current Quizz Score = " + currentQuizzScore);
 
         if (currentQuizzScore == scoreToReach)
