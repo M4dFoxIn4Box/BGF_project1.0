@@ -167,12 +167,12 @@ public class Interface_Manager : MonoBehaviour
         scoreText.text = score +" / " + limitToWin ;
         questImage.fillAmount = currentQuestValue;
 
-        if (currentQuestValue == intStepToIRLReward[1])
+        if (score == intStepToIRLReward[0])
         {
             BlockARCamera();
-            gameobjectStepToIRLReward.Remove(gameobjectStepToIRLReward[1]);
-            intStepToIRLReward.Remove(1);
-            gameobjectStepToIRLReward[1].SetActive(true);
+            gameobjectStepToIRLReward.Remove(gameobjectStepToIRLReward[0]);
+            intStepToIRLReward.Remove(0);
+            gameobjectStepToIRLReward[0].SetActive(true);
         }
 
         if (score == limitToWin)
@@ -190,9 +190,10 @@ public class Interface_Manager : MonoBehaviour
     {
         if(buttonARMode.interactable == true)
             buttonARMode.interactable = false;
-
-        if (buttonARMode.interactable == false)
+        else
+        {
             buttonARMode.interactable = true;
+        }
     }
 
     //CAMERA
