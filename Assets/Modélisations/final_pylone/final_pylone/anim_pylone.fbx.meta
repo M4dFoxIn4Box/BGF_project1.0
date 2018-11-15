@@ -1,31 +1,57 @@
 fileFormatVersion: 2
-guid: 7a09f5d3970603840acf67a10b4fa831
+guid: 7b30710882b996f44b4c782c98c0fa41
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: box
-    100002: Lampe
-    100004: Porte
-    100006: //RootNode
-    400000: box
-    400002: Lampe
-    400004: Porte
-    400006: //RootNode
-    2100000: DrWhoLumiere
-    2100002: BoxWhoPorte
-    2100004: 03 - Default
-    2300000: box
-    2300002: Lampe
-    2300004: Porte
-    3300000: box
-    3300002: Lampe
-    3300004: Porte
-    4300000: Lampe
-    4300002: box
-    4300004: Porte
+    100000: //RootNode
+    100002: pylone:belt_belt
+    100004: pylone:crystal_crystal
+    100006: pylone:large_pylone_large_pylone
+    100008: pylone:thin_pylone_thin_pylone
+    400000: //RootNode
+    400002: pylone:belt_belt
+    400004: pylone:crystal_crystal
+    400006: pylone:large_pylone_large_pylone
+    400008: pylone:thin_pylone_thin_pylone
+    2100000: pylone_belt_mat1
+    2100002: pylone_crystal_mat1
+    2100004: pylone_largeCryst_mat1
+    2100006: pylone_thinCryst_mat1
+    2300000: pylone:belt_belt
+    2300002: pylone:crystal_crystal
+    2300004: pylone:large_pylone_large_pylone
+    2300006: pylone:thin_pylone_thin_pylone
+    3300000: pylone:belt_belt
+    3300002: pylone:crystal_crystal
+    3300004: pylone:large_pylone_large_pylone
+    3300006: pylone:thin_pylone_thin_pylone
+    4300000: pylone:belt_belt
+    4300002: pylone:crystal_crystal
+    4300004: pylone:large_pylone_large_pylone
+    4300006: pylone:thin_pylone_thin_pylone
     7400000: Take 001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pylone_belt_mat1
+    second: {fileID: 2100000, guid: 2e838cffa81a2514d955ffa526c0b8b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pylone_crystal_mat1
+    second: {fileID: 2100000, guid: b6e7dc8c96289c84a8c19a68018a63df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pylone_largeCryst_mat1
+    second: {fileID: 2100000, guid: 687c7f1ddf72e9246b0006c4a5d00954, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pylone_thinCryst_mat1
+    second: {fileID: 2100000, guid: ad710e0226c6b674bb1031a008f1ccf7, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
