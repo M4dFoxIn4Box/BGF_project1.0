@@ -31,6 +31,12 @@ public class Interface_Manager : MonoBehaviour
     public List<GameObject> gameobjectStepToIRLReward;
     public Button buttonARMode;
 
+    [Header("Password")]
+
+    public GameObject inputfieldToActivate;
+    public string passwordToContinue;
+    public InputField passwordField;
+
     [Header("Camera")]
 
     public Camera arCam;
@@ -170,8 +176,8 @@ public class Interface_Manager : MonoBehaviour
         if (score == intStepToIRLReward[0])
         {
             BlockARCamera();
-            gameobjectStepToIRLReward.Remove(gameobjectStepToIRLReward[0]);
-            intStepToIRLReward.Remove(0);
+            gameobjectStepToIRLReward.RemoveAt(0);
+            intStepToIRLReward.RemoveAt(0);
             gameobjectStepToIRLReward[0].SetActive(true);
         }
 
@@ -188,11 +194,26 @@ public class Interface_Manager : MonoBehaviour
 
     public void BlockARCamera()
     {
-        if(buttonARMode.interactable == true)
+        if (buttonARMode.interactable == true)
+        {
             buttonARMode.interactable = false;
+            inputfieldToActivate.SetActive(true);
+        }
         else
         {
             buttonARMode.interactable = true;
+        }
+    }
+
+    //PASSWORD
+
+    public void PasswordToCheck()
+    {
+        if (passwordField.text == passwordToContinue)
+        {
+            BlockARCamera();
+            inputfieldToActivate.SetActive(false);
+            passwordField.text = "";
         }
     }
 

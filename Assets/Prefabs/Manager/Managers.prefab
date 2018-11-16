@@ -26,6 +26,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1303250653212672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4783023286315466}
+  - component: {fileID: 114072188457218656}
+  m_Layer: 0
+  m_Name: Save_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1364951043403184
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,38 +90,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1751703371627720
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4749607493296408}
-  - component: {fileID: 82841097143310112}
-  m_Layer: 0
-  m_Name: Main_Music_Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1778519691769686
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4606513054375654}
-  - component: {fileID: 114755241418511204}
-  m_Layer: 0
-  m_Name: Save_Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &4461451101165356
 Transform:
   m_ObjectHideFlags: 1
@@ -116,11 +100,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4606513054375654}
   - {fileID: 224087666885904438}
   - {fileID: 4655167934840850}
   - {fileID: 4495859045442910}
-  - {fileID: 4749607493296408}
+  - {fileID: 4783023286315466}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -135,20 +118,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461451101165356}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4606513054375654
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778519691769686}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4461451101165356}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4655167934840850
 Transform:
@@ -161,116 +131,37 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461451101165356}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4749607493296408
+--- !u!4 &4783023286315466
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1751703371627720}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 748.0067, y: 1284.4065, z: -1012.01154}
+  m_GameObject: {fileID: 1303250653212672}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461451101165356}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82841097143310112
-AudioSource:
+--- !u!114 &114072188457218656
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1751703371627720}
+  m_GameObject: {fileID: 1303250653212672}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3251d95cac2df844d9f059f0fedc65f8, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.5
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e053ade5cba7d84bbd743c00bfa1918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardNumbers: 15
+  galleryButtonsStates: 
+  mappingImageStates: 
+  galleryTutoStates: 
+  quizzDoneToSave: 0
 --- !u!114 &114140489134312662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -283,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScriptableTuto: {fileID: 0}
-  tutoInterface: {fileID: 0}
+  menuTuto: {fileID: 0}
   tutoTitleTxt: {fileID: 0}
   tutoImg: {fileID: 0}
   tutoTxt: {fileID: 0}
@@ -291,6 +182,7 @@ MonoBehaviour:
   tutoList:
   - {fileID: 11400000, guid: abd73b896209d374f882514711c54b03, type: 2}
   - {fileID: 11400000, guid: 4ee8ddb9e7bfe8f42a56ec092d92dbc0, type: 2}
+  tutoQuizzIdx: 1
 --- !u!114 &114317593520999126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,11 +194,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebc167e4bc403f4dafcfedb7def6973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  galleryPannel: {fileID: 0}
+  artifactsGallery: {fileID: 0}
   mapList: {fileID: 0}
   scoreText: {fileID: 0}
-  limitToWin: 42
+  limitToWin: 15
+  victoryText: {fileID: 0}
+  questImage: {fileID: 0}
+  intStepToIRLReward: 01000000050000000a0000000f000000
+  gameobjectStepToIRLReward:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  buttonARMode: {fileID: 0}
+  inputfieldToActivate: {fileID: 0}
+  passwordToContinue: zeldagoty
   arCam: {fileID: 0}
+  uiCam: {fileID: 0}
+  mainCanvas: {fileID: 0}
+  vumarkPrefab: {fileID: 0}
   imageZone:
   - {fileID: 0}
   - {fileID: 0}
@@ -323,43 +229,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  menuToActivate:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spawnPointReward: {fileID: 0}
-  spawnPointFunFact: {fileID: 0}
-  rewardBoard:
-  - {fileID: 11400000, guid: ed1cd9ee90e22f0448b6603895937487, type: 2}
-  - {fileID: 11400000, guid: d3b04f48b173aa94d8f53745ff42518a, type: 2}
-  - {fileID: 11400000, guid: fbfc092129e99334d8b19b0a2c627338, type: 2}
-  - {fileID: 11400000, guid: 9323d765d66f8604db2f70bc26f362df, type: 2}
-  - {fileID: 11400000, guid: ed4efaee1577ed9409f198c0523facd2, type: 2}
-  - {fileID: 11400000, guid: 3143f4357c960464ca02880bcdb11acf, type: 2}
-  currentReward: {fileID: 0}
+  ARModeMenu: {fileID: 0}
+  tutoQuizzIdx: 1
+  quizzDone: 0
 --- !u!114 &114519517695116492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,20 +252,10 @@ MonoBehaviour:
   spawnPointFakeAR: {fileID: 0}
   fakeArObjectToSpawn:
   - {fileID: 1513966125414362, guid: 783ae661395f53241bc3753c5162687b, type: 2}
---- !u!114 &114755241418511204
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778519691769686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e053ade5cba7d84bbd743c00bfa1918, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rewardNumbers: 42
-  galleryButtonsStates: 
-  mappingImageStates: 
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!224 &224087666885904438
 RectTransform:
   m_ObjectHideFlags: 1
@@ -399,7 +267,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461451101165356}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
