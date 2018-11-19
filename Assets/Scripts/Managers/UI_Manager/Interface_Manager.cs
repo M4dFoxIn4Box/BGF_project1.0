@@ -37,6 +37,12 @@ public class Interface_Manager : MonoBehaviour
     public GameObject inputfieldToActivate;
     public InputField passwordField;
 
+    [Header("Clues")]
+
+    public List<GameObject> cluesListGameobject;
+    public List<string> cluesListText;
+    private int cluesScore;
+
     [Header("Camera")]
 
     public Camera arCam;
@@ -84,6 +90,13 @@ public class Interface_Manager : MonoBehaviour
             palierImageList.RemoveAt(0);
             palierScoreList.RemoveAt(0);
             palierImageList[0].SetActive(true);
+        }
+
+        for (int i = 0; i < cluesScore; i++)
+        {
+            cluesListGameobject[0].GetComponent<Text>().text = cluesListText[0];
+            cluesListGameobject.RemoveAt(0);
+            cluesListText.RemoveAt(0);
         }
     }
 
@@ -178,6 +191,11 @@ public class Interface_Manager : MonoBehaviour
         quizzDone = isTutoDone;
     }
 
+    public void LoadClueScore(int scoreClue)
+    {
+        scoreClue = cluesScore;
+    }
+
     //SCORING & PALIER
 
     public void AddScore(int newScoreValue)
@@ -193,7 +211,15 @@ public class Interface_Manager : MonoBehaviour
         scoreText.text = score +" / " + limitToWin ;
         questImage.fillAmount = currentQuestValue;
 
-        if (score == palierScoreList[0])
+        if (score != palierScoreList[0])
+        {
+            BlockARCamera();
+            palierImageList[0].SetActive(true);
+            palierImageList.RemoveAt(0);
+            palierScoreList.RemoveAt(0);
+            CluesManager();
+        }
+        else if(score == palierScoreList[0])
         {
             BlockARCamera();
             palierImageList.RemoveAt(0);
@@ -223,6 +249,15 @@ public class Interface_Manager : MonoBehaviour
         {
             buttonARMode.interactable = true;
         }
+    }
+
+    public void CluesManager()
+    {
+        cluesScore++;
+        Save_Manager.saving.ScoreClue(cluesScore);
+        cluesListGameobject[0].GetComponent<Text>().text = cluesListText[0];
+        cluesListGameobject.RemoveAt(0);
+        cluesListText.RemoveAt(0);
     }
 
     //PASSWORD

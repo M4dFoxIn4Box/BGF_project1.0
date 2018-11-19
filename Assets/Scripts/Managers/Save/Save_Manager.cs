@@ -17,6 +17,7 @@ public class Save_Manager : MonoBehaviour
     public List<bool> galleryButtonsStates;
     public List<bool> mappingImageStates;
     public List<bool> galleryTutoStates;
+    public int clueScoreToSave;
     public bool quizzDoneToSave;
 
     private void Awake()
@@ -77,6 +78,12 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
+    public void ScoreClue(int scoreClue)
+    {
+        scoreClue = clueScoreToSave;
+        Save();
+    }
+
 
     void FixedUpdate ()
     {
@@ -101,9 +108,10 @@ public class Save_Manager : MonoBehaviour
         data.mappingImageStates = mappingImageStates;
         data.galleryTutoStates = galleryTutoStates;
         data.quizzDoneToSave = quizzDoneToSave;
+        data.clueScoreToSave = clueScoreToSave;
 
 
-        bf.Serialize(file, data);
+    bf.Serialize(file, data);
         file.Close();
 
     }
@@ -121,11 +129,13 @@ public class Save_Manager : MonoBehaviour
             mappingImageStates = data.mappingImageStates;
             galleryTutoStates = data.galleryTutoStates;
             quizzDoneToSave = data.quizzDoneToSave;
+            clueScoreToSave = data.clueScoreToSave;
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
             Interface_Manager.Instance.TutoIsDone(quizzDoneToSave);
             Tuto_Manager.tuto.TutoState(galleryTutoStates);
+            Interface_Manager.Instance.LoadClueScore(clueScoreToSave);
 
         }
     }
@@ -138,4 +148,5 @@ class PlayerData
     public List<bool> mappingImageStates = new List<bool>();
     public List<bool> galleryTutoStates = new List<bool>();
     public bool quizzDoneToSave;
+    public int clueScoreToSave;
 }
