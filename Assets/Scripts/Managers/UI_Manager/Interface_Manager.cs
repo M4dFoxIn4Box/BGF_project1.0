@@ -21,7 +21,7 @@ public class Interface_Manager : MonoBehaviour
     [Header("Scoring")]
 
     public Text scoreText;
-    private float score;
+    public float score;
     public float limitToWin;
     public GameObject victoryText;
 
@@ -78,7 +78,13 @@ public class Interface_Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        for (int i = (int)score; (int)score > palierScoreList[0];)
+        {
+            Debug.Log((int)score);
+            palierImageList.RemoveAt(0);
+            palierScoreList.RemoveAt(0);
+            palierImageList[0].SetActive(true);
+        }
     }
 
     // Update is called once per frame
