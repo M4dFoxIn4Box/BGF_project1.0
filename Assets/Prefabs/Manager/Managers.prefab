@@ -100,10 +100,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 224087666885904438}
   - {fileID: 4655167934840850}
   - {fileID: 4495859045442910}
   - {fileID: 4783023286315466}
+  - {fileID: 224087666885904438}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -118,7 +118,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461451101165356}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4655167934840850
 Transform:
@@ -131,7 +131,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461451101165356}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4783023286315466
 Transform:
@@ -144,7 +144,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461451101165356}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114072188457218656
 MonoBehaviour:
@@ -180,8 +180,11 @@ MonoBehaviour:
   tutoTxt: {fileID: 0}
   tutoHasBeenDone: 0000
   tutoList:
+  - {fileID: 11400000, guid: 4b215bf1956c2054ba51f19ebea0b14c, type: 2}
   - {fileID: 11400000, guid: abd73b896209d374f882514711c54b03, type: 2}
-  - {fileID: 11400000, guid: 4ee8ddb9e7bfe8f42a56ec092d92dbc0, type: 2}
+  - {fileID: 11400000, guid: 0bf53372306eec84ab96442d30a966be, type: 2}
+  - {fileID: 11400000, guid: b2d298d7d673de549a285df1a0529d21, type: 2}
+  - {fileID: 11400000, guid: c251839077d9c3148a02194d9b63a0a5, type: 2}
   tutoQuizzIdx: 1
 --- !u!114 &114317593520999126
 MonoBehaviour:
@@ -197,18 +200,37 @@ MonoBehaviour:
   artifactsGallery: {fileID: 0}
   mapList: {fileID: 0}
   scoreText: {fileID: 0}
+  score: 0
   limitToWin: 15
   victoryText: {fileID: 0}
   questImage: {fileID: 0}
-  intStepToIRLReward: 01000000050000000a0000000f000000
-  gameobjectStepToIRLReward:
+  palierScoreList: 01000000050000000a0000000f000000
+  palierImageList:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  palierPasswordList:
+  - a
+  - b
+  - c
+  - d
   buttonARMode: {fileID: 0}
   inputfieldToActivate: {fileID: 0}
-  passwordToContinue: zeldagoty
+  passwordField: {fileID: 0}
+  cluesGallery:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   arCam: {fileID: 0}
   uiCam: {fileID: 0}
   mainCanvas: {fileID: 0}
@@ -230,6 +252,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   menuToActivate:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -267,7 +290,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461451101165356}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
