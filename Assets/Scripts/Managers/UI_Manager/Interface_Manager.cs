@@ -27,14 +27,14 @@ public class Interface_Manager : MonoBehaviour
 
     private float currentQuestValue;
     public Image questImage;
-    public List<int> intStepToIRLReward;
-    public List<GameObject> gameobjectStepToIRLReward;
+    public List<int> palierScoreList;
+    public List<GameObject> palierImageList;
+    public List<string> palierPasswordList;
     public Button buttonARMode;
 
     [Header("Password")]
 
     public GameObject inputfieldToActivate;
-    public string passwordToContinue;
     public InputField passwordField;
 
     [Header("Camera")]
@@ -173,12 +173,12 @@ public class Interface_Manager : MonoBehaviour
         scoreText.text = score +" / " + limitToWin ;
         questImage.fillAmount = currentQuestValue;
 
-        if (score == intStepToIRLReward[0])
+        if (score == palierScoreList[0])
         {
             BlockARCamera();
-            gameobjectStepToIRLReward.RemoveAt(0);
-            intStepToIRLReward.RemoveAt(0);
-            gameobjectStepToIRLReward[0].SetActive(true);
+            palierImageList.RemoveAt(0);
+            palierScoreList.RemoveAt(0);
+            palierImageList[0].SetActive(true);
         }
 
         if (score == limitToWin)
@@ -209,10 +209,11 @@ public class Interface_Manager : MonoBehaviour
 
     public void PasswordToCheck()
     {
-        if (passwordField.text == passwordToContinue)
+        if (passwordField.text == palierPasswordList[0])
         {
             BlockARCamera();
             inputfieldToActivate.SetActive(false);
+            palierPasswordList.RemoveAt(0);
             passwordField.text = "";
         }
     }
