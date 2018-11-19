@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1036,6 +1036,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: menuToActivate.Array.size
@@ -1385,6 +1390,36 @@ Prefab:
       propertyPath: menuToActivate.Array.data[5]
       value: 
       objectReference: {fileID: 1069169592}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b215bf1956c2054ba51f19ebea0b14c,
+        type: 2}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: abd73b896209d374f882514711c54b03,
+        type: 2}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bf53372306eec84ab96442d30a966be,
+        type: 2}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoList.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: b2d298d7d673de549a285df1a0529d21,
+        type: 2}
+    - target: {fileID: 114140489134312662, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: tutoList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: c251839077d9c3148a02194d9b63a0a5,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
   m_IsPrefabAsset: 0
