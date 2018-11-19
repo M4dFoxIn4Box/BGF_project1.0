@@ -104,6 +104,20 @@ public class Interface_Manager : MonoBehaviour
         menuToActivate[currentIdxMenu].SetActive(true);
     }
 
+    public void ChangeMenuToClue()
+    {
+        menuToActivate[currentIdxMenu].SetActive(false);
+        currentIdxMenu += 2;
+        menuToActivate[currentIdxMenu].SetActive(true);
+    }
+
+    public void ChangeMenuBackClue()
+    {
+        menuToActivate[currentIdxMenu].SetActive(false);
+        currentIdxMenu -= 2;
+        menuToActivate[currentIdxMenu].SetActive(true);
+    }
+
     public void ShowElement(GameObject elementToActive)
     {
         elementToActive.SetActive(true);
@@ -158,7 +172,7 @@ public class Interface_Manager : MonoBehaviour
         quizzDone = isTutoDone;
     }
 
-    //SCORING
+    //SCORING & PALIER
 
     public void AddScore(int newScoreValue)
     {
@@ -251,7 +265,7 @@ public class Interface_Manager : MonoBehaviour
         menuToActivate[currentIdxMenu].SetActive(true);
     }
 
-    //MAP
+    //MAP MENU UPDATE
 
     public void MapActivation (int imageNumber)//Maping
     {
