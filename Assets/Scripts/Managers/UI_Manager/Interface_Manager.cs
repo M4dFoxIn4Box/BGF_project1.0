@@ -221,9 +221,6 @@ public class Interface_Manager : MonoBehaviour
         if (score != palierScoreList[0])
         {
             Debug.Log("I'm a super fox !!!");
-            palierImageList[0].SetActive(true);
-            palierImageList.RemoveAt(0);
-            palierScoreList.RemoveAt(0);
             CluesManager();
         }
         else if(score == palierScoreList[0])
