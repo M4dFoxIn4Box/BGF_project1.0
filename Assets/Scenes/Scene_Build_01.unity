@@ -130,6 +130,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 649534252}
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &70510700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1823716989402966, guid: 0f02cff67c6fda142a39e9f799e29404,
+    type: 2}
+  m_PrefabInternal: {fileID: 649534252}
 --- !u!114 &70512732 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
@@ -1084,22 +1089,22 @@ Prefab:
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: cluesListText.Array.size
-      value: 3
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierImageList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierScoreList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierPasswordList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4461451101165356, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1187,17 +1192,17 @@ Prefab:
         type: 2}
       propertyPath: palierImageList.Array.data[0]
       value: 
-      objectReference: {fileID: 1981522364}
+      objectReference: {fileID: 70510700}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierImageList.Array.data[1]
       value: 
-      objectReference: {fileID: 87080539}
+      objectReference: {fileID: 1981522364}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierImageList.Array.data[2]
       value: 
-      objectReference: {fileID: 628574119}
+      objectReference: {fileID: 87080539}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierImageList.Array.data[3]
@@ -1423,17 +1428,17 @@ Prefab:
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierPasswordList.Array.data[0]
-      value: b
+      value: a
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierPasswordList.Array.data[1]
-      value: c
+      value: b
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierPasswordList.Array.data[2]
-      value: d
+      value: c
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
@@ -1443,17 +1448,17 @@ Prefab:
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierScoreList.Array.data[0]
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierScoreList.Array.data[1]
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: palierScoreList.Array.data[2]
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
@@ -1463,47 +1468,62 @@ Prefab:
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: cluesListText.Array.data[3]
-      value: T ES UNE NOIX
+      value: b
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: cluesListText.Array.data[4]
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: cluesListText.Array.data[5]
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: cluesListText.Array.data[6]
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: cluesListText.Array.data[7]
-      value: T ES UNE SAUCISSE
+      value: c
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: cluesListText.Array.data[8]
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: cluesListText.Array.data[9]
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: cluesListText.Array.data[10]
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
         type: 2}
       propertyPath: cluesListText.Array.data[11]
-      value: T ES VEUF
+      value: d
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: cluesListText.Array.data[0]
+      value: a
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: cluesListText.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114317593520999126, guid: 045cdaacd05f98a459080f8035e50857,
+        type: 2}
+      propertyPath: cluesListText.Array.data[2]
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045cdaacd05f98a459080f8035e50857, type: 2}
