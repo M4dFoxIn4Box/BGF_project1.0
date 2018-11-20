@@ -41,7 +41,7 @@ public class Interface_Manager : MonoBehaviour
 
     public List<GameObject> cluesListGameobject;
     public List<string> cluesListText;
-    private int cluesScore;
+    public int cluesScore;
 
     [Header("Camera")]
 
@@ -200,20 +200,27 @@ public class Interface_Manager : MonoBehaviour
 
     public void AddScore(int newScoreValue)
     {
+        UpdateScore();
         score = score + newScoreValue;
         currentQuestValue = score / limitToWin;
 
-        UpdateScore();
+        scoreText.text = score + " / " + limitToWin;
+        questImage.fillAmount = currentQuestValue;
+
+        Debug.Log("The game score is... " + score);
+
+        if (score == limitToWin)
+        {
+            Victory();
+        }
     }
 
     void UpdateScore()
-    {
-        scoreText.text = score +" / " + limitToWin ;
-        questImage.fillAmount = currentQuestValue;
+    {       
 
         if (score != palierScoreList[0])
         {
-            BlockARCamera();
+            Debug.Log("I'm a super fox !!!");
             palierImageList[0].SetActive(true);
             palierImageList.RemoveAt(0);
             palierScoreList.RemoveAt(0);
@@ -221,16 +228,14 @@ public class Interface_Manager : MonoBehaviour
         }
         else if(score == palierScoreList[0])
         {
+            Debug.Log("I'm a unicorn !!! ");
             BlockARCamera();
             palierImageList.RemoveAt(0);
             palierScoreList.RemoveAt(0);
             palierImageList[0].SetActive(true);
         }
 
-        if (score == limitToWin)
-        {
-            Victory();
-        }
+
     }
 
     void Victory()
@@ -253,7 +258,9 @@ public class Interface_Manager : MonoBehaviour
 
     public void CluesManager()
     {
+
         cluesScore++;
+        Debug.Log("Clues score = " + cluesScore);
         Save_Manager.saving.ScoreClue(cluesScore);
         cluesListGameobject[0].GetComponent<Text>().text = cluesListText[0];
         cluesListGameobject.RemoveAt(0);

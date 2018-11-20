@@ -89,6 +89,7 @@ public class Save_Manager : MonoBehaviour
     {
         if (Input.GetKeyDown("d"))
         {
+            Debug.Log("File Deleted");
             ResetClearList();
         }
 	}

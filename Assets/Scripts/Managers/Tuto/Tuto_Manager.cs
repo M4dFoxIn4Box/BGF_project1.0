@@ -49,11 +49,9 @@ public class Tuto_Manager : MonoBehaviour
 
     public void MoveToNextSlide ()
     {
-        Debug.Log(currentScriptableTuto.numberOfSlides);
 
         if(tutoIdx == currentScriptableTuto.numberOfSlides - 1)
         {
-            Debug.Log(currentScriptableTuto);
             tutoIdx = 0;
             menuTuto.SetActive(false);
             tutoHasBeenDone[tutoToDeactive] = true;
@@ -68,7 +66,6 @@ public class Tuto_Manager : MonoBehaviour
             tutoIdx++;
             tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
             tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
-            Debug.Log(tutoIdx);
         } 
 
     }
