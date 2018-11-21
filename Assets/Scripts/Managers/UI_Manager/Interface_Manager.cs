@@ -225,6 +225,7 @@ public class Interface_Manager : MonoBehaviour
             if(score == (palierScoreList[0] - 1))
             {
                 BlockARCamera();
+                ScriptTracker.Instance.ARLocker();
             }
         }
         else if (score == palierScoreList[0])
@@ -280,8 +281,7 @@ public class Interface_Manager : MonoBehaviour
             inputfieldToActivate.SetActive(false);
             palierPasswordList.RemoveAt(0);
             passwordField.text = "";
- 
-         
+            ScriptTracker.Instance.ARLocker();
         }
     }
 

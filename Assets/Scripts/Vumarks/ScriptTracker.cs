@@ -79,6 +79,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     [Header("ARManager")]
     public bool arIsLock;
+    public GameObject mainMenu;
 
     void Start()
     {
@@ -226,6 +227,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             Destroy(currentFakeARObject);
         }
         
+        if(arIsLock)
+        {
+            mainMenu.SetActive(true);
+        }
     }
 
     public void BadAnswer()
