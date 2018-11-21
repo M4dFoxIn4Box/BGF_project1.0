@@ -152,6 +152,11 @@ public class Interface_Manager : MonoBehaviour
         elementToDesactive.SetActive(false);
     }
 
+    public void QuitAPK()
+    {
+        Application.Quit();
+    }
+
 
     //LOADING VARIABLE
 
