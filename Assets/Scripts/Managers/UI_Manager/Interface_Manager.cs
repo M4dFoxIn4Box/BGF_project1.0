@@ -61,6 +61,7 @@ public class Interface_Manager : MonoBehaviour
 
     private int currentIdxMenu = 1;
     public GameObject[] menuToActivate;
+    public int mainMenuToActivateIdx;
     public GameObject ARModeMenu;
 
     [Header("Tutoriel quizz")]
@@ -227,7 +228,7 @@ public class Interface_Manager : MonoBehaviour
             }
         }
         else if (score == palierScoreList[0])
-        {
+        {       
             palierImageList[0].SetActive(true);
             palierImageList.RemoveAt(0);
             palierScoreList.RemoveAt(0);

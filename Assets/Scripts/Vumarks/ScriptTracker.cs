@@ -77,6 +77,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private bool isAnswered = false;
     private GameObject currentFakeARObject;
 
+    [Header("ARManager")]
+    public bool arIsLock;
+
     void Start()
     {
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -162,8 +165,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                     buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
 
-            }
-        
+            }       
              
                 
     }
@@ -175,6 +177,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     // QUIZZ // answer button section
 
+    public void ARLocker()
+    {
+        arIsLock = !arIsLock;
+        Debug.Log(arIsLock);
+    }
 
     public void ButtonClick (int buttonIdx)
     {
