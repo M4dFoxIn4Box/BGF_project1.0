@@ -98,6 +98,8 @@ public class Interface_Manager : MonoBehaviour
             cluesListGameobject.RemoveAt(0);
             cluesListText.RemoveAt(0);
         }
+
+        scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
     }
 
     // Update is called once per frame
@@ -126,14 +128,14 @@ public class Interface_Manager : MonoBehaviour
     public void ChangeMenuToClue()
     {
         menuToActivate[currentIdxMenu].SetActive(false);
-        currentIdxMenu += 2;
+        currentIdxMenu += 3;
         menuToActivate[currentIdxMenu].SetActive(true);
     }
 
     public void ChangeMenuBackClue()
     {
         menuToActivate[currentIdxMenu].SetActive(false);
-        currentIdxMenu -= 2;
+        currentIdxMenu -= 3;
         menuToActivate[currentIdxMenu].SetActive(true);
     }
 
@@ -204,7 +206,7 @@ public class Interface_Manager : MonoBehaviour
         score = score + newScoreValue;
         currentQuestValue = score / limitToWin;
 
-        scoreText.text = score + " / " + limitToWin;
+        scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
         questImage.fillAmount = currentQuestValue;
 
         Debug.Log("The game score is... " + score);
