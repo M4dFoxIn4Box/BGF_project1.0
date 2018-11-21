@@ -105,7 +105,10 @@ public class Interface_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown("z"))
+        {
+            AddScore(1);
+        }
     }
 
 
@@ -202,38 +205,39 @@ public class Interface_Manager : MonoBehaviour
 
     public void AddScore(int newScoreValue)
     {
-        UpdateScore();
         score = score + newScoreValue;
         currentQuestValue = score / limitToWin;
-
         scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
         questImage.fillAmount = currentQuestValue;
 
+        UpdateScore();
+
+    }
+
+    void UpdateScore()
+    {   
+    
+
+        if (score != palierScoreList[0])
+        {
+            CluesManager();
+            if(score == (palierScoreList[0] - 1))
+            {
+                BlockARCamera();
+            }
+        }
+        else if (score == palierScoreList[0])
+        {
+            palierImageList[0].SetActive(true);
+            palierImageList.RemoveAt(0);
+            palierScoreList.RemoveAt(0);
+        }
         Debug.Log("The game score is... " + score);
 
         if (score == limitToWin)
         {
             Victory();
         }
-    }
-
-    void UpdateScore()
-    {       
-
-        if (score != palierScoreList[0])
-        {
-            Debug.Log("I'm a super fox !!!");
-            CluesManager();
-        }
-        else if(score == palierScoreList[0])
-        {
-            Debug.Log("I'm a unicorn !!! ");
-            BlockARCamera();
-            palierImageList.RemoveAt(0);
-            palierScoreList.RemoveAt(0);
-            palierImageList[0].SetActive(true);
-        }
-
 
     }
 
@@ -257,7 +261,6 @@ public class Interface_Manager : MonoBehaviour
 
     public void CluesManager()
     {
-
         cluesScore++;
         Debug.Log("Clues score = " + cluesScore);
         Save_Manager.saving.ScoreClue(cluesScore);
@@ -276,6 +279,8 @@ public class Interface_Manager : MonoBehaviour
             inputfieldToActivate.SetActive(false);
             palierPasswordList.RemoveAt(0);
             passwordField.text = "";
+ 
+         
         }
     }
 
