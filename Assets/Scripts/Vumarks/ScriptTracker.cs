@@ -229,7 +229,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         
         if(arIsLock)
         {
-            mainMenu.SetActive(true);
+            Interface_Manager.Instance.CloseARCamera();
         }
     }
 

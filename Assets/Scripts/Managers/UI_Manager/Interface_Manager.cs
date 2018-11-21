@@ -61,7 +61,6 @@ public class Interface_Manager : MonoBehaviour
 
     private int currentIdxMenu = 1;
     public GameObject[] menuToActivate;
-    public int mainMenuToActivateIdx;
     public GameObject ARModeMenu;
 
     [Header("Tutoriel quizz")]
