@@ -19,10 +19,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4044082725152380}
-  - component: {fileID: 95159530769509268}
   - component: {fileID: 114994120682073426}
   m_Layer: 0
-  m_Name: Tardis
+  m_Name: Doctor_Reward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,16 +84,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1036938781852786}
-  m_LocalRotation: {x: -0, y: 0.70710593, z: -0, w: 0.70710766}
-  m_LocalPosition: {x: 0.00000092222, y: 0.281, z: -0.00000046111}
-  m_LocalScale: {x: 0.21582839, y: 0.21582839, z: 0.21582839}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000026822088}
+  m_LocalPosition: {x: -0.000015968, y: -94, z: 0}
+  m_LocalScale: {x: 470, y: 470, z: 470}
   m_Children:
   - {fileID: 4703573701921494}
   - {fileID: 4405225538471416}
   - {fileID: 4226794083968224}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 3.818105e-15, y: 1.4164429, z: 5.632738e-15}
+  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
 --- !u!4 &4226794083968224
 Transform:
   m_ObjectHideFlags: 1
@@ -261,24 +260,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1068392356372572}
   m_Mesh: {fileID: 4300004, guid: 45aeeeb624138eb4f96181282bc0c8f6, type: 3}
---- !u!95 &95159530769509268
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1036938781852786}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 45aeeeb624138eb4f96181282bc0c8f6, type: 3}
-  m_Controller: {fileID: 9100000, guid: ac470eadcafdd3a45bf7c1ce13fbc5b0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114994120682073426
 MonoBehaviour:
   m_ObjectHideFlags: 1

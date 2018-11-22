@@ -199,33 +199,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 31429856}
   m_CullTransparentMesh: 0
---- !u!21 &40040041
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 'BGFMaterial
-
-    -1144'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!114 &70512732 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
@@ -2036,7 +2009,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 40040041}
+      objectReference: {fileID: 1913158462}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: QuestValue
@@ -2113,79 +2086,115 @@ Prefab:
         type: 2}
       propertyPath: quizzLists.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: 654da742f1a72f34dafabc80e660150b,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: 45a0fc127c4ee4048a8fe612b06cdd49,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: 0337cb077f981504da3d23bc1548bd49,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: 541ac3f6b4eee3548a5e1c6f1d203431,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[7]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: aaa4fad6854faa24dac29328f99cebb5,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[8]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: e1a03522de53b5949aaa852d43c2216f,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[9]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: af8d96c091feee547af5514f2e0364fe,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[10]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: fbb507d8e57ecb7459454ac3c9391007,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[11]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: e5345ec79c534de448b15d901d233283,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[12]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: f632a6cde92c0be42b55e4ad6238f333,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[13]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: bcf6a027ecee4774f81a4cd9c4d62bf5,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: quizzLists.Array.data[14]
       value: 
-      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+      objectReference: {fileID: 11400000, guid: b9e2e7e1bcedde5428c2940cdd0f4099,
         type: 2}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 2}
       propertyPath: mainMenu
       value: 
       objectReference: {fileID: 1370197364}
+    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: quizzLists.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: fb8f95b3895d0b24186ecd3f99e4e078,
+        type: 2}
+    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: quizzLists.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 28e24002ead979245848b1ba4a7b48de,
+        type: 2}
+    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: quizzLists.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0fc78a54d9649a740acb8af09d88ac11,
+        type: 2}
+    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: quizzLists.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: fd0e1eb2798164d4180a73ddfef67a23,
+        type: 2}
+    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: quizzLists.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: 70527c52cec3b37448c668bc2fa3599a,
+        type: 2}
+    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
+        type: 2}
+      propertyPath: quizzLists.Array.data[17]
+      value: 
+      objectReference: {fileID: 11400000, guid: 865f1b22a5c2fc94593d830025159793,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
   m_IsPrefabAsset: 0
@@ -2467,6 +2476,33 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1668910778283112, guid: 0f02cff67c6fda142a39e9f799e29404,
     type: 2}
   m_PrefabInternal: {fileID: 847824951}
+--- !u!21 &1913158462
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 'BGFMaterial
+
+    -445412'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!114 &1932254244 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114753422730192192, guid: 0f02cff67c6fda142a39e9f799e29404,
