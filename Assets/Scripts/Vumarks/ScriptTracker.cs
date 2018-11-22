@@ -249,7 +249,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void RightAnswer()
     {
-
+        quizzAvailable.Remove(currentQuizz);
         for (int i = 0; i < buttonList.Length; i++)
         {
             buttonList[i].interactable = false;
@@ -272,7 +272,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     IEnumerator TimeBeforeNextQuizz ()
     {
-        quizzAvailable.Remove(currentQuizz);
+       
         yield return new WaitForSeconds(1);
         if (currentErrorCount == currentQuizzList.errorLimit)
         {
