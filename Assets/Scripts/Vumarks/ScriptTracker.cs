@@ -33,13 +33,21 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public bool firstScan = true;
 
     [Header("Quizz")]
-    public Text errorCountTxt;
-    public int currentErrorCount;
-    public GameObject errorImage;
-    public Text scoreDisplay;
+    //public Text errorCountTxt;
+    public int currentErrorCount;    
+    //public Text scoreDisplay;
     public bool quizzDone = false;
     public GameObject quizzInterface;
+    //public GameObject errorImage;
     public GameObject congratulationsImage;
+    public List<GameObject> winCountList;
+    public List<GameObject> errorCountList;
+    public Sprite newErrorImage;
+    public GameObject winCounter;
+    public GameObject errorCounter;
+
+    public GameObject parentErrorCount;
+    public GameObject parentWinCount;
 
     [Header("Textes")]
     public Text quizzText;
@@ -136,11 +144,28 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             {
                 currentQuizzList = quizzLists[vumarkID - 1];
                 scoreToReach = quizzLists[vumarkID - 1].scoreToWin;
-                Debug.Log(scoreToReach);
+
+            Debug.Log(scoreToReach);
+
+                        for (int i = 0; i < scoreToReach; i++)
+                        {
+
+                            Instantiate(winCounter, parentWinCount.transform);
+                            winCountList.Add(winCounter);
+                            Debug.Log(winCountList);
+
+                        }
+
+                        for (int i = 0; i < currentQuizzList.errorLimit; i++)
+                        {
+                            Instantiate(errorCounter, parentErrorCount.transform);
+                            errorCountList.Add(errorCounter);
+                        }
+
                 quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
                 quizzDone = true;
-                errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
-                scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
+                //errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
+                //scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
             }
 
 
@@ -166,8 +191,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                     buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
 
-            }       
-             
+            }                  
                 
     }
 
@@ -202,6 +226,19 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         quizzAvailable.Clear();
 
+        for (int i = 0; i < winCountList.Count; i++)
+        {
+            Destroy(parentWinCount.transform.GetChild(i).gameObject);  
+        }
+
+        for (int i = 0; i < errorCountList.Count; i++)
+        {
+            Destroy(parentErrorCount.transform.GetChild(i).gameObject);
+        }
+
+        errorCountList.Clear();
+        winCountList.Clear();
+
         for (int i = 0; i < buttonList.Length; i++)
         {
             buttonList[i].GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
@@ -235,8 +272,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void BadAnswer()
     {
-        currentErrorCount++;
-        errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
+        parentErrorCount.transform.GetChild(currentErrorCount).GetComponent<UnityEngine.UI.Image>().sprite = newErrorImage;
+        currentErrorCount++;        
+        //errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
 
 
         for (int i = 0; i < buttonList.Length; i++)
@@ -255,8 +293,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             buttonList[i].interactable = false;
         }
 
+        parentWinCount.transform.GetChild(currentQuizzScore).GetComponent<UnityEngine.UI.Image>().color = Color.green;
         currentQuizzScore++;
-        scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
+        Debug.Log(currentQuizzScore);
+
+        //scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
 
         if (currentQuizzScore == scoreToReach)
         {
@@ -276,7 +317,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         yield return new WaitForSeconds(1);
         if (currentErrorCount == currentQuizzList.errorLimit)
         {
-            errorImage.SetActive(true);
+            //errorImage.SetActive(true);
             yield return new WaitForSeconds(1);
             LeaveQuizz();
         }
