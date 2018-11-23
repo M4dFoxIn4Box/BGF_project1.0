@@ -14,6 +14,8 @@ public class Tuto_Manager : MonoBehaviour
     public List<bool> tutoHasBeenDone;
     public List<ScriptableTuto> tutoList;
     private int tutoToDeactive;
+    public Transform tutoGallery;
+    private int idxTuto;
 
     public int tutoQuizzIdx;
 
@@ -34,6 +36,7 @@ public class Tuto_Manager : MonoBehaviour
 
     public void ActivatingTuto(int tutoToActive)
     {
+        idxTuto = tutoToActive;
         tutoToDeactive = tutoToActive;
 
         if (tutoHasBeenDone[tutoToActive] == false)
@@ -49,18 +52,24 @@ public class Tuto_Manager : MonoBehaviour
 
     public void MoveToNextSlide ()
     {
-
-        if(tutoIdx == currentScriptableTuto.numberOfSlides - 1)
+        if (tutoIdx == currentScriptableTuto.numberOfSlides - 1)
         {
             tutoIdx = 0;
             menuTuto.SetActive(false);
             tutoHasBeenDone[tutoToDeactive] = true;
             Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
+
+            if (tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable == false)
+            {
+                tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable = true;
+            }
+
             if (currentScriptableTuto == tutoList[tutoQuizzIdx])
             {
                 Interface_Manager.Instance.OpenARCamera();
             }
         }
+
         else 
         {
             tutoIdx++;
@@ -78,5 +87,12 @@ public class Tuto_Manager : MonoBehaviour
         }
     }
 
+    public void LoadMenuTuto(List<bool> isTutoDone)
+    {
+        for (int i = 0; i < tutoList.Count; i++)
+        {
+            tutoGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = isTutoDone[i];
+        }
+    }
 }
 

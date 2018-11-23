@@ -17,6 +17,7 @@ public class Save_Manager : MonoBehaviour
     public List<bool> galleryButtonsStates;
     public List<bool> mappingImageStates;
     public List<bool> galleryTutoStates;
+    public List<bool> galleryStoryStates;
     public int clueScoreToSave;
     public bool quizzDoneToSave;
 
@@ -66,6 +67,8 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
+    //SAVE QUIZZ 
+
     public void TutoIsDone(List<bool> tutoIdx)
     {
         galleryTutoStates = tutoIdx;
@@ -78,9 +81,19 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
+    //SAVE INDICES
+
     public void ScoreClue(int scoreClue)
     {
         scoreClue = clueScoreToSave;
+        Save();
+    }
+
+    //SAVE STORY
+
+    public void StoryIsDone(int storyIsCompleted)
+    {
+        galleryStoryStates[storyIsCompleted] = true;
         Save();
     }
 
@@ -110,6 +123,7 @@ public class Save_Manager : MonoBehaviour
         data.galleryTutoStates = galleryTutoStates;
         data.quizzDoneToSave = quizzDoneToSave;
         data.clueScoreToSave = clueScoreToSave;
+        data.galleryStoryStates = galleryStoryStates;
 
 
     bf.Serialize(file, data);
@@ -131,12 +145,15 @@ public class Save_Manager : MonoBehaviour
             galleryTutoStates = data.galleryTutoStates;
             quizzDoneToSave = data.quizzDoneToSave;
             clueScoreToSave = data.clueScoreToSave;
+            galleryStoryStates = data.galleryStoryStates;
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
             Interface_Manager.Instance.TutoIsDone(quizzDoneToSave);
             Tuto_Manager.tuto.TutoState(galleryTutoStates);
+            Tuto_Manager.tuto.LoadMenuTuto(galleryTutoStates);
             Interface_Manager.Instance.LoadClueScore(clueScoreToSave);
+
 
         }
     }
@@ -148,6 +165,7 @@ class PlayerData
     public List<bool> galleryButtonsStates = new List<bool>();
     public List<bool> mappingImageStates = new List<bool>();
     public List<bool> galleryTutoStates = new List<bool>();
+    public List<bool> galleryStoryStates = new List<bool>();
     public bool quizzDoneToSave;
     public int clueScoreToSave;
 }

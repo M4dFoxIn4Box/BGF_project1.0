@@ -114,6 +114,14 @@ public class Interface_Manager : MonoBehaviour
 
     //UI MANAGER 
 
+    //Pour changer de menu il faut renseigner le int sur le bouton
+    public void ChangeMenu(int newIdxMenu)
+    {
+        menuToActivate[currentIdxMenu].SetActive(false);
+        menuToActivate[newIdxMenu].SetActive(true);
+        currentIdxMenu = newIdxMenu;
+    }
+
     public void ChangeMenuPlus()
     {
         menuToActivate[currentIdxMenu].SetActive(false);
