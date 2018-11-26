@@ -87,12 +87,12 @@ public class Tuto_Manager : MonoBehaviour
         }
     }
 
-    public void LoadMenuTuto(List<bool> isTutoDone)
-    {
-        for (int i = 0; i < tutoList.Count; i++)
-        {
-            tutoGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = isTutoDone[i];
-        }
-    }
+    //public void LoadMenuTuto(List<bool> isTutoDone)
+    //{
+    //    for (int i = 0; i < tutoList.Count; i++)
+    //    {
+    //        tutoGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = isTutoDone[i];
+    //    }
+    //}
 }
 

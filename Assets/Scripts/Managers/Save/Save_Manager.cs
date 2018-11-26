@@ -151,7 +151,7 @@ public class Save_Manager : MonoBehaviour
             Interface_Manager.Instance.ImageState(mappingImageStates);
             Interface_Manager.Instance.TutoIsDone(quizzDoneToSave);
             Tuto_Manager.tuto.TutoState(galleryTutoStates);
-            Tuto_Manager.tuto.LoadMenuTuto(galleryTutoStates);
+            //Tuto_Manager.tuto.LoadMenuTuto(galleryTutoStates);
             Interface_Manager.Instance.LoadClueScore(clueScoreToSave);
 
 
