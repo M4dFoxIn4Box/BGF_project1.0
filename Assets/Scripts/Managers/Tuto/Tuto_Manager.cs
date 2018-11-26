@@ -93,6 +93,8 @@ public class Tuto_Manager : MonoBehaviour
 
     }
 
+    //SAVE AND LOAD TUTO
+
     public void TutoState(List<bool> isTutoCheck)
     {
         for (int k = 0; k < tutoHasBeenDone.Count; k++)
