@@ -19,6 +19,20 @@ public class Tuto_Manager : MonoBehaviour
 
     public int tutoQuizzIdx;
 
+    [Header ("Tuto Gallery Manager")]
+
+    public int currentIdxTuto = 0;
+
+    public List<Transform> currentTutoActivate = new List<Transform>();
+
+    public Transform currentTuto = null;
+
+    public GameObject arrowRight;
+    public GameObject arrowLeft;
+    public GameObject activeArrows;
+
+
+
     public static Tuto_Manager tuto {get; private set;}
 
     private void Awake()
@@ -87,12 +101,81 @@ public class Tuto_Manager : MonoBehaviour
         }
     }
 
-    //public void LoadMenuTuto(List<bool> isTutoDone)
-    //{
-    //    for (int i = 0; i < tutoList.Count; i++)
-    //    {
-    //        tutoGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = isTutoDone[i];
-    //    }
-    //}
+    public void LoadMenuTuto(List<bool> isTutoDone)
+    {
+        for (int i = 0; i < tutoList.Count; i++)
+        {
+            tutoGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = isTutoDone[i];
+        }
+    }
+
+
+    //GALLERY SLIDER MANAGER 
+
+    public void ShowTuto(Transform tutoToShow)
+    {
+        if (currentTuto != null)
+        {
+            currentTuto.gameObject.SetActive(false);
+            currentTutoActivate[currentIdxTuto].gameObject.SetActive(false);
+            currentIdxTuto = 0;
+            currentTutoActivate[currentIdxTuto].gameObject.SetActive(true);
+            arrowLeft.SetActive(false);
+            arrowRight.SetActive(true);
+        }
+
+        currentIdxTuto = 0;
+        currentTutoActivate.Clear();
+        currentTuto = tutoToShow;
+        tutoToShow.gameObject.SetActive(true);
+        activeArrows.gameObject.SetActive(true);
+
+        for (int i = 0; i < currentTuto.childCount; i++)
+        {
+            currentTutoActivate.Add(currentTuto.transform.GetChild(i));
+        }
+        Debug.Log(currentIdxTuto);
+    }
+
+    public void UnShowTuto()
+    {
+        currentTuto.gameObject.SetActive(false);
+        activeArrows.gameObject.SetActive(false);
+        currentTuto = null;
+        currentIdxTuto = 0;
+    }
+
+    public void NextStorySlide()
+    {
+        if (currentIdxTuto < currentTutoActivate.Count - 1)
+        {
+            currentTutoActivate[currentIdxTuto].gameObject.SetActive(false);
+            currentIdxTuto++;
+            currentTutoActivate[currentIdxTuto].gameObject.SetActive(true);
+            arrowLeft.SetActive(true);
+            Debug.Log(currentIdxTuto);
+        }
+
+        if (currentIdxTuto == currentTutoActivate.Count - 1)
+        {
+            arrowRight.SetActive(false);
+        }
+    }
+
+    public void PrecedentStorySlide()
+    {
+        if (currentIdxTuto > 0)
+        {
+            currentTuto.GetChild(currentIdxTuto).gameObject.SetActive(false);
+            currentIdxTuto--;
+            currentTuto.GetChild(currentIdxTuto).gameObject.SetActive(true);
+            arrowRight.SetActive(true);
+        }
+
+        if (currentIdxTuto == 0)
+        {
+            arrowLeft.SetActive(false);
+        }
+    }
 }
 

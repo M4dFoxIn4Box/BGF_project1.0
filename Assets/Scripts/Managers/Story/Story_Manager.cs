@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Story_Manager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Story_Manager : MonoBehaviour
 
     [Header("Story List")]
 
-    private int currentIdxStory = 0;
+    public int currentIdxStory = 0;
 
     public List<Transform> currentStoryActivate = new List<Transform>();
 
@@ -49,7 +50,7 @@ public class Story_Manager : MonoBehaviour
 		
 	}
 
-    public void ShowTuto(Transform tutoToShow)
+    public void ShowTuto(Transform storyToShow)
     {
         if (currentStory != null)
         {
@@ -59,19 +60,20 @@ public class Story_Manager : MonoBehaviour
             currentStoryActivate[currentIdxStory].gameObject.SetActive(true);
             arrowLeft.SetActive(false);
             arrowRight.SetActive(true);
+            Debug.Log(currentIdxStory);
         }
 
         currentIdxStory = 0;
         currentStoryActivate.Clear();
-        currentStory = tutoToShow;
-        tutoToShow.gameObject.SetActive(true);
+        currentStory = storyToShow;
+        storyToShow.gameObject.SetActive(true);
         activeArrows.gameObject.SetActive(true);
 
         for (int i = 0; i < currentStory.childCount; i++)
         {
             currentStoryActivate.Add(currentStory.transform.GetChild(i));
         }
-
+        Debug.Log(currentIdxStory);
     }
 
     public void UnShowTuto()
@@ -115,7 +117,6 @@ public class Story_Manager : MonoBehaviour
         }
     }
 
-    /*
     public void ActivateButtonGallery(int idxStory)
     {
         if (storyGallery.GetChild(idxStory).gameObject.GetComponent<Button>().interactable == false)
@@ -128,9 +129,9 @@ public class Story_Manager : MonoBehaviour
 
     public void LoadStoryStates(List<bool> storyBoolList)
     {
-        for (int i = 0 ; i < idxStory.Count ; i++)
+        for (int i = 0; i < idxStory.Count; i++)
         {
             storyGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = storyBoolList[i];
         }
-    }*/
+    }
 }

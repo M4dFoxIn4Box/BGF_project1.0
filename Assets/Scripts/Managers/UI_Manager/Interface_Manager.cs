@@ -122,20 +122,6 @@ public class Interface_Manager : MonoBehaviour
         currentIdxMenu = newIdxMenu;
     }
 
-    public void ChangeMenuPlus()
-    {
-        menuToActivate[currentIdxMenu].SetActive(false);
-        currentIdxMenu++;
-        menuToActivate[currentIdxMenu].SetActive(true);
-    }
-
-    public void ChangeMenuMoins()
-    {
-        menuToActivate[currentIdxMenu].SetActive(false);
-        currentIdxMenu--;
-        menuToActivate[currentIdxMenu].SetActive(true);
-    }
-
     public void ChangeMenuToClue()
     {
         menuToActivate[currentIdxMenu].SetActive(false);

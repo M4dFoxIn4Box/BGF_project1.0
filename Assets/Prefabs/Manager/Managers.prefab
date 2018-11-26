@@ -11,6 +11,22 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1163391694815750}
   m_IsPrefabAsset: 1
+--- !u!1 &1119475477313790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4941477347521302}
+  - component: {fileID: 114164581574523796}
+  m_Layer: 0
+  m_Name: Story_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1163391694815750
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +120,7 @@ Transform:
   - {fileID: 4495859045442910}
   - {fileID: 4783023286315466}
   - {fileID: 224087666885904438}
+  - {fileID: 4941477347521302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -146,6 +163,19 @@ Transform:
   m_Father: {fileID: 4461451101165356}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4941477347521302
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1119475477313790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4461451101165356}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114072188457218656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,6 +191,7 @@ MonoBehaviour:
   galleryButtonsStates: 
   mappingImageStates: 
   galleryTutoStates: 
+  galleryStoryStates: 
   clueScoreToSave: 0
   quizzDoneToSave: 0
 --- !u!114 &114140489134312662
@@ -179,14 +210,41 @@ MonoBehaviour:
   tutoTitleTxt: {fileID: 0}
   tutoImg: {fileID: 0}
   tutoTxt: {fileID: 0}
-  tutoHasBeenDone: 0000
+  tutoHasBeenDone: 0000000000
   tutoList:
   - {fileID: 11400000, guid: abd73b896209d374f882514711c54b03, type: 2}
   - {fileID: 11400000, guid: 0bf53372306eec84ab96442d30a966be, type: 2}
-  - {fileID: 11400000, guid: 0bf53372306eec84ab96442d30a966be, type: 2}
   - {fileID: 11400000, guid: b2d298d7d673de549a285df1a0529d21, type: 2}
+  - {fileID: 11400000, guid: 2a7a945204ebecd40ad0175ddb2e8263, type: 2}
   - {fileID: 11400000, guid: c251839077d9c3148a02194d9b63a0a5, type: 2}
+  tutoGallery: {fileID: 0}
   tutoQuizzIdx: 1
+  currentIdxTuto: 0
+  currentTutoActivate: []
+  currentTuto: {fileID: 0}
+  arrowRight: {fileID: 0}
+  arrowLeft: {fileID: 0}
+  activeArrows: {fileID: 0}
+--- !u!114 &114164581574523796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1119475477313790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618c7a74d53e2a648adf78bac84243d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyGallery: {fileID: 0}
+  idxStory: 
+  storyList: 
+  currentIdxStory: 0
+  currentStoryActivate: []
+  currentStory: {fileID: 0}
+  arrowRight: {fileID: 0}
+  arrowLeft: {fileID: 0}
+  activeArrows: {fileID: 0}
 --- !u!114 &114317593520999126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,14 +263,12 @@ MonoBehaviour:
   limitToWin: 15
   victoryText: {fileID: 0}
   questImage: {fileID: 0}
-  palierScoreList: 01000000050000000a0000000f000000
+  palierScoreList: 050000000a0000000f000000
   palierImageList:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   palierPasswordList:
-  - a
   - b
   - c
   - d
@@ -233,9 +289,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   cluesListText:
-  - a
   - 1
   - 2
+  - 3
   - b
   - 1
   - 2
@@ -267,6 +323,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   menuToActivate:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
