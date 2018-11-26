@@ -7,5 +7,5 @@ using UnityEngine.UI;
 
 public class Scriptable_Story : ScriptableObject {
 
-    public List<Image> scriptableStoryList;
+    public List<Sprite> scriptableStoryList;
 }
