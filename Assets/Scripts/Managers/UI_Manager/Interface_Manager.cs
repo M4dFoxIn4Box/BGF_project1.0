@@ -86,7 +86,6 @@ public class Interface_Manager : MonoBehaviour
     {
         for (int i = (int)score; (int)score > palierScoreList[0];)
         {
-            Debug.Log((int)score);
             palierImageList.RemoveAt(0);
             palierScoreList.RemoveAt(0);
             palierImageList[0].SetActive(true);
@@ -120,20 +119,6 @@ public class Interface_Manager : MonoBehaviour
         menuToActivate[currentIdxMenu].SetActive(false);
         menuToActivate[newIdxMenu].SetActive(true);
         currentIdxMenu = newIdxMenu;
-    }
-
-    public void ChangeMenuToClue()
-    {
-        menuToActivate[currentIdxMenu].SetActive(false);
-        currentIdxMenu += 3;
-        menuToActivate[currentIdxMenu].SetActive(true);
-    }
-
-    public void ChangeMenuBackClue()
-    {
-        menuToActivate[currentIdxMenu].SetActive(false);
-        currentIdxMenu -= 3;
-        menuToActivate[currentIdxMenu].SetActive(true);
     }
 
     public void ShowElement(GameObject elementToActive)

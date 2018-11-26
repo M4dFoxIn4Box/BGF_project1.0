@@ -136,7 +136,6 @@ public class Tuto_Manager : MonoBehaviour
         {
             currentTutoActivate.Add(currentTuto.transform.GetChild(i));
         }
-        Debug.Log(currentIdxTuto);
     }
 
     public void UnShowTuto()
@@ -155,7 +154,6 @@ public class Tuto_Manager : MonoBehaviour
             currentIdxTuto++;
             currentTutoActivate[currentIdxTuto].gameObject.SetActive(true);
             arrowLeft.SetActive(true);
-            Debug.Log(currentIdxTuto);
         }
 
         if (currentIdxTuto == currentTutoActivate.Count - 1)
