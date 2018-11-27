@@ -67,7 +67,12 @@ public class Interface_Manager : MonoBehaviour
 
     public int tutoQuizzIdx;
     public bool quizzDone;
-    
+
+    [Header("Récompenses")]
+
+    public string textToShow;
+    public List<bool> rewardAlreadyDone;
+
 
     private void Awake()
     {
@@ -242,6 +247,8 @@ public class Interface_Manager : MonoBehaviour
     //        buttonARMode.interactable = true;
     //    }
     //}
+
+    //REWARD TO BLOCK
 
     public void CluesManager()
     {
