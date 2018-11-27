@@ -17,6 +17,8 @@ public class Tuto_Manager : MonoBehaviour
     public Transform tutoGallery;
     private int idxTuto;
 
+    public GameObject buttonPrecedentSlide;
+
     public int tutoQuizzIdx;
 
     [Header ("Tuto Gallery Manager")]
@@ -72,6 +74,7 @@ public class Tuto_Manager : MonoBehaviour
             menuTuto.SetActive(false);
             tutoHasBeenDone[tutoToDeactive] = true;
             Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
+            buttonPrecedentSlide.SetActive(false);
 
             if (tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable == false)
             {
@@ -86,11 +89,26 @@ public class Tuto_Manager : MonoBehaviour
 
         else 
         {
+            buttonPrecedentSlide.SetActive(true);
             tutoIdx++;
             tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
             tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
         } 
 
+    }
+
+    public void MoveToPrecedentSlide()
+    {
+        if(tutoIdx != 0)
+        {
+            tutoIdx--;
+            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
+            tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
+            if(tutoIdx == 0)
+            {
+                buttonPrecedentSlide.SetActive(false);
+            }
+        }
     }
 
     //SAVE AND LOAD TUTO
