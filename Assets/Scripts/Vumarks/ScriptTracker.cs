@@ -48,6 +48,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public GameObject parentErrorCount;
     public GameObject parentWinCount;
+    public Animator quizAnim;
+    public AudioSource quizError;
 
     [Header("Textes")]
     public Text quizzText;
@@ -86,6 +88,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private GameObject currentFakeARObject;
 
     [Header("ARManager")]
+    public bool arIsLock;
     public GameObject mainMenu;
 
     void Start()
@@ -138,7 +141,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void QuizzDisplaying ()
     {
-           
+        quizAnim.SetBool("Erreur", false);
             if (quizzDone == false)
             {
                 currentQuizzList = quizzLists[vumarkID - 1];
@@ -201,6 +204,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     // QUIZZ // answer button section
 
+    public void ARLocker()
+    {
+        arIsLock = !arIsLock;
+        Debug.Log(arIsLock);
+    }
 
     public void ButtonClick (int buttonIdx)
     {
@@ -257,11 +265,17 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             Destroy(currentFakeARObject);
         }
-
+        
+        if(arIsLock)
+        {
+            Interface_Manager.Instance.CloseARCamera();
+        }
     }
 
     public void BadAnswer()
     {
+        quizAnim.SetBool("Erreur", true);
+        quizError.Play();
         parentErrorCount.transform.GetChild(currentErrorCount).GetComponent<UnityEngine.UI.Image>().sprite = newErrorImage;
         currentErrorCount++;        
         //errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
