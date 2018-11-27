@@ -14,7 +14,6 @@ public class Tuto_Manager : MonoBehaviour
     public List<bool> tutoHasBeenDone;
     public List<ScriptableTuto> tutoList;
     private int tutoToDeactive;
-    public Transform tutoGallery;
     private int idxTuto;
 
     public GameObject buttonPrecedentSlide;
@@ -23,6 +22,7 @@ public class Tuto_Manager : MonoBehaviour
 
     [Header ("Tuto Gallery Manager")]
 
+    public Transform tutoGallery;
     public int currentIdxTuto = 0;
 
     public List<Transform> currentTutoActivate = new List<Transform>();
@@ -54,7 +54,6 @@ public class Tuto_Manager : MonoBehaviour
     {
         idxTuto = tutoToActive;
         tutoToDeactive = tutoToActive;
-
         if (tutoHasBeenDone[tutoToActive] == false)
         {
             currentScriptableTuto = tutoList[tutoToActive];
@@ -63,7 +62,6 @@ public class Tuto_Manager : MonoBehaviour
             tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
             tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
         }
-
     }
 
     public void MoveToNextSlide ()
