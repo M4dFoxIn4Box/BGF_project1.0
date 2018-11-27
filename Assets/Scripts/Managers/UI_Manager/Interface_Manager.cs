@@ -307,6 +307,11 @@ public class Interface_Manager : MonoBehaviour
         menuToActivate[currentIdxMenu].SetActive(true);
     }
 
+    public void RewardBoxOpening(int rewardBoxIdx)
+    {
+        palierImageList[rewardBoxIdx].GetComponent<Image>().color = Color.green;
+    }
+
     //MAP MENU UPDATE
 
     public void MapActivation (int imageNumber)//Maping
