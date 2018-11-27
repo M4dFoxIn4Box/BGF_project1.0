@@ -205,14 +205,13 @@ public class Interface_Manager : MonoBehaviour
         if (score != palierScoreList[0])
         {
             CluesManager();
-            if(score == (palierScoreList[0] - 1))
+            if(score == (palierScoreList[0]))
             {
-                BlockARCamera();
-                ScriptTracker.Instance.ARLocker();
+                Debug.Log("Bien joué");
             }
         }
         else if (score == palierScoreList[0])
-        {       
+        {
             palierImageList[0].SetActive(true);
             palierImageList.RemoveAt(0);
             palierScoreList.RemoveAt(0);
@@ -231,18 +230,18 @@ public class Interface_Manager : MonoBehaviour
         victoryText.SetActive(true);
     }
 
-    public void BlockARCamera()
-    {
-        if (buttonARMode.interactable == true)
-        {
-            buttonARMode.interactable = false;
-            inputfieldToActivate.SetActive(true);
-        }
-        else
-        {
-            buttonARMode.interactable = true;
-        }
-    }
+    //public void BlockARCamera()
+    //{
+    //    if (buttonARMode.interactable == true)
+    //    {
+    //        buttonARMode.interactable = false;
+    //        
+    //    }
+    //    else
+    //    {
+    //        buttonARMode.interactable = true;
+    //    }
+    //}
 
     public void CluesManager()
     {
@@ -260,11 +259,11 @@ public class Interface_Manager : MonoBehaviour
     {
         if (passwordField.text == palierPasswordList[0])
         {
-            BlockARCamera();
+            //BlockARCamera();
             inputfieldToActivate.SetActive(false);
             palierPasswordList.RemoveAt(0);
             passwordField.text = "";
-            ScriptTracker.Instance.ARLocker();
+            //ScriptTracker.Instance.ARLocker();
         }
     }
 
