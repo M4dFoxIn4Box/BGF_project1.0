@@ -73,6 +73,10 @@ public class Interface_Manager : MonoBehaviour
     public string textToShow;
     public List<bool> rewardAlreadyDone;
 
+    [Header("Story")]
+
+    public List<int> idxStoryScriptableToActivate;
+
 
     private void Awake()
     {
@@ -218,6 +222,8 @@ public class Interface_Manager : MonoBehaviour
             palierImageList[0].SetActive(true);
             palierImageList.RemoveAt(0);
             palierScoreList.RemoveAt(0);
+            Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
+            idxStoryScriptableToActivate.RemoveAt(0);
         }
 
         if (score == limitToWin)
@@ -225,7 +231,7 @@ public class Interface_Manager : MonoBehaviour
             Victory();
         }
 
-        if(score == 1)
+        if(score == 5)
         {
             CloseARCamera();
             Tuto_Manager.tuto.ActivatingTuto(5);
