@@ -27,7 +27,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     TrackableBehaviour mTrackableBehaviour;
     VuMarkManager mVuMarkManager;
     public VuMarkTarget vumark;
-    public ulong vumarkID;
+    public int vumarkID;
+
+    public int vumarkRewardMinValue;
 
     [Header("Tutoriel")]
     public bool firstScan = true;
@@ -120,11 +122,21 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
    
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
-            vumarkID = vumark.InstanceId.NumericValue;
+            vumarkID = (int) vumark.InstanceId.NumericValue;
         }
 
-        quizzDone = false;
-        QuizzDisplaying();
+        if(vumarkID >= vumarkRewardMinValue)
+        {
+            Debug.Log("ID = " + vumarkID);
+            Interface_Manager.Instance.RewardBoxOpening(vumarkID - vumarkRewardMinValue);
+        }
+        else
+        {
+            quizzDone = false;
+            QuizzDisplaying();
+        }
+
+  
     }
     
     public void OnTrackerLost()
