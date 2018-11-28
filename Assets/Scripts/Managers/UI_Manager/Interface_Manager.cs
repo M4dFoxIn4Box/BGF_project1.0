@@ -28,7 +28,8 @@ public class Interface_Manager : MonoBehaviour
     private float currentQuestValue;
     public Image questImage;
     public List<int> palierScoreList;
-    public List<GameObject> palierImageList;
+    public List<Image> rewardImgList;
+    public List<Sprite> rewardSpriteList;
     public List<string> palierPasswordList;
     public Button buttonARMode;
 
@@ -93,19 +94,19 @@ public class Interface_Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        for (int i = (int)score; (int)score > palierScoreList[0];)
-        {
-            palierImageList.RemoveAt(0);
-            palierScoreList.RemoveAt(0);
-            palierImageList[0].SetActive(true);
-        }
+        //for (int i = (int)score; (int)score > palierScoreList[0];)
+        //{
+        //    rewardSprite.RemoveAt(0);
+        //    palierScoreList.RemoveAt(0);
+        //    rewardSprite[0].SetActive(true);
+        //}
 
-        for (int i = 0; i < cluesScore; i++)
-        {
-            cluesListGameobject[0].GetComponent<Text>().text = cluesListText[0];
-            cluesListGameobject.RemoveAt(0);
-            cluesListText.RemoveAt(0);
-        }
+        //for (int i = 0; i < cluesScore; i++)
+        //{
+        //    cluesListGameobject[0].GetComponent<Text>().text = cluesListText[0];
+        //    cluesListGameobject.RemoveAt(0);
+        //    cluesListText.RemoveAt(0);
+        //}
 
         scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
     }
@@ -219,11 +220,13 @@ public class Interface_Manager : MonoBehaviour
         }
         else if (score == palierScoreList[0])
         {
-            palierImageList[0].SetActive(true);
-            palierImageList.RemoveAt(0);
+            //rewardSprite[0].SetActive(true);
+            //rewardSprite.RemoveAt(0);
+            rewardImgList[0].sprite = rewardSpriteList[0];
+            rewardImgList.RemoveAt(0);
             palierScoreList.RemoveAt(0);
             //Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
-            idxStoryScriptableToActivate.RemoveAt(0);
+            //idxStoryScriptableToActivate.RemoveAt(0);
         }
 
         if (score == limitToWin)
@@ -236,6 +239,11 @@ public class Interface_Manager : MonoBehaviour
             CloseARCamera();
             Tuto_Manager.tuto.ActivatingTuto(5);
         }
+    }
+
+    public void RewardBoxOpened(int rewardBoxIdx)
+    {
+        rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[1];
     }
 
     void Victory()
@@ -313,11 +321,6 @@ public class Interface_Manager : MonoBehaviour
         arCam.gameObject.SetActive(false);
         ARModeMenu.SetActive(false);
         menuToActivate[currentIdxMenu].SetActive(true);
-    }
-
-    public void RewardBoxOpening(int rewardBoxIdx)
-    {
-        palierImageList[rewardBoxIdx].GetComponent<Image>().color = Color.green;
     }
 
     //MAP MENU UPDATE

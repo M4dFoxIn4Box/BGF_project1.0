@@ -129,7 +129,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if(vumarkID >= vumarkRewardMinValue)
         {
             Debug.Log("ID = " + vumarkID);
-            Interface_Manager.Instance.RewardBoxOpening(vumarkID - vumarkRewardMinValue);
+            Interface_Manager.Instance.RewardBoxOpened(vumarkID - vumarkRewardMinValue);
         }
         else
         {
@@ -142,10 +142,17 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     
     public void OnTrackerLost()
     {
-        foreach (var item in mVuMarkManager.GetActiveBehaviours())
+        if (vumarkID >= vumarkRewardMinValue)
         {
-            int targetObj = System.Convert.ToInt32 (item.VuMarkTarget.InstanceId.NumericValue);
-            transform.GetChild(targetObj - 1).gameObject.SetActive(false);
+            Debug.Log("This is correct bobby");
+        }
+        else
+        {
+            foreach (var item in mVuMarkManager.GetActiveBehaviours())
+            {
+                int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
+                transform.GetChild(targetObj - 1).gameObject.SetActive(false);
+            }
         }
 
         LeaveQuizz();
