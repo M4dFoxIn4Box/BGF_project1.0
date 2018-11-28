@@ -53,65 +53,65 @@ public class Story_Manager : MonoBehaviour
 
     //SCRIPTABLE STORY 
 
-    public void ActivatingTuto(int storyToActive)
-    {
-        idxTuto = storyToActive;
-        tutoToDeactive = storyToActive;
-        if (tutoHasBeenDone[storyToActive] == false)
-        {
-            currentScriptableTuto = tutoList[storyToActive];
-            tutoTitleTxt.text = currentScriptableTuto.tutoTitle;
-            menuTuto.SetActive(true);
-            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
-            tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
-        }
-    }
+    //public void ActivatingTuto(int storyToActive)
+    //{
+    //    idxTuto = storyToActive;
+    //    tutoToDeactive = storyToActive;
+    //    if (tutoHasBeenDone[storyToActive] == false)
+    //    {
+    //        currentScriptableTuto = tutoList[storyToActive];
+    //        tutoTitleTxt.text = currentScriptableTuto.tutoTitle;
+    //        menuTuto.SetActive(true);
+    //        tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
+    //        tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
+    //    }
+    //}
 
-    public void MoveToNextSlide()
-    {
-        if (currentSlideIdx == currentScriptableTuto.numberOfSlides - 1)
-        {
-            currentSlideIdx = 0;
-            menuTuto.SetActive(false);
-            tutoHasBeenDone[tutoToDeactive] = true;
-            Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
-            buttonPrecedentSlide.SetActive(false);
+    //public void MoveToNextSlide()
+    //{
+    //    if (currentSlideIdx == currentScriptableTuto.numberOfSlides - 1)
+    //    {
+    //        currentSlideIdx = 0;
+    //        menuTuto.SetActive(false);
+    //        tutoHasBeenDone[tutoToDeactive] = true;
+    //        Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
+    //        buttonPrecedentSlide.SetActive(false);
 
-            if (tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable == false)
-            {
-                tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable = true;
-            }
+    //        if (tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable == false)
+    //        {
+    //            tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable = true;
+    //        }
 
-            if (currentScriptableTuto == tutoList[tutoQuizzIdx] && activateARCamera)
-            {
-                Interface_Manager.Instance.OpenARCamera();
-                activateARCamera = false;
-                Save_Manager.saving.ARCameraTuto(activateARCamera);
-            }
+    //        if (currentScriptableTuto == tutoList[tutoQuizzIdx] && activateARCamera)
+    //        {
+    //            Interface_Manager.Instance.OpenARCamera();
+    //            activateARCamera = false;
+    //            Save_Manager.saving.ARCameraTuto(activateARCamera);
+    //        }
 
-        }
-        else
-        {
-            buttonPrecedentSlide.SetActive(true);
-            currentSlideIdx++;
-            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
-            tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
-        }
-    }
+    //    }
+    //    else
+    //    {
+    //        buttonPrecedentSlide.SetActive(true);
+    //        currentSlideIdx++;
+    //        tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
+    //        tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
+    //    }
+    //}
 
-    public void MoveToPrecedentSlide()
-    {
-        if (currentSlideIdx != 0)
-        {
-            currentSlideIdx--;
-            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
-            tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
-            if (currentSlideIdx == 0)
-            {
-                buttonPrecedentSlide.SetActive(false);
-            }
-        }
-    }
+    //public void MoveToPrecedentSlide()
+    //{
+    //    if (currentSlideIdx != 0)
+    //    {
+    //        currentSlideIdx--;
+    //        tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
+    //        tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
+    //        if (currentSlideIdx == 0)
+    //        {
+    //            buttonPrecedentSlide.SetActive(false);
+    //        }
+    //    }
+    //}
 
     public void ShowTuto(Transform storyToShow)
     {

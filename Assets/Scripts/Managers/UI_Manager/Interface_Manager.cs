@@ -222,7 +222,7 @@ public class Interface_Manager : MonoBehaviour
             palierImageList[0].SetActive(true);
             palierImageList.RemoveAt(0);
             palierScoreList.RemoveAt(0);
-            Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
+            //Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
             idxStoryScriptableToActivate.RemoveAt(0);
         }
 
