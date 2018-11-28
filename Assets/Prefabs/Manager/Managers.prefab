@@ -210,22 +210,17 @@ MonoBehaviour:
   tutoTitleTxt: {fileID: 0}
   tutoImg: {fileID: 0}
   tutoTxt: {fileID: 0}
-  tutoHasBeenDone: 0000000000
+  tutoHasBeenDone: 000000000000
   tutoList:
   - {fileID: 11400000, guid: abd73b896209d374f882514711c54b03, type: 2}
   - {fileID: 11400000, guid: 0bf53372306eec84ab96442d30a966be, type: 2}
   - {fileID: 11400000, guid: b2d298d7d673de549a285df1a0529d21, type: 2}
   - {fileID: 11400000, guid: 2a7a945204ebecd40ad0175ddb2e8263, type: 2}
   - {fileID: 11400000, guid: c251839077d9c3148a02194d9b63a0a5, type: 2}
+  - {fileID: 11400000, guid: e6932e121f48fa049ace81f63a6dc210, type: 2}
   buttonPrecedentSlide: {fileID: 0}
   tutoQuizzIdx: 1
   tutoGallery: {fileID: 0}
-  currentIdxTuto: 0
-  currentTutoActivate: []
-  currentTuto: {fileID: 0}
-  arrowRight: {fileID: 0}
-  arrowLeft: {fileID: 0}
-  activeArrows: {fileID: 0}
 --- !u!114 &114164581574523796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -335,6 +330,8 @@ MonoBehaviour:
   ARModeMenu: {fileID: 0}
   tutoQuizzIdx: 1
   quizzDone: 0
+  textToShow: 
+  rewardAlreadyDone: 
 --- !u!114 &114519517695116492
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -205,8 +205,6 @@ public class Interface_Manager : MonoBehaviour
 
     void UpdateScore()
     {   
-    
-
         if (score != palierScoreList[0])
         {
             CluesManager();
@@ -221,13 +219,17 @@ public class Interface_Manager : MonoBehaviour
             palierImageList.RemoveAt(0);
             palierScoreList.RemoveAt(0);
         }
-        Debug.Log("The game score is... " + score);
 
         if (score == limitToWin)
         {
             Victory();
         }
 
+        if(score == 1)
+        {
+            CloseARCamera();
+            Tuto_Manager.tuto.ActivatingTuto(5);
+        }
     }
 
     void Victory()
