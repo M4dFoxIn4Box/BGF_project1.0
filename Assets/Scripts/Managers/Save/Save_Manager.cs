@@ -20,6 +20,7 @@ public class Save_Manager : MonoBehaviour
     public List<bool> galleryStoryStates;
     public int clueScoreToSave;
     public bool quizzDoneToSave;
+    public bool tutoARCameraHasBeenActivated;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class Save_Manager : MonoBehaviour
                 mappingImageStates.Add(false);
                 galleryTutoStates.Add(false);
                 quizzDoneToSave = false;
+                tutoARCameraHasBeenActivated = true;
                 Save();
             }
         }
@@ -97,6 +99,14 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
+    //SAVE ARCAMERA TUTO
+
+    public void ARCameraTuto(bool galleryTutoARCamera)
+    {
+        tutoARCameraHasBeenActivated = galleryTutoARCamera;
+        Save();
+    }
+
 
     void FixedUpdate ()
     {
@@ -124,6 +134,7 @@ public class Save_Manager : MonoBehaviour
         data.quizzDoneToSave = quizzDoneToSave;
         data.clueScoreToSave = clueScoreToSave;
         data.galleryStoryStates = galleryStoryStates;
+        data.tutoARCameraHasBeenActivated = tutoARCameraHasBeenActivated;
 
 
     bf.Serialize(file, data);
@@ -146,6 +157,7 @@ public class Save_Manager : MonoBehaviour
             quizzDoneToSave = data.quizzDoneToSave;
             clueScoreToSave = data.clueScoreToSave;
             galleryStoryStates = data.galleryStoryStates;
+            tutoARCameraHasBeenActivated = data.tutoARCameraHasBeenActivated;
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
@@ -153,8 +165,7 @@ public class Save_Manager : MonoBehaviour
             Tuto_Manager.tuto.TutoState(galleryTutoStates);
             Tuto_Manager.tuto.LoadMenuTuto(galleryTutoStates);
             Interface_Manager.Instance.LoadClueScore(clueScoreToSave);
-
-
+            Tuto_Manager.tuto.LoadBoolForTuto(tutoARCameraHasBeenActivated);
         }
     }
 }
@@ -168,4 +179,5 @@ class PlayerData
     public List<bool> galleryStoryStates = new List<bool>();
     public bool quizzDoneToSave;
     public int clueScoreToSave;
+    public bool tutoARCameraHasBeenActivated;
 }

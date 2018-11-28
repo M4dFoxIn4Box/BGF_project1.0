@@ -10,19 +10,21 @@ public class Tuto_Manager : MonoBehaviour
     public Text tutoTitleTxt;
     public Image tutoImg;
     public Text tutoTxt;
-    private int currentSlideIdx = 0;
+    private int currentSlideIdx;
     public List<bool> tutoHasBeenDone;
     public List<ScriptableTuto> tutoList;
     private int tutoToDeactive;
     private int idxTuto;
+    private bool activateARCamera = true;
 
-    public GameObject buttonPrecedentSlide;
+
 
     public int tutoQuizzIdx;
 
     [Header ("Tuto Gallery Manager")]
 
     public Transform tutoGallery;
+    public GameObject buttonPrecedentSlide;
 
 
 
@@ -55,11 +57,21 @@ public class Tuto_Manager : MonoBehaviour
         }
     }
 
+    public void ActivatingTutoGallery(int tutoNumber)
+    {
+        idxTuto = tutoNumber;
+        tutoToDeactive = tutoNumber;
+        currentScriptableTuto = tutoList[tutoNumber];
+        tutoTitleTxt.text = currentScriptableTuto.tutoTitle;
+        menuTuto.SetActive(true);
+        tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
+        tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
+    }
+
     public void MoveToNextSlide ()
     {
         if (currentSlideIdx == currentScriptableTuto.numberOfSlides - 1)
         {
-            Debug.Log("YOOOOOOOOOOOOOO" + currentSlideIdx);
             currentSlideIdx = 0;
             menuTuto.SetActive(false);
             tutoHasBeenDone[tutoToDeactive] = true;
@@ -71,10 +83,13 @@ public class Tuto_Manager : MonoBehaviour
                 tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable = true;
             }
 
-            if (currentScriptableTuto == tutoList[tutoQuizzIdx])
+            if (currentScriptableTuto == tutoList[tutoQuizzIdx] && activateARCamera)
             {
                 Interface_Manager.Instance.OpenARCamera();
+                activateARCamera = false;
+                Save_Manager.saving.ARCameraTuto(activateARCamera);
             }
+
         }
 
         else 
@@ -101,7 +116,7 @@ public class Tuto_Manager : MonoBehaviour
         }
     }
 
-    //SAVE AND LOAD TUTO
+    //SAVE AND LOAD TUTO & ARCAMERA IN GALLERY
 
     public void TutoState(List<bool> isTutoCheck)
     {
@@ -117,6 +132,11 @@ public class Tuto_Manager : MonoBehaviour
         {
             tutoGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = isTutoDone[i];
         }
+    }
+
+    public void LoadBoolForTuto(bool ARCameraTutoGalley)
+    {
+        activateARCamera = ARCameraTutoGalley;
     }
 }
 
