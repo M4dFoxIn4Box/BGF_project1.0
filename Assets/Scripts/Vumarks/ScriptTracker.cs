@@ -51,7 +51,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public GameObject parentErrorCount;
     public GameObject parentWinCount;
     public Animator quizAnim;
-    public AudioSource quizError;
+    public AudioSource quizzAudioSource;
+    public AudioClip[] audioQuizz;
 
     [Header("Textes")]
     public Text quizzText;
@@ -287,7 +288,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void BadAnswer()
     {
         quizAnim.SetBool("Erreur", true);
-        quizError.Play();
+        quizzAudioSource.PlayOneShot(audioQuizz[0]);
         parentErrorCount.transform.GetChild(currentErrorCount).GetComponent<UnityEngine.UI.Image>().sprite = newErrorImage;
         currentErrorCount++;        
         //errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
@@ -303,6 +304,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void RightAnswer()
     {
+
+        quizzAudioSource.PlayOneShot(audioQuizz[1]);
         quizzAvailable.Remove(currentQuizz);
         for (int i = 0; i < buttonList.Length; i++)
         {
