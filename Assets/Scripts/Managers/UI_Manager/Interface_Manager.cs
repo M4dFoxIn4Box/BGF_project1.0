@@ -225,8 +225,8 @@ public class Interface_Manager : MonoBehaviour
             rewardImgList[0].sprite = rewardSpriteList[0];
             rewardImgList.RemoveAt(0);
             palierScoreList.RemoveAt(0);
-            //Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
-            //idxStoryScriptableToActivate.RemoveAt(0);
+            Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
+            idxStoryScriptableToActivate.RemoveAt(0);
         }
 
         if (score == limitToWin)

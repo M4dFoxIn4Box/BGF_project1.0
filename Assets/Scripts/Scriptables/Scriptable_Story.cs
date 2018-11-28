@@ -7,5 +7,6 @@ using UnityEngine.UI;
 
 public class Scriptable_Story : ScriptableObject {
 
-    public List<Sprite> scriptableStoryList;
+    public List<Sprite> scriptableStoryImageList;
+    public int numberOfSlides;
 }

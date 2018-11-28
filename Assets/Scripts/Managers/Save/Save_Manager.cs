@@ -18,6 +18,7 @@ public class Save_Manager : MonoBehaviour
     public List<bool> mappingImageStates;
     public List<bool> galleryTutoStates;
     public List<bool> galleryStoryStates;
+    public List<bool> storyAlreadyDone;
     public int clueScoreToSave;
     public bool quizzDoneToSave;
     public bool tutoARCameraHasBeenActivated;
@@ -47,6 +48,8 @@ public class Save_Manager : MonoBehaviour
                 galleryTutoStates.Add(false);
                 quizzDoneToSave = false;
                 tutoARCameraHasBeenActivated = true;
+                galleryStoryStates.Add(false);
+                storyAlreadyDone.Add(false);
                 Save();
             }
         }
@@ -54,7 +57,6 @@ public class Save_Manager : MonoBehaviour
         {
             Load();
         }
-
     }
 
     public void SetToTrue (int buttonIdx) // Sauvegarder le bouton qui s'est activé
@@ -93,9 +95,15 @@ public class Save_Manager : MonoBehaviour
 
     //SAVE STORY
 
-    public void StoryIsDone(int storyIsCompleted)
+    public void StoryGalleryIsDone(int galleryStoryIsCompleted)
     {
-        galleryStoryStates[storyIsCompleted] = true;
+        galleryStoryStates[galleryStoryIsCompleted] = true;
+        Save();
+    }
+
+    public void StoryIsDone(List<bool> storyIsOk)
+    {
+        storyAlreadyDone = storyIsOk;
         Save();
     }
 
@@ -135,6 +143,7 @@ public class Save_Manager : MonoBehaviour
         data.clueScoreToSave = clueScoreToSave;
         data.galleryStoryStates = galleryStoryStates;
         data.tutoARCameraHasBeenActivated = tutoARCameraHasBeenActivated;
+        data.storyAlreadyDone = storyAlreadyDone;
 
 
     bf.Serialize(file, data);
@@ -158,6 +167,8 @@ public class Save_Manager : MonoBehaviour
             clueScoreToSave = data.clueScoreToSave;
             galleryStoryStates = data.galleryStoryStates;
             tutoARCameraHasBeenActivated = data.tutoARCameraHasBeenActivated;
+            storyAlreadyDone = data.storyAlreadyDone;
+
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
@@ -166,6 +177,8 @@ public class Save_Manager : MonoBehaviour
             Tuto_Manager.tuto.LoadMenuTuto(galleryTutoStates);
             Interface_Manager.Instance.LoadClueScore(clueScoreToSave);
             Tuto_Manager.tuto.LoadBoolForTuto(tutoARCameraHasBeenActivated);
+            Story_Manager.story.LoadStoryStates(galleryStoryStates);
+            Story_Manager.story.LoadStoryHasBeenDone(storyAlreadyDone);
         }
     }
 }
@@ -177,6 +190,7 @@ class PlayerData
     public List<bool> mappingImageStates = new List<bool>();
     public List<bool> galleryTutoStates = new List<bool>();
     public List<bool> galleryStoryStates = new List<bool>();
+    public List<bool> storyAlreadyDone = new List<bool>();
     public bool quizzDoneToSave;
     public int clueScoreToSave;
     public bool tutoARCameraHasBeenActivated;

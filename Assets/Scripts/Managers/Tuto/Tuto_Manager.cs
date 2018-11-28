@@ -18,7 +18,6 @@ public class Tuto_Manager : MonoBehaviour
     private bool activateARCamera = true;
 
 
-
     public int tutoQuizzIdx;
 
     [Header ("Tuto Gallery Manager")]
@@ -43,6 +42,17 @@ public class Tuto_Manager : MonoBehaviour
         }
     }
 
+    public void ActivatingTutoGallery(int tutoNumber)
+    {
+        idxTuto = tutoNumber;
+        tutoToDeactive = tutoNumber;
+        currentScriptableTuto = tutoList[tutoNumber];
+        tutoTitleTxt.text = currentScriptableTuto.tutoTitle;
+        menuTuto.SetActive(true);
+        tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
+        tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
+    }
+
     public void ActivatingTuto(int tutoToActive)
     {
         idxTuto = tutoToActive;
@@ -55,17 +65,6 @@ public class Tuto_Manager : MonoBehaviour
             tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
             tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
         }
-    }
-
-    public void ActivatingTutoGallery(int tutoNumber)
-    {
-        idxTuto = tutoNumber;
-        tutoToDeactive = tutoNumber;
-        currentScriptableTuto = tutoList[tutoNumber];
-        tutoTitleTxt.text = currentScriptableTuto.tutoTitle;
-        menuTuto.SetActive(true);
-        tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
-        tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
     }
 
     public void MoveToNextSlide ()

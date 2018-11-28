@@ -192,6 +192,7 @@ MonoBehaviour:
   mappingImageStates: 
   galleryTutoStates: 
   galleryStoryStates: 
+  storyAlreadyDone: 
   clueScoreToSave: 0
   quizzDoneToSave: 0
   tutoARCameraHasBeenActivated: 0
@@ -233,15 +234,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618c7a74d53e2a648adf78bac84243d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScriptableStory: {fileID: 0}
+  interfaceStory: {fileID: 0}
+  storyImage: {fileID: 0}
+  storyHasBeenDone: 00000000
+  scriptableStoryList:
+  - {fileID: 11400000, guid: 1c729c4eef80c8b4ab3870b4b3387c35, type: 2}
+  - {fileID: 11400000, guid: c670db0d05dfd5f4ebe5e8c67c9f4841, type: 2}
+  - {fileID: 11400000, guid: ad9751470eeb9b74e94c6b7641ccd8a0, type: 2}
+  - {fileID: 11400000, guid: 4d3a93ca432a2934ba5f946bbd31efab, type: 2}
   storyGallery: {fileID: 0}
-  idxStory: 
-  storyList: 
-  currentIdxStory: 0
-  currentStoryActivate: []
-  currentStory: {fileID: 0}
-  arrowRight: {fileID: 0}
-  arrowLeft: {fileID: 0}
-  activeArrows: {fileID: 0}
+  buttonPrecedentSlide: {fileID: 0}
 --- !u!114 &114317593520999126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,10 +264,13 @@ MonoBehaviour:
   victoryText: {fileID: 0}
   questImage: {fileID: 0}
   palierScoreList: 050000000a0000000f000000
-  palierImageList:
+  rewardImgList:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  rewardSpriteList:
+  - {fileID: 21300000, guid: e91ff7df3dd943e49ab9393e43678b8a, type: 3}
+  - {fileID: 21300000, guid: c01b243110b8c414d82411984ec7b6a4, type: 3}
   palierPasswordList:
   - b
   - c
@@ -333,6 +339,7 @@ MonoBehaviour:
   quizzDone: 0
   textToShow: 
   rewardAlreadyDone: 
+  idxStoryScriptableToActivate: 010000000200000003000000
 --- !u!114 &114519517695116492
 MonoBehaviour:
   m_ObjectHideFlags: 1
