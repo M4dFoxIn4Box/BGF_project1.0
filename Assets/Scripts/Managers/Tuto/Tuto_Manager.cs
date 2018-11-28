@@ -10,7 +10,7 @@ public class Tuto_Manager : MonoBehaviour
     public Text tutoTitleTxt;
     public Image tutoImg;
     public Text tutoTxt;
-    private int tutoIdx;
+    private int currentSlideIdx = 0;
     public List<bool> tutoHasBeenDone;
     public List<ScriptableTuto> tutoList;
     private int tutoToDeactive;
@@ -23,15 +23,6 @@ public class Tuto_Manager : MonoBehaviour
     [Header ("Tuto Gallery Manager")]
 
     public Transform tutoGallery;
-    public int currentIdxTuto = 0;
-
-    public List<Transform> currentTutoActivate = new List<Transform>();
-
-    public Transform currentTuto = null;
-
-    public GameObject arrowRight;
-    public GameObject arrowLeft;
-    public GameObject activeArrows;
 
 
 
@@ -59,16 +50,17 @@ public class Tuto_Manager : MonoBehaviour
             currentScriptableTuto = tutoList[tutoToActive];
             tutoTitleTxt.text = currentScriptableTuto.tutoTitle;
             menuTuto.SetActive(true);
-            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
-            tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
+            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
+            tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
         }
     }
 
     public void MoveToNextSlide ()
     {
-        if (tutoIdx == currentScriptableTuto.numberOfSlides - 1)
+        if (currentSlideIdx == currentScriptableTuto.numberOfSlides - 1)
         {
-            tutoIdx = 0;
+            Debug.Log("YOOOOOOOOOOOOOO" + currentSlideIdx);
+            currentSlideIdx = 0;
             menuTuto.SetActive(false);
             tutoHasBeenDone[tutoToDeactive] = true;
             Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
@@ -88,21 +80,21 @@ public class Tuto_Manager : MonoBehaviour
         else 
         {
             buttonPrecedentSlide.SetActive(true);
-            tutoIdx++;
-            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
-            tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
+            currentSlideIdx++;
+            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
+            tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
         } 
 
     }
 
     public void MoveToPrecedentSlide()
     {
-        if(tutoIdx != 0)
+        if(currentSlideIdx != 0)
         {
-            tutoIdx--;
-            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[tutoIdx];
-            tutoTxt.text = currentScriptableTuto.tutoTextBoard[tutoIdx];
-            if(tutoIdx == 0)
+            currentSlideIdx--;
+            tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
+            tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
+            if(currentSlideIdx == 0)
             {
                 buttonPrecedentSlide.SetActive(false);
             }
