@@ -96,20 +96,6 @@ public class Interface_Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //for (int i = (int)score; (int)score > palierScoreList[0];)
-        //{
-        //    rewardSprite.RemoveAt(0);
-        //    palierScoreList.RemoveAt(0);
-        //    rewardSprite[0].SetActive(true);
-        //}
-
-        //for (int i = 0; i < cluesScore; i++)
-        //{
-        //    cluesListGameobject[0].GetComponent<Text>().text = cluesListText[0];
-        //    cluesListGameobject.RemoveAt(0);
-        //    cluesListText.RemoveAt(0);
-        //}
-
         scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
     }
 
@@ -213,19 +199,12 @@ public class Interface_Manager : MonoBehaviour
 
     void UpdateScore()
     {   
-        if (score != palierScoreList[0])
+         if (score == palierScoreList[0])
         {
-            CluesManager();
-            if(score == (palierScoreList[0]))
-            {
-                Debug.Log("Bien joué");
-            }
-        }
-        else if (score == palierScoreList[0])
-        {
-            //rewardSprite[0].SetActive(true);
-            //rewardSprite.RemoveAt(0);
-            rewardImgList[rewardCounter].sprite = rewardSpriteList[0];
+
+            rewardImgList[rewardCounter].sprite = rewardSpriteList[1];
+            idxCrateStates[rewardCounter] = 1;
+            Save_Manager.saving.SavingCrateState(idxCrateStates);
             rewardCounter++;
             palierScoreList.RemoveAt(0);
             Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
@@ -246,7 +225,8 @@ public class Interface_Manager : MonoBehaviour
 
     public void RewardBoxOpened(int rewardBoxIdx)
     {
-        rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[1]; 
+        rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[2];
+        idxCrateStates[rewardBoxIdx] = 2;
         Save_Manager.saving.SavingCrateState(idxCrateStates);
     }
 
@@ -255,7 +235,7 @@ public class Interface_Manager : MonoBehaviour
         victoryText.SetActive(true);
     }
 
-    //SAVE & LOAD SCORE
+    //LOADING SECTION
 
     public void LoadScore(int scoring)
     {
@@ -267,49 +247,11 @@ public class Interface_Manager : MonoBehaviour
 
     public void LoadCrateImage(List<int> crateImageNumber)
     {
+        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         for (int j = 0; j < rewardImgList.Count; j++)
         {
             rewardImgList[j].sprite = rewardSpriteList[crateImageNumber[j]];
-            Debug.Log("olalalallalalla" + rewardSpriteList[crateImageNumber[j]]);
-        }
-    }
-
-    //public void BlockARCamera()
-    //{
-    //    if (buttonARMode.interactable == true)
-    //    {
-    //        buttonARMode.interactable = false;
-    //        
-    //    }
-    //    else
-    //    {
-    //        buttonARMode.interactable = true;
-    //    }
-    //}
-
-    //REWARD TO BLOCK
-
-    public void CluesManager()
-    {
-        cluesScore++;
-        Debug.Log("Clues score = " + cluesScore);
-        Save_Manager.saving.ScoreClue(cluesScore);
-        cluesListGameobject[0].GetComponent<Text>().text = cluesListText[0];
-        cluesListGameobject.RemoveAt(0);
-        cluesListText.RemoveAt(0);
-    }
-
-    //PASSWORD
-
-    public void PasswordToCheck()
-    {
-        if (passwordField.text == palierPasswordList[0])
-        {
-            //BlockARCamera();
-            inputfieldToActivate.SetActive(false);
-            palierPasswordList.RemoveAt(0);
-            passwordField.text = "";
-            //ScriptTracker.Instance.ARLocker();
+            Debug.Log("olalalallalalla     " + rewardSpriteList[crateImageNumber[j]]);
         }
     }
 

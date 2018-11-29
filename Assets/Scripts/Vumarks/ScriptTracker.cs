@@ -187,8 +187,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
                 quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
                 quizzDone = true;
-                //errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
-                //scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
             }
 
 
@@ -299,8 +297,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         quizzAudioSource.PlayOneShot(audioQuizz[0]);
         parentErrorCount.transform.GetChild(currentErrorCount).GetComponent<UnityEngine.UI.Image>().sprite = newErrorImage;
         currentErrorCount++;        
-        //errorCountTxt.text = "Erreurs : " + currentErrorCount + " / " + currentQuizzList.errorLimit;
-
 
         for (int i = 0; i < buttonList.Length; i++)
         {

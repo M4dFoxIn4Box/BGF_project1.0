@@ -19,7 +19,6 @@ public class Save_Manager : MonoBehaviour
     public List<bool> galleryTutoStates;
     public List<bool> galleryStoryStates;
     public List<bool> storyAlreadyDone;
-    public int clueScoreToSave;
     public bool quizzDoneToSave;
     public bool tutoARCameraHasBeenActivated;
     public int scoreToSave;
@@ -88,14 +87,6 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
-    //SAVE INDICES
-
-    public void ScoreClue(int scoreClue)
-    {
-        scoreClue = clueScoreToSave;
-        Save();
-    }
-
     //SAVE STORY
 
     public void StoryGalleryIsDone(int galleryStoryIsCompleted)
@@ -159,7 +150,6 @@ public class Save_Manager : MonoBehaviour
         data.mappingImageStates = mappingImageStates;
         data.galleryTutoStates = galleryTutoStates;
         data.quizzDoneToSave = quizzDoneToSave;
-        data.clueScoreToSave = clueScoreToSave;
         data.galleryStoryStates = galleryStoryStates;
         data.tutoARCameraHasBeenActivated = tutoARCameraHasBeenActivated;
         data.storyAlreadyDone = storyAlreadyDone;
@@ -185,7 +175,6 @@ public class Save_Manager : MonoBehaviour
             mappingImageStates = data.mappingImageStates;
             galleryTutoStates = data.galleryTutoStates;
             quizzDoneToSave = data.quizzDoneToSave;
-            clueScoreToSave = data.clueScoreToSave;
             galleryStoryStates = data.galleryStoryStates;
             tutoARCameraHasBeenActivated = data.tutoARCameraHasBeenActivated;
             storyAlreadyDone = data.storyAlreadyDone;
@@ -198,11 +187,11 @@ public class Save_Manager : MonoBehaviour
             Interface_Manager.Instance.TutoIsDone(quizzDoneToSave);
             Tuto_Manager.tuto.TutoState(galleryTutoStates);
             Tuto_Manager.tuto.LoadMenuTuto(galleryTutoStates);
-            Interface_Manager.Instance.LoadClueScore(clueScoreToSave);
             Tuto_Manager.tuto.LoadBoolForTuto(tutoARCameraHasBeenActivated);
             Story_Manager.story.LoadStoryStates(galleryStoryStates);
             Story_Manager.story.LoadStoryHasBeenDone(storyAlreadyDone);
             Interface_Manager.Instance.LoadScore(scoreToSave);
+            Interface_Manager.Instance.LoadCrateImage(idxCrateList);
         }
     }
 }
@@ -216,7 +205,6 @@ class PlayerData
     public List<bool> galleryStoryStates = new List<bool>();
     public List<bool> storyAlreadyDone = new List<bool>();
     public bool quizzDoneToSave;
-    public int clueScoreToSave;
     public bool tutoARCameraHasBeenActivated;
     public int scoreToSave;
     public List<int> idxCrateList = new List<int>();
