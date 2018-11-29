@@ -23,6 +23,7 @@ public class Save_Manager : MonoBehaviour
     public bool quizzDoneToSave;
     public bool tutoARCameraHasBeenActivated;
     public int scoreToSave;
+    public List<int> idxCrateList;
 
     private void Awake()
     {
@@ -125,6 +126,14 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
+    //SAVE CHEST STATE
+
+    public void SavingCrateState(List<int> idxCrateState)
+    {
+        idxCrateList = idxCrateState;
+        Save();
+    }
+
 
     void FixedUpdate ()
     {
@@ -155,6 +164,7 @@ public class Save_Manager : MonoBehaviour
         data.tutoARCameraHasBeenActivated = tutoARCameraHasBeenActivated;
         data.storyAlreadyDone = storyAlreadyDone;
         data.scoreToSave = scoreToSave;
+        data.idxCrateList = idxCrateList;
 
 
     bf.Serialize(file, data);
@@ -180,6 +190,7 @@ public class Save_Manager : MonoBehaviour
             tutoARCameraHasBeenActivated = data.tutoARCameraHasBeenActivated;
             storyAlreadyDone = data.storyAlreadyDone;
             scoreToSave = data.scoreToSave;
+            idxCrateList = data.idxCrateList;
 
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
@@ -208,4 +219,5 @@ class PlayerData
     public int clueScoreToSave;
     public bool tutoARCameraHasBeenActivated;
     public int scoreToSave;
+    public List<int> idxCrateList = new List<int>();
 }

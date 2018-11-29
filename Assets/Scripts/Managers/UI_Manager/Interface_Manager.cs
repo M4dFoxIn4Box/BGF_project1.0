@@ -69,10 +69,11 @@ public class Interface_Manager : MonoBehaviour
     public int tutoQuizzIdx;
     public bool quizzDone;
 
-    [Header("Récompenses")]
+    [Header("Récompenses & Box")]
 
     public string textToShow;
     public List<bool> rewardAlreadyDone;
+    public List<int> idxCrateStates;
 
     [Header("Story")]
 
@@ -246,6 +247,15 @@ public class Interface_Manager : MonoBehaviour
     {
         rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[1];
         Debug.Log(rewardBoxIdx);
+        if (idxCrateStates[rewardBoxIdx] == 1)
+        {
+            idxCrateStates[rewardBoxIdx] = 2;
+        }
+        else
+        {
+            idxCrateStates[rewardBoxIdx] = 1;
+        }
+        Save_Manager.saving.SavingCrateState(idxCrateStates);
     }
 
     void Victory()
@@ -261,6 +271,15 @@ public class Interface_Manager : MonoBehaviour
         scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
         currentQuestValue = score / limitToWin;
         questImage.fillAmount = currentQuestValue;
+    }
+
+    public void LoadCrateImage(List<int> crateImageNumber)
+    {
+        for (int j = 0; j < rewardImgList.Count; j++)
+        {
+            rewardImgList[j].sprite = rewardSpriteList[crateImageNumber[j]];
+            Debug.Log("olalalallalalla" + rewardSpriteList[crateImageNumber[j]]);
+        }
     }
 
     //public void BlockARCamera()
