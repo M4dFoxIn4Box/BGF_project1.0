@@ -74,6 +74,7 @@ public class Interface_Manager : MonoBehaviour
     public string textToShow;
     public List<bool> rewardAlreadyDone;
     public List<int> idxCrateStates;
+    private int rewardCounter;
 
     [Header("Story")]
 
@@ -224,8 +225,8 @@ public class Interface_Manager : MonoBehaviour
         {
             //rewardSprite[0].SetActive(true);
             //rewardSprite.RemoveAt(0);
-            rewardImgList[0].sprite = rewardSpriteList[0];
-            rewardImgList.RemoveAt(0);
+            rewardImgList[rewardCounter].sprite = rewardSpriteList[0];
+            rewardCounter++;
             palierScoreList.RemoveAt(0);
             Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
             idxStoryScriptableToActivate.RemoveAt(0);
@@ -245,16 +246,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void RewardBoxOpened(int rewardBoxIdx)
     {
-        rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[1];
-        Debug.Log(rewardBoxIdx);
-        if (idxCrateStates[rewardBoxIdx] == 1)
-        {
-            idxCrateStates[rewardBoxIdx] = 2;
-        }
-        else
-        {
-            idxCrateStates[rewardBoxIdx] = 1;
-        }
+        rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[1]; 
         Save_Manager.saving.SavingCrateState(idxCrateStates);
     }
 
