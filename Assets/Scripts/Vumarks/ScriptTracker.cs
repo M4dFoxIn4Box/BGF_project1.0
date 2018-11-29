@@ -128,8 +128,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         if(vumarkID >= vumarkRewardMinValue)
         {
-            Debug.Log("ID = " + vumarkID);
-            Interface_Manager.Instance.RewardBoxOpened(vumarkID - vumarkRewardMinValue);
+            int idxToCast = vumarkID - vumarkRewardMinValue;
+            Interface_Manager.Instance.RewardBoxOpened(idxToCast);
+            Debug.Log("ID cast = " + idxToCast);
         }
         else
         {

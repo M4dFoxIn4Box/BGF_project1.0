@@ -245,6 +245,7 @@ public class Interface_Manager : MonoBehaviour
     public void RewardBoxOpened(int rewardBoxIdx)
     {
         rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[1];
+        Debug.Log(rewardBoxIdx);
     }
 
     void Victory()
