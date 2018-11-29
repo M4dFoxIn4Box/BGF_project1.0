@@ -203,6 +203,7 @@ public class Interface_Manager : MonoBehaviour
         currentQuestValue = score / limitToWin;
         scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
         questImage.fillAmount = currentQuestValue;
+        Save_Manager.saving.SavingScore((int)score);
 
         UpdateScore();
 
@@ -249,6 +250,14 @@ public class Interface_Manager : MonoBehaviour
     void Victory()
     {
         victoryText.SetActive(true);
+    }
+
+    //SAVE & LOAD SCORE
+
+    public void LoadScore(int scoring)
+    {
+        score = scoring;
+        scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
     }
 
     //public void BlockARCamera()

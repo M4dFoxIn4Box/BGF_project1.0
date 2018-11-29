@@ -22,6 +22,7 @@ public class Save_Manager : MonoBehaviour
     public int clueScoreToSave;
     public bool quizzDoneToSave;
     public bool tutoARCameraHasBeenActivated;
+    public int scoreToSave;
 
     private void Awake()
     {
@@ -50,6 +51,7 @@ public class Save_Manager : MonoBehaviour
                 tutoARCameraHasBeenActivated = true;
                 galleryStoryStates.Add(false);
                 storyAlreadyDone.Add(false);
+                scoreToSave = 0;
                 Save();
             }
         }
@@ -115,6 +117,14 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
+    //SAVE SCORE VUMARK
+
+    public void SavingScore(int scoreIdx)
+    {
+        scoreToSave = scoreIdx;
+        Save();
+    }
+
 
     void FixedUpdate ()
     {
@@ -144,6 +154,7 @@ public class Save_Manager : MonoBehaviour
         data.galleryStoryStates = galleryStoryStates;
         data.tutoARCameraHasBeenActivated = tutoARCameraHasBeenActivated;
         data.storyAlreadyDone = storyAlreadyDone;
+        data.scoreToSave = scoreToSave;
 
 
     bf.Serialize(file, data);
@@ -168,6 +179,7 @@ public class Save_Manager : MonoBehaviour
             galleryStoryStates = data.galleryStoryStates;
             tutoARCameraHasBeenActivated = data.tutoARCameraHasBeenActivated;
             storyAlreadyDone = data.storyAlreadyDone;
+            scoreToSave = data.scoreToSave;
 
 
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
@@ -179,6 +191,7 @@ public class Save_Manager : MonoBehaviour
             Tuto_Manager.tuto.LoadBoolForTuto(tutoARCameraHasBeenActivated);
             Story_Manager.story.LoadStoryStates(galleryStoryStates);
             Story_Manager.story.LoadStoryHasBeenDone(storyAlreadyDone);
+            Interface_Manager.Instance.LoadScore(scoreToSave);
         }
     }
 }
@@ -194,4 +207,5 @@ class PlayerData
     public bool quizzDoneToSave;
     public int clueScoreToSave;
     public bool tutoARCameraHasBeenActivated;
+    public int scoreToSave;
 }
