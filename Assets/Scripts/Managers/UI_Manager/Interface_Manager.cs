@@ -259,6 +259,8 @@ public class Interface_Manager : MonoBehaviour
     {
         score = scoring;
         scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
+        currentQuestValue = score / limitToWin;
+        questImage.fillAmount = currentQuestValue;
     }
 
     //public void BlockARCamera()
