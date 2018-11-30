@@ -10,75 +10,65 @@ public class Interface_Manager : MonoBehaviour
     public static Interface_Manager Instance { get; private set; }
 
 
-    [Header("Gallery")]
+    [Header("Main Gallery")]
 
-    public Transform artifactsGallery;//gallery.GetChild(idx)
-    public Transform mapList;
+    public Transform artifactsGallery;
     private List<int> scanIdx = new List<int>();
     private List<bool> buttonState = new List<bool>();
     private int idxButton;
 
+    [Header ("Map")]
+
+    public Transform mapList;
+
     [Header("Scoring")]
 
-    public Text scoreText;
-    public float score;
-    public float limitToWin;
-    public GameObject victoryText;
+    public Text scoreText;//le texte pour afficher le score
+    public float score;//le score
+    public float limitToWin;//la limite pour finir l'application
+    public GameObject victoryText;//texte de victoire pour la limittowin
 
-    private float currentQuestValue;
-    public Image questImage;
-    public List<int> palierScoreList;
-    public List<Image> rewardImgList;
-    public List<Sprite> rewardSpriteList;
-    public List<string> palierPasswordList;
-    public Button buttonARMode;
-
-    [Header("Password")]
-
-    public GameObject inputfieldToActivate;
-    public InputField passwordField;
-
-    [Header("Clues")]
-
-    public List<GameObject> cluesListGameobject;
-    public List<string> cluesListText;
-    public int cluesScore;
+    private float currentQuestValue;//score à afficher sur la jauge dans le main menu
+    public Image questImage;//barre à fillamount
+    public List<int> palierScoreList;//index des paliers
+    public List<Image> rewardImgList;//lié à l'index des paliers 
+    public List<Sprite> rewardSpriteList;//lié à l'index des paliers
 
     [Header("Camera")]
 
-    public Camera arCam;
-    public Camera uiCam;
-    public Canvas mainCanvas;
+    public Camera arCam;//AR Camera
+    public Camera uiCam;//UI Camera
+    public Canvas mainCanvas;//Main canvas
 
     [Header ("AR Mode")]
 
-    public GameObject vumarkPrefab;
+    public Button buttonARMode;//Buton AR Mode
+    public GameObject vumarkPrefab;//Vumark to activate/deactivate
 
     [Header("Map")]
 
-    public GameObject[] imageZone;
+    public GameObject[] imageZone;//Tableaux d'image pour la map
 
-    [Header("Fonctionnel")]
+    [Header("Menu")]//Changer de menu
 
-    private int currentIdxMenu = 1;
-    public GameObject[] menuToActivate;
-    public GameObject ARModeMenu;
+    private int currentIdxMenu = 1;//Idx du menu intro
+    public GameObject[] menuToActivate;//menu à activer
+    public GameObject ARModeMenu;//Menu de l'AR Mode
 
     [Header("Tutoriel quizz")]
 
-    public int tutoQuizzIdx;
-    public bool quizzDone;
+    public int tutoQuizzIdx;//l'index du quizz
+    public bool quizzDone;//bool si le tuto à été fait et qui envoyé au save manager
 
     [Header("Récompenses & Box")]
 
-    public string textToShow;
-    public List<bool> rewardAlreadyDone;
-    public List<int> idxCrateStates;
-    private int rewardCounter;
+    public List<bool> rewardAlreadyDone;//si le coffre à été récupéré
+    public List<int> idxCrateStates;//index du coffre
+    private int rewardCounter;//
 
     [Header("Story")]
 
-    public List<int> idxStoryScriptableToActivate;
+    public List<int> idxStoryScriptableToActivate;//index à envoyé pour activer la bon coffre
 
 
     private void Awake()
@@ -178,9 +168,22 @@ public class Interface_Manager : MonoBehaviour
         quizzDone = isTutoDone;
     }
 
-    public void LoadClueScore(int scoreClue)
+    //LOADING SCORE
+
+    public void LoadScore(int scoring)
     {
-        scoreClue = cluesScore;
+        score = scoring;
+        scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
+        currentQuestValue = score / limitToWin;
+        questImage.fillAmount = currentQuestValue;
+    }
+
+    public void LoadCrateImage(List<int> crateImageNumber)
+    {
+        for (int j = 0; j < rewardImgList.Count; j++)
+        {
+            rewardImgList[j].sprite = rewardSpriteList[crateImageNumber[j]];
+        }
     }
 
     //SCORING & PALIER
@@ -235,29 +238,9 @@ public class Interface_Manager : MonoBehaviour
         victoryText.SetActive(true);
     }
 
-    //LOADING SECTION
-
-    public void LoadScore(int scoring)
-    {
-        score = scoring;
-        scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
-        currentQuestValue = score / limitToWin;
-        questImage.fillAmount = currentQuestValue;
-    }
-
-    public void LoadCrateImage(List<int> crateImageNumber)
-    {
-        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        for (int j = 0; j < rewardImgList.Count; j++)
-        {
-            rewardImgList[j].sprite = rewardSpriteList[crateImageNumber[j]];
-            Debug.Log("olalalallalalla     " + rewardSpriteList[crateImageNumber[j]]);
-        }
-    }
-
     //CAMERA
 
-    public void OpenARCamera()
+    public void OpenARCamera()//ALLUMER L AR CAM
     {
         if(quizzDone == false)
         {
@@ -278,7 +261,7 @@ public class Interface_Manager : MonoBehaviour
   
     }
 
-    public void CloseARCamera()
+    public void CloseARCamera()//ETEINDRE AR CAM
     {
         mainCanvas.worldCamera = uiCam;
         vumarkPrefab.SetActive(false);

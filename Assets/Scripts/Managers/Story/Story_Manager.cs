@@ -26,18 +26,19 @@ public class Story_Manager : MonoBehaviour
 
     [Header ("Story Activate")]
 
-    public Scriptable_Story currentScriptableStory;
-    public GameObject interfaceStory;
-    //public Text storyTitleText;
-    public Image storyImage;
-    //public Text storyText;
-    private int currentSlideIdx;
-    public List<bool> storyHasBeenDone;
-    public List<Scriptable_Story> scriptableStoryList;
-    private int storyToDeactive;
-    private int scriptableIdxStory;
-    public Transform storyGallery;
-    public GameObject buttonPrecedentSlide;
+    public List<Scriptable_Story> scriptableStoryList;//Toute la liste des scriptables
+    public Scriptable_Story currentScriptableStory;//Le current scriptable
+    public GameObject interfaceStory;//Interface quand on joue une story
+    public Image storyImage;//Image dans la story
+    private int currentSlideIdx;//l'index de la slide
+    private int storyToDeactive;//désactiver la story
+    public GameObject buttonPrecedentSlide;//bouton précedent lors de la lecture de la story
+
+    [Header ("Story Gallery")]
+
+    public Transform storyGallery;//la gallery des story
+    private int scriptableIdxStory;//
+    public List<bool> storyHasBeenDone;//Si la story à été faite ou non
 
     private void Awake()
     {

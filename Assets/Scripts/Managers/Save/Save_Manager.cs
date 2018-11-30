@@ -14,15 +14,31 @@ public class Save_Manager : MonoBehaviour
 
     [Header ("Save")]
 
+    //MAIN GALLERY
     public List<bool> galleryButtonsStates;
+
+    //MAP
     public List<bool> mappingImageStates;
+
+    //TUTO
     public List<bool> galleryTutoStates;
+
+    //STORY
     public List<bool> galleryStoryStates;
     public List<bool> storyAlreadyDone;
-    public bool quizzDoneToSave;
-    public bool tutoARCameraHasBeenActivated;
-    public int scoreToSave;
+
+    //CHEST MAIN MENU
     public List<int> idxCrateList;
+
+    //QUIZZ
+    public bool quizzDoneToSave;
+
+    //AR CAMERA
+    public bool tutoARCameraHasBeenActivated;
+
+    //SCORE
+    public int scoreToSave;
+
 
     private void Awake()
     {
@@ -67,7 +83,7 @@ public class Save_Manager : MonoBehaviour
         Save();
     }
 
-    public void ImageToTrue(int imageIdx) // Sauvegarder le bouton qui s'est activé
+    public void ImageToTrue(int imageIdx) // Sauvegarder l'image de la map qui s'est activé
     {
         mappingImageStates[imageIdx] = true;
         Save();
@@ -75,13 +91,13 @@ public class Save_Manager : MonoBehaviour
 
     //SAVE QUIZZ 
 
-    public void TutoIsDone(List<bool> tutoIdx)
+    public void TutoIsDone(List<bool> tutoIdx) // Sauvegarder si le tuto à déjà été fait 
     {
         galleryTutoStates = tutoIdx;
         Save();
     }
 
-    public void TutoQuizzIsDone(bool quizzTutoIsDone)
+    public void TutoQuizzIsDone(bool quizzTutoIsDone) // Sauvegarder si le quizz à déjà été fait
     {
         quizzDoneToSave = quizzTutoIsDone;
         Save();
@@ -89,13 +105,13 @@ public class Save_Manager : MonoBehaviour
 
     //SAVE STORY
 
-    public void StoryGalleryIsDone(int galleryStoryIsCompleted)
+    public void StoryGalleryIsDone(int galleryStoryIsCompleted) // Sauvegarder le bouton de la galerie de la story
     {
         galleryStoryStates[galleryStoryIsCompleted] = true;
         Save();
     }
 
-    public void StoryIsDone(List<bool> storyIsOk)
+    public void StoryIsDone(List<bool> storyIsOk) //Sauvegarder quand la story à été validé
     {
         storyAlreadyDone = storyIsOk;
         Save();
@@ -103,7 +119,7 @@ public class Save_Manager : MonoBehaviour
 
     //SAVE ARCAMERA TUTO
 
-    public void ARCameraTuto(bool galleryTutoARCamera)
+    public void ARCameraTuto(bool galleryTutoARCamera) //Sauvegarder le tuto de la cam
     {
         tutoARCameraHasBeenActivated = galleryTutoARCamera;
         Save();
@@ -111,7 +127,7 @@ public class Save_Manager : MonoBehaviour
 
     //SAVE SCORE VUMARK
 
-    public void SavingScore(int scoreIdx)
+    public void SavingScore(int scoreIdx) // Sauvegarder le score
     {
         scoreToSave = scoreIdx;
         Save();
@@ -119,7 +135,7 @@ public class Save_Manager : MonoBehaviour
 
     //SAVE CHEST STATE
 
-    public void SavingCrateState(List<int> idxCrateState)
+    public void SavingCrateState(List<int> idxCrateState) //Sauvegarder l'état du coffre dans le main menu
     {
         idxCrateList = idxCrateState;
         Save();
