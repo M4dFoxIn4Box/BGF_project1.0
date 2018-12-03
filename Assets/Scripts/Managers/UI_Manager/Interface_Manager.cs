@@ -159,7 +159,7 @@ public class Interface_Manager : MonoBehaviour
     {
         for (int j = 0; j < isImageCheck.Count; j++)
         {
-            mapList.GetChild(j).gameObject.GetComponent<Image>().enabled = isImageCheck[j];
+            mapList.GetChild(j).gameObject.SetActive(isImageCheck[j]);
         }
     }
 
@@ -178,11 +178,11 @@ public class Interface_Manager : MonoBehaviour
         questImage.fillAmount = currentQuestValue;
     }
 
-    public void LoadCrateImage(List<int> cratevumarkNumber)
+    public void LoadCrateImage(List<int> crateVumarkNumber)
     {
-        for (int j = 0; j < rewardImgList.Count; j++)
+        for (int j = 0; j < rewardImgList.Count && crateVumarkNumber != null; j++)
         {
-            rewardImgList[j].sprite = rewardSpriteList[cratevumarkNumber[j]];
+            rewardImgList[j].sprite = rewardSpriteList[crateVumarkNumber[j]];
         }
     }
 

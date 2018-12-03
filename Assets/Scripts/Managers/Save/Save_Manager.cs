@@ -207,7 +207,11 @@ public class Save_Manager : MonoBehaviour
             Story_Manager.story.LoadStoryStates(galleryStoryStates);
             Story_Manager.story.LoadStoryHasBeenDone(storyAlreadyDone);
             Interface_Manager.Instance.LoadScore(scoreToSave);
-            Interface_Manager.Instance.LoadCrateImage(idxCrateList);
+            if(idxCrateList != null)
+            {
+                Interface_Manager.Instance.LoadCrateImage(idxCrateList);
+            }
+
         }
     }
 }
