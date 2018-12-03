@@ -178,11 +178,11 @@ public class Interface_Manager : MonoBehaviour
         questImage.fillAmount = currentQuestValue;
     }
 
-    public void LoadCrateImage(List<int> crateImageNumber)
+    public void LoadCrateImage(List<int> cratevumarkNumber)
     {
         for (int j = 0; j < rewardImgList.Count; j++)
         {
-            rewardImgList[j].sprite = rewardSpriteList[crateImageNumber[j]];
+            rewardImgList[j].sprite = rewardSpriteList[cratevumarkNumber[j]];
         }
     }
 
@@ -273,9 +273,10 @@ public class Interface_Manager : MonoBehaviour
 
     //MAP MENU UPDATE
 
-    public void MapActivation (int imageNumber)//Maping
+    public void MapActivation (int vumarkNumber)//Maping
     {
-        imageZone[imageNumber].GetComponent<Image>().enabled = true;
+        imageZone[vumarkNumber].SetActive(true); ;
+        Debug.Log("Map " + vumarkNumber + " Activated");
     }
 
 }
