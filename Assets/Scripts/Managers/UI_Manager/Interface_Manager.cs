@@ -107,6 +107,11 @@ public class Interface_Manager : MonoBehaviour
         menuToActivate[currentIdxMenu].SetActive(false);
         menuToActivate[newIdxMenu].SetActive(true);
         currentIdxMenu = newIdxMenu;
+        if(newIdxMenu == 2 && score == 1)
+        {
+            Debug.Log("HISTOIRE 1");
+            Story_Manager.story.ActivatingStory(0);
+        }
     }
 
     public void ShowElement(GameObject elementToActive)
@@ -155,7 +160,7 @@ public class Interface_Manager : MonoBehaviour
     }
 
 
-    public void ImageState(List<bool> isImageCheck) 
+    public void ImageState(List<bool> isImageCheck) //IMAGE ON MAP 
     {
         for (int j = 0; j < isImageCheck.Count; j++)
         {
