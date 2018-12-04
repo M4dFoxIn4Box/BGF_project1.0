@@ -54,6 +54,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public AudioSource quizzAudioSource;
     public AudioClip[] audioQuizz;
 
+    [Header("FeedBackScan")]
+    public float timer = 0f;
+    public GameObject imageFillAmount;
+    public UnityEngine.UI.Image feedbackScan;
+    private bool coolingDown = false;
+
     [Header("Textes")]
     public Text quizzText;
     private string[] answerString;
@@ -120,29 +126,18 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
-   
-        foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
-        {
-            vumarkID = (int) vumark.InstanceId.NumericValue;
-        }
-
-        if(vumarkID >= vumarkRewardMinValue)
-        {
-            int idxToCast = vumarkID - vumarkRewardMinValue;
-            Interface_Manager.Instance.RewardBoxOpened(idxToCast);
-            Debug.Log("ID cast = " + idxToCast);
-        }
-        else
-        {
-            quizzDone = false;
-            QuizzDisplaying();
-        }
-
-  
+        imageFillAmount.SetActive(true);
+        coolingDown = true;
     }
     
     public void OnTrackerLost()
     {
+        imageFillAmount.SetActive(false);
+        timer = 0;
+        coolingDown = false;
+        feedbackScan.fillAmount = 1;
+
+
         if (vumarkID >= vumarkRewardMinValue)
         {
             Debug.Log("This is correct bobby");
@@ -158,6 +153,26 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         LeaveQuizz();
         Debug.Log(currentQuizzList);
+    }
+
+    void TrackerFound()
+    {
+        foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
+        {
+            vumarkID = (int)vumark.InstanceId.NumericValue;
+        }
+
+        if (vumarkID >= vumarkRewardMinValue)
+        {
+            int idxToCast = vumarkID - vumarkRewardMinValue;
+            Interface_Manager.Instance.RewardBoxOpened(idxToCast);
+            Debug.Log("ID cast = " + idxToCast);
+        }
+        else
+        {
+            quizzDone = false;
+            QuizzDisplaying();
+        }
     }
 
     public void QuizzDisplaying ()
@@ -382,5 +397,30 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         Destroy(currentReward);
     }
+
+
+    void fillAmount()
+    {        
+        if (coolingDown == true)
+        {
+            timer += Time.deltaTime;
+            feedbackScan.fillAmount -= 0.2f  * Time.deltaTime;
+        }
+
+        if (timer >= 5)
+        {
+            TrackerFound();
+            imageFillAmount.SetActive(false);
+            coolingDown = false;
+            timer = 0;
+            feedbackScan.fillAmount = 1;
+        }
+    }
+
+    void Update()
+    {
+        fillAmount();
+    }
+
 
 }
