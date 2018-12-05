@@ -87,6 +87,7 @@ public class Interface_Manager : MonoBehaviour
     void Start()
     {
         scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
+        Tuto_Manager.tuto.ActivatingTuto(3);
     }
 
     // Update is called once per frame
@@ -107,11 +108,6 @@ public class Interface_Manager : MonoBehaviour
         menuToActivate[currentIdxMenu].SetActive(false);
         menuToActivate[newIdxMenu].SetActive(true);
         currentIdxMenu = newIdxMenu;
-        if(newIdxMenu == 2 && score == 1)
-        {
-            Debug.Log("HISTOIRE 1");
-            Story_Manager.story.ActivatingStory(0);
-        }
     }
 
     public void ShowElement(GameObject elementToActive)
@@ -268,6 +264,11 @@ public class Interface_Manager : MonoBehaviour
 
     public void CloseARCamera()//ETEINDRE AR CAM
     {
+        if (score == 1)
+        {
+            Story_Manager.story.ActivatingStory(0);
+            Tuto_Manager.tuto.ActivatingTuto(4);
+        }
         mainCanvas.worldCamera = uiCam;
         vumarkPrefab.SetActive(false);
         uiCam.gameObject.SetActive(true);
