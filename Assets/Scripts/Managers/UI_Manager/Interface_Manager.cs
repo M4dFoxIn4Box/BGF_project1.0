@@ -87,7 +87,6 @@ public class Interface_Manager : MonoBehaviour
     void Start()
     {
         scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
-        Tuto_Manager.tuto.ActivatingTuto(3);
     }
 
     // Update is called once per frame
@@ -223,7 +222,7 @@ public class Interface_Manager : MonoBehaviour
         if(score == 5)
         {
             CloseARCamera();
-            Tuto_Manager.tuto.ActivatingTuto(5);
+            Tuto_Manager.tuto.ActivatingTuto(4);
         }
     }
 
@@ -266,8 +265,7 @@ public class Interface_Manager : MonoBehaviour
     {
         if (score == 1)
         {
-            Story_Manager.story.ActivatingStory(0);
-            Tuto_Manager.tuto.ActivatingTuto(4);
+            Story_Manager.story.ActivatingStory(3);
         }
         mainCanvas.worldCamera = uiCam;
         vumarkPrefab.SetActive(false);
@@ -282,7 +280,6 @@ public class Interface_Manager : MonoBehaviour
     public void MapActivation (int vumarkNumber)//Maping
     {
         imageZone[vumarkNumber].SetActive(true); ;
-        Debug.Log("Map " + vumarkNumber + " Activated");
     }
 
 }

@@ -226,9 +226,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                     answerBoardText[i].text = currentQuizz.answerList[i];
                     buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
-
-            }                  
-                
+            }                            
     }
 
     public void FakeARToDeactivate(GameObject fakeARObject)
