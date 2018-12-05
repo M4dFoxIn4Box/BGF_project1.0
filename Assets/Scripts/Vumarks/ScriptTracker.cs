@@ -419,6 +419,4 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         fillAmount();
     }
-
-
 }

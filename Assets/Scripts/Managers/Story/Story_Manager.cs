@@ -7,23 +7,6 @@ public class Story_Manager : MonoBehaviour
 {
     public static Story_Manager story {get; private set;}
 
-    [Header ("Story Gallery")]
-
-    //public List<int> idxStory;
-    //public List<bool> storyList;
-
-    [Header("Story Old Gallery")]
-
-    //public int currentIdxStory = 0;
-
-    //public List<Transform> currentStoryActivate = new List<Transform>();
-
-    //public Transform currentStory = null;
-
-    //public GameObject arrowRight;
-    //public GameObject arrowLeft;
-    //public GameObject activeArrows;
-
     [Header ("Story Activate")]
 
     public List<Scriptable_Story> scriptableStoryList;//Toute la liste des scriptables
@@ -119,71 +102,6 @@ public class Story_Manager : MonoBehaviour
             }
         }
     }
-
-    //public void ShowTuto(Transform storyToShow)
-    //{
-    //    if (currentStory != null)
-    //    {
-    //        currentStory.gameObject.SetActive(false);
-    //        currentStoryActivate[currentIdxStory].gameObject.SetActive(false);
-    //        currentIdxStory = 0;
-    //        currentStoryActivate[currentIdxStory].gameObject.SetActive(true);
-    //        arrowLeft.SetActive(false);
-    //        arrowRight.SetActive(true);
-    //    }
-
-    //    currentIdxStory = 0;
-    //    currentStoryActivate.Clear();
-    //    currentStory = storyToShow;
-    //    storyToShow.gameObject.SetActive(true);
-    //    activeArrows.gameObject.SetActive(true);
-
-    //    for (int i = 0; i < currentStory.childCount; i++)
-    //    {
-    //        currentStoryActivate.Add(currentStory.transform.GetChild(i));
-    //    }
-    //}
-
-    //public void UnShowTuto()
-    //{
-    //    currentStory.gameObject.SetActive(false);
-    //    activeArrows.gameObject.SetActive(false);
-    //    currentStory = null;
-    //    currentIdxStory = 0;
-    //}
-
-    //public void NextStorySlide()
-    //{ 
-
-    //    if(currentIdxStory < currentStoryActivate.Count -1)
-    //    {
-    //        currentStoryActivate[currentIdxStory].gameObject.SetActive(false);
-    //        currentIdxStory++;
-    //        currentStoryActivate[currentIdxStory].gameObject.SetActive(true);
-    //        arrowLeft.SetActive(true);
-    //    }
-
-    //    if (currentIdxStory == currentStoryActivate.Count - 1)
-    //    {
-    //        arrowRight.SetActive(false);
-    //    }
-    //}
-
-    //public void PrecedentStorySlide()
-    //{
-    //    if (currentIdxStory > 0)
-    //    {
-    //        currentStory.GetChild(currentIdxStory).gameObject.SetActive(false);
-    //        currentIdxStory--;
-    //        currentStory.GetChild(currentIdxStory).gameObject.SetActive(true);
-    //        arrowRight.SetActive(true);
-    //    }
-
-    //    if (currentIdxStory == 0)
-    //    {
-    //        arrowLeft.SetActive(false);
-    //    }
-    //}
 
     //SAVE AND LOAD STORY
 
