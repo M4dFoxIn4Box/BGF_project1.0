@@ -10,7 +10,7 @@ public class ScreenShotShare : MonoBehaviour
 
     public string subject, ShareMessage, url;
     private bool isProcessing = false;
-    public string ScreenshotName = "DenysScreenshot.png";
+    public string ScreenshotName = "PerfectScreenshot.png";
 
     public void ShareScreenshotWithText()
     {
