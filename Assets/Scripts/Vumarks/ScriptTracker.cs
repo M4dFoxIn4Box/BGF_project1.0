@@ -100,6 +100,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public bool arIsLock;
     public GameObject mainMenu;
 
+    [Header("Sounds")]
+    public AudioClip audioQuizzCorrectAnswer;
+    public AudioClip audioQuizzBadAnswer;
+
     void Start()
     {
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -307,7 +311,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void BadAnswer()
     {
         quizAnim.SetBool("Erreur", true);
-        quizzAudioSource.PlayOneShot(audioQuizz[0]);
+        Audio_Manager.audio.SoundsToPlay(audioQuizzBadAnswer);
+        //quizzAudioSource.PlayOneShot(audioQuizz[0]);
         parentErrorCount.transform.GetChild(currentErrorCount).GetComponent<UnityEngine.UI.Image>().sprite = newErrorImage;
         currentErrorCount++;        
 
@@ -321,8 +326,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void RightAnswer()
     {
-
-        quizzAudioSource.PlayOneShot(audioQuizz[1]);
+        Audio_Manager.audio.SoundsToPlay(audioQuizzCorrectAnswer);
+        //quizzAudioSource.PlayOneShot(audioQuizz[1]);
         quizzAvailable.Remove(currentQuizz);
         for (int i = 0; i < buttonList.Length; i++)
         {

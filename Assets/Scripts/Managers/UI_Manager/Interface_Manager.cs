@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Interface_Manager : MonoBehaviour
 {
-
-
     public static Interface_Manager Instance { get; private set; }
 
 
@@ -70,6 +68,9 @@ public class Interface_Manager : MonoBehaviour
 
     public List<int> idxStoryScriptableToActivate;//index à envoyé pour activer la bon coffre
 
+    [Header("Sounds")]
+
+    public AudioClip audioChangeMenu;
 
     private void Awake()
     {
@@ -104,6 +105,7 @@ public class Interface_Manager : MonoBehaviour
     //Pour changer de menu il faut renseigner le int sur le bouton
     public void ChangeMenu(int newIdxMenu)
     {
+        Audio_Manager.audio.SoundsToPlay(audioChangeMenu);
         menuToActivate[currentIdxMenu].SetActive(false);
         menuToActivate[newIdxMenu].SetActive(true);
         currentIdxMenu = newIdxMenu;
