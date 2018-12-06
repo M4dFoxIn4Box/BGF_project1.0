@@ -265,7 +265,8 @@ public class Interface_Manager : MonoBehaviour
     {
         if (score == 1)
         {
-            Story_Manager.story.ActivatingStory(3);
+            Tuto_Manager.tuto.ActivatingTuto(3);
+            Story_Manager.story.ActivatingStory(1);
         }
         mainCanvas.worldCamera = uiCam;
         vumarkPrefab.SetActive(false);
