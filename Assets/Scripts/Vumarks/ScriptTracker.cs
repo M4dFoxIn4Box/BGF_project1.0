@@ -73,8 +73,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     [Header("Boutons")]
     public Button[] buttonList;
 
-    public Button leaveCanvas;
-
     private float r = 0.4509804f;
     private float g = 0.4509804f;
     private float b = 0.4509804f;
