@@ -59,7 +59,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public UnityEngine.UI.Image feedbackScan;
     public Text loadTextState;
     private bool loadingState = true;
-    public float scanPercentage;
+    public float scanWaitTime;
 
     [Header("Textes")]
     public Text quizzText;
@@ -131,6 +131,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
+        FillAmountScan();
         loadingScan.SetActive(true);
         loadingState = false;
     }
@@ -401,16 +402,15 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     }
 
 
-    void fillAmount()
-    {        
+    void FillAmountScan()
+    {
+
         if (loadingState == false)
         {
-            feedbackScan.fillAmount += 0.2f  * Time.deltaTime;           
-            scanPercentage = (0.2f * Time.deltaTime) * 100;   
+            feedbackScan.fillAmount += Time.deltaTime/scanWaitTime;
         }
 
-        Debug.Log("LOADING" + scanPercentage);
-        loadTextState.text = scanPercentage.ToString("F2") + "%";
+        loadTextState.text = (feedbackScan.fillAmount*100).ToString("F0") + "%";
 
         if (feedbackScan.fillAmount == 1)
         {
@@ -425,7 +425,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         if(loadingState == false)
         {
-            fillAmount();
+            FillAmountScan();
         }
 
     }
