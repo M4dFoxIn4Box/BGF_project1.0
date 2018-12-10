@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vumark_Manager : MonoBehaviour {
+public class Vumark_Map : MonoBehaviour {
 
     public int mapIdx;
 
