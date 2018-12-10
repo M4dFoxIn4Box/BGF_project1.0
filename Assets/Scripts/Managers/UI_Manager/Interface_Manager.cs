@@ -66,7 +66,8 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Story")]
 
-    public List<int> idxStoryScriptableToActivate;//index à envoyé pour activer la bon coffre
+    public List<int> idxStoryScriptableToActivate;//index à envoyé pour activer la bonne histoire
+    private bool storyToActivate = false;
 
     [Header("Sounds")]
 
@@ -212,8 +213,7 @@ public class Interface_Manager : MonoBehaviour
             Save_Manager.saving.SavingCrateState(idxCrateStates);
             rewardCounter++;
             palierScoreList.RemoveAt(0);
-            Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
-            idxStoryScriptableToActivate.RemoveAt(0);
+            storyToActivate = true;
         }
 
         if (score == limitToWin)
@@ -221,7 +221,7 @@ public class Interface_Manager : MonoBehaviour
             Victory();
         }
 
-        if(score == 5)
+        if(score == 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
         {
             CloseARCamera();
             Tuto_Manager.tuto.ActivatingTuto(4);
@@ -269,6 +269,13 @@ public class Interface_Manager : MonoBehaviour
         {
             Tuto_Manager.tuto.ActivatingTuto(3);
             Story_Manager.story.ActivatingStory(0);
+            idxStoryScriptableToActivate.RemoveAt(0);
+        }
+        if(storyToActivate == true)
+        {
+            Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
+            idxStoryScriptableToActivate.RemoveAt(0);
+            storyToActivate = false;
         }
         mainCanvas.worldCamera = uiCam;
         vumarkPrefab.SetActive(false);
