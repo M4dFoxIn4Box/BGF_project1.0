@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Dr_Strange : MonoBehaviour {
 
-    private Animator anim;
+    public Animator anim;
     public GameObject fakeARObject;
     private bool secondClick = false;
     private bool firstClick = false;
@@ -13,9 +13,8 @@ public class Dr_Strange : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        ScriptTracker.Instance.FakeARToDeactivate(fakeARObject);
-        anim = GetComponent<Animator>();
         firstClick = true;
+        ScriptTracker.Instance.FakeARToDeactivate(fakeARObject);
     }
 	
 	// Update is called once per frame
@@ -28,6 +27,7 @@ public class Dr_Strange : MonoBehaviour {
         if (firstClick == true)
         {
             anim.SetBool("Play_Anim", true);
+            Debug.Log("clicked");
         }
 
         if (secondClick == true)
