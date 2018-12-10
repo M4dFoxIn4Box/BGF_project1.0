@@ -782,7 +782,7 @@ MonoBehaviour:
   loadingScan: {fileID: 793281704}
   feedbackScan: {fileID: 312679308}
   loadTextState: {fileID: 1001925390}
-  scanPercentage: 0
+  scanWaitTime: 5
   quizzText: {fileID: 112641309}
   answerBoardText:
   - {fileID: 821054111}
@@ -796,7 +796,6 @@ MonoBehaviour:
   - {fileID: 879312990}
   - {fileID: 1225296715}
   - {fileID: 623388710}
-  leaveCanvas: {fileID: 0}
   quizzLists:
   - {fileID: 11400000, guid: 0fc78a54d9649a740acb8af09d88ac11, type: 2}
   - {fileID: 11400000, guid: e5345ec79c534de448b15d901d233283, type: 2}
@@ -3433,6 +3432,33 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 316106693}
   m_CullTransparentMesh: 0
+--- !u!21 &316186100
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 'BGFMaterial
+
+    119426'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &326858791
 GameObject:
   m_ObjectHideFlags: 0
@@ -19842,33 +19868,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!21 &1853928483
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 'BGFMaterial
-
-    21716'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1875383756
 GameObject:
   m_ObjectHideFlags: 0
@@ -22118,7 +22117,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 1853928483}
+  - {fileID: 316186100}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
