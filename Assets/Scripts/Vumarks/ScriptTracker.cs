@@ -287,10 +287,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         currentErrorCount = 0;
         currentQuizzScore = 0;
 
-        if (screenShare)
-        {
-            screenShare.SetActive(false);
-        }
+        //if (screenShare)
+        //{
+        //    screenShare.SetActive(false);
+        //}
 
         if (congratulationsImage)
         {
