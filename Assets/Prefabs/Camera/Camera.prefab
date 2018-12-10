@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 4528550884656354}
   - component: {fileID: 20527039484369148}
   - component: {fileID: 81049847545748172}
+  - component: {fileID: 95476340746880018}
   - component: {fileID: 114639252504614388}
   - component: {fileID: 114609154332281850}
   m_Layer: 0
@@ -122,6 +123,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1949089672873144
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4892258368213254}
+  m_Layer: 0
+  m_Name: SpawnPoint_Pokemon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4042436700917742
 Transform:
   m_ObjectHideFlags: 1
@@ -177,6 +193,7 @@ Transform:
   - {fileID: 4845567485373340}
   - {fileID: 4859862014911572}
   - {fileID: 4042436700917742}
+  - {fileID: 4892258368213254}
   m_Father: {fileID: 4224366915570978}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -218,6 +235,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4528550884656354}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4892258368213254
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949089672873144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.02, z: 4.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4528550884656354}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20425749863897992
 Camera:
@@ -313,6 +343,24 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1641147588793560}
   m_Enabled: 1
+--- !u!95 &95476340746880018
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077749530533218}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4dba23dffc4fdcf41ac7affb9386c68a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114609154332281850
 MonoBehaviour:
   m_ObjectHideFlags: 1
