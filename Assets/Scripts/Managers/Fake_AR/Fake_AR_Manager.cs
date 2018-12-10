@@ -6,7 +6,7 @@ public class Fake_AR_Manager : MonoBehaviour {
 
     public static Fake_AR_Manager FakeAR { get; private set; }
 
-    public Transform spawnPointFakeAR;
+    public Transform[] spawnPointFakeAR;
     public GameObject[] fakeArObjectToSpawn;
 
     private void Awake()
@@ -36,7 +36,6 @@ public class Fake_AR_Manager : MonoBehaviour {
 
     public void FakeARToSpawn(int idxFakeAR)
     {
-        Instantiate(fakeArObjectToSpawn[idxFakeAR], spawnPointFakeAR);
-        Debug.Log("l'objet spawn est " + fakeArObjectToSpawn[idxFakeAR]);
+        Instantiate(fakeArObjectToSpawn[idxFakeAR], spawnPointFakeAR[idxFakeAR]);
     }
 }
