@@ -198,9 +198,7 @@ public class Interface_Manager : MonoBehaviour
         scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
         questImage.fillAmount = currentQuestValue;
         Save_Manager.saving.SavingScore((int)score);
-
         UpdateScore();
-
     }
 
     void UpdateScore()
@@ -219,12 +217,6 @@ public class Interface_Manager : MonoBehaviour
         if (score == limitToWin)
         {
             Victory();
-        }
-
-        if(score == 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
-        {
-            CloseARCamera();
-            Tuto_Manager.tuto.ActivatingTuto(4);
         }
     }
 
@@ -270,6 +262,10 @@ public class Interface_Manager : MonoBehaviour
             Tuto_Manager.tuto.ActivatingTuto(3);
             Story_Manager.story.ActivatingStory(0);
             idxStoryScriptableToActivate.RemoveAt(0);
+        }
+        if (score == 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
+        {
+            Tuto_Manager.tuto.ActivatingTuto(4);
         }
         if(storyToActivate == true)
         {
