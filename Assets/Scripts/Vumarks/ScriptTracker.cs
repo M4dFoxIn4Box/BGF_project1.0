@@ -373,7 +373,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         // Reset du quizz
       
  
-        screenShare.SetActive(true);
+        //screenShare.SetActive(true);
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);       
         quizzDone = false;
