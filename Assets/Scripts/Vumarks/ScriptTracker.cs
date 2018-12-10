@@ -55,10 +55,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public AudioClip[] audioQuizz;
 
     [Header("FeedBackScan")]
-    public float timer = 0f;
-    public GameObject imageFillAmount;
+    public GameObject loadingScan;
     public UnityEngine.UI.Image feedbackScan;
-    private bool coolingDown = false;
+    public Text loadTextState;
+    private bool loadingState = true;
+    public float scanPercentage;
 
     [Header("Textes")]
     public Text quizzText;
@@ -130,17 +131,15 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
-        imageFillAmount.SetActive(true);
-        coolingDown = true;
+        loadingScan.SetActive(true);
+        loadingState = false;
     }
     
     public void OnTrackerLost()
     {
-        imageFillAmount.SetActive(false);
-        timer = 0;
-        coolingDown = false;
-        feedbackScan.fillAmount = 1;
-
+        loadingScan.SetActive(false);
+        loadingState = false;
+        feedbackScan.fillAmount = 0;
 
         if (vumarkID >= vumarkRewardMinValue)
         {
@@ -159,7 +158,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         Debug.Log(currentQuizzList);
     }
 
-    void TrackerFound()
+    void ScanIsDone()
     {
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
@@ -404,24 +403,30 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void fillAmount()
     {        
-        if (coolingDown == true)
+        if (loadingState == false)
         {
-            timer += Time.deltaTime;
-            feedbackScan.fillAmount -= 0.2f  * Time.deltaTime;
+            feedbackScan.fillAmount += 0.2f  * Time.deltaTime;           
+            scanPercentage = (0.2f * Time.deltaTime) * 100;   
         }
 
-        if (timer >= 5)
+        Debug.Log("LOADING" + scanPercentage);
+        loadTextState.text = scanPercentage.ToString("F2") + "%";
+
+        if (feedbackScan.fillAmount == 1)
         {
-            TrackerFound();
-            imageFillAmount.SetActive(false);
-            coolingDown = false;
-            timer = 0;
+            ScanIsDone();
+            loadingScan.SetActive(false);
+            loadingState = true;
             feedbackScan.fillAmount = 1;
         }
     }
 
     void Update()
     {
-        fillAmount();
+        if(loadingState == false)
+        {
+            fillAmount();
+        }
+
     }
 }
