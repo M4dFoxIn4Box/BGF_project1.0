@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Excalibur_Interation : MonoBehaviour {
 
-    private Animator currentAnimation;
+    public Animator currentAnimation;
     private bool isOKTap = true;
     public GameObject fakeARObject;
     
