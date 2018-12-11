@@ -53,7 +53,6 @@ public class Save_Manager : MonoBehaviour
         }
     }
 
-
     void Start()// Regarde si le fichier de sauvegarde existe
     {
         if (!File.Exists(Application.persistentDataPath + "/playerInfo.data"))
@@ -172,10 +171,8 @@ public class Save_Manager : MonoBehaviour
         data.scoreToSave = scoreToSave;
         data.idxCrateList = idxCrateList;
 
-
-    bf.Serialize(file, data);
+        bf.Serialize(file, data);
         file.Close();
-
     }
 
     public void Load()
@@ -197,7 +194,6 @@ public class Save_Manager : MonoBehaviour
             scoreToSave = data.scoreToSave;
             idxCrateList = data.idxCrateList;
 
-
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
             Interface_Manager.Instance.TutoIsDone(quizzDoneToSave);
@@ -207,11 +203,11 @@ public class Save_Manager : MonoBehaviour
             Story_Manager.story.LoadStoryStates(galleryStoryStates);
             Story_Manager.story.LoadStoryHasBeenDone(storyAlreadyDone);
             Interface_Manager.Instance.LoadScore(scoreToSave);
+
             if(idxCrateList != null)
             {
                 Interface_Manager.Instance.LoadCrateImage(idxCrateList);
             }
-
         }
     }
 }

@@ -42,7 +42,7 @@ public class Tuto_Manager : MonoBehaviour
         }
     }
 
-    public void ActivatingTutoGallery(int tutoNumber)
+    public void ActivatingTutoGallery(int tutoNumber)//active les tuto depuis la galerie (seul changement le bool)
     {
         idxTuto = tutoNumber;
         tutoToDeactive = tutoNumber;
@@ -53,7 +53,7 @@ public class Tuto_Manager : MonoBehaviour
         tutoTxt.text = currentScriptableTuto.tutoTextBoard[currentSlideIdx];
     }
 
-    public void ActivatingTuto(int tutoToActive)
+    public void ActivatingTuto(int tutoToActive)//active un tuto et verifie s'il a été fait
     {
         idxTuto = tutoToActive;
         tutoToDeactive = tutoToActive;

@@ -130,7 +130,7 @@ public class Interface_Manager : MonoBehaviour
 
     //LOADING VARIABLE
 
-    public void CheckStateButton(int idx)
+    public void CheckStateButton(int idx)//changement de state de la galerie
     {
         if (!scanIdx.Contains(idx))
         {
@@ -145,7 +145,7 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
-    public void ButtonState(List<bool> interactableButton)
+    public void ButtonState(List<bool> interactableButton)//load button ok dans la galerie
     {
         for (int i = 0; i < interactableButton.Count; i++)
         {
@@ -173,7 +173,7 @@ public class Interface_Manager : MonoBehaviour
 
     //LOADING SCORE
 
-    public void LoadScore(int scoring)
+    public void LoadScore(int scoring)//load score
     {
         score = scoring;
         scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
@@ -181,7 +181,7 @@ public class Interface_Manager : MonoBehaviour
         questImage.fillAmount = currentQuestValue;
     }
 
-    public void LoadCrateImage(List<int> crateVumarkNumber)
+    public void LoadCrateImage(List<int> crateVumarkNumber)//load coffre
     {
         for (int j = 0; j < rewardImgList.Count && crateVumarkNumber != null; j++)
         {
@@ -267,7 +267,7 @@ public class Interface_Manager : MonoBehaviour
         {
             Tuto_Manager.tuto.ActivatingTuto(4);
         }
-        if(storyToActivate == true)
+        if(storyToActivate == true)//bool qu'on active quand le score est égal au palier
         {
             Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
             idxStoryScriptableToActivate.RemoveAt(0);
