@@ -16,6 +16,8 @@ public class Interface_Manager : MonoBehaviour
     private int idxButton;
     public GameObject funfact;
     private bool isFunFactActive;
+    public Image imageFunfactState;
+    public Sprite[] spriteFunfactState;
 
     [Header ("Map")]
 
@@ -295,11 +297,19 @@ public class Interface_Manager : MonoBehaviour
         imageZone[vumarkNumber].color = mapColor; ;
     }
 
-    public void FunFactToggle ()
+    public void FunFactToggle()
     {
-        isFunFactActive = !isFunFactActive;
-        Debug.Log(isFunFactActive);
-        funfact.SetActive(isFunFactActive);
-
+        if (funfact.activeSelf == true)
+        {
+            Debug.Log("MASKKKKKKKKKK");
+            funfact.SetActive(false);
+            imageFunfactState.sprite = spriteFunfactState[0];
+        }
+        else if(funfact.activeSelf == false)
+        {
+            Debug.Log("UNNNNNNMASKKKKKKK");
+            funfact.SetActive(true);
+            imageFunfactState.sprite = spriteFunfactState[1];
+        }
     }
 }
