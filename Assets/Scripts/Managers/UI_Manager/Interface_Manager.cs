@@ -45,7 +45,8 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Map")]
 
-    public GameObject[] imageZone;//Tableaux d'image pour la map
+    public Color mapColor;
+    public Image[] imageZone;//Tableaux d'image pour la map
 
     [Header("Menu")]//Changer de menu
 
@@ -162,7 +163,11 @@ public class Interface_Manager : MonoBehaviour
     {
         for (int j = 0; j < isImageCheck.Count; j++)
         {
-            mapList.GetChild(j).gameObject.SetActive(isImageCheck[j]);
+            if(isImageCheck[j])
+            {
+                mapList.GetChild(j).gameObject.GetComponent<Image>().color = mapColor;
+            }
+            
         }
     }
 
@@ -285,7 +290,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void MapActivation (int vumarkNumber)//Maping
     {
-        imageZone[vumarkNumber].SetActive(true); ;
+        imageZone[vumarkNumber].color = mapColor; ;
     }
 
 }
