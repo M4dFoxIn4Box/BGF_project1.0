@@ -14,6 +14,8 @@ public class Interface_Manager : MonoBehaviour
     private List<int> scanIdx = new List<int>();
     private List<bool> buttonState = new List<bool>();
     private int idxButton;
+    public GameObject funfact;
+    private bool isFunFactActive;
 
     [Header ("Map")]
 
@@ -293,4 +295,11 @@ public class Interface_Manager : MonoBehaviour
         imageZone[vumarkNumber].color = mapColor; ;
     }
 
+    public void FunFactToggle ()
+    {
+        isFunFactActive = !isFunFactActive;
+        Debug.Log(isFunFactActive);
+        funfact.SetActive(isFunFactActive);
+
+    }
 }
