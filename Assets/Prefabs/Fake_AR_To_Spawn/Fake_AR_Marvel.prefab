@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 95122882744653890}
   - component: {fileID: 65336628869056698}
   - component: {fileID: 114711599746546220}
+  - component: {fileID: 114268249233403152}
   m_Layer: 0
   m_Name: Fake_AR_Marvel
   m_TagString: Untagged
@@ -134,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1252867559218086}
   m_LocalRotation: {x: -0, y: 0.87517464, z: -0, w: 0.48380724}
-  m_LocalPosition: {x: -2.2289999, y: 0.996, z: -13.711548}
+  m_LocalPosition: {x: -0.11216521, y: 0.0027301977, z: -13.711548}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4501676102452290}
@@ -437,6 +438,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114268249233403152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1252867559218086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c391e51d0e6e1e4bbf0d76f568f2778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fakeARObject: {fileID: 1252867559218086}
 --- !u!114 &114711599746546220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,4 +462,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jokerAnimator: {fileID: 95122882744653890}
-  fakeARObject: {fileID: 1252867559218086}
