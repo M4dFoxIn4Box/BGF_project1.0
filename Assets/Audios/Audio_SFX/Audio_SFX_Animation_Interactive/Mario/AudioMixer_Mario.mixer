@@ -5,7 +5,7 @@ AudioMixerController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Audio_Mixer_Zelda
+  m_Name: AudioMixer_Mario
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
@@ -17,11 +17,10 @@ AudioMixerController:
   m_ExposedParameters: []
   m_AudioMixerGroupViews:
   - guids:
-    - c5d422122c8cbf54d99b15916c6b6974
-    - 0cf265843e5257347ab8771c85dfe8c6
-    - b054a83d60a73bf4aa7e69e07e98a111
-    - 54ea5e7a0d3529b4dbc63301a9a98195
-    - e45c4d6c81897f246a43998f6eb72dc7
+    - 5d1fe0c3c0b19da44a086a5cb762549f
+    - c9cc2a8114642a749aac2953783de2dc
+    - e3e331e1170654f4286f782cd866342e
+    - 173406ed2cd05104ab682d9625e656b3
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -32,14 +31,13 @@ AudioMixerGroupController:
   m_PrefabInternal: {fileID: 0}
   m_Name: Master
   m_AudioMixer: {fileID: 24100000}
-  m_GroupID: c5d422122c8cbf54d99b15916c6b6974
+  m_GroupID: 5d1fe0c3c0b19da44a086a5cb762549f
   m_Children:
-  - {fileID: 243352174436444764}
-  - {fileID: 243804660264163476}
-  - {fileID: 243364617621976870}
-  - {fileID: 243995306253417742}
-  m_Volume: 9e569954e7838d24fb7f3200661c58dc
-  m_Pitch: 79b3d9b56ba9742409d0f20c56cb20be
+  - {fileID: 243402919104382654}
+  - {fileID: 243083170573152196}
+  - {fileID: 243216254877912898}
+  m_Volume: 5722f0ef31ec73c469108ac988d13feb
+  m_Pitch: 2b28506b445067c4d80eb6e1b57afe29
   m_Effects:
   - {fileID: 24400004}
   m_UserColorIndex: 0
@@ -52,9 +50,9 @@ AudioMixerEffectController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_EffectID: 28aab29beecd62a45be384ff374f8590
+  m_EffectID: 6479058f00e90f042b2ab88ea4380440
   m_EffectName: Attenuation
-  m_MixLevel: fa4e24852a58fee4b888daf292982f2f
+  m_MixLevel: f5e9710264e78fd4684fa849dc44bb81
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -66,130 +64,96 @@ AudioMixerSnapshotController:
   m_PrefabInternal: {fileID: 0}
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: fd23c1bdf4bace843b770931b3e90c9f
+  m_SnapshotID: f69e54ddd145745428c3745031aca86b
   m_FloatValues:
-    1db0eda35d0ea774baf5b115a8da5b57: -9.456397
-    9e569954e7838d24fb7f3200661c58dc: 0.23288241
-    f9e17cc50679211458f7563f490db573: -6.133707
-    07a42896c654e3249bebb2e47f651a22: -17.454807
-    3133225cc0f74054faec42c673bea323: 20
+    08a9891937428284ba1d70e60a9b2ede: -12.498483
   m_TransitionOverrides: {}
---- !u!243 &243352174436444764
+--- !u!243 &243083170573152196
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Get MasterSword
+  m_Name: Mario Grow Up
   m_AudioMixer: {fileID: 24100000}
-  m_GroupID: e45c4d6c81897f246a43998f6eb72dc7
+  m_GroupID: e3e331e1170654f4286f782cd866342e
   m_Children: []
-  m_Volume: f9e17cc50679211458f7563f490db573
-  m_Pitch: a47902dd3646bc04eaba0978f075ba52
+  m_Volume: fa3a3feb43a36e64f9ed0376049375ca
+  m_Pitch: bf24876cb13ccd54d8b5d68c31f628cc
   m_Effects:
-  - {fileID: 244487422599266064}
+  - {fileID: 244241663365584882}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!243 &243364617621976870
+--- !u!243 &243216254877912898
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Remove Excalibur
+  m_Name: Mario Jump
   m_AudioMixer: {fileID: 24100000}
-  m_GroupID: b054a83d60a73bf4aa7e69e07e98a111
+  m_GroupID: c9cc2a8114642a749aac2953783de2dc
   m_Children: []
-  m_Volume: 3133225cc0f74054faec42c673bea323
-  m_Pitch: 3dba11e2dbe7a23429ecee2997a74fd8
+  m_Volume: dcf095ad9b04ad242b91a071abcaa24c
+  m_Pitch: be8b8ae9c78caed4d9204721f083a0f8
   m_Effects:
-  - {fileID: 244672983060550742}
+  - {fileID: 244013929489905328}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!243 &243804660264163476
+--- !u!243 &243402919104382654
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Temple of Time
+  m_Name: Mario Monde 1
   m_AudioMixer: {fileID: 24100000}
-  m_GroupID: 0cf265843e5257347ab8771c85dfe8c6
+  m_GroupID: 173406ed2cd05104ab682d9625e656b3
   m_Children: []
-  m_Volume: 07a42896c654e3249bebb2e47f651a22
-  m_Pitch: 19459f4ba775c7c4299431e11760d912
+  m_Volume: 08a9891937428284ba1d70e60a9b2ede
+  m_Pitch: f6d3bdc1a9cefca4f8c302a186cc969f
   m_Effects:
-  - {fileID: 244497258065810750}
+  - {fileID: 244475479079812216}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!243 &243995306253417742
-AudioMixerGroupController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Final Remove Excalibur
-  m_AudioMixer: {fileID: 24100000}
-  m_GroupID: 54ea5e7a0d3529b4dbc63301a9a98195
-  m_Children: []
-  m_Volume: 1db0eda35d0ea774baf5b115a8da5b57
-  m_Pitch: 63335125140a4f840977cb24fdd04980
-  m_Effects:
-  - {fileID: 244899093222692556}
-  m_UserColorIndex: 0
-  m_Mute: 0
-  m_Solo: 0
-  m_BypassEffects: 0
---- !u!244 &244487422599266064
+--- !u!244 &244013929489905328
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_EffectID: 90d2a03d6abbf6a448844d0f8a069d06
+  m_EffectID: e741c0470a557b14b9b5ef4f1ba959b0
   m_EffectName: Attenuation
-  m_MixLevel: 699cee9da65cb424b8c038f7b8264689
+  m_MixLevel: 7df845385c757ed429fcee0556c62a34
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!244 &244497258065810750
+--- !u!244 &244241663365584882
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_EffectID: 4eb0da6b44da2704dbe8e32a5ef7955c
+  m_EffectID: 1c5ae0f2060cad04bbfa9022dbbc0662
   m_EffectName: Attenuation
-  m_MixLevel: 11a942fef682f724a9eb4752f7401ee7
+  m_MixLevel: f6405c77708b6d143a457fc9b7571d7f
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!244 &244672983060550742
+--- !u!244 &244475479079812216
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_EffectID: 57f9ceecaaeee1f45b3ad55e62fbd8af
+  m_EffectID: 03691aa14b66fcd4fbe46208fbc36fd1
   m_EffectName: Attenuation
-  m_MixLevel: 5b85982bf06f6424b916295ac530c284
-  m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
---- !u!244 &244899093222692556
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_EffectID: 4c1221c3a2bbc4541a0e0fcc7384fdef
-  m_EffectName: Attenuation
-  m_MixLevel: df4ee81691ca9414ab8eaa29e8490e31
+  m_MixLevel: b19182b5305c5474f8691715f6f96099
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0

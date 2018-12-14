@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PokemonPokeball : MonoBehaviour {
 
     public Animator pokemonAnim;
     public Animator cameraAnim;
     public GameObject fakeARObject;
+    public AudioClip[] audioPokemon;
+    public AudioMixerGroup[] mixerPokemon;
 
 
     // Use this for initialization
