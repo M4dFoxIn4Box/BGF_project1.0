@@ -584,6 +584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4832767807496140}
+  - component: {fileID: 114765338662784382}
   m_Layer: 0
   m_Name: Fake_AR_Dr_Strange
   m_TagString: Untagged
@@ -2348,6 +2349,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 95206438179920022}
+  fakeARObject: {fileID: 1580752462188800}
+--- !u!114 &114765338662784382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1580752462188800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c391e51d0e6e1e4bbf0d76f568f2778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   fakeARObject: {fileID: 1580752462188800}
 --- !u!137 &137350880340322372
 SkinnedMeshRenderer:

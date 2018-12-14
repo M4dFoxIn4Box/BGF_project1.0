@@ -553,6 +553,7 @@ GameObject:
   - component: {fileID: 114036149882267194}
   - component: {fileID: 65617313721831866}
   - component: {fileID: 82867127895720936}
+  - component: {fileID: 114684254016325888}
   m_Layer: 0
   m_Name: Fake_AR_Pokemon
   m_TagString: Untagged
@@ -2189,6 +2190,18 @@ MonoBehaviour:
   mixerPokemon:
   - {fileID: 0}
   - {fileID: 243083026119534216, guid: bddfa8784217f28498b70525c80d1f9f, type: 2}
+--- !u!114 &114684254016325888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546109147386646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c391e51d0e6e1e4bbf0d76f568f2778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fakeARObject: {fileID: 1546109147386646}
 --- !u!137 &137333435468743316
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

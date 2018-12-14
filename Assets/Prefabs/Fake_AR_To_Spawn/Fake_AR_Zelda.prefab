@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4847706993378324}
   - component: {fileID: 82958678621228400}
+  - component: {fileID: 114027976856371636}
   m_Layer: 0
   m_Name: Fake_AR_Zelda
   m_TagString: Untagged
@@ -915,6 +916,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114027976856371636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1513966125414362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c391e51d0e6e1e4bbf0d76f568f2778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fakeARObject: {fileID: 1513966125414362}
 --- !u!114 &114734578748825618
 MonoBehaviour:
   m_ObjectHideFlags: 1

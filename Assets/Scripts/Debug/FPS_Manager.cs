@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FPSManager : MonoBehaviour {
+public class FPS_Manager : MonoBehaviour {
 
     public Text fpsTxt;
     private float fpsValue;

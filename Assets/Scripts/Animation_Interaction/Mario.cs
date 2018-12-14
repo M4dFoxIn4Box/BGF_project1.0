@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public class Mario : MonoBehaviour {
 
     public Animator anim;
-    public GameObject fakeARObject;
+
     public GameObject champignon;
     public AudioClip[] audioMario;
     public AudioMixerGroup[] mixerMario;
@@ -14,7 +14,7 @@ public class Mario : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        ScriptTracker.Instance.FakeARToDeactivate(fakeARObject);
+
         anim = GetComponent<Animator>();
     }
 	

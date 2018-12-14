@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 4029218137413854}
   - component: {fileID: 328430711079798700}
   - component: {fileID: 82159848259264660}
+  - component: {fileID: 114780435633918110}
   m_Layer: 0
   m_Name: Fake_AR_Mario
   m_TagString: Untagged
@@ -2162,7 +2163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 95613698442070702}
-  fakeARObject: {fileID: 1357698957172540}
   champignon: {fileID: 1705967745466838}
   audioMario:
   - {fileID: 8300000, guid: 4c5fdf3e1b8646c4e999141296d38adf, type: 3}
@@ -2170,6 +2170,18 @@ MonoBehaviour:
   mixerMario:
   - {fileID: 243216254877912898, guid: 9da5d5804d472f24598d53016a0ed882, type: 2}
   - {fileID: 243083170573152196, guid: 9da5d5804d472f24598d53016a0ed882, type: 2}
+--- !u!114 &114780435633918110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357698957172540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c391e51d0e6e1e4bbf0d76f568f2778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fakeARObject: {fileID: 1357698957172540}
 --- !u!137 &137052697599030596
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -93,7 +93,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     private int currentQuizzScore = 0;
     public int scoreToReach;
     private bool isAnswered = false;
-    private GameObject currentFakeARObject;
+    public GameObject currentFakeARObject;
 
     [Header("ARManager")]
     public bool arIsLock;
