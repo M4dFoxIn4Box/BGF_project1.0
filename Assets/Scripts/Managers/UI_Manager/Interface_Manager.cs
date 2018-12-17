@@ -34,7 +34,7 @@ public class Interface_Manager : MonoBehaviour
     public Image questImage;//barre à fillamount
     public List<int> palierScoreList;//index des paliers
     public List<Image> rewardImgList;//lié à l'index des paliers 
-    public List<Sprite> rewardSpriteList;//lié à l'index des paliers
+    public List<Sprite> rewardSpriteList;//lié à l'index des paliers coffres du menu principal
 
     [Header("Camera")]
 
@@ -213,15 +213,14 @@ public class Interface_Manager : MonoBehaviour
     void UpdateScore()
     {   
          if (score == palierScoreList[0])
-        {
-
+         {
             rewardImgList[rewardCounter].sprite = rewardSpriteList[1];
             idxCrateStates[rewardCounter] = 1;
             Save_Manager.saving.SavingCrateState(idxCrateStates);
             rewardCounter++;
             palierScoreList.RemoveAt(0);
             storyToActivate = true;
-        }
+         }
 
         if (score == limitToWin)
         {
