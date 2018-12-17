@@ -12,8 +12,4 @@ public class Scoring_Item : MonoBehaviour {
         Interface_Manager.Instance.AddScore(valueToAdd);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

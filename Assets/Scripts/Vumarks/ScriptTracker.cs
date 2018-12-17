@@ -35,12 +35,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public bool firstScan = true;
 
     [Header("Quizz")]
-    //public Text errorCountTxt;
     public int currentErrorCount;    
-    //public Text scoreDisplay;
     public bool quizzDone = false;
     public GameObject quizzInterface;
-    //public GameObject errorImage;
     public GameObject congratulationsImage;
     public List<GameObject> winCountList;
     public List<GameObject> errorCountList;
@@ -142,7 +139,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         if (vumarkID >= vumarkRewardMinValue)
         {
-            Debug.Log("This is correct bobby");
+
         }
         else
         {
@@ -154,7 +151,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
 
         LeaveQuizz();
-        Debug.Log(currentQuizzList);
     }
 
     void ScanIsDone()
@@ -168,7 +164,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             int idxToCast = vumarkID - vumarkRewardMinValue;
             Interface_Manager.Instance.RewardBoxOpened(idxToCast);
-            Debug.Log("ID cast = " + idxToCast);
         }
         else
         {
@@ -184,8 +179,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             {
                 currentQuizzList = quizzLists[vumarkID - 1];
                 scoreToReach = quizzLists[vumarkID - 1].scoreToWin;
-
-            Debug.Log(scoreToReach);
 
                         for (int i = 0; i < scoreToReach; i++)
                         {
@@ -241,7 +234,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void ARLocker()
     {
         arIsLock = !arIsLock;
-        Debug.Log(arIsLock);
     }
 
     public void ButtonClick (int buttonIdx)
@@ -285,11 +277,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         currentErrorCount = 0;
         currentQuizzScore = 0;
 
-        //if (screenShare)
-        //{
-        //    screenShare.SetActive(false);
-        //}
-
         if (congratulationsImage)
         {
             congratulationsImage.SetActive(false);
@@ -310,7 +297,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         quizAnim.SetBool("Erreur", true);
         Audio_Manager.audio.SoundsToPlay(audioQuizzBadAnswer);
-        //quizzAudioSource.PlayOneShot(audioQuizz[0]);
         parentErrorCount.transform.GetChild(currentErrorCount).GetComponent<UnityEngine.UI.Image>().sprite = newErrorImage;
         currentErrorCount++;        
 
@@ -325,7 +311,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void RightAnswer()
     {
         Audio_Manager.audio.SoundsToPlay(audioQuizzCorrectAnswer);
-        //quizzAudioSource.PlayOneShot(audioQuizz[1]);
         quizzAvailable.Remove(currentQuizz);
         for (int i = 0; i < buttonList.Length; i++)
         {
@@ -335,8 +320,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         parentWinCount.transform.GetChild(currentQuizzScore).GetComponent<UnityEngine.UI.Image>().color = Color.green;
         currentQuizzScore++;
         Debug.Log(currentQuizzScore);
-
-        //scoreDisplay.text = "SCORE" + " " + currentQuizzScore + " / " + scoreToReach;
 
         if (currentQuizzScore == scoreToReach)
         {
@@ -356,7 +339,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         yield return new WaitForSeconds(1);
         if (currentErrorCount == currentQuizzList.errorLimit)
         {
-            //errorImage.SetActive(true);
             yield return new WaitForSeconds(1);
             LeaveQuizz();
         }
@@ -370,8 +352,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         // Reset du quizz
       
- 
-        //screenShare.SetActive(true);
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);       
         quizzDone = false;
@@ -391,7 +371,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         currentReward = Instantiate(quizzLists[rewardIdx].rewardToSpawn, spawnPointReward);
         spawnPointFunFact.text = quizzLists[rewardIdx].funFact;
-        Debug.Log(transform.GetSiblingIndex());
     }
 
     public void DestroyRewardSpawn()

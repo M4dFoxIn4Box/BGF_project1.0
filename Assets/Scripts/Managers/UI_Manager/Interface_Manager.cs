@@ -301,13 +301,11 @@ public class Interface_Manager : MonoBehaviour
     {
         if (funfact.activeSelf == true)
         {
-            Debug.Log("MASKKKKKKKKKK");
             funfact.SetActive(false);
             imageFunfactState.sprite = spriteFunfactState[0];
         }
         else if(funfact.activeSelf == false)
         {
-            Debug.Log("UNNNNNNMASKKKKKKK");
             funfact.SetActive(true);
             imageFunfactState.sprite = spriteFunfactState[1];
         }

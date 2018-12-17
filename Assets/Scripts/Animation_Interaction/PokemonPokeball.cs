@@ -7,15 +7,8 @@ public class PokemonPokeball : MonoBehaviour {
 
     public Animator pokemonAnim;
     public Animator cameraAnim;
-
     public AudioClip[] audioPokemon;
     public AudioMixerGroup[] mixerPokemon;
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 
     void OnMouseDown ()
     {

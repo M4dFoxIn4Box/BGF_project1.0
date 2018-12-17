@@ -21,13 +21,7 @@ public class Tuto_Player : MonoBehaviour {
 		if (gallery)
 		{
 			StartCoroutine(TimeToDeathGA());
-			Debug.Log(gallery);
 		}
-
-		//if (map)
-		//{
-		//	StartCoroutine(TimeToDeathMAP());
-		//}
 	}
 
 	// Condition pour détruire
@@ -48,14 +42,4 @@ public class Tuto_Player : MonoBehaviour {
 		yield return new WaitForSeconds (8);
 		Destroy(gallery);
 	}
-
-	// Tuto Galerie
-
-	//IEnumerator TimeToDeathMAP()
-	//{
-	//	yield return new WaitForSeconds (3);
-	//	Destroy(map);
-	//}
-
-	// Tuto Map
 }
