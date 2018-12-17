@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class PokemonPokeball : MonoBehaviour {
+public class Interactive_Animation_Pokemon : MonoBehaviour {
 
     public Animator pokemonAnim;
     public Animator cameraAnim;

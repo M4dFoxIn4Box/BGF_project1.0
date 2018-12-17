@@ -3,7 +3,7 @@ using UnityEngine.Audio;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Excalibur_Interation : MonoBehaviour {
+public class Interactive_Animation_Zelda : MonoBehaviour {
 
     public Animator currentAnimation;
     private bool isOKTap = true;

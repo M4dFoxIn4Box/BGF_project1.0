@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class Mario : MonoBehaviour {
+public class Interactive_Animation_Mario : MonoBehaviour {
 
     public Animator anim;
 

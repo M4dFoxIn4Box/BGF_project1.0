@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
-public class Dr_Strange : MonoBehaviour {
+public class Interactive_Animation_Dr_Strange : MonoBehaviour {
 
     public Animator anim;
     public GameObject fakeARObject;
     private bool secondClick = false;
     private bool firstClick = false;
+
+    public AudioClip[] audioDrStrange;
+    public AudioMixerGroup[] mixerDrStrange;
 
 
     // Use this for initialization
