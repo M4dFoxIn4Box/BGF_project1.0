@@ -103,6 +103,16 @@ public class Story_Manager : MonoBehaviour
         }
     }
 
+    public void ActivateStoryInGallery(int storyToActivateInGallery)
+    {
+        scriptableIdxStory = storyToActivateInGallery;
+        if (storyHasBeenDone[storyToActivateInGallery] == false)
+        {
+            Save_Manager.saving.StoryIsDone(storyHasBeenDone);
+            ActivateButtonGallery();
+        }
+    }
+
     //SAVE AND LOAD STORY
 
     //GALLERY
