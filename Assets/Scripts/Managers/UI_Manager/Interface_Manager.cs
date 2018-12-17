@@ -219,8 +219,10 @@ public class Interface_Manager : MonoBehaviour
             Save_Manager.saving.SavingCrateState(idxCrateStates);
             rewardCounter++;
             palierScoreList.RemoveAt(0);
-            storyToActivate = true;
-         }
+            //storyToActivate = true;
+            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
+            idxStoryScriptableToActivate.RemoveAt(0);
+        }
 
         if (score == limitToWin)
         {
@@ -265,14 +267,12 @@ public class Interface_Manager : MonoBehaviour
 
     public void CloseARCamera()//ETEINDRE AR CAM
     {
-        if (score == 1)
+        if (score >= 1)
         {
             Tuto_Manager.tuto.ActivatingTuto(3);
-            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
             //Story_Manager.story.ActivatingStory(0);
-            idxStoryScriptableToActivate.RemoveAt(0);
         }
-        if (score == 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
+        if (score >= 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
         {
             Tuto_Manager.tuto.ActivatingTuto(4);
         }
@@ -280,9 +280,7 @@ public class Interface_Manager : MonoBehaviour
         {
             //Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
             //idxStoryScriptableToActivate.RemoveAt(0);
-            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
-            idxStoryScriptableToActivate.RemoveAt(0);
-            storyToActivate = false;
+            //storyToActivate = false;
         }
         mainCanvas.worldCamera = uiCam;
         vumarkPrefab.SetActive(false);
