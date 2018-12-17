@@ -268,7 +268,8 @@ public class Interface_Manager : MonoBehaviour
         if (score == 1)
         {
             Tuto_Manager.tuto.ActivatingTuto(3);
-            Story_Manager.story.ActivatingStory(0);
+            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
+            //Story_Manager.story.ActivatingStory(0);
             idxStoryScriptableToActivate.RemoveAt(0);
         }
         if (score == 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
@@ -277,7 +278,9 @@ public class Interface_Manager : MonoBehaviour
         }
         if(storyToActivate == true)//bool qu'on active quand le score est égal au palier
         {
-            Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
+            //Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
+            //idxStoryScriptableToActivate.RemoveAt(0);
+            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
             idxStoryScriptableToActivate.RemoveAt(0);
             storyToActivate = false;
         }
