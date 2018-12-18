@@ -51,6 +51,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public AudioSource quizzAudioSource;
     public AudioClip[] audioQuizz;
 
+    [Header("Fake AR feedback")]
+
+    public GameObject feedBackFakeAR;
+
     [Header("FeedBackScan")]
     public GameObject loadingScan;
     public UnityEngine.UI.Image feedbackScan;
@@ -253,6 +257,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void LeaveQuizz()
     {
         quizzAvailable.Clear();
+
+        if(feedBackFakeAR)
+        {
+            feedBackFakeAR.SetActive(false);
+        }
 
         for (int i = 0; i < winCountList.Count; i++)
         {

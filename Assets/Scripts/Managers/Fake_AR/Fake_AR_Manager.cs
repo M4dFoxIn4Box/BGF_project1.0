@@ -9,6 +9,9 @@ public class Fake_AR_Manager : MonoBehaviour {
     public Transform[] spawnPointFakeAR;
     public GameObject[] fakeArObjectToSpawn;
 
+    [Header("Feedback Fake AR")]
+    public GameObject feedBackClick;
+
     private void Awake()
     {
         if (FakeAR == null)
@@ -37,5 +40,6 @@ public class Fake_AR_Manager : MonoBehaviour {
     public void FakeARToSpawn(int idxFakeAR)
     {
         Instantiate(fakeArObjectToSpawn[idxFakeAR], spawnPointFakeAR[idxFakeAR]);
+        feedBackClick.SetActive(true);
     }
 }
