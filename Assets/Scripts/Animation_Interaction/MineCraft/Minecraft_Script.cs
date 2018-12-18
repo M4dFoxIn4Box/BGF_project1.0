@@ -44,4 +44,16 @@ public class Minecraft_Script : MonoBehaviour {
         steveController.SetBool("Idle", true);
         steveController.SetBool("Hitting", false);
     }
+
+    void AudioForge()
+    {
+        Audio_Manager.audio.SoundsToPlay(audioMinecraft[0]);
+        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerMinecraft[0];
+    }
+
+    void AudioPickUpObject()
+    {
+        //Audio_Manager.audio.SoundsToPlay(audioMinecraft[1]);
+        //Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerMinecraft[1];
+    }
 }
