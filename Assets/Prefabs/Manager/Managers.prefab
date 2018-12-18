@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1163391694815750}
   m_IsPrefabAsset: 1
+--- !u!1 &1086110346540742
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4943931729244418}
+  m_Layer: 0
+  m_Name: SpawnPoint_KenVsRyu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1119475477313790
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +52,21 @@ GameObject:
   - component: {fileID: 4461451101165356}
   m_Layer: 0
   m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1295290095642254
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4417338787304700}
+  m_Layer: 0
+  m_Name: SpawnPoint_Joker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,6 +121,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1424679040580764
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4832034966236668}
+  m_Layer: 0
+  m_Name: SpawnPoint_Dr_Strang
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1576022023148544
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +147,21 @@ GameObject:
   - component: {fileID: 114519517695116492}
   m_Layer: 0
   m_Name: Fake_AR_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1613239777725030
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4242389779772008}
+  m_Layer: 0
+  m_Name: SpawnPoint_Pokemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +183,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!1 &1697088619928532
 GameObject:
   m_ObjectHideFlags: 1
@@ -208,8 +267,6 @@ Transform:
   m_Father: {fileID: 4515247664281318}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> parent of 9730b11... setup spawn point et prefab fake ar
 --- !u!4 &4461451101165356
 Transform:
   m_ObjectHideFlags: 1
@@ -238,11 +295,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4515247664281318}
   m_Father: {fileID: 4461451101165356}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!4 &4515247664281318
 Transform:
   m_ObjectHideFlags: 1
@@ -262,8 +319,6 @@ Transform:
   m_Father: {fileID: 4495859045442910}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> parent of 9730b11... setup spawn point et prefab fake ar
 --- !u!4 &4655167934840850
 Transform:
   m_ObjectHideFlags: 1
@@ -290,7 +345,6 @@ Transform:
   m_Father: {fileID: 4461451101165356}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!4 &4832034966236668
 Transform:
   m_ObjectHideFlags: 1
@@ -317,8 +371,6 @@ Transform:
   m_Father: {fileID: 4515247664281318}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> parent of 9730b11... setup spawn point et prefab fake ar
 --- !u!4 &4941477347521302
 Transform:
   m_ObjectHideFlags: 1
@@ -332,7 +384,6 @@ Transform:
   m_Father: {fileID: 4461451101165356}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!4 &4943931729244418
 Transform:
   m_ObjectHideFlags: 1
@@ -346,8 +397,6 @@ Transform:
   m_Father: {fileID: 4515247664281318}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> parent of 9730b11... setup spawn point et prefab fake ar
 --- !u!4 &4944683441731360
 Transform:
   m_ObjectHideFlags: 1
@@ -618,22 +667,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPointFakeAR:
+  - {fileID: 4832034966236668}
   - {fileID: 0}
-<<<<<<< HEAD
   - {fileID: 4842814660295884}
   - {fileID: 4943931729244418}
   - {fileID: 4417338787304700}
   - {fileID: 4264859648956556}
   - {fileID: 4242389779772008}
-=======
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
->>>>>>> parent of 9730b11... setup spawn point et prefab fake ar
   fakeArObjectToSpawn:
   - {fileID: 1580752462188800, guid: 41b322b2ae5c10f41ae802a1b16c40ef, type: 2}
+  - {fileID: 0}
   - {fileID: 1513966125414362, guid: 79419ed9ad7bb974090984229b409a53, type: 2}
   - {fileID: 1985259539139206, guid: 4c48549cfea832b45ba19d671c1ff009, type: 2}
   - {fileID: 1252867559218086, guid: 4359a9ee88e6d084d8e5a4cc329a1a0b, type: 2}
