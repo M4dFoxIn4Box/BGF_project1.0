@@ -370,6 +370,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114424810680647708, guid: 0f02cff67c6fda142a39e9f799e29404,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224551147391748022, guid: 0f02cff67c6fda142a39e9f799e29404,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -880,6 +885,39 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 70512732}
+    - target: {fileID: 1457232032078812, guid: 0f02cff67c6fda142a39e9f799e29404, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572331429315388, guid: 0f02cff67c6fda142a39e9f799e29404, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424810680647708, guid: 0f02cff67c6fda142a39e9f799e29404,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ActivatingTuto
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424810680647708, guid: 0f02cff67c6fda142a39e9f799e29404,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424810680647708, guid: 0f02cff67c6fda142a39e9f799e29404,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424810680647708, guid: 0f02cff67c6fda142a39e9f799e29404,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424810680647708, guid: 0f02cff67c6fda142a39e9f799e29404,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f02cff67c6fda142a39e9f799e29404, type: 2}
   m_IsPrefabAsset: 0
