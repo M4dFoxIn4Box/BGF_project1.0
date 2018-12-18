@@ -258,10 +258,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         quizzAvailable.Clear();
 
-        if(feedBackFakeAR)
-        {
-            feedBackFakeAR.SetActive(false);
-        }
+        //if(feedBackFakeAR)
+        //{
+        //    feedBackFakeAR.SetActive(false);
+        //}
 
         for (int i = 0; i < winCountList.Count; i++)
         {

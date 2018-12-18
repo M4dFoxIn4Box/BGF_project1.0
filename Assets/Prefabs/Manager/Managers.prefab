@@ -198,6 +198,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1791982365950392
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4628767468578792}
+  m_Layer: 0
+  m_Name: SpawnPoint_Minecraft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1920631722196360
 GameObject:
   m_ObjectHideFlags: 1
@@ -254,7 +269,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4515247664281318}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4264859648956556
 Transform:
@@ -267,7 +282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4515247664281318}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4287667382289844
 Transform:
@@ -280,7 +295,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4515247664281318}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4417338787304700
 Transform:
@@ -293,7 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4515247664281318}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4461451101165356
 Transform:
@@ -339,6 +354,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4832034966236668}
+  - {fileID: 4628767468578792}
   - {fileID: 4287667382289844}
   - {fileID: 4842814660295884}
   - {fileID: 4943931729244418}
@@ -347,6 +363,19 @@ Transform:
   - {fileID: 4242389779772008}
   m_Father: {fileID: 4495859045442910}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4628767468578792
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791982365950392}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.22, y: 0.07, z: 3.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4515247664281318}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4655167934840850
 Transform:
@@ -398,7 +427,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4515247664281318}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4941477347521302
 Transform:
@@ -424,7 +453,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4515247664281318}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4944683441731360
 Transform:
@@ -698,7 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPointFakeAR:
   - {fileID: 4832034966236668}
-  - {fileID: 0}
+  - {fileID: 4628767468578792}
   - {fileID: 4842814660295884}
   - {fileID: 4943931729244418}
   - {fileID: 4417338787304700}
@@ -706,12 +735,13 @@ MonoBehaviour:
   - {fileID: 4242389779772008}
   fakeArObjectToSpawn:
   - {fileID: 1580752462188800, guid: 41b322b2ae5c10f41ae802a1b16c40ef, type: 2}
-  - {fileID: 0}
+  - {fileID: 1461929810596764, guid: 4dcf912e2803594488662fd1d987e160, type: 2}
   - {fileID: 1513966125414362, guid: 79419ed9ad7bb974090984229b409a53, type: 2}
   - {fileID: 1985259539139206, guid: 4c48549cfea832b45ba19d671c1ff009, type: 2}
   - {fileID: 1252867559218086, guid: 4359a9ee88e6d084d8e5a4cc329a1a0b, type: 2}
   - {fileID: 1357698957172540, guid: 31c67950f2a1f8d4db3770cb5b8ef140, type: 2}
   - {fileID: 1546109147386646, guid: 5165a76cf209efb46a872a3a4de7e1f1, type: 2}
+  feedBackClick: {fileID: 0}
 --- !u!224 &224087666885904438
 RectTransform:
   m_ObjectHideFlags: 1
