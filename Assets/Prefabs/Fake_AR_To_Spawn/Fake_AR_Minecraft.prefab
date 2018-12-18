@@ -496,6 +496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4504894362089458}
   - component: {fileID: 82832713836238520}
+  - component: {fileID: 114619115916231768}
   m_Layer: 0
   m_Name: Fake_AR_Minecraft
   m_TagString: Untagged
@@ -3025,6 +3026,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114619115916231768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461929810596764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c391e51d0e6e1e4bbf0d76f568f2778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fakeARObject: {fileID: 1461929810596764}
 --- !u!114 &114976970442664164
 MonoBehaviour:
   m_ObjectHideFlags: 1
