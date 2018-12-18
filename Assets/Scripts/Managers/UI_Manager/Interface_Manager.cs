@@ -224,10 +224,10 @@ public class Interface_Manager : MonoBehaviour
             idxStoryScriptableToActivate.RemoveAt(0);
         }
 
-        if (score == limitToWin)
-        {
-            Victory();
-        }
+        //if (score == limitToWin)
+        //{
+        //    Victory();
+        //}
     }
 
     public void RewardBoxOpened(int rewardBoxIdx)
@@ -237,10 +237,10 @@ public class Interface_Manager : MonoBehaviour
         Save_Manager.saving.SavingCrateState(idxCrateStates);
     }
 
-    void Victory()
-    {
-        victoryText.SetActive(true);
-    }
+    //void Victory()
+    //{
+    //    victoryText.SetActive(true);
+    //}
 
     //CAMERA
 
