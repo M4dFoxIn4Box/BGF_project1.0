@@ -78,6 +78,9 @@ public class Interface_Manager : MonoBehaviour
 
     public AudioClip audioChangeMenu;
 
+    public AudioSource musicMainMenuToDeactivate;
+    private bool stopMusicInGallery = false;
+
     private void Awake()
     {
         if (Instance != null)
@@ -115,6 +118,11 @@ public class Interface_Manager : MonoBehaviour
         menuToActivate[currentIdxMenu].SetActive(false);
         menuToActivate[newIdxMenu].SetActive(true);
         currentIdxMenu = newIdxMenu;
+
+        if(stopMusicInGallery)
+        {
+            DeactiveMusicMainMenu();
+        }
     }
 
     public void ShowElement(GameObject elementToActive)
@@ -131,6 +139,21 @@ public class Interface_Manager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void DeactiveMusicMainMenu()
+    {
+        if(stopMusicInGallery)
+        {
+            musicMainMenuToDeactivate.UnPause();
+            stopMusicInGallery = false;
+        }
+        else if(!stopMusicInGallery)
+        {
+            musicMainMenuToDeactivate.Pause();
+            stopMusicInGallery = true;
+        }
+    }
+    //AUDIO 
 
 
     //LOADING VARIABLE
