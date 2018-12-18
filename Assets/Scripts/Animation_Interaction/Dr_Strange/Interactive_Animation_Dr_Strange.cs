@@ -45,4 +45,16 @@ public class Interactive_Animation_Dr_Strange : MonoBehaviour {
     {
         secondClick = true;
     }
+
+    void AudioAppleEating()
+    {
+        Audio_Manager.audio.SoundsToPlay(audioDrStrange[0]);
+        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerDrStrange[0];
+    }
+
+    void AudioMagicSpell()
+    {
+        Audio_Manager.audio.SoundsToPlay(audioDrStrange[1]);
+        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerDrStrange[1];
+    }
 }

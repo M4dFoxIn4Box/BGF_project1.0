@@ -222,7 +222,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4254683719901118}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.93012446, y: -0.02403998, z: -7.7467957}
+  m_LocalEulerAnglesHint: {x: 0.9152057, y: -0.17208013, z: -38.028206}
 --- !u!4 &4531089463699980
 Transform:
   m_ObjectHideFlags: 1
@@ -235,7 +235,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4254683719901118}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -0.000013660378, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: -0.0000141171595, y: 89.99999, z: -57.643673}
 --- !u!4 &4864761623151738
 Transform:
   m_ObjectHideFlags: 1
@@ -261,7 +261,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4254683719901118}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 87.47191, y: 75.971436, z: 75.73314}
+  m_LocalEulerAnglesHint: {x: 65.25952, y: -2.9134257, z: 0.9472475}
 --- !u!23 &23009432531997276
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -538,8 +538,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.107513554, y: 0.2815984, z: 0.19977649}
-  m_Center: {x: 0.01002188, y: 0.1211988, z: 0.0049967766}
+  m_Size: {x: 0.058592044, y: 0.2747249, z: 0.7704274}
+  m_Center: {x: -0.014438553, y: 0.11776206, z: 0.075695574}
 --- !u!82 &82872676106562534
 AudioSource:
   m_ObjectHideFlags: 1
@@ -548,8 +548,9 @@ AudioSource:
   m_GameObject: {fileID: 1252867559218086}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243322536826096056, guid: 765b7b1286617b64f92de1d2c74e4596,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 39b649333ba7de946b9ed58dbcf98dc3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -732,5 +733,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jokerAnimator: {fileID: 95122882744653890}
-  audioJoker: []
-  mixerJoker: []
+  audioJoker:
+  - {fileID: 8300000, guid: 3bfe0809f6caad745b08a5130c455b56, type: 3}
+  - {fileID: 8300000, guid: b3c5c108bd40d9b49a9a78b87ba41653, type: 3}
+  - {fileID: 8300000, guid: 70c90eea62a9ae74caf8ec34854d285f, type: 3}
+  mixerJoker:
+  - {fileID: 243101576934918062, guid: 765b7b1286617b64f92de1d2c74e4596, type: 2}
+  - {fileID: 243943961410029298, guid: 765b7b1286617b64f92de1d2c74e4596, type: 2}
+  - {fileID: 243746851644998622, guid: 765b7b1286617b64f92de1d2c74e4596, type: 2}

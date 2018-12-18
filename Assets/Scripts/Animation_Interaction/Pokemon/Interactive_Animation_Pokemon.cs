@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public class Interactive_Animation_Pokemon : MonoBehaviour {
 
     public Animator pokemonAnim;
-    public Animator cameraAnim;
+    //public Animator cameraAnim;
     public AudioClip[] audioPokemon;
     public AudioMixerGroup[] mixerPokemon;
 
@@ -15,13 +15,19 @@ public class Interactive_Animation_Pokemon : MonoBehaviour {
         pokemonAnim.SetBool("Lunchpokeball", true);
     }
 
-    void CameraChangeView()
+    void AudioCaught ()
     {
-        cameraAnim.SetBool("ChangeCamera", true);
+        Audio_Manager.audio.SoundsToPlay(audioPokemon[0]);
+        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerPokemon[0];
     }
 
-    void Reverse()
-    {
-        cameraAnim.SetBool("ReverseBool", true);
-    }
+    //void CameraChangeView()
+    //{
+    //    cameraAnim.SetBool("ChangeCamera", true);
+    //}
+
+    //void Reverse()
+    //{
+    //    cameraAnim.SetBool("ReverseBool", true);
+    //}
 }

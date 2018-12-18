@@ -32,4 +32,16 @@ public class Interactive_Animation_Mario : MonoBehaviour {
     {
         champignon.SetActive(true);
     }
+
+    void AudioJump()
+    {
+        Audio_Manager.audio.SoundsToPlay(audioMario[0]);
+        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerMario[0];
+    }
+
+    void AudioPowerUP()
+    {
+        Audio_Manager.audio.SoundsToPlay(audioMario[1]);
+        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerMario[1];
+    }
 }
