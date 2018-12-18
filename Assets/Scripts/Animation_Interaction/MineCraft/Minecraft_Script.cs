@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Minecraft_Script : MonoBehaviour {
 
@@ -10,6 +11,9 @@ public class Minecraft_Script : MonoBehaviour {
     public GameObject dimondsInTheSky;
     public GameObject dimondsInTheSky2;
     public GameObject stick;
+
+    public AudioClip[] audioMinecraft;
+    public AudioMixerGroup[] mixerMinecraft;
 
     // Use this for initialization
     void Start () {
