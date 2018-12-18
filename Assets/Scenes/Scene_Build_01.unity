@@ -805,26 +805,27 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 70512732}
-<<<<<<< HEAD
-=======
-    - target: {fileID: 114197037717189196, guid: 0f02cff67c6fda142a39e9f799e29404,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1310647162}
-    - target: {fileID: 114197037717189196, guid: 0f02cff67c6fda142a39e9f799e29404,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1266037879}
-    - target: {fileID: 1457232032078812, guid: 0f02cff67c6fda142a39e9f799e29404, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
->>>>>>> parent of 424c83c... Update scene 01 correctif quizz bug
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f02cff67c6fda142a39e9f799e29404, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &776215022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114787740164663970, guid: 0f02cff67c6fda142a39e9f799e29404,
+    type: 2}
+  m_PrefabInternal: {fileID: 776215021}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &776215023 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114296432587771780, guid: 0f02cff67c6fda142a39e9f799e29404,
+    type: 2}
+  m_PrefabInternal: {fileID: 776215021}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &776215024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114421201455907400, guid: 0f02cff67c6fda142a39e9f799e29404,
+    type: 2}
+  m_PrefabInternal: {fileID: 776215021}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &793281704 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1115238603681130, guid: 0f02cff67c6fda142a39e9f799e29404,
@@ -836,33 +837,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 776215021}
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!21 &819882527
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 'BGFMaterial
-
-    -10450'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!114 &821054111 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114334668617306616, guid: 0f02cff67c6fda142a39e9f799e29404,
@@ -1617,161 +1591,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1198928868107686, guid: 0f02cff67c6fda142a39e9f799e29404,
     type: 2}
   m_PrefabInternal: {fileID: 776215021}
-<<<<<<< HEAD
-=======
---- !u!1001 &1486851605
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 1.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0.70710593
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.70710766
-      objectReference: {fileID: 0}
-    - target: {fileID: 4966808575554108, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 23154150541529358, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 819882527}
-    - target: {fileID: 33759449354752750, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 1297640384}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: screenShare
-      value: 
-      objectReference: {fileID: 1885973390}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: quizzInterface
-      value: 
-      objectReference: {fileID: 1189818364}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: congratulationsImage
-      value: 
-      objectReference: {fileID: 14875786}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: parentErrorCount
-      value: 
-      objectReference: {fileID: 1071205447}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: parentWinCount
-      value: 
-      objectReference: {fileID: 1990140696}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: quizAnim
-      value: 
-      objectReference: {fileID: 1189818366}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: loadingScan
-      value: 
-      objectReference: {fileID: 793281704}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: feedbackScan
-      value: 
-      objectReference: {fileID: 312679308}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: loadTextState
-      value: 
-      objectReference: {fileID: 1001925390}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: quizzText
-      value: 
-      objectReference: {fileID: 112641309}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: answerBoardText.Array.data[0]
-      value: 
-      objectReference: {fileID: 821054111}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: funFactParent
-      value: 
-      objectReference: {fileID: 1651076998}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: funFactTxt
-      value: 
-      objectReference: {fileID: 1932254244}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: buttonList.Array.data[0]
-      value: 
-      objectReference: {fileID: 1250460280}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: buttonList.Array.data[1]
-      value: 
-      objectReference: {fileID: 808338646}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: buttonList.Array.data[2]
-      value: 
-      objectReference: {fileID: 761794844}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: buttonList.Array.data[3]
-      value: 
-      objectReference: {fileID: 1041870379}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: spawnPointReward
-      value: 
-      objectReference: {fileID: 1616514192}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: spawnPointFunFact
-      value: 
-      objectReference: {fileID: 1932254244}
-    - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
-        type: 2}
-      propertyPath: mainMenu
-      value: 
-      objectReference: {fileID: 1370197364}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 2}
-  m_IsPrefabAsset: 0
->>>>>>> parent of 424c83c... Update scene 01 correctif quizz bug
 --- !u!1 &1520662832 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1702209909067720, guid: 0f02cff67c6fda142a39e9f799e29404,
