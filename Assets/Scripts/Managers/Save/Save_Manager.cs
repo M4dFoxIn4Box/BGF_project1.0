@@ -194,6 +194,7 @@ public class Save_Manager : MonoBehaviour
             scoreToSave = data.scoreToSave;
             idxCrateList = data.idxCrateList;
 
+            Interface_Manager.Instance.CrateStateOnLoad(idxCrateList);
             Interface_Manager.Instance.ButtonState(galleryButtonsStates);
             Interface_Manager.Instance.ImageState(mappingImageStates);
             Interface_Manager.Instance.TutoIsDone(quizzDoneToSave);

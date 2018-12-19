@@ -233,6 +233,12 @@ public class Interface_Manager : MonoBehaviour
         UpdateScore();
     }
 
+    public void CrateStateOnLoad(List<int> crateStateList)
+    {
+        idxCrateStates = crateStateList;
+        Debug.Log(crateStateList);
+    }
+
     void UpdateScore()
     {   
          if (score == palierScoreList[0])
