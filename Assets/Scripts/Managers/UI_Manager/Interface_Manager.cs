@@ -96,7 +96,7 @@ public class Interface_Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
+        scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
     }
 
     // Update is called once per frame
@@ -208,7 +208,7 @@ public class Interface_Manager : MonoBehaviour
     public void LoadScore(int scoring)//load score
     {
         score = scoring;
-        scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
+        scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
         currentQuestValue = score / limitToWin;
         questImage.fillAmount = currentQuestValue;
     }
@@ -227,7 +227,7 @@ public class Interface_Manager : MonoBehaviour
     {
         score = score + newScoreValue;
         currentQuestValue = score / limitToWin;
-        scoreText.text = "Artéfacts Découverts \n" + score + " / " + limitToWin;
+        scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
         questImage.fillAmount = currentQuestValue;
         Save_Manager.saving.SavingScore((int)score);
         UpdateScore();
