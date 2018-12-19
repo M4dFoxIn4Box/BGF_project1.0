@@ -168,6 +168,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             int idxToCast = vumarkID - vumarkRewardMinValue;
             Interface_Manager.Instance.RewardBoxOpened(idxToCast);
+            Debug.Log(idxToCast);
         }
         else
         {

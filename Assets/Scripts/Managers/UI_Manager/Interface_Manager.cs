@@ -215,6 +215,8 @@ public class Interface_Manager : MonoBehaviour
 
     public void LoadCrateImage(List<int> crateVumarkNumber)//load coffre
     {
+        idxCrateStates = crateVumarkNumber;
+
         for (int j = 0; j < rewardImgList.Count && crateVumarkNumber != null; j++)
         {
             rewardImgList[j].sprite = rewardSpriteList[crateVumarkNumber[j]];
@@ -233,54 +235,37 @@ public class Interface_Manager : MonoBehaviour
         UpdateScore();
     }
 
-    public void CrateStateOnLoad(List<int> crateStateList)
-    {
-        idxCrateStates = crateStateList;
-        Debug.Log(crateStateList);
-    }
 
     void UpdateScore()
     {   
          if (score == palierScoreList[0])
          {
-            rewardImgList[rewardCounter].sprite = rewardSpriteList[1];
-            idxCrateStates[rewardCounter] = 1;
+            rewardImgList[0].sprite = rewardSpriteList[1];
+            idxCrateStates[0] = 1;
 
-            Save_Manager.saving.SavingCrateState(idxCrateStates);
-            rewardCounter++;
+            Save_Manager.saving.SavingCrateState(idxCrateStates); 
 
             Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
-            //idxStoryScriptableToActivate.RemoveAt(0);
-
-            //palierScoreList.RemoveAt(0);
          }
 
         if (score == palierScoreList[1])
         {
-            rewardImgList[rewardCounter].sprite = rewardSpriteList[1];
-            idxCrateStates[rewardCounter] = 1;
+            rewardImgList[1].sprite = rewardSpriteList[1];
+            idxCrateStates[1] = 1;
 
-            Save_Manager.saving.SavingCrateState(idxCrateStates);
-            rewardCounter++;
+            Save_Manager.saving.SavingCrateState(idxCrateStates);            
 
             Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[1]);
         }
         if (score == palierScoreList[2])
         {
-            rewardImgList[rewardCounter].sprite = rewardSpriteList[1];
-            idxCrateStates[rewardCounter] = 1;
+            rewardImgList[2].sprite = rewardSpriteList[1];
+            idxCrateStates[2] = 1;
 
             Save_Manager.saving.SavingCrateState(idxCrateStates);
-            rewardCounter++;
 
             Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
         }
-
-
-        //if (score == limitToWin)
-        //{
-        //    Victory();
-        //}
     }
 
     public void RewardBoxOpened(int rewardBoxIdx)
