@@ -34,8 +34,12 @@ public class Minecraft_Script : MonoBehaviour {
 
     void OnMouseDown()
     {
-        steveController.SetBool("Hitting", true);
-        steveController.SetBool("Idle", false);
+        if (minecraftCount <= 2)
+        {
+            steveController.SetBool("Hitting", true);
+            steveController.SetBool("Idle", false);
+        }
+
     }
 
     void AddCount ()
