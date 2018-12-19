@@ -323,7 +323,12 @@ public class Interface_Manager : MonoBehaviour
         {
             Tuto_Manager.tuto.ActivatingTuto(4);
         }
-
+        mainCanvas.worldCamera = uiCam;
+        vumarkPrefab.SetActive(false);
+        uiCam.gameObject.SetActive(true);
+        arCam.gameObject.SetActive(false);
+        ARModeMenu.SetActive(false);
+        menuToActivate[currentIdxMenu].SetActive(true);
 
     }
 
