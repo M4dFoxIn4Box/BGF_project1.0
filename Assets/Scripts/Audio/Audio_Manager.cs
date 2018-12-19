@@ -38,5 +38,6 @@ public class Audio_Manager : MonoBehaviour {
     public void SoundsToPlay (AudioClip currentSFX)
     {
         sfxManager.PlayOneShot(currentSFX);
+        Debug.Log("SOOOOOOOOOOOOON" + currentSFX);
     }
 }

@@ -140,7 +140,7 @@ public class Interface_Manager : MonoBehaviour
         Application.Quit();
     }
 
-    public void DeactiveMusicMainMenu()
+    public void DeactiveMusicMainMenu()//Musique à désactiver ou activer dans la galerie
     {
         if(stopMusicInGallery)
         {
@@ -239,13 +239,37 @@ public class Interface_Manager : MonoBehaviour
          {
             rewardImgList[rewardCounter].sprite = rewardSpriteList[1];
             idxCrateStates[rewardCounter] = 1;
+
             Save_Manager.saving.SavingCrateState(idxCrateStates);
             rewardCounter++;
-            palierScoreList.RemoveAt(0);
-            //storyToActivate = true;
+
             Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
-            idxStoryScriptableToActivate.RemoveAt(0);
+            //idxStoryScriptableToActivate.RemoveAt(0);
+
+            //palierScoreList.RemoveAt(0);
+         }
+
+        if (score == palierScoreList[1])
+        {
+            rewardImgList[rewardCounter].sprite = rewardSpriteList[1];
+            idxCrateStates[rewardCounter] = 1;
+
+            Save_Manager.saving.SavingCrateState(idxCrateStates);
+            rewardCounter++;
+
+            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[1]);
         }
+        if (score == palierScoreList[2])
+        {
+            rewardImgList[rewardCounter].sprite = rewardSpriteList[1];
+            idxCrateStates[rewardCounter] = 1;
+
+            Save_Manager.saving.SavingCrateState(idxCrateStates);
+            rewardCounter++;
+
+            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
+        }
+
 
         //if (score == limitToWin)
         //{
@@ -293,24 +317,14 @@ public class Interface_Manager : MonoBehaviour
         if (score >= 1)
         {
             Tuto_Manager.tuto.ActivatingTuto(3);
-            //Story_Manager.story.ActivatingStory(0);
+            Story_Manager.story.ActivateStoryInGallery(0);
         }
         if (score >= 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
         {
             Tuto_Manager.tuto.ActivatingTuto(4);
         }
-        if(storyToActivate == true)//bool qu'on active quand le score est égal au palier
-        {
-            //Story_Manager.story.ActivatingStory(idxStoryScriptableToActivate[0]);
-            //idxStoryScriptableToActivate.RemoveAt(0);
-            //storyToActivate = false;
-        }
-        mainCanvas.worldCamera = uiCam;
-        vumarkPrefab.SetActive(false);
-        uiCam.gameObject.SetActive(true);
-        arCam.gameObject.SetActive(false);
-        ARModeMenu.SetActive(false);
-        menuToActivate[currentIdxMenu].SetActive(true);
+
+
     }
 
     //MAP MENU UPDATE
