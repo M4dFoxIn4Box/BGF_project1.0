@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class Interface_Manager : MonoBehaviour
 {
@@ -77,6 +78,7 @@ public class Interface_Manager : MonoBehaviour
     [Header("Sounds")]
 
     public AudioClip audioChangeMenu;
+    public AudioMixerGroup[] mixerGroupChangeMenu;
 
     public AudioSource musicMainMenuToDeactivate;
     private bool stopMusicInGallery = false;
@@ -115,6 +117,7 @@ public class Interface_Manager : MonoBehaviour
     public void ChangeMenu(int newIdxMenu)
     {
         Audio_Manager.audio.SoundsToPlay(audioChangeMenu);
+        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
         menuToActivate[currentIdxMenu].SetActive(false);
         menuToActivate[newIdxMenu].SetActive(true);
         currentIdxMenu = newIdxMenu;
