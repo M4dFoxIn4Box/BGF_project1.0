@@ -5,7 +5,7 @@ AudioMixerController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Audio_Mixer_Button
+  m_Name: Audio_Mixer_Quizz
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
@@ -17,8 +17,8 @@ AudioMixerController:
   m_ExposedParameters: []
   m_AudioMixerGroupViews:
   - guids:
-    - 17cb81a32a03d074ca66bb85dfa9e877
-    - 2486bac61c5c4814c8fee572fbad3066
+    - 6ed3c031d9d2143488d85bcaf2564401
+    - 96797725c906ec54895244366cbc238f
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -29,11 +29,11 @@ AudioMixerGroupController:
   m_PrefabInternal: {fileID: 0}
   m_Name: Master
   m_AudioMixer: {fileID: 24100000}
-  m_GroupID: 17cb81a32a03d074ca66bb85dfa9e877
+  m_GroupID: 6ed3c031d9d2143488d85bcaf2564401
   m_Children:
-  - {fileID: 243413624007489522}
-  m_Volume: 051f2c5aed349624bb1fc8d2ca9e4f59
-  m_Pitch: ad07b0af826e6c5409ef8f45dd3d9397
+  - {fileID: 243472895971676372}
+  m_Volume: 5c08c7161c3c45a4f8644ff354ca2d0a
+  m_Pitch: b4e23851d7ecac641a659fe179c02243
   m_Effects:
   - {fileID: 24400004}
   m_UserColorIndex: 0
@@ -46,9 +46,9 @@ AudioMixerEffectController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_EffectID: 3030fecfaa2f50f47b2b08484699dbb8
+  m_EffectID: 7621c469e8f69cb4096e92162c3252da
   m_EffectName: Attenuation
-  m_MixLevel: 902f7665db39cc140a292a682b380d9c
+  m_MixLevel: 7d4e137c0c6ae074987641015de77968
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -60,36 +60,36 @@ AudioMixerSnapshotController:
   m_PrefabInternal: {fileID: 0}
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: e8b8fdb084ba3834aab09d8a8abb4331
+  m_SnapshotID: 58808bcf8a4f34d49b5aa55c8cb2bc80
   m_FloatValues:
-    11e6484d67b9c834995ff11711d67b69: -5.323077
+    2639a8e4da044c1469d8b187cc4e0e59: -9.833286
   m_TransitionOverrides: {}
---- !u!243 &243413624007489522
+--- !u!243 &243472895971676372
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Button_Menu
+  m_Name: Quizz
   m_AudioMixer: {fileID: 24100000}
-  m_GroupID: 2486bac61c5c4814c8fee572fbad3066
+  m_GroupID: 96797725c906ec54895244366cbc238f
   m_Children: []
-  m_Volume: 11e6484d67b9c834995ff11711d67b69
-  m_Pitch: 77e8550e71e65b34dbbd0096a9cccb03
+  m_Volume: 2639a8e4da044c1469d8b187cc4e0e59
+  m_Pitch: 9ebda60dda3f86f4a868f1fa8f27156e
   m_Effects:
-  - {fileID: 244883014158409752}
+  - {fileID: 244332771756665468}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!244 &244883014158409752
+--- !u!244 &244332771756665468
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_EffectID: 585ac66ab7b3ef248a3ec4cf62a21705
+  m_EffectID: 964eff6e17507814dbac2c5f1bd78244
   m_EffectName: Attenuation
-  m_MixLevel: ddc4cc7cc2e154a45a47791e6b9d8809
+  m_MixLevel: f49156d9ff7b0b6499dbb76eadbc5e22
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0

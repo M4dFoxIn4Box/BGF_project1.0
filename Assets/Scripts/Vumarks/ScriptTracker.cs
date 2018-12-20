@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Vuforia;
+using UnityEngine.Audio;
 
 public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
@@ -35,7 +36,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public bool firstScan = true;
 
     [Header("Quizz")]
-    public int currentErrorCount;    
+    public int currentErrorCount;
     public bool quizzDone = false;
     public GameObject quizzInterface;
     public GameObject congratulationsImage;
@@ -103,6 +104,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     [Header("Sounds")]
     public AudioClip audioQuizzCorrectAnswer;
     public AudioClip audioQuizzBadAnswer;
+    public AudioMixerGroup[] mixerGroupQuizz;
 
     void Start()
     {
@@ -307,6 +309,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         quizAnim.SetBool("Erreur", true);
         Audio_Manager.audio.SoundsToPlay(audioQuizzBadAnswer);
+        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
         parentErrorCount.transform.GetChild(currentErrorCount).GetComponent<UnityEngine.UI.Image>().sprite = newErrorImage;
         currentErrorCount++;        
 
@@ -321,6 +324,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void RightAnswer()
     {
         Audio_Manager.audio.SoundsToPlay(audioQuizzCorrectAnswer);
+        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
         quizzAvailable.Remove(currentQuizz);
         for (int i = 0; i < buttonList.Length; i++)
         {
