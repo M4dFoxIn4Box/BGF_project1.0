@@ -8,7 +8,7 @@ public class Interface_Manager : MonoBehaviour
 {
     public static Interface_Manager Instance { get; private set; }
 
-
+    #region Main Gallery
     [Header("Main Gallery")]
 
     public Transform artifactsGallery;
@@ -20,10 +20,9 @@ public class Interface_Manager : MonoBehaviour
     public Image imageFunfactState;
     public Sprite[] spriteFunfactState;
 
-    [Header ("Map")]
+    #endregion
 
-    public Transform mapList;
-
+    #region Score
     [Header("Scoring")]
 
     public Text scoreText;//le texte pour afficher le score
@@ -37,21 +36,131 @@ public class Interface_Manager : MonoBehaviour
     public List<Image> rewardImgList;//lié à l'index des paliers 
     public List<Sprite> rewardSpriteList;//lié à l'index des paliers coffres du menu principal
 
+
+    //SCORING & PALIER
+
+    public void AddScore(int newScoreValue)
+    {
+        score = score + newScoreValue;
+        currentQuestValue = score / limitToWin;
+        scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
+        questImage.fillAmount = currentQuestValue;
+        Save_Manager.saving.SavingScore((int)score);
+        UpdateScore();
+    }
+
+
+    void UpdateScore()
+    {
+        if (score == palierScoreList[0])
+        {
+            rewardImgList[0].sprite = rewardSpriteList[1];
+            idxCrateStates[0] = 1;
+
+            Save_Manager.saving.SavingCrateState(idxCrateStates);
+
+            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
+        }
+
+        if (score == palierScoreList[1])
+        {
+            rewardImgList[1].sprite = rewardSpriteList[1];
+            idxCrateStates[1] = 1;
+
+            Save_Manager.saving.SavingCrateState(idxCrateStates);
+
+            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[1]);
+        }
+        if (score == palierScoreList[2])
+        {
+            rewardImgList[2].sprite = rewardSpriteList[1];
+            idxCrateStates[2] = 1;
+
+            Save_Manager.saving.SavingCrateState(idxCrateStates);
+
+            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
+        }
+    }
+
+    public void RewardBoxOpened(int rewardBoxIdx)
+    {
+        rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[2];
+        idxCrateStates[rewardBoxIdx] = 2;
+        Save_Manager.saving.SavingCrateState(idxCrateStates);
+    }
+    #endregion
+
+    #region Camera
+
     [Header("Camera")]
 
     public Camera arCam;//AR Camera
     public Camera uiCam;//UI Camera
     public Canvas mainCanvas;//Main canvas
 
+    //CAMERA
+
+    public void OpenARCamera()//ALLUMER L AR CAM
+    {
+        if (quizzDone == false)
+        {
+            Tuto_Manager.tuto.ActivatingTuto(tutoQuizzIdx);
+            quizzDone = true;
+            Save_Manager.saving.TutoQuizzIsDone(quizzDone);
+        }
+        else
+        {
+            mainCanvas.worldCamera = arCam;
+            menuToActivate[currentIdxMenu].SetActive(false);
+            ARModeMenu.SetActive(true);
+            vumarkPrefab.SetActive(true);
+            uiCam.gameObject.SetActive(false);
+
+            arCam.gameObject.SetActive(true);
+        }
+
+    }
+
+    public void CloseARCamera()//ETEINDRE AR CAM
+    {
+        if (score >= 1)
+        {
+            Tuto_Manager.tuto.ActivatingTuto(3);
+            Story_Manager.story.ActivateStoryInGallery(0);
+        }
+        if (score >= 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
+        {
+            Tuto_Manager.tuto.ActivatingTuto(4);
+        }
+        mainCanvas.worldCamera = uiCam;
+        vumarkPrefab.SetActive(false);
+        uiCam.gameObject.SetActive(true);
+        arCam.gameObject.SetActive(false);
+        ARModeMenu.SetActive(false);
+        menuToActivate[currentIdxMenu].SetActive(true);
+    }
+
+    #endregion
+
+    #region AR Mode
     [Header ("AR Mode")]
 
     public Button buttonARMode;//Buton AR Mode
     public GameObject vumarkPrefab;//Vumark to activate/deactivate
 
+    #endregion
+
+    #region Map
+
     [Header("Map")]
 
+    public Transform mapList;
     public Color mapColor;
     public Image[] imageZone;//Tableaux d'image pour la map
+
+    #endregion
+
+    #region Menu
 
     [Header("Menu")]//Changer de menu
 
@@ -59,22 +168,34 @@ public class Interface_Manager : MonoBehaviour
     public GameObject[] menuToActivate;//menu à activer
     public GameObject ARModeMenu;//Menu de l'AR Mode
 
+    #endregion
+
+    #region Quizz
     [Header("Tutoriel quizz")]
 
     public int tutoQuizzIdx;//l'index du quizz
     public bool quizzDone;//bool si le tuto à été fait et qui envoyé au save manager
 
-    [Header("Récompenses & Box")]
+    #endregion
+
+    #region Reward
+    [Header("Reward & Box")]
 
     public List<bool> rewardAlreadyDone;//si le coffre à été récupéré
     public List<int> idxCrateStates;//index du coffre
     private int rewardCounter;//
 
+    #endregion
+
+    #region Story
     [Header("Story")]
 
     public List<int> idxStoryScriptableToActivate;//index à envoyé pour activer la bonne histoire
     private bool storyToActivate = false;
 
+    #endregion
+
+    #region Sounds
     [Header("Sounds")]
 
     public AudioClip audioChangeMenu;
@@ -82,6 +203,8 @@ public class Interface_Manager : MonoBehaviour
 
     public AudioSource musicMainMenuToDeactivate;
     private bool stopMusicInGallery = false;
+
+    #endregion
 
     private void Awake()
     {
@@ -110,7 +233,12 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    public void QuitAPK()
+    {
+        Application.Quit();
+    } 
 
+    #region Interface Manager
     //UI MANAGER 
 
     //Pour changer de menu il faut renseigner le int sur le bouton
@@ -138,10 +266,6 @@ public class Interface_Manager : MonoBehaviour
         elementToDesactive.SetActive(false);
     }
 
-    public void QuitAPK()
-    {
-        Application.Quit();
-    }
 
     public void DeactiveMusicMainMenu()//Musique à désactiver ou activer dans la galerie
     {
@@ -156,9 +280,17 @@ public class Interface_Manager : MonoBehaviour
             stopMusicInGallery = true;
         }
     }
-    //AUDIO 
 
+    //MAP MENU UPDATE
 
+    public void MapActivation(int vumarkNumber)//Maping
+    {
+        imageZone[vumarkNumber].color = mapColor; ;
+    }
+
+    #endregion
+
+    #region LOAD Variable
     //LOADING VARIABLE
 
     public void CheckStateButton(int idx)//changement de state de la galerie
@@ -206,8 +338,6 @@ public class Interface_Manager : MonoBehaviour
         quizzDone = isTutoDone;
     }
 
-    //LOADING SCORE
-
     public void LoadScore(int scoring)//load score
     {
         score = scoring;
@@ -226,113 +356,9 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
-    //SCORING & PALIER
+    #endregion
 
-    public void AddScore(int newScoreValue)
-    {
-        score = score + newScoreValue;
-        currentQuestValue = score / limitToWin;
-        scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
-        questImage.fillAmount = currentQuestValue;
-        Save_Manager.saving.SavingScore((int)score);
-        UpdateScore();
-    }
-
-
-    void UpdateScore()
-    {   
-         if (score == palierScoreList[0])
-         {
-            rewardImgList[0].sprite = rewardSpriteList[1];
-            idxCrateStates[0] = 1;
-
-            Save_Manager.saving.SavingCrateState(idxCrateStates); 
-
-            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
-         }
-
-        if (score == palierScoreList[1])
-        {
-            rewardImgList[1].sprite = rewardSpriteList[1];
-            idxCrateStates[1] = 1;
-
-            Save_Manager.saving.SavingCrateState(idxCrateStates);            
-
-            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[1]);
-        }
-        if (score == palierScoreList[2])
-        {
-            rewardImgList[2].sprite = rewardSpriteList[1];
-            idxCrateStates[2] = 1;
-
-            Save_Manager.saving.SavingCrateState(idxCrateStates);
-
-            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
-        }
-    }
-
-    public void RewardBoxOpened(int rewardBoxIdx)
-    {
-        rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[2];
-        idxCrateStates[rewardBoxIdx] = 2;
-        Save_Manager.saving.SavingCrateState(idxCrateStates);
-    }
-
-    //void Victory()
-    //{
-    //    victoryText.SetActive(true);
-    //}
-
-    //CAMERA
-
-    public void OpenARCamera()//ALLUMER L AR CAM
-    {
-        if(quizzDone == false)
-        {
-            Tuto_Manager.tuto.ActivatingTuto(tutoQuizzIdx);
-            quizzDone = true;
-            Save_Manager.saving.TutoQuizzIsDone(quizzDone);
-        }
-        else
-        {
-            mainCanvas.worldCamera = arCam;
-            menuToActivate[currentIdxMenu].SetActive(false);
-            ARModeMenu.SetActive(true);
-            vumarkPrefab.SetActive(true);
-            uiCam.gameObject.SetActive(false);
-
-            arCam.gameObject.SetActive(true);
-        }
-  
-    }
-
-    public void CloseARCamera()//ETEINDRE AR CAM
-    {
-        if (score >= 1)
-        {
-            Tuto_Manager.tuto.ActivatingTuto(3);
-            Story_Manager.story.ActivateStoryInGallery(0);
-        }
-        if (score >= 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
-        {
-            Tuto_Manager.tuto.ActivatingTuto(4);
-        }
-        mainCanvas.worldCamera = uiCam;
-        vumarkPrefab.SetActive(false);
-        uiCam.gameObject.SetActive(true);
-        arCam.gameObject.SetActive(false);
-        ARModeMenu.SetActive(false);
-        menuToActivate[currentIdxMenu].SetActive(true);
-
-    }
-
-    //MAP MENU UPDATE
-
-    public void MapActivation (int vumarkNumber)//Maping
-    {
-        imageZone[vumarkNumber].color = mapColor; ;
-    }
-
+    #region Funfact 
     public void FunFactToggle()
     {
         if (funfact.activeSelf == true)
@@ -346,4 +372,5 @@ public class Interface_Manager : MonoBehaviour
             imageFunfactState.sprite = spriteFunfactState[1];
         }
     }
+    #endregion
 }

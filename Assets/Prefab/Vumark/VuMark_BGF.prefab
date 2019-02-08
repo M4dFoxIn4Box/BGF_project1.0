@@ -181,7 +181,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4855223418672486}
   - component: {fileID: 95729144669548430}
-  - component: {fileID: 114602278597239274}
   m_Layer: 0
   m_Name: Tardis
   m_TagString: Untagged
@@ -720,7 +719,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4916703730302690}
-  - component: {fileID: 114416769825938386}
   m_Layer: 0
   m_Name: Nexus
   m_TagString: Untagged
@@ -1137,7 +1135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4367589510077204}
   - component: {fileID: 95396119264878604}
-  - component: {fileID: 114432799503423656}
   m_Layer: 0
   m_Name: Starcraft
   m_TagString: Untagged
@@ -4588,18 +4585,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapIdx: 14
---- !u!114 &114416769825938386
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1481391688073120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapIdx: 3
 --- !u!114 &114428691650512684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4679,18 +4664,8 @@ MonoBehaviour:
   audioQuizzCorrectAnswer: {fileID: 8300000, guid: 53f15728d6f9a3f4787a9fccbd24998f,
     type: 3}
   audioQuizzBadAnswer: {fileID: 8300000, guid: 0fe78a95e93d55948b24c0aa297de826, type: 3}
---- !u!114 &114432799503423656
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1796985666862160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapIdx: 2
+  mixerGroupQuizz:
+  - {fileID: 243472895971676372, guid: c67b141d9ae4ba04aa997fe59c1e801a, type: 2}
 --- !u!114 &114435506900825850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4751,18 +4726,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapIdx: 13
---- !u!114 &114602278597239274
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1100615486484732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3917f4760a89a7e4fac9a6f9731f9174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapIdx: 3
 --- !u!114 &114633298028550254
 MonoBehaviour:
   m_ObjectHideFlags: 1

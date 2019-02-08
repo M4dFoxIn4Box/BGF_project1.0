@@ -6,15 +6,9 @@ public class Vumark_Map : MonoBehaviour {
 
     public int mapIdx;
 
-    public void Awake()
-    {
-       
-    }
-    // Use this for initialization
     void Start ()
     {
         Interface_Manager.Instance.MapActivation(mapIdx);
         Save_Manager.saving.ImageToTrue(mapIdx);
     }
-
 }
