@@ -15,11 +15,6 @@ public class Interface_Manager : MonoBehaviour
     private List<int> scanIdx = new List<int>();
     private List<bool> buttonState = new List<bool>();
     private int idxButton;
-    public GameObject funfact;
-    private bool isFunFactActive;
-    public Image imageFunfactState;
-    public Sprite[] spriteFunfactState;
-
     #endregion
 
     #region Score
@@ -92,13 +87,13 @@ public class Interface_Manager : MonoBehaviour
 
     #region Camera
 
-    [Header("Camera")]
+    [Header("Camera / AR Camera")]
 
     public Camera arCam;//AR Camera
     public Camera uiCam;//UI Camera
     public Canvas mainCanvas;//Main canvas
-
-    //CAMERA
+    public Button buttonARMode;//Buton AR Mode
+    public GameObject vumarkPrefab;//Vumark to activate/deactivate
 
     public void OpenARCamera()//ALLUMER L AR CAM
     {
@@ -118,7 +113,6 @@ public class Interface_Manager : MonoBehaviour
 
             arCam.gameObject.SetActive(true);
         }
-
     }
 
     public void CloseARCamera()//ETEINDRE AR CAM
@@ -139,23 +133,14 @@ public class Interface_Manager : MonoBehaviour
         ARModeMenu.SetActive(false);
         menuToActivate[currentIdxMenu].SetActive(true);
     }
-
-    #endregion
-
-    #region AR Mode
-    [Header ("AR Mode")]
-
-    public Button buttonARMode;//Buton AR Mode
-    public GameObject vumarkPrefab;//Vumark to activate/deactivate
-
     #endregion
 
     #region Map
 
     [Header("Map")]
 
-    public Transform mapList;
-    public Color mapColor;
+    public Transform mapList;//Parent map list
+    public Color mapColor; //Couleur de l'image sur la map
     public Image[] imageZone;//Tableaux d'image pour la map
 
     #endregion
@@ -206,6 +191,150 @@ public class Interface_Manager : MonoBehaviour
 
     #endregion
 
+    #region Interface Manager
+    //UI MANAGER 
+
+    //Pour changer de menu il faut renseigner le int sur le bouton
+    public void ChangeMenu(int newIdxMenu)
+    {
+        Audio_Manager.audio.SoundsToPlay(audioChangeMenu);
+        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
+        menuToActivate[currentIdxMenu].SetActive(false);
+        menuToActivate[newIdxMenu].SetActive(true);
+        currentIdxMenu = newIdxMenu;
+
+        if (stopMusicInGallery)
+        {
+            DeactiveMusicMainMenu();
+        }
+    }
+
+    public void ShowElement(GameObject elementToActive)
+    {
+        elementToActive.SetActive(true);
+    }
+
+    public void UnShowElement(GameObject elementToDesactive)
+    {
+        elementToDesactive.SetActive(false);
+    }
+
+
+    public void DeactiveMusicMainMenu()//Musique à désactiver ou activer dans la galerie
+    {
+        if (stopMusicInGallery)
+        {
+            musicMainMenuToDeactivate.UnPause();
+            stopMusicInGallery = false;
+        }
+        else if (!stopMusicInGallery)
+        {
+            musicMainMenuToDeactivate.Pause();
+            stopMusicInGallery = true;
+        }
+    }
+
+    //MAP MENU UPDATE
+
+    public void MapActivation(int vumarkNumber)//Maping
+    {
+        imageZone[vumarkNumber].color = mapColor; ;
+    }
+
+    #endregion
+
+    #region LOAD Variable
+    //LOADING VARIABLE
+
+    public void CheckStateButton(int idx)//changement de state de la galerie
+    {
+        if (!scanIdx.Contains(idx))
+        {
+            scanIdx.Add(idx);
+            if (artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
+            {
+                artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
+                Save_Manager.saving.SetToTrue(idx);
+                idxButton = idx;
+                AddScore(1);
+            }
+        }
+    }
+
+    public void ButtonState(List<bool> interactableButton)//load button ok dans la galerie
+    {
+        for (int i = 0; i < interactableButton.Count; i++)
+        {
+            artifactsGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
+            if (interactableButton[i] == true)
+            {
+                AddScore(1);
+            }
+        }
+    }
+
+
+    public void ImageState(List<bool> isImageCheck) //IMAGE ON MAP 
+    {
+        for (int j = 0; j < isImageCheck.Count; j++)
+        {
+            if (isImageCheck[j])
+            {
+                mapList.GetChild(j).gameObject.GetComponent<Image>().color = mapColor;
+            }
+
+        }
+    }
+
+    public void TutoIsDone(bool isTutoDone)
+    {
+        quizzDone = isTutoDone;
+    }
+
+    public void LoadScore(int scoring)//load score
+    {
+        score = scoring;
+        scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
+        currentQuestValue = score / limitToWin;
+        questImage.fillAmount = currentQuestValue;
+    }
+
+    public void LoadCrateImage(List<int> crateVumarkNumber)//load coffre
+    {
+        idxCrateStates = crateVumarkNumber;
+
+        for (int j = 0; j < rewardImgList.Count && crateVumarkNumber != null; j++)
+        {
+            rewardImgList[j].sprite = rewardSpriteList[crateVumarkNumber[j]];
+        }
+    }
+
+    #endregion
+
+    #region Funfact
+
+    [Header("FunFact")]
+
+    public GameObject funfact;
+    private bool isFunFactActive;
+    public Image imageFunfactState;
+    public Sprite[] spriteFunfactState;
+
+    public void FunFactToggle()
+    {
+        if (funfact.activeSelf == true)
+        {
+            funfact.SetActive(false);
+            imageFunfactState.sprite = spriteFunfactState[0];
+        }
+        else if (funfact.activeSelf == false)
+        {
+            funfact.SetActive(true);
+            imageFunfactState.sprite = spriteFunfactState[1];
+        }
+    }
+    #endregion
+
     private void Awake()
     {
         if (Instance != null)
@@ -237,140 +366,4 @@ public class Interface_Manager : MonoBehaviour
     {
         Application.Quit();
     } 
-
-    #region Interface Manager
-    //UI MANAGER 
-
-    //Pour changer de menu il faut renseigner le int sur le bouton
-    public void ChangeMenu(int newIdxMenu)
-    {
-        Audio_Manager.audio.SoundsToPlay(audioChangeMenu);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
-        menuToActivate[currentIdxMenu].SetActive(false);
-        menuToActivate[newIdxMenu].SetActive(true);
-        currentIdxMenu = newIdxMenu;
-
-        if(stopMusicInGallery)
-        {
-            DeactiveMusicMainMenu();
-        }
-    }
-
-    public void ShowElement(GameObject elementToActive)
-    {
-        elementToActive.SetActive(true);
-    }
-
-    public void UnShowElement(GameObject elementToDesactive)
-    {
-        elementToDesactive.SetActive(false);
-    }
-
-
-    public void DeactiveMusicMainMenu()//Musique à désactiver ou activer dans la galerie
-    {
-        if(stopMusicInGallery)
-        {
-            musicMainMenuToDeactivate.UnPause();
-            stopMusicInGallery = false;
-        }
-        else if(!stopMusicInGallery)
-        {
-            musicMainMenuToDeactivate.Pause();
-            stopMusicInGallery = true;
-        }
-    }
-
-    //MAP MENU UPDATE
-
-    public void MapActivation(int vumarkNumber)//Maping
-    {
-        imageZone[vumarkNumber].color = mapColor; ;
-    }
-
-    #endregion
-
-    #region LOAD Variable
-    //LOADING VARIABLE
-
-    public void CheckStateButton(int idx)//changement de state de la galerie
-    {
-        if (!scanIdx.Contains(idx))
-        {
-            scanIdx.Add(idx);
-            if(artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
-            {
-                artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
-                Save_Manager.saving.SetToTrue(idx);
-                idxButton = idx;
-                AddScore(1);
-            }
-        }
-    }
-
-    public void ButtonState(List<bool> interactableButton)//load button ok dans la galerie
-    {
-        for (int i = 0; i < interactableButton.Count; i++)
-        {
-            artifactsGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
-            if (interactableButton[i] == true)
-            {
-                AddScore(1);
-            }
-        }
-    }
-
-
-    public void ImageState(List<bool> isImageCheck) //IMAGE ON MAP 
-    {
-        for (int j = 0; j < isImageCheck.Count; j++)
-        {
-            if(isImageCheck[j])
-            {
-                mapList.GetChild(j).gameObject.GetComponent<Image>().color = mapColor;
-            }
-            
-        }
-    }
-
-    public void TutoIsDone(bool isTutoDone)
-    {
-        quizzDone = isTutoDone;
-    }
-
-    public void LoadScore(int scoring)//load score
-    {
-        score = scoring;
-        scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
-        currentQuestValue = score / limitToWin;
-        questImage.fillAmount = currentQuestValue;
-    }
-
-    public void LoadCrateImage(List<int> crateVumarkNumber)//load coffre
-    {
-        idxCrateStates = crateVumarkNumber;
-
-        for (int j = 0; j < rewardImgList.Count && crateVumarkNumber != null; j++)
-        {
-            rewardImgList[j].sprite = rewardSpriteList[crateVumarkNumber[j]];
-        }
-    }
-
-    #endregion
-
-    #region Funfact 
-    public void FunFactToggle()
-    {
-        if (funfact.activeSelf == true)
-        {
-            funfact.SetActive(false);
-            imageFunfactState.sprite = spriteFunfactState[0];
-        }
-        else if(funfact.activeSelf == false)
-        {
-            funfact.SetActive(true);
-            imageFunfactState.sprite = spriteFunfactState[1];
-        }
-    }
-    #endregion
 }
