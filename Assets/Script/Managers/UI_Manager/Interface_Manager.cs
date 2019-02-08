@@ -76,13 +76,6 @@ public class Interface_Manager : MonoBehaviour
             Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
         }
     }
-
-    public void RewardBoxOpened(int rewardBoxIdx)
-    {
-        rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[2];
-        idxCrateStates[rewardBoxIdx] = 2;
-        Save_Manager.saving.SavingCrateState(idxCrateStates);
-    }
     #endregion
 
     #region Camera
@@ -168,7 +161,14 @@ public class Interface_Manager : MonoBehaviour
 
     public List<bool> rewardAlreadyDone;//si le coffre à été récupéré
     public List<int> idxCrateStates;//index du coffre
-    private int rewardCounter;//
+    private int rewardCounter;
+
+    public void RewardBoxOpened(int rewardBoxIdx)
+    {
+        rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[2];
+        idxCrateStates[rewardBoxIdx] = 2;
+        Save_Manager.saving.SavingCrateState(idxCrateStates);
+    }
 
     #endregion
 

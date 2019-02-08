@@ -6,7 +6,6 @@ using Vuforia;
 using UnityEngine.Audio;
 
 public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
-
 {
     public GameObject screenShare;
     public static ScriptTracker Instance { get; private set; }
@@ -170,7 +169,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             int idxToCast = vumarkID - vumarkRewardMinValue;
             Interface_Manager.Instance.RewardBoxOpened(idxToCast);
-            Debug.Log(idxToCast);
         }
         else
         {
