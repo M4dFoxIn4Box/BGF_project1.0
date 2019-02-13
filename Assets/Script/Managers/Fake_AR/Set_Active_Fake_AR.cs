@@ -8,6 +8,7 @@ public class Set_Active_Fake_AR : MonoBehaviour {
 
     public void OnEnable()
     {
+        Debug.Log("Here");
         Fake_AR_Manager.FakeAR.FakeARToSpawn(animationInteractableIdx);
     }
 }

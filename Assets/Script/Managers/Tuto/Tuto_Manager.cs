@@ -44,6 +44,7 @@ public class Tuto_Manager : MonoBehaviour
 
     public void ActivatingTutoGallery(int tutoNumber)//active les tuto depuis la galerie (seul changement le bool)
     {
+        Debug.Log("Here");
         idxTuto = tutoNumber;
         tutoToDeactive = tutoNumber;
         currentScriptableTuto = tutoList[tutoNumber];
@@ -55,6 +56,7 @@ public class Tuto_Manager : MonoBehaviour
 
     public void ActivatingTuto(int tutoToActive)//active un tuto et verifie s'il a été fait
     {
+        Debug.Log("Here");
         idxTuto = tutoToActive;
         tutoToDeactive = tutoToActive;
         if (tutoHasBeenDone[tutoToActive] == false)
@@ -69,6 +71,7 @@ public class Tuto_Manager : MonoBehaviour
 
     public void MoveToNextSlide ()
     {
+        Debug.Log("Here");
         if (currentSlideIdx == currentScriptableTuto.numberOfSlides - 1)
         {
             currentSlideIdx = 0;
@@ -103,7 +106,8 @@ public class Tuto_Manager : MonoBehaviour
 
     public void MoveToPrecedentSlide()
     {
-        if(currentSlideIdx != 0)
+        Debug.Log("Here");
+        if (currentSlideIdx != 0)
         {
             currentSlideIdx--;
             tutoImg.sprite = currentScriptableTuto.tutoImageBoard[currentSlideIdx];
@@ -119,6 +123,7 @@ public class Tuto_Manager : MonoBehaviour
 
     public void TutoState(List<bool> isTutoCheck)
     {
+        Debug.Log("Here");
         for (int k = 0; k < tutoHasBeenDone.Count; k++)
         {
             tutoHasBeenDone[k] = isTutoCheck[k];
@@ -127,6 +132,7 @@ public class Tuto_Manager : MonoBehaviour
 
     public void LoadMenuTuto(List<bool> isTutoDone)
     {
+        Debug.Log("Here");
         for (int i = 0; i < tutoList.Count; i++)
         {
             tutoGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = isTutoDone[i];
@@ -135,6 +141,7 @@ public class Tuto_Manager : MonoBehaviour
 
     public void LoadBoolForTuto(bool ARCameraTutoGalley)
     {
+        Debug.Log("Here");
         activateARCamera = ARCameraTutoGalley;
     }
 }

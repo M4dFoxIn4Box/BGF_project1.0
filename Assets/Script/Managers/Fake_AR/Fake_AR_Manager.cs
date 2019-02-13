@@ -39,6 +39,7 @@ public class Fake_AR_Manager : MonoBehaviour {
 
     public void FakeARToSpawn(int idxFakeAR)
     {
+        Debug.Log("Here");
         Instantiate(fakeArObjectToSpawn[idxFakeAR], spawnPointFakeAR[idxFakeAR]);
         feedBackClick.SetActive(true);
     }

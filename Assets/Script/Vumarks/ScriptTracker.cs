@@ -118,6 +118,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
     {
+        Debug.Log("Here");
         if (newStatus == TrackableBehaviour.Status.DETECTED || newStatus == TrackableBehaviour.Status.TRACKED || newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             OnTrackerFound();
@@ -131,6 +132,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
+        Debug.Log("Here");
         FillAmountScan();
         loadingScan.SetActive(true);
         loadingState = false;
@@ -138,6 +140,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     
     public void OnTrackerLost()
     {
+        Debug.Log("Here");
         loadingScan.SetActive(false);
         loadingState = false;
         feedbackScan.fillAmount = 0;
@@ -160,6 +163,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void ScanIsDone()
     {
+        Debug.Log("Here");
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
             vumarkID = (int)vumark.InstanceId.NumericValue;
@@ -179,6 +183,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void QuizzDisplaying ()
     {
+        Debug.Log("Here");
         quizAnim.SetBool("Erreur", false);
             if (quizzDone == false)
             {
@@ -231,6 +236,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void FakeARToDeactivate(GameObject fakeARObject)
     {
+        Debug.Log("Here");
         currentFakeARObject = fakeARObject;
     }
 
@@ -238,12 +244,14 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void ARLocker()
     {
+        Debug.Log("Here");
         arIsLock = !arIsLock;
     }
 
     public void ButtonClick (int buttonIdx)
     {
-        if(buttonIdx + 1 == currentQuizz.rightAnswer)
+        Debug.Log("Here");
+        if (buttonIdx + 1 == currentQuizz.rightAnswer)
         {
             buttonList[buttonIdx].GetComponent<UnityEngine.UI.Image>().color = Color.green;
             RightAnswer();
@@ -257,6 +265,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void LeaveQuizz()
     {
+        Debug.Log("Here");
         quizzAvailable.Clear();
 
         if (feedBackFakeAR)
@@ -305,6 +314,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void BadAnswer()
     {
+        Debug.Log("Here");
         quizAnim.SetBool("Erreur", true);
         Audio_Manager.audio.SoundsToPlay(audioQuizzBadAnswer);
         Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
@@ -321,6 +331,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void RightAnswer()
     {
+        Debug.Log("Here");
         Audio_Manager.audio.SoundsToPlay(audioQuizzCorrectAnswer);
         Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
         quizzAvailable.Remove(currentQuizz);
@@ -347,7 +358,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     IEnumerator TimeBeforeNextQuizz ()
     {
-       
+        Debug.Log("Here");
         yield return new WaitForSeconds(1);
         if (currentErrorCount == currentQuizzList.errorLimit)
         {
@@ -360,10 +371,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     IEnumerator GameWon()
     {
+        Debug.Log("Here");
         yield return new WaitForSeconds(2);
-
+        Debug.Log("Here");
         // Reset du quizz
-      
+
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);       
         quizzDone = false;
@@ -381,19 +393,21 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void RewardButton(int rewardIdx) //Click sur le bouton de la galerie
     {
+        Debug.Log("Here");
         currentReward = Instantiate(quizzLists[rewardIdx].rewardToSpawn, spawnPointReward);
         spawnPointFunFact.text = quizzLists[rewardIdx].funFact;
     }
 
     public void DestroyRewardSpawn()
     {
+        Debug.Log("Here");
         Destroy(currentReward);
     }
 
 
     void FillAmountScan()
     {
-
+        Debug.Log("Here");
         if (loadingState == false)
         {
             feedbackScan.fillAmount += Time.deltaTime/scanWaitTime;

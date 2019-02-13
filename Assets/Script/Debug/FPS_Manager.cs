@@ -11,6 +11,7 @@ public class FPS_Manager : MonoBehaviour {
 
     private void Start()
     {
+        Debug.Log("Here");
         fpsValue = 1.0f / Time.deltaTime;
         fpsTxt.text = fpsValue.ToString("F0");
     }

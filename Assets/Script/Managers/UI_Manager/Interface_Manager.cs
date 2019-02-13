@@ -36,6 +36,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void AddScore(int newScoreValue)
     {
+        Debug.Log("Here");
         score = score + newScoreValue;
         currentQuestValue = score / limitToWin;
         scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
@@ -47,6 +48,7 @@ public class Interface_Manager : MonoBehaviour
 
     void UpdateScore()
     {
+        Debug.Log("Here");
         if (score == palierScoreList[0])
         {
             rewardImgList[0].sprite = rewardSpriteList[1];
@@ -90,6 +92,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void OpenARCamera()//ALLUMER L AR CAM
     {
+        Debug.Log("Here");
         if (quizzDone == false)
         {
             Tuto_Manager.tuto.ActivatingTuto(tutoQuizzIdx);
@@ -110,6 +113,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void CloseARCamera()//ETEINDRE AR CAM
     {
+        Debug.Log("Here");
         if (score >= 1)
         {
             Tuto_Manager.tuto.ActivatingTuto(3);
@@ -165,6 +169,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void RewardBoxOpened(int rewardBoxIdx)
     {
+        Debug.Log("Here");
         rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[2];
         idxCrateStates[rewardBoxIdx] = 2;
         Save_Manager.saving.SavingCrateState(idxCrateStates);
@@ -197,6 +202,7 @@ public class Interface_Manager : MonoBehaviour
     //Pour changer de menu il faut renseigner le int sur le bouton
     public void ChangeMenu(int newIdxMenu)
     {
+        Debug.Log("Here");
         Audio_Manager.audio.SoundsToPlay(audioChangeMenu);
         Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
         menuToActivate[currentIdxMenu].SetActive(false);
@@ -211,17 +217,20 @@ public class Interface_Manager : MonoBehaviour
 
     public void ShowElement(GameObject elementToActive)
     {
+        Debug.Log("Here");
         elementToActive.SetActive(true);
     }
 
     public void UnShowElement(GameObject elementToDesactive)
     {
+        Debug.Log("Here");
         elementToDesactive.SetActive(false);
     }
 
 
     public void DeactiveMusicMainMenu()//Musique à désactiver ou activer dans la galerie
     {
+        Debug.Log("Here");
         if (stopMusicInGallery)
         {
             musicMainMenuToDeactivate.UnPause();
@@ -238,6 +247,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void MapActivation(int vumarkNumber)//Maping
     {
+        Debug.Log("Here");
         imageZone[vumarkNumber].color = mapColor; ;
     }
 
@@ -248,6 +258,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void CheckStateButton(int idx)//changement de state de la galerie
     {
+        Debug.Log("Here");
         if (!scanIdx.Contains(idx))
         {
             scanIdx.Add(idx);
@@ -263,6 +274,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void ButtonState(List<bool> interactableButton)//load button ok dans la galerie
     {
+        Debug.Log("Here");
         for (int i = 0; i < interactableButton.Count; i++)
         {
             artifactsGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
@@ -276,6 +288,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void ImageState(List<bool> isImageCheck) //IMAGE ON MAP 
     {
+        Debug.Log("Here");
         for (int j = 0; j < isImageCheck.Count; j++)
         {
             if (isImageCheck[j])
@@ -288,11 +301,13 @@ public class Interface_Manager : MonoBehaviour
 
     public void TutoIsDone(bool isTutoDone)
     {
+        Debug.Log("Here");
         quizzDone = isTutoDone;
     }
 
     public void LoadScore(int scoring)//load score
     {
+        Debug.Log("Here");
         score = scoring;
         scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
         currentQuestValue = score / limitToWin;
@@ -301,6 +316,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void LoadCrateImage(List<int> crateVumarkNumber)//load coffre
     {
+        Debug.Log("Here");
         idxCrateStates = crateVumarkNumber;
 
         for (int j = 0; j < rewardImgList.Count && crateVumarkNumber != null; j++)
@@ -322,6 +338,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void FunFactToggle()
     {
+        Debug.Log("Here");
         if (funfact.activeSelf == true)
         {
             funfact.SetActive(false);
@@ -350,6 +367,7 @@ public class Interface_Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Debug.Log("Here");
         scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
     }
 

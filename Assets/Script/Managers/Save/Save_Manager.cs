@@ -57,6 +57,7 @@ public class Save_Manager : MonoBehaviour
     {
         if (!File.Exists(Application.persistentDataPath + "/playerInfo.data"))
         {
+            Debug.Log("Here");
             for (int i = 0; i < rewardNumbers; i++)
             {
                 galleryButtonsStates.Add(false);
@@ -72,18 +73,21 @@ public class Save_Manager : MonoBehaviour
         }
         else
         {
+            Debug.Log("Here");
             Load();
         }
     }
 
     public void SetToTrue (int buttonIdx) // Sauvegarder le bouton qui s'est activé
     {
+        Debug.Log("Here");
         galleryButtonsStates[buttonIdx] = true;
         Save();
     }
 
     public void ImageToTrue(int imageIdx) // Sauvegarder l'image de la map qui s'est activé
     {
+        Debug.Log("Here");
         mappingImageStates[imageIdx] = true;
         Save();
     }
@@ -92,12 +96,14 @@ public class Save_Manager : MonoBehaviour
 
     public void TutoIsDone(List<bool> tutoIdx) // Sauvegarder si le tuto à déjà été fait 
     {
+        Debug.Log("Here");
         galleryTutoStates = tutoIdx;
         Save();
     }
 
     public void TutoQuizzIsDone(bool quizzTutoIsDone) // Sauvegarder si le quizz à déjà été fait
     {
+        Debug.Log("Here");
         quizzDoneToSave = quizzTutoIsDone;
         Save();
     }
@@ -106,12 +112,14 @@ public class Save_Manager : MonoBehaviour
 
     public void StoryGalleryIsDone(int galleryStoryIsCompleted) // Sauvegarder le bouton de la galerie de la story
     {
+        Debug.Log("Here");
         galleryStoryStates[galleryStoryIsCompleted] = true;
         Save();
     }
 
     public void StoryIsDone(List<bool> storyIsOk) //Sauvegarder quand la story à été validé
     {
+        Debug.Log("Here");
         storyAlreadyDone = storyIsOk;
         Save();
     }
@@ -120,6 +128,7 @@ public class Save_Manager : MonoBehaviour
 
     public void ARCameraTuto(bool galleryTutoARCamera) //Sauvegarder le tuto de la cam
     {
+        Debug.Log("Here");
         tutoARCameraHasBeenActivated = galleryTutoARCamera;
         Save();
     }
@@ -128,6 +137,7 @@ public class Save_Manager : MonoBehaviour
 
     public void SavingScore(int scoreIdx) // Sauvegarder le score
     {
+        Debug.Log("Here");
         scoreToSave = scoreIdx;
         Save();
     }
@@ -136,6 +146,7 @@ public class Save_Manager : MonoBehaviour
 
     public void SavingCrateState(List<int> idxCrateState) //Sauvegarder l'état du coffre dans le main menu
     {
+        Debug.Log("Here");
         idxCrateList = idxCrateState;
         Save();
     }
@@ -152,11 +163,13 @@ public class Save_Manager : MonoBehaviour
 
     public void ResetClearList()
     {
+        Debug.Log("Here");
         File.Delete(Application.persistentDataPath + "/playerInfo.data");
     }
 
     public void Save()
     {
+        Debug.Log("Here");
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.data");
 
@@ -177,7 +190,8 @@ public class Save_Manager : MonoBehaviour
 
     public void Load()
     {
-        if(File.Exists(Application.persistentDataPath + "/playerInfo.data"))
+        Debug.Log("Here");
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.data"))
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.data", FileMode.Open);
@@ -204,7 +218,7 @@ public class Save_Manager : MonoBehaviour
             Story_Manager.story.LoadStoryHasBeenDone(storyAlreadyDone);
             Interface_Manager.Instance.LoadScore(scoreToSave);
 
-            if(idxCrateList != null)
+            if(idxCrateList.Count > 0)
             {
                 Interface_Manager.Instance.LoadCrateImage(idxCrateList);
             }

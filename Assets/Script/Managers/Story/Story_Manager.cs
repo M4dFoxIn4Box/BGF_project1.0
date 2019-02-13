@@ -52,6 +52,7 @@ public class Story_Manager : MonoBehaviour
 
     public void ActivatingStoryGallery(int storyToActive)
     {
+        Debug.Log("Here");
         scriptableIdxStory = storyToActive;
         storyToDeactive = storyToActive;
         currentScriptableStory = scriptableStoryList[storyToActive];
@@ -61,6 +62,7 @@ public class Story_Manager : MonoBehaviour
 
     public void ActivatingStory(int storyToActive)
     {
+        Debug.Log("Here");
         scriptableIdxStory = storyToActive;
         storyToDeactive = storyToActive;
         if (storyHasBeenDone[storyToActive] == false)
@@ -73,6 +75,7 @@ public class Story_Manager : MonoBehaviour
 
     public void MoveToNextSlide()
     {
+        Debug.Log("Here");
         if (currentSlideIdx == currentScriptableStory.numberOfSlides - 1)
         {
             currentSlideIdx = 0;
@@ -92,6 +95,7 @@ public class Story_Manager : MonoBehaviour
 
     public void MoveToPrecedentSlide()
     {
+        Debug.Log("Here");
         if (currentSlideIdx != 0)
         {
             currentSlideIdx--;
@@ -105,6 +109,7 @@ public class Story_Manager : MonoBehaviour
 
     public void ActivateStoryInGallery(int storyToActivateInGallery)
     {
+        Debug.Log("Here");
         scriptableIdxStory = storyToActivateInGallery;
         if (storyHasBeenDone[storyToActivateInGallery] == false)
         {
@@ -119,6 +124,7 @@ public class Story_Manager : MonoBehaviour
 
     public void ActivateButtonGallery()
     {
+        Debug.Log("Here");
         if (storyGallery.GetChild(scriptableIdxStory).gameObject.GetComponent<Button>().interactable == false)
         {
             storyGallery.GetChild(scriptableIdxStory).gameObject.GetComponent<Button>().interactable = true;
@@ -128,6 +134,7 @@ public class Story_Manager : MonoBehaviour
 
     public void LoadStoryStates(List<bool> storyBoolList)
     {
+        Debug.Log("Here");
         for (int i = 0; i < scriptableStoryList.Count; i++)
         {
             storyGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = storyBoolList[i];
@@ -138,6 +145,7 @@ public class Story_Manager : MonoBehaviour
 
     public void LoadStoryHasBeenDone(List<bool>  isStoryCheck)
     {
+        Debug.Log("Here");
         for (int i = 0; i < storyHasBeenDone.Count; i++)
         {
             storyHasBeenDone[i] = isStoryCheck[i];

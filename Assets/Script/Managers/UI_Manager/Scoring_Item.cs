@@ -9,6 +9,7 @@ public class Scoring_Item : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        Debug.Log("Here");
         Interface_Manager.Instance.AddScore(valueToAdd);
 	}
 	
