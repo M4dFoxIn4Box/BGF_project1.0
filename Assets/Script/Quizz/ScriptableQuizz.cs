@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class ScriptableQuizz : ScriptableObject {
         
-    public string quizzName;
     public string quizzQuestion;
     public string[] answerList;
 
