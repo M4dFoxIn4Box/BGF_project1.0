@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class Interface_Home_Manager : MonoBehaviour
 {
-    [Header("Menu")]//Changer de menu
+    [Header("Menu")]
 
-    private int currentIdxMenu = 1;//Idx du menu intro
-    public GameObject[] menuToActivate;//menu à activer
+    private int currentIdxMenu = 1;
+    public GameObject[] menuToActivate;
+    public Slider loadingSprite;
 
     #region Sounds
     [Header("Sounds")]
@@ -23,14 +25,11 @@ public class Interface_Home_Manager : MonoBehaviour
     #endregion
 
     #region Interface Manager
-    //UI MANAGER 
 
-    //Pour changer de menu il faut renseigner le int sur le bouton
     public void ChangeMenu(int newIdxMenu)
     {
-        Debug.Log("Here");
-        Audio_Manager.audio.SoundsToPlay(audioChangeMenu);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
+        //Audio_Manager.audio.SoundsToPlay(audioChangeMenu);
+        //Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
         menuToActivate[currentIdxMenu].SetActive(false);
         menuToActivate[newIdxMenu].SetActive(true);
         currentIdxMenu = newIdxMenu;
@@ -73,14 +72,27 @@ public class Interface_Home_Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("Here");
+
     }
-
-
 
     public void QuitAPK()
     {
         Application.Quit();
+    }
+
+    public void MoveToBGFScene()
+    {
+        StartCoroutine(LoadBGFScene());
+    }
+
+    IEnumerator LoadBGFScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene_BGF");
+        while (!asyncLoad.isDone)
+        {
+            loadingSprite.value = SceneManager.LoadSceneAsync("Scene_BGF").progress;
+            yield return null;
+        }
     }
 }
 
