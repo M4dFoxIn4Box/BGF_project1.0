@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4591111972369830655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4585700601234535005}
+  - component: {fileID: 4478448937301606041}
+  m_Layer: 0
+  m_Name: Tuto_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4585700601234535005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591111972369830655}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 748, y: 1284, z: -1012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4478448937301606041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591111972369830655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef052839c08fbbe4a86ea2866111bb0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScriptableTuto: {fileID: 0}
+  menuTuto: {fileID: 0}
+  tutoTitleTxt: {fileID: 0}
+  tutoImg: {fileID: 0}
+  tutoTxt: {fileID: 0}
+  tutoHasBeenDone: 0000000000
+  tutoList:
+  - {fileID: 11400000, guid: abd73b896209d374f882514711c54b03, type: 2}
+  - {fileID: 11400000, guid: 0bf53372306eec84ab96442d30a966be, type: 2}
+  - {fileID: 11400000, guid: b2d298d7d673de549a285df1a0529d21, type: 2}
+  - {fileID: 11400000, guid: 9c46d93c0a7b76446b066cee77801191, type: 2}
+  - {fileID: 11400000, guid: e6932e121f48fa049ace81f63a6dc210, type: 2}
+  tutoQuizzIdx: 1
+  tutoGallery: {fileID: 0}
+  buttonPrecedentSlide: {fileID: 0}

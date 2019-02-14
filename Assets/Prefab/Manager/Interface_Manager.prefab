@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5969601037503318882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5890865964515618532}
+  - component: {fileID: 6001806091594640388}
+  m_Layer: 0
+  m_Name: Interface_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5890865964515618532
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5969601037503318882}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6001806091594640388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5969601037503318882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebc167e4bc403f4dafcfedb7def6973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  artifactsGallery: {fileID: 0}
+  scoreText: {fileID: 0}
+  score: 14
+  limitToWin: 15
+  victoryText: {fileID: 0}
+  questImage: {fileID: 0}
+  palierScoreList: 050000000a0000000f000000
+  rewardImgList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rewardSpriteList:
+  - {fileID: 21300000, guid: 2d857ec6f093da84ca7051dd6c3a8dfe, type: 3}
+  - {fileID: 21300000, guid: e91ff7df3dd943e49ab9393e43678b8a, type: 3}
+  - {fileID: 21300000, guid: c01b243110b8c414d82411984ec7b6a4, type: 3}
+  arCam: {fileID: 0}
+  uiCam: {fileID: 0}
+  mainCanvas: {fileID: 0}
+  buttonARMode: {fileID: 0}
+  vumarkPrefab: {fileID: 0}
+  mapList: {fileID: 0}
+  mapColor: {r: 0, g: 0.7169812, b: 0.029793588, a: 1}
+  imageZone:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  menuToActivate:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ARModeMenu: {fileID: 0}
+  tutoQuizzIdx: 1
+  quizzDone: 0
+  rewardAlreadyDone: 
+  idxCrateStates: 000000000000000000000000
+  idxStoryScriptableToActivate: 010000000200000003000000
+  audioChangeMenu: {fileID: 8300000, guid: b3ec39a827c50de4eb1d88719c582538, type: 3}
+  mixerGroupChangeMenu:
+  - {fileID: 243413624007489522, guid: ca08b9925e8a2e54780c06a011d2009e, type: 2}
+  musicMainMenuToDeactivate: {fileID: 0}
+  funfact: {fileID: 0}
+  imageFunfactState: {fileID: 0}
+  spriteFunfactState:
+  - {fileID: 21300000, guid: 6ca9d465e55c7e848b5a51826e0eb900, type: 3}
+  - {fileID: 21300002, guid: 6ca9d465e55c7e848b5a51826e0eb900, type: 3}
