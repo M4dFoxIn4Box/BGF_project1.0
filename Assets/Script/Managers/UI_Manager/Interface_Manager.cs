@@ -58,7 +58,7 @@ public class Interface_Manager : MonoBehaviour
 
             //Save_Manager.saving.SavingCrateState(idxCrateStates);
 
-            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
+            //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
         }
 
         if (score == palierScoreList[1])
@@ -68,7 +68,7 @@ public class Interface_Manager : MonoBehaviour
 
             //Save_Manager.saving.SavingCrateState(idxCrateStates);
 
-            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[1]);
+            //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[1]);
         }
         if (score == palierScoreList[2])
         {
@@ -77,7 +77,7 @@ public class Interface_Manager : MonoBehaviour
 
             //Save_Manager.saving.SavingCrateState(idxCrateStates);
 
-            Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
+            //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
         }
     }
     #endregion
@@ -380,8 +380,6 @@ public class Interface_Manager : MonoBehaviour
         {
             AddScore(1);
         }
-
-        Debug.Log("SCORE" + score);
     }
 
     public void QuitAPK()
