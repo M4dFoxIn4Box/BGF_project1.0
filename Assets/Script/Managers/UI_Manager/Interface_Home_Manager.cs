@@ -88,7 +88,12 @@ public class Interface_Home_Manager : MonoBehaviour
 
     public void MoveToBGFScene()
     {
+        LoadingScreen();
         StartCoroutine(LoadBGFScene());
+    }
+
+    private void LoadingScreen()
+    {
         deactiveButtons.SetActive(false);
         loadingScreen.SetActive(true);
     }
@@ -100,8 +105,23 @@ public class Interface_Home_Manager : MonoBehaviour
         {
             loadingSprite.fillAmount = asyncLoad.progress;
             yield return null;
+        } 
+    }
+
+    public void MoveToBordeauxScene()
+    {
+        LoadingScreen();
+        StartCoroutine(LoadBordeauxScene());
+    }
+
+    IEnumerator LoadBordeauxScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene_Bordeaux");
+        while (!asyncLoad.isDone)
+        {
+            loadingSprite.fillAmount = asyncLoad.progress;
+            yield return null;
         }
-        
     }
 }
 

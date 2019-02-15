@@ -7,7 +7,6 @@ using UnityEngine.Audio;
 
 public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 {
-    public GameObject screenShare;
     public static ScriptTracker Instance { get; private set; }
 
 
@@ -393,7 +392,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void RewardButton(int rewardIdx) //Click sur le bouton de la galerie
     {
-        Debug.Log("Here");
+        Debug.Log("HELLO");
         currentReward = Instantiate(quizzLists[rewardIdx].rewardToSpawn, spawnPointReward);
         spawnPointFunFact.text = quizzLists[rewardIdx].funFact;
     }

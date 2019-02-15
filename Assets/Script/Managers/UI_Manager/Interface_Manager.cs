@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 
 public class Interface_Manager : MonoBehaviour
@@ -387,4 +388,18 @@ public class Interface_Manager : MonoBehaviour
     {
         Application.Quit();
     } 
+
+    public void BackToHomeMenu()
+    {
+        StartCoroutine(LoadHomeScene());
+    }
+
+    IEnumerator LoadHomeScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene_Home");
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
 }

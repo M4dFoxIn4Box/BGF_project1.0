@@ -83,7 +83,7 @@ public class Story_Manager : MonoBehaviour
             storyHasBeenDone[storyToDeactive] = true;
             //Save_Manager.saving.StoryIsDone(storyHasBeenDone);
             buttonPrecedentSlide.SetActive(false);
-            ActivateButtonGallery();
+            //ActivateButtonGallery();
         }
         else
         {
@@ -114,7 +114,7 @@ public class Story_Manager : MonoBehaviour
         if (storyHasBeenDone[storyToActivateInGallery] == false)
         {
             //Save_Manager.saving.StoryIsDone(storyHasBeenDone);
-            ActivateButtonGallery();
+            //ActivateButtonGallery();
         }
     }
 
@@ -122,34 +122,34 @@ public class Story_Manager : MonoBehaviour
 
     //GALLERY
 
-    public void ActivateButtonGallery()
-    {
-        Debug.Log("Here");
-        if (storyGallery.GetChild(scriptableIdxStory).gameObject.GetComponent<Button>().interactable == false)
-        {
-            storyGallery.GetChild(scriptableIdxStory).gameObject.GetComponent<Button>().interactable = true;
-            //Save_Manager.saving.StoryGalleryIsDone(scriptableIdxStory);
-        }
-    }
+    //public void ActivateButtonGallery()
+    //{
+    //    Debug.Log("Here");
+    //    if (storyGallery.GetChild(scriptableIdxStory).gameObject.GetComponent<Button>().interactable == false)
+    //    {
+    //        storyGallery.GetChild(scriptableIdxStory).gameObject.GetComponent<Button>().interactable = true;
+    //        //Save_Manager.saving.StoryGalleryIsDone(scriptableIdxStory);
+    //    }
+    //}
 
-    public void LoadStoryStates(List<bool> storyBoolList)
-    {
-        Debug.Log("Here");
-        for (int i = 0; i < scriptableStoryList.Count; i++)
-        {
-            storyGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = storyBoolList[i];
-        }
-    }
+    //public void LoadStoryStates(List<bool> storyBoolList)
+    //{
+    //    Debug.Log("Here");
+    //    for (int i = 0; i < scriptableStoryList.Count; i++)
+    //    {
+    //        storyGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = storyBoolList[i];
+    //    }
+    //}
 
-    //STORY STATE
+    ////STORY STATE
 
-    public void LoadStoryHasBeenDone(List<bool>  isStoryCheck)
-    {
-        Debug.Log("Here");
-        for (int i = 0; i < storyHasBeenDone.Count; i++)
-        {
-            storyHasBeenDone[i] = isStoryCheck[i];
-        }
-    }
+    //public void LoadStoryHasBeenDone(List<bool>  isStoryCheck)
+    //{
+    //    Debug.Log("Here");
+    //    for (int i = 0; i < storyHasBeenDone.Count; i++)
+    //    {
+    //        storyHasBeenDone[i] = isStoryCheck[i];
+    //    }
+    //}
 
 }

@@ -80,10 +80,10 @@ public class Tuto_Manager : MonoBehaviour
             //Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
             buttonPrecedentSlide.SetActive(false);
 
-            if (tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable == false)
-            {
-                tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable = true;
-            }
+            //if (tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable == false)
+            //{
+            //    tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable = true;
+            //}
 
             if (currentScriptableTuto == tutoList[tutoQuizzIdx] && activateARCamera)
             {
