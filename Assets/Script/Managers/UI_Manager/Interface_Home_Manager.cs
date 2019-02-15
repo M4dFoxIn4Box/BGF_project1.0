@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Interface_Home_Manager : MonoBehaviour
 {
@@ -11,11 +12,16 @@ public class Interface_Home_Manager : MonoBehaviour
 
     private int currentIdxMenu = 1;
     public GameObject[] menuToActivate;
-    public Slider loadingSprite;
+
+    [Header("Loading")]
+    public Image loadingSprite;
+    public GameObject deactiveButtons;
+    public GameObject loadingScreen;
 
     #region Sounds
-    [Header("Sounds")]
 
+    [Header("Sounds")]
+    
     public AudioClip audioChangeMenu;
     public AudioMixerGroup[] mixerGroupChangeMenu;
 
@@ -83,6 +89,8 @@ public class Interface_Home_Manager : MonoBehaviour
     public void MoveToBGFScene()
     {
         StartCoroutine(LoadBGFScene());
+        deactiveButtons.SetActive(false);
+        loadingScreen.SetActive(true);
     }
 
     IEnumerator LoadBGFScene()
@@ -90,9 +98,10 @@ public class Interface_Home_Manager : MonoBehaviour
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene_BGF");
         while (!asyncLoad.isDone)
         {
-            loadingSprite.value = SceneManager.LoadSceneAsync("Scene_BGF").progress;
+            loadingSprite.fillAmount = asyncLoad.progress;
             yield return null;
         }
+        
     }
 }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
+
 public class Interface_Manager : MonoBehaviour
 {
     public static Interface_Manager Instance { get; private set; }
@@ -146,7 +147,7 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Menu")]//Changer de menu
 
-    private int currentIdxMenu = 1;//Idx du menu intro
+    private int currentIdxMenu = 0;//Idx du menu intro
     public GameObject[] menuToActivate;//menu à activer
     public GameObject ARModeMenu;//Menu de l'AR Mode
 
