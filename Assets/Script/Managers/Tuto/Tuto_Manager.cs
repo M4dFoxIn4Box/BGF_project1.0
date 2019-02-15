@@ -77,7 +77,7 @@ public class Tuto_Manager : MonoBehaviour
             currentSlideIdx = 0;
             menuTuto.SetActive(false);
             tutoHasBeenDone[tutoToDeactive] = true;
-            Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
+            //Save_Manager.saving.TutoIsDone(tutoHasBeenDone);
             buttonPrecedentSlide.SetActive(false);
 
             if (tutoGallery.GetChild(idxTuto).gameObject.GetComponent<Button>().interactable == false)
@@ -89,7 +89,7 @@ public class Tuto_Manager : MonoBehaviour
             {
                 Interface_Manager.Instance.OpenARCamera();
                 activateARCamera = false;
-                Save_Manager.saving.ARCameraTuto(activateARCamera);
+                //Save_Manager.saving.ARCameraTuto(activateARCamera);
             }
 
         }

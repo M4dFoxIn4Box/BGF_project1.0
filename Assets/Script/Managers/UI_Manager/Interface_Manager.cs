@@ -22,7 +22,7 @@ public class Interface_Manager : MonoBehaviour
     [Header("Scoring")]
 
     public Text scoreText;//le texte pour afficher le score
-    public float score;//le score
+    public float score = 0;//le score
     public float limitToWin;//la limite pour finir l'application
     public GameObject victoryText;//texte de victoire pour la limittowin
 
@@ -40,9 +40,9 @@ public class Interface_Manager : MonoBehaviour
         Debug.Log("Here");
         score = score + newScoreValue;
         currentQuestValue = score / limitToWin;
-        scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
+        //scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
         questImage.fillAmount = currentQuestValue;
-        Save_Manager.saving.SavingScore((int)score);
+        //Save_Manager.saving.SavingScore((int)score);
         UpdateScore();
     }
 
@@ -55,7 +55,7 @@ public class Interface_Manager : MonoBehaviour
             rewardImgList[0].sprite = rewardSpriteList[1];
             idxCrateStates[0] = 1;
 
-            Save_Manager.saving.SavingCrateState(idxCrateStates);
+            //Save_Manager.saving.SavingCrateState(idxCrateStates);
 
             Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
         }
@@ -65,7 +65,7 @@ public class Interface_Manager : MonoBehaviour
             rewardImgList[1].sprite = rewardSpriteList[1];
             idxCrateStates[1] = 1;
 
-            Save_Manager.saving.SavingCrateState(idxCrateStates);
+            //Save_Manager.saving.SavingCrateState(idxCrateStates);
 
             Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[1]);
         }
@@ -74,7 +74,7 @@ public class Interface_Manager : MonoBehaviour
             rewardImgList[2].sprite = rewardSpriteList[1];
             idxCrateStates[2] = 1;
 
-            Save_Manager.saving.SavingCrateState(idxCrateStates);
+            //Save_Manager.saving.SavingCrateState(idxCrateStates);
 
             Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
         }
@@ -98,7 +98,7 @@ public class Interface_Manager : MonoBehaviour
         {
             Tuto_Manager.tuto.ActivatingTuto(tutoQuizzIdx);
             quizzDone = true;
-            Save_Manager.saving.TutoQuizzIsDone(quizzDone);
+            //Save_Manager.saving.TutoQuizzIsDone(quizzDone);
         }
         else
         {
@@ -173,7 +173,7 @@ public class Interface_Manager : MonoBehaviour
         Debug.Log("Here");
         rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[2];
         idxCrateStates[rewardBoxIdx] = 2;
-        Save_Manager.saving.SavingCrateState(idxCrateStates);
+        //Save_Manager.saving.SavingCrateState(idxCrateStates);
     }
 
     #endregion
@@ -266,39 +266,39 @@ public class Interface_Manager : MonoBehaviour
             if (artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
             {
                 artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
-                Save_Manager.saving.SetToTrue(idx);
+                //Save_Manager.saving.SetToTrue(idx);
                 idxButton = idx;
                 AddScore(1);
             }
         }
     }
 
-    public void ButtonState(List<bool> interactableButton)//load button ok dans la galerie
-    {
-        Debug.Log("Here");
-        for (int i = 0; i < interactableButton.Count; i++)
-        {
-            artifactsGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
-            if (interactableButton[i] == true)
-            {
-                AddScore(1);
-            }
-        }
-    }
+    //public void ButtonState(List<bool> interactableButton)//load button ok dans la galerie
+    //{
+    //    Debug.Log("Here");
+    //    for (int i = 0; i < interactableButton.Count; i++)
+    //    {
+    //        artifactsGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
+    //        if (interactableButton[i] == true)
+    //        {
+    //            AddScore(1);
+    //        }
+    //    }
+    //}
 
 
-    public void ImageState(List<bool> isImageCheck) //IMAGE ON MAP 
-    {
-        Debug.Log("Here");
-        for (int j = 0; j < isImageCheck.Count; j++)
-        {
-            if (isImageCheck[j])
-            {
-                mapList.GetChild(j).gameObject.GetComponent<Image>().color = mapColor;
-            }
+    //public void ImageState(List<bool> isImageCheck) //IMAGE ON MAP 
+    //{
+    //    Debug.Log("Here");
+    //    for (int j = 0; j < isImageCheck.Count; j++)
+    //    {
+    //        if (isImageCheck[j])
+    //        {
+    //            mapList.GetChild(j).gameObject.GetComponent<Image>().color = mapColor;
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
     public void TutoIsDone(bool isTutoDone)
     {
@@ -306,25 +306,25 @@ public class Interface_Manager : MonoBehaviour
         quizzDone = isTutoDone;
     }
 
-    public void LoadScore(int scoring)//load score
-    {
-        Debug.Log("Here");
-        score = scoring;
-        scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
-        currentQuestValue = score / limitToWin;
-        questImage.fillAmount = currentQuestValue;
-    }
+    //public void LoadScore(int scoring)//load score
+    //{
+    //    Debug.Log("Here");
+    //    score = scoring;
+    //    scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
+    //    currentQuestValue = score / limitToWin;
+    //    questImage.fillAmount = currentQuestValue;
+    //}
 
-    public void LoadCrateImage(List<int> crateVumarkNumber)//load coffre
-    {
-        Debug.Log("Here");
-        idxCrateStates = crateVumarkNumber;
+    //public void LoadCrateImage(List<int> crateVumarkNumber)//load coffre
+    //{
+    //    Debug.Log("Here");
+    //    idxCrateStates = crateVumarkNumber;
 
-        for (int j = 0; j < rewardImgList.Count && crateVumarkNumber != null; j++)
-        {
-            rewardImgList[j].sprite = rewardSpriteList[crateVumarkNumber[j]];
-        }
-    }
+    //    for (int j = 0; j < rewardImgList.Count && crateVumarkNumber != null; j++)
+    //    {
+    //        rewardImgList[j].sprite = rewardSpriteList[crateVumarkNumber[j]];
+    //    }
+    //}
 
     #endregion
 
@@ -369,7 +369,7 @@ public class Interface_Manager : MonoBehaviour
     void Start()
     {
         Debug.Log("Here");
-        scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
+        //scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
     }
 
     // Update is called once per frame
@@ -379,6 +379,8 @@ public class Interface_Manager : MonoBehaviour
         {
             AddScore(1);
         }
+
+        Debug.Log("SCORE" + score);
     }
 
     public void QuitAPK()

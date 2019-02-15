@@ -208,20 +208,20 @@ public class Save_Manager : MonoBehaviour
             scoreToSave = data.scoreToSave;
             idxCrateList = data.idxCrateList;
 
-            Interface_Manager.Instance.ButtonState(galleryButtonsStates);
-            Interface_Manager.Instance.ImageState(mappingImageStates);
-            Interface_Manager.Instance.TutoIsDone(quizzDoneToSave);
-            Tuto_Manager.tuto.TutoState(galleryTutoStates);
-            Tuto_Manager.tuto.LoadMenuTuto(galleryTutoStates);
-            Tuto_Manager.tuto.LoadBoolForTuto(tutoARCameraHasBeenActivated);
-            Story_Manager.story.LoadStoryStates(galleryStoryStates);
-            Story_Manager.story.LoadStoryHasBeenDone(storyAlreadyDone);
-            Interface_Manager.Instance.LoadScore(scoreToSave);
+            //Interface_Manager.Instance.ButtonState(galleryButtonsStates);
+            //Interface_Manager.Instance.ImageState(mappingImageStates);
+            //Interface_Manager.Instance.TutoIsDone(quizzDoneToSave);
+            //Tuto_Manager.tuto.TutoState(galleryTutoStates);
+            //Tuto_Manager.tuto.LoadMenuTuto(galleryTutoStates);
+            //Tuto_Manager.tuto.LoadBoolForTuto(tutoARCameraHasBeenActivated);
+            //Story_Manager.story.LoadStoryStates(galleryStoryStates);
+            //Story_Manager.story.LoadStoryHasBeenDone(storyAlreadyDone);
+            //Interface_Manager.Instance.LoadScore(scoreToSave);
 
-            if(idxCrateList.Count > 0)
-            {
-                Interface_Manager.Instance.LoadCrateImage(idxCrateList);
-            }
+            //if(idxCrateList.Count > 0)
+            //{
+            //    Interface_Manager.Instance.LoadCrateImage(idxCrateList);
+            //}
         }
     }
 }

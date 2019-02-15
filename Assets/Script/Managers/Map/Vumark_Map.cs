@@ -10,6 +10,6 @@ public class Vumark_Map : MonoBehaviour {
     {
         Debug.Log("Here");
         Interface_Manager.Instance.MapActivation(mapIdx);
-        Save_Manager.saving.ImageToTrue(mapIdx);
+        //Save_Manager.saving.ImageToTrue(mapIdx);
     }
 }

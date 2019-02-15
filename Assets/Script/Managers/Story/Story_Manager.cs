@@ -81,7 +81,7 @@ public class Story_Manager : MonoBehaviour
             currentSlideIdx = 0;
             interfaceStory.SetActive(false);
             storyHasBeenDone[storyToDeactive] = true;
-            Save_Manager.saving.StoryIsDone(storyHasBeenDone);
+            //Save_Manager.saving.StoryIsDone(storyHasBeenDone);
             buttonPrecedentSlide.SetActive(false);
             ActivateButtonGallery();
         }
@@ -113,7 +113,7 @@ public class Story_Manager : MonoBehaviour
         scriptableIdxStory = storyToActivateInGallery;
         if (storyHasBeenDone[storyToActivateInGallery] == false)
         {
-            Save_Manager.saving.StoryIsDone(storyHasBeenDone);
+            //Save_Manager.saving.StoryIsDone(storyHasBeenDone);
             ActivateButtonGallery();
         }
     }
@@ -128,7 +128,7 @@ public class Story_Manager : MonoBehaviour
         if (storyGallery.GetChild(scriptableIdxStory).gameObject.GetComponent<Button>().interactable == false)
         {
             storyGallery.GetChild(scriptableIdxStory).gameObject.GetComponent<Button>().interactable = true;
-            Save_Manager.saving.StoryGalleryIsDone(scriptableIdxStory);
+            //Save_Manager.saving.StoryGalleryIsDone(scriptableIdxStory);
         }
     }
 
