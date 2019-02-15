@@ -95,13 +95,13 @@ public class Interface_Manager : MonoBehaviour
     public void OpenARCamera()//ALLUMER L AR CAM
     {
         Debug.Log("Here");
-        if (quizzDone == false)
-        {
-            Tuto_Manager.tuto.ActivatingTuto(tutoQuizzIdx);
-            quizzDone = true;
-            //Save_Manager.saving.TutoQuizzIsDone(quizzDone);
-        }
-        else
+        //if (quizzDone == false)
+        //{
+        //    //Tuto_Manager.tuto.ActivatingTuto(tutoQuizzIdx);
+        //    quizzDone = true;
+        //    //Save_Manager.saving.TutoQuizzIsDone(quizzDone);
+        //}
+        //else
         {
             mainCanvas.worldCamera = arCam;
             menuToActivate[currentIdxMenu].SetActive(false);
@@ -116,15 +116,15 @@ public class Interface_Manager : MonoBehaviour
     public void CloseARCamera()//ETEINDRE AR CAM
     {
         Debug.Log("Here");
-        if (score >= 1)
-        {
-            Tuto_Manager.tuto.ActivatingTuto(3);
-            Story_Manager.story.ActivateStoryInGallery(0);
-        }
-        if (score >= 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
-        {
-            Tuto_Manager.tuto.ActivatingTuto(4);
-        }
+        //if (score >= 1)
+        //{
+        //    Tuto_Manager.tuto.ActivatingTuto(3);
+        //    Story_Manager.story.ActivateStoryInGallery(0);
+        //}
+        //if (score >= 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
+        //{
+        //    Tuto_Manager.tuto.ActivatingTuto(4);
+        //}
         mainCanvas.worldCamera = uiCam;
         vumarkPrefab.SetActive(false);
         uiCam.gameObject.SetActive(true);
