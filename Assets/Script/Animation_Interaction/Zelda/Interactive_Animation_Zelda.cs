@@ -39,14 +39,14 @@ public class Interactive_Animation_Zelda : MonoBehaviour {
             {
                 currentAnimation.SetTrigger("Excalibur_Make_Step");
                 excaliburCount--;
-                Audio_Manager.audio.SoundsToPlay(audioZelda[1]);
-                Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerZelda[1];
+                AudioManager.s_Singleton.PlaySFX(audioZelda[1]);
+                AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerZelda[1];
                 StartCoroutine(GetExcalibur());
             }
             else if(excaliburCount >= 1)
             {   excaliburCount--;
-                Audio_Manager.audio.SoundsToPlay(audioZelda[0]);
-                Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerZelda[0];
+                AudioManager.s_Singleton.PlaySFX(audioZelda[0]);
+                AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerZelda[0];
                 isOKTap = false;
                 currentAnimation.SetTrigger("Excalibur_Make_Step");
             }
@@ -62,8 +62,8 @@ public class Interactive_Animation_Zelda : MonoBehaviour {
     {
         Debug.Log("YOOOOOOOOOOOOOOOOOOO");
         yield return new WaitForSeconds(1.0f);
-        Audio_Manager.audio.SoundsToPlay(audioZelda[2]);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerZelda[2];
+        AudioManager.s_Singleton.PlaySFX(audioZelda[2]);
+        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerZelda[2];
     }
 
     //public void ExcaliburIsFinished()

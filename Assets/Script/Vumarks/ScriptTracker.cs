@@ -315,8 +315,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         Debug.Log("Here");
         quizAnim.SetBool("Erreur", true);
-        Audio_Manager.audio.SoundsToPlay(audioQuizzBadAnswer);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
+        AudioManager.s_Singleton.PlaySFX(audioQuizzBadAnswer);
+        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
         parentErrorCount.transform.GetChild(currentErrorCount).GetComponent<UnityEngine.UI.Image>().sprite = newErrorImage;
         currentErrorCount++;        
 
@@ -331,8 +331,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void RightAnswer()
     {
         Debug.Log("Here");
-        Audio_Manager.audio.SoundsToPlay(audioQuizzCorrectAnswer);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
+        AudioManager.s_Singleton.PlaySFX(audioQuizzCorrectAnswer);
+        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
         quizzAvailable.Remove(currentQuizz);
         for (int i = 0; i < buttonList.Length; i++)
         {

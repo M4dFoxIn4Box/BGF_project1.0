@@ -51,19 +51,19 @@ public class Minecraft_Script : MonoBehaviour {
 
     void AudioForge()
     {
-        Audio_Manager.audio.SoundsToPlay(audioMinecraft[0]);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerMinecraft[0];
+        AudioManager.s_Singleton.PlaySFX(audioMinecraft[0]);
+        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerMinecraft[0];
     }
 
     void AudioPickUpObject()
     {
-        Audio_Manager.audio.SoundsToPlay(audioMinecraft[1]);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerMinecraft[1];
+        AudioManager.s_Singleton.PlaySFX(audioMinecraft[1]);
+        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerMinecraft[1];
     }
 
     void AudioOh()
     {
-        Audio_Manager.audio.SoundsToPlay(audioMinecraft[2]);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerMinecraft[2];
+        AudioManager.s_Singleton.PlaySFX(audioMinecraft[2]);
+        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerMinecraft[2];
     }
 }

@@ -48,13 +48,13 @@ public class Interactive_Animation_Dr_Strange : MonoBehaviour {
 
     void AudioAppleEating()
     {
-        Audio_Manager.audio.SoundsToPlay(audioDrStrange[0]);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerDrStrange[0];
+        AudioManager.s_Singleton.PlaySFX(audioDrStrange[0]);
+        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerDrStrange[0];
     }
 
     void AudioMagicSpell()
     {
-        Audio_Manager.audio.SoundsToPlay(audioDrStrange[1]);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerDrStrange[1];
+        AudioManager.s_Singleton.PlaySFX(audioDrStrange[1]);
+        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerDrStrange[1];
     }
 }

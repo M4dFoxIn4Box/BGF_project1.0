@@ -205,8 +205,8 @@ public class Interface_Manager : MonoBehaviour
     public void ChangeMenu(int newIdxMenu)
     {
         Debug.Log("Here");
-        Audio_Manager.audio.SoundsToPlay(audioChangeMenu);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
+        AudioManager.s_Singleton.PlaySFX(audioChangeMenu);
+        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
         menuToActivate[currentIdxMenu].SetActive(false);
         menuToActivate[newIdxMenu].SetActive(true);
         currentIdxMenu = newIdxMenu;

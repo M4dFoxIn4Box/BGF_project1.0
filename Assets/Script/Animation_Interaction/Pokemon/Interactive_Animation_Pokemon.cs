@@ -17,8 +17,8 @@ public class Interactive_Animation_Pokemon : MonoBehaviour {
 
     void AudioCaught ()
     {
-        Audio_Manager.audio.SoundsToPlay(audioPokemon[0]);
-        Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerPokemon[0];
+        AudioManager.s_Singleton.PlaySFX(audioPokemon[0]);
+        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerPokemon[0];
     }
 
     //void CameraChangeView()
