@@ -353,7 +353,7 @@ public class Interface_Manager : MonoBehaviour
         }
     }
     #endregion
-
+    
     private void Awake()
     {
         if (Instance != null)
