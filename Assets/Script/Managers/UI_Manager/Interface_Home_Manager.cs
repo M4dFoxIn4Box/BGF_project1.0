@@ -77,24 +77,20 @@ public class Interface_Home_Manager : MonoBehaviour
     #endregion
 
     // Use this for initialization
-    void Start()
-    {
 
-    }
-
-    public void QuitAPK()
+    public void LoadLevel(int level)
     {
-        Application.Quit();
-    }
-
-    IEnumerator LoadBGFScene()
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene_BGF");
-        while (!asyncLoad.isDone)
+        switch (level)
         {
-            loadingSprite.fillAmount = asyncLoad.progress;
-            yield return null;
-        } 
+            case 1:
+                DisplayScreen(2);
+                StartCoroutine(LoadBordeauxScene());
+                break;
+            case 2:
+                DisplayScreen(2);
+                StartCoroutine(LoadBGFScene());
+                break;
+        }
     }
 
     IEnumerator LoadBordeauxScene()
@@ -105,6 +101,16 @@ public class Interface_Home_Manager : MonoBehaviour
             loadingSprite.fillAmount = asyncLoad.progress;
             yield return null;
         }
+    }
+
+    IEnumerator LoadBGFScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene_BGF");
+        while (!asyncLoad.isDone)
+        {
+            loadingSprite.fillAmount = asyncLoad.progress;
+            yield return null;
+        } 
     }
 
     public void DisplayScreen (int newScreenIdx)
@@ -123,19 +129,10 @@ public class Interface_Home_Manager : MonoBehaviour
         homeScreens[currentScreenIdx].SetActive(true);
     }
 
-    public void LoadLevel (int level)
+    public void QuitAPK()
     {
-        switch (level)
-        {
-            case 1:
-                DisplayScreen(2);
-                StartCoroutine(LoadBordeauxScene());
-                break;
-            case 2:
-                DisplayScreen(2);
-                StartCoroutine(LoadBGFScene());
-                break;
-        }
-    } 
+        Application.Quit();
+    }
+
 }
 
