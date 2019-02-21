@@ -95,22 +95,13 @@ public class Interface_Manager : MonoBehaviour
     public void OpenARCamera()//ALLUMER L AR CAM
     {
         Debug.Log("Here");
-        //if (quizzDone == false)
-        //{
-        //    //Tuto_Manager.tuto.ActivatingTuto(tutoQuizzIdx);
-        //    quizzDone = true;
-        //    //Save_Manager.saving.TutoQuizzIsDone(quizzDone);
-        //}
-        //else
-        {
-            mainCanvas.worldCamera = arCam;
-            menuToActivate[currentIdxMenu].SetActive(false);
-            ARModeMenu.SetActive(true);
-            vumarkPrefab.SetActive(true);
-            uiCam.gameObject.SetActive(false);
-
-            arCam.gameObject.SetActive(true);
-        }
+        //mainCanvas.worldCamera = arCam;
+        //menuToActivate[currentIdxMenu].SetActive(false);
+        //ARModeMenu.SetActive(true);
+        vumarkPrefab.SetActive(true);
+        uiCam.gameObject.SetActive(false);
+        arCam.gameObject.SetActive(true);
+        menusBackground.SetActive(false);
     }
 
     public void CloseARCamera()//ETEINDRE AR CAM
@@ -125,12 +116,13 @@ public class Interface_Manager : MonoBehaviour
         //{
         //    Tuto_Manager.tuto.ActivatingTuto(4);
         //}
-        mainCanvas.worldCamera = uiCam;
+        //mainCanvas.worldCamera = uiCam;
         vumarkPrefab.SetActive(false);
         uiCam.gameObject.SetActive(true);
         arCam.gameObject.SetActive(false);
-        ARModeMenu.SetActive(false);
-        menuToActivate[currentIdxMenu].SetActive(true);
+        menusBackground.SetActive(true);
+        //ARModeMenu.SetActive(false);
+        //menuToActivate[currentIdxMenu].SetActive(true);
     }
     #endregion
 
@@ -147,11 +139,10 @@ public class Interface_Manager : MonoBehaviour
     #region Menu
 
     [Header("Menu")]//Changer de menu
-
+    public GameObject ARModeMenu;//Menu de l'AR Mode
     private int currentIdxMenu = 0;//Idx du menu intro
     public GameObject[] menuToActivate;//menu à activer
-    public GameObject ARModeMenu;//Menu de l'AR Mode
-
+   
     #endregion
 
     #region Quizz
@@ -198,23 +189,50 @@ public class Interface_Manager : MonoBehaviour
 
     #endregion
 
-    #region Interface Manager
-    //UI MANAGER 
+    #region Interface
+    [Header("Interface")]
+
+    public GameObject menusBackground;
+    private int currentScreenIdx = 0;
+    private int previousScreenIdx = -1;
 
     //Pour changer de menu il faut renseigner le int sur le bouton
-    public void ChangeMenu(int newIdxMenu)
+    public void ChangeMenu(int newScreenIdx)
     {
         Debug.Log("Here");
+        
         AudioManager.s_Singleton.PlaySFX(audioChangeMenu);
         AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
+        previousScreenIdx = currentScreenIdx;
         menuToActivate[currentIdxMenu].SetActive(false);
-        menuToActivate[newIdxMenu].SetActive(true);
-        currentIdxMenu = newIdxMenu;
+        currentScreenIdx = newScreenIdx;
+        menuToActivate[newScreenIdx].SetActive(true);
 
         if (stopMusicInGallery)
         {
             DeactiveMusicMainMenu();
         }
+
+        switch (newScreenIdx)
+        {
+            case 4:
+                OpenARCamera();
+                break;
+        }
+    }
+
+    public void BackToPreviousScreen()
+    {
+        switch (currentScreenIdx)
+        {
+            case 4:
+                CloseARCamera();
+                break;
+        }
+        menuToActivate[currentScreenIdx].SetActive(false);
+        currentScreenIdx = previousScreenIdx;
+        previousScreenIdx = -1;
+        menuToActivate[currentScreenIdx].SetActive(true);
     }
 
     public void ShowElement(GameObject elementToActive)
