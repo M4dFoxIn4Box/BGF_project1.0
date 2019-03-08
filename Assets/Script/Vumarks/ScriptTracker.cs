@@ -52,7 +52,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     [SerializeField] private List<bool> b_quizz_is_done;
     [SerializeField] private GameObject g_return_to_vumark;
-    [SerializeField] private int i_vumark_index;
+    [SerializeField] private GameObject g_try_again;
+    private int i_current_vumark_index;
 
     [Header("Fake AR feedback")]
 
@@ -121,7 +122,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
     {
-        Debug.Log("Here");
         if (newStatus == TrackableBehaviour.Status.DETECTED || newStatus == TrackableBehaviour.Status.TRACKED || newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             OnTrackerFound();
@@ -136,24 +136,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     void OnTrackerFound()
     {
         g_return_to_vumark.SetActive(false);
-
-        foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
-        {
-            vumarkID = (int)vumark.InstanceId.NumericValue;
-            i_vumark_index = vumarkID;
-            Debug.Log("HELLO" + i_vumark_index);
-        }
-
-        if (b_quizz_is_done[i_vumark_index] == false)
-        {
-            FillAmountScan();
-            loadingScan.SetActive(true);
-            loadingState = false;
-        }
-        else
-        {
-            ActiveAnimation();
-}   
+        g_try_again.SetActive(false);
+        FillAmountScan();
+        loadingScan.SetActive(true);
+        loadingState = false;
     }
     
     public void OnTrackerLost()
@@ -162,7 +148,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         loadingState = false;
         feedbackScan.fillAmount = 0;
 
-        if (vumarkID >= vumarkRewardMinValue) 
+        if (vumarkID >= vumarkRewardMinValue)
         {
 
         }
@@ -180,29 +166,29 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void ScanIsDone()
     {
-        //Debug.Log("Here");
-        //foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
-        //{
-        //    vumarkID = (int)vumark.InstanceId.NumericValue;
-        //    i_vumark_index = vumarkID;
-        //}
-
-        if (i_vumark_index >= vumarkRewardMinValue) //Pour ouvrir un coffre (stand bgf)
+        foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
-            int idxToCast = vumarkID - vumarkRewardMinValue;
-            Interface_Manager.Instance.RewardBoxOpened(idxToCast);
+            vumarkID = (int)vumark.InstanceId.NumericValue;
+            i_current_vumark_index = vumarkID;
         }
 
-        //else if( == true)
-        //{
-            
-            
-        //}
-
-        else
+        if (b_quizz_is_done[vumarkID-1] == false)
         {
-            //quizzDone = false;
-            QuizzDisplaying();
+            if (vumarkID >= vumarkRewardMinValue) //Pour ouvrir un coffre (stand bgf)
+            {
+                int idxToCast = vumarkID - vumarkRewardMinValue;
+                Interface_Manager.Instance.RewardBoxOpened(idxToCast);
+            }
+            else
+            {
+                quizzDone = false;
+                QuizzDisplaying();
+            }
+        }
+
+        else if (b_quizz_is_done[vumarkID] == true)
+        {
+            ActiveAnimation();
         }
     }
 
@@ -350,7 +336,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         AudioManager.s_Singleton.PlaySFX(audioQuizzCorrectAnswer);
         AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
-        quizzAvailable.Remove(currentQuizz);
+
         for (int i = 0; i < buttonList.Length; i++)
         {
             buttonList[i].interactable = false;
@@ -358,7 +344,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         parentWinCount.transform.GetChild(currentQuizzScore).GetComponent<UnityEngine.UI.Image>().color = Color.green;
         currentQuizzScore++;
-        Debug.Log(currentQuizzScore);
 
         if (currentQuizzScore == scoreToReach)
         {
@@ -379,6 +364,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             yield return new WaitForSeconds(1);
             LeaveQuizz();
+            g_try_again.SetActive(true);
+
         }
         currentQuizz = null;    
         QuizzDisplaying();
@@ -393,13 +380,14 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         quizzInterface.SetActive(false);       
         quizzDone = false;
 
-        ReturnToVumark();
         QuizzISDone();
+        LeaveQuizz();
+        ReturnToVumark();
     }
 
     private void QuizzISDone()
     {
-        b_quizz_is_done[i_vumark_index] = true;
+        b_quizz_is_done[i_current_vumark_index-1] = true;
     }
 
     private void ReturnToVumark()
@@ -407,7 +395,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         g_return_to_vumark.SetActive(true);
     }
 
-    private void ActiveAnimation() // Fais apparaître les récompenses liés au VuMark scanné
+    private void ActiveAnimation() // Fait apparaître les récompenses liés au VuMark scanné
     {
         g_return_to_vumark.SetActive(false);
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
