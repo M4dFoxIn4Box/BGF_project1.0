@@ -50,10 +50,13 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public AudioSource quizzAudioSource;
     public AudioClip[] audioQuizz;
 
-    [SerializeField] private List<bool> b_quizz_is_done;
-    [SerializeField] private GameObject g_return_to_vumark;
-    [SerializeField] private GameObject g_try_again;
+    //VARIABLES ADD 8 MARS
+    public List<bool> b_quizz_is_done;
+    public GameObject g_return_to_vumark;
+    public GameObject g_try_again;
     private int i_current_vumark_index;
+    private bool b_quizz_is_active = false;
+
 
     [Header("Fake AR feedback")]
 
@@ -135,11 +138,14 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
-        g_return_to_vumark.SetActive(false);
-        g_try_again.SetActive(false);
-        FillAmountScan();
-        loadingScan.SetActive(true);
-        loadingState = false;
+        if(b_quizz_is_active == false)
+        {
+            g_return_to_vumark.SetActive(false);
+            g_try_again.SetActive(false);
+            FillAmountScan();
+            loadingScan.SetActive(true);
+            loadingState = false;
+        }
     }
     
     public void OnTrackerLost()
@@ -148,7 +154,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         loadingState = false;
         feedbackScan.fillAmount = 0;
 
-        if (vumarkID >= vumarkRewardMinValue)
+        if (i_current_vumark_index >= vumarkRewardMinValue)
         {
 
         }
@@ -186,7 +192,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             }
         }
 
-        else if (b_quizz_is_done[vumarkID] == true)
+        else if (b_quizz_is_done[vumarkID-1] == true)
         {
             ActiveAnimation();
         }
@@ -195,6 +201,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void QuizzDisplaying ()
     {
         quizAnim.SetBool("Erreur", false);
+
+        b_quizz_is_active = true;
+
             if (quizzDone == false)
             {
                 currentQuizzList = quizzLists[vumarkID - 1];
@@ -271,6 +280,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void LeaveQuizz()
     {
         quizzAvailable.Clear();
+        b_quizz_is_active = false;
 
         if (feedBackFakeAR)
         {
