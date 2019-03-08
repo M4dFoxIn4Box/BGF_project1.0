@@ -54,8 +54,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public List<bool> b_quizz_is_done;
     public GameObject g_return_to_vumark;
     public GameObject g_try_again;
+    public GameObject g_get_first_vumark;
     private int i_current_vumark_index;
     private bool b_quizz_is_active = false;
+    private bool b_first_vumark_is_unlock;
 
 
     [Header("Fake AR feedback")]
@@ -141,6 +143,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         if(b_quizz_is_active == false)
         {
             g_return_to_vumark.SetActive(false);
+            g_get_first_vumark.SetActive(false);
             g_try_again.SetActive(false);
             FillAmountScan();
             loadingScan.SetActive(true);
@@ -178,23 +181,34 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             i_current_vumark_index = vumarkID;
         }
 
-        if (b_quizz_is_done[vumarkID-1] == false)
+        if(b_first_vumark_is_unlock == true)
         {
-            if (vumarkID >= vumarkRewardMinValue) //Pour ouvrir un coffre (stand bgf)
+            if (b_quizz_is_done[vumarkID - 1] == false)
             {
-                int idxToCast = vumarkID - vumarkRewardMinValue;
-                Interface_Manager.Instance.RewardBoxOpened(idxToCast);
+                if (vumarkID >= vumarkRewardMinValue) //Pour ouvrir un coffre (stand bgf)
+                {
+                    int idxToCast = vumarkID - vumarkRewardMinValue;
+                    Interface_Manager.Instance.RewardBoxOpened(idxToCast);
+                }
+                else
+                {
+                    quizzDone = false;
+                    QuizzDisplaying();
+                }
             }
-            else
+
+            else if (b_quizz_is_done[vumarkID - 1] == true)
             {
-                quizzDone = false;
-                QuizzDisplaying();
+                ActiveAnimation();
             }
         }
-
-        else if (b_quizz_is_done[vumarkID-1] == true)
+        else if (i_current_vumark_index != 1)
         {
-            ActiveAnimation();
+            g_get_first_vumark.SetActive(true);
+        }
+        else if(i_current_vumark_index == 1 && b_first_vumark_is_unlock == false)
+        {
+            QuizzDisplaying();
         }
     }
 
@@ -389,6 +403,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);       
         quizzDone = false;
+
+        if(i_current_vumark_index == 1 && b_first_vumark_is_unlock == false)
+        {
+            b_first_vumark_is_unlock = true;
+        }
 
         QuizzISDone();
         LeaveQuizz();
