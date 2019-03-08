@@ -50,6 +50,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public AudioSource quizzAudioSource;
     public AudioClip[] audioQuizz;
 
+    [SerializeField] private List<bool> b_quizz_is_done;
+
     [Header("Fake AR feedback")]
 
     public GameObject feedBackFakeAR;
@@ -157,7 +159,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             }
         }
 
-        LeaveQuizz();
+        //LeaveQuizz();
     }
 
     void ScanIsDone()
@@ -168,14 +170,19 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             vumarkID = (int)vumark.InstanceId.NumericValue;
         }
 
-        if (vumarkID >= vumarkRewardMinValue)
+        if (vumarkID >= vumarkRewardMinValue) //Pour ouvrir un coffre (stand bgf)
         {
             int idxToCast = vumarkID - vumarkRewardMinValue;
             Interface_Manager.Instance.RewardBoxOpened(idxToCast);
         }
+        //else if( == true)
+        //{
+            
+            
+        //}
         else
         {
-            quizzDone = false;
+            //quizzDone = false;
             QuizzDisplaying();
         }
     }
@@ -191,11 +198,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
                         for (int i = 0; i < scoreToReach; i++)
                         {
-
                             Instantiate(winCounter, parentWinCount.transform);
                             winCountList.Add(winCounter);
                             Debug.Log(winCountList);
-
                         }
 
                         for (int i = 0; i < currentQuizzList.errorLimit; i++)
@@ -231,6 +236,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                     buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
                 }
             }                            
+    }
+
+    private void QuizzISDone()
+    {
+        //currentQuizz.
     }
 
     public void FakeARToDeactivate(GameObject fakeARObject)
