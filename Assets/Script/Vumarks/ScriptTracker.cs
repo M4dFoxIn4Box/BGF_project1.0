@@ -50,6 +50,16 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public AudioSource quizzAudioSource;
     public AudioClip[] audioQuizz;
 
+    //VARIABLES ADD 8 MARS
+    public List<bool> b_quizz_is_done;
+    public GameObject g_return_to_vumark;
+    public GameObject g_try_again;
+    public GameObject g_get_first_vumark;
+    private int i_current_vumark_index;
+    private bool b_quizz_is_active = false;
+    private bool b_first_vumark_is_unlock;
+
+
     [Header("Fake AR feedback")]
 
     public GameObject feedBackFakeAR;
@@ -117,7 +127,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
     {
-        Debug.Log("Here");
         if (newStatus == TrackableBehaviour.Status.DETECTED || newStatus == TrackableBehaviour.Status.TRACKED || newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             OnTrackerFound();
@@ -131,20 +140,24 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
-        Debug.Log("Here");
-        FillAmountScan();
-        loadingScan.SetActive(true);
-        loadingState = false;
+        if(b_quizz_is_active == false)
+        {
+            g_return_to_vumark.SetActive(false);
+            g_get_first_vumark.SetActive(false);
+            g_try_again.SetActive(false);
+            FillAmountScan();
+            loadingScan.SetActive(true);
+            loadingState = false;
+        }
     }
     
     public void OnTrackerLost()
     {
-        Debug.Log("Here");
         loadingScan.SetActive(false);
         loadingState = false;
         feedbackScan.fillAmount = 0;
 
-        if (vumarkID >= vumarkRewardMinValue)
+        if (i_current_vumark_index >= vumarkRewardMinValue)
         {
 
         }
@@ -157,33 +170,54 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             }
         }
 
-        LeaveQuizz();
+        //LeaveQuizz();
     }
 
     void ScanIsDone()
     {
-        Debug.Log("Here");
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
             vumarkID = (int)vumark.InstanceId.NumericValue;
+            i_current_vumark_index = vumarkID;
         }
 
-        if (vumarkID >= vumarkRewardMinValue)
+        if(b_first_vumark_is_unlock == true)
         {
-            int idxToCast = vumarkID - vumarkRewardMinValue;
-            Interface_Manager.Instance.RewardBoxOpened(idxToCast);
+            if (b_quizz_is_done[vumarkID - 1] == false)
+            {
+                if (vumarkID >= vumarkRewardMinValue) //Pour ouvrir un coffre (stand bgf)
+                {
+                    int idxToCast = vumarkID - vumarkRewardMinValue;
+                    Interface_Manager.Instance.RewardBoxOpened(idxToCast);
+                }
+                else
+                {
+                    quizzDone = false;
+                    QuizzDisplaying();
+                }
+            }
+
+            else if (b_quizz_is_done[vumarkID - 1] == true)
+            {
+                ActiveAnimation();
+            }
         }
-        else
+        else if (i_current_vumark_index != 1)
         {
-            quizzDone = false;
+            g_get_first_vumark.SetActive(true);
+        }
+        else if(i_current_vumark_index == 1 && b_first_vumark_is_unlock == false)
+        {
             QuizzDisplaying();
         }
     }
 
     public void QuizzDisplaying ()
     {
-        Debug.Log("Here");
         quizAnim.SetBool("Erreur", false);
+
+        b_quizz_is_active = true;
+
             if (quizzDone == false)
             {
                 currentQuizzList = quizzLists[vumarkID - 1];
@@ -191,11 +225,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
                         for (int i = 0; i < scoreToReach; i++)
                         {
-
                             Instantiate(winCounter, parentWinCount.transform);
                             winCountList.Add(winCounter);
                             Debug.Log(winCountList);
-
                         }
 
                         for (int i = 0; i < currentQuizzList.errorLimit; i++)
@@ -235,7 +267,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void FakeARToDeactivate(GameObject fakeARObject)
     {
-        Debug.Log("Here");
         currentFakeARObject = fakeARObject;
     }
 
@@ -243,13 +274,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void ARLocker()
     {
-        Debug.Log("Here");
         arIsLock = !arIsLock;
     }
 
-    public void ButtonClick (int buttonIdx)
+    public void ButtonClick (int buttonIdx) //Lier la fonction au bouton de réponse au quizz
     {
-        Debug.Log("Here");
         if (buttonIdx + 1 == currentQuizz.rightAnswer)
         {
             buttonList[buttonIdx].GetComponent<UnityEngine.UI.Image>().color = Color.green;
@@ -264,8 +293,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void LeaveQuizz()
     {
-        Debug.Log("Here");
         quizzAvailable.Clear();
+        b_quizz_is_active = false;
 
         if (feedBackFakeAR)
         {
@@ -313,7 +342,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void BadAnswer()
     {
-        Debug.Log("Here");
         quizAnim.SetBool("Erreur", true);
         AudioManager.s_Singleton.PlaySFX(audioQuizzBadAnswer);
         AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
@@ -330,10 +358,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     public void RightAnswer()
     {
-        Debug.Log("Here");
         AudioManager.s_Singleton.PlaySFX(audioQuizzCorrectAnswer);
         AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
-        quizzAvailable.Remove(currentQuizz);
+
         for (int i = 0; i < buttonList.Length; i++)
         {
             buttonList[i].interactable = false;
@@ -341,7 +368,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
         parentWinCount.transform.GetChild(currentQuizzScore).GetComponent<UnityEngine.UI.Image>().color = Color.green;
         currentQuizzScore++;
-        Debug.Log(currentQuizzScore);
 
         if (currentQuizzScore == scoreToReach)
         {
@@ -357,12 +383,13 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     IEnumerator TimeBeforeNextQuizz ()
     {
-        Debug.Log("Here");
         yield return new WaitForSeconds(1);
         if (currentErrorCount == currentQuizzList.errorLimit)
         {
             yield return new WaitForSeconds(1);
             LeaveQuizz();
+            g_try_again.SetActive(true);
+
         }
         currentQuizz = null;    
         QuizzDisplaying();
@@ -370,43 +397,58 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     IEnumerator GameWon()
     {
-        Debug.Log("Here");
         yield return new WaitForSeconds(2);
-        Debug.Log("Here");
         // Reset du quizz
 
         congratulationsImage.SetActive(false);
         quizzInterface.SetActive(false);       
         quizzDone = false;
 
-        // Fais apparaître les récompenses liés au VuMark scanné
+        if(i_current_vumark_index == 1 && b_first_vumark_is_unlock == false)
+        {
+            b_first_vumark_is_unlock = true;
+        }
 
+        QuizzISDone();
+        LeaveQuizz();
+        ReturnToVumark();
+    }
+
+    private void QuizzISDone()
+    {
+        b_quizz_is_done[i_current_vumark_index-1] = true;
+    }
+
+    private void ReturnToVumark()
+    {
+        g_return_to_vumark.SetActive(true);
+    }
+
+    private void ActiveAnimation() // Fait apparaître les récompenses liés au VuMark scanné
+    {
+        g_return_to_vumark.SetActive(false);
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
             int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
             transform.GetChild(targetObj - 1).gameObject.SetActive(true);
             Interface_Manager.Instance.CheckStateButton(targetObj - 1);
         }
-
     }
 
     public void RewardButton(int rewardIdx) //Click sur le bouton de la galerie
     {
-        Debug.Log("HELLO");
         currentReward = Instantiate(quizzLists[rewardIdx].rewardToSpawn, spawnPointReward);
         spawnPointFunFact.text = quizzLists[rewardIdx].funFact;
     }
 
     public void DestroyRewardSpawn()
     {
-        Debug.Log("Here");
         Destroy(currentReward);
     }
 
 
     void FillAmountScan()
     {
-        Debug.Log("Here");
         if (loadingState == false)
         {
             feedbackScan.fillAmount += Time.deltaTime/scanWaitTime;
@@ -429,6 +471,5 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             FillAmountScan();
         }
-
     }
 }
