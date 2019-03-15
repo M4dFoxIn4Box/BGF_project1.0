@@ -4,11 +4,252 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.EventSystems;
 
 public class Interface_Manager : MonoBehaviour
 {
     public static Interface_Manager Instance { get; private set; }
+
+    //CODE YANNICK
+
+    public Transform animationsParent;
+    private Animator myAnim;
+
+    [Header("Message Section")]
+    public GameObject messageSection;
+    public Text messageText;
+    public Image messageImage;
+    public List<ScriptTracker.TargetsRelatedMessage> uiMessages;
+
+    [Header("Quizz Section")]
+    public ScriptableQuizzManager[] quizzManagers;
+    public GameObject quizzSection;
+    public Transform rightAnswersSection;
+    public Transform badAnswersSection;
+    public Text quizzQuestionText;
+    public Transform quizzAnswersButtonsSection;
+    public Color inactiveGoodAnswerFeedbackColor;
+    public Color activeGoodAnswerFeedbackColor;
+    private List<bool> quizzAnsweredId = new List<bool>();
+    private int currentScanId = -1;
+    private int currentQuizzRightAnswersNb = 0;
+    private int currentQuizzBadAnswersNb = 0;
+    private int previousQuestionId = -1;
+
+    [Header("Scan Section")]
+    public GameObject feedbackScan;
+    public Image feedbackScanImage;
+    public Text loadingTextState;
+    public float scanDuration;
+    private bool isScanning = false;
+
+    public GameObject unlockFirstTargetSection;
+
+    //END CODE YANNICK
+
+    private void Awake()
+    {
+        quizzAnsweredId.Clear();
+        for (int i = 0; i < animationsParent.childCount; i++)
+        {
+            quizzAnsweredId.Add(false);
+        }
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    void Start()
+    {
+        myAnim = GetComponent<Animator>();
+        //scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
+    }
+
+    public void DisplayMessage (ScriptTracker.TargetsRelatedMessage dMsg)
+    {
+        messageText.text = dMsg.messageToDisplay;
+        if (dMsg.imageToDisplay != null)
+        {
+            messageImage.sprite = dMsg.imageToDisplay;
+            messageImage.gameObject.SetActive(true);
+        }
+        messageSection.SetActive(true);
+    }
+
+    public void HideMessage()
+    {
+        messageSection.SetActive(false);
+        messageText.text = "";
+        messageImage.gameObject.SetActive(false);
+        messageImage.sprite = null;
+    }
+
+    public void StartScanning (int vId)
+    {
+        if (feedbackScanImage.fillAmount >= 0 && !feedbackScan.activeSelf)
+        {
+            HideMessage();
+            currentScanId = vId;
+            feedbackScanImage.fillAmount = 0;
+            feedbackScan.SetActive(true);
+            isScanning = true;
+        }
+    }
+
+    public void EndScanning ()
+    {
+        feedbackScan.SetActive(false);
+        feedbackScanImage.fillAmount = 0;
+        isScanning = false;
+    }
+
+    void Update()
+    {
+        if (isScanning)
+        {
+            feedbackScanImage.fillAmount += Time.deltaTime / scanDuration;
+            loadingTextState.text = (feedbackScanImage.fillAmount * 100).ToString("F0") + "%";
+
+            if (feedbackScanImage.fillAmount >= 1)
+            {
+                CheckQuizzState();
+            }
+        }
+    }
+
+    public void CheckQuizzState()
+    {
+        EndScanning();
+        if (!quizzAnsweredId[currentScanId])
+        {
+            ResetBadAnswersFeedbacks();
+            ResetRightAnswersFeedbacks();
+            currentQuizzRightAnswersNb = 0;
+            currentQuizzBadAnswersNb = 0;
+            PopulateQuizzElements();
+        }
+        else if (quizzAnsweredId[currentScanId])
+        {
+            ScriptTracker.Instance.ActiveAnimation();
+        }
+    }
+
+    public void CheckAnswersStatus ()
+    {
+        if (currentQuizzBadAnswersNb >= 2)
+        {
+            DisplayMessage(uiMessages[0]);
+        }
+        else if (currentQuizzRightAnswersNb >= 2)
+        {
+            quizzAnsweredId[currentScanId] = true;
+            DisplayMessage(uiMessages[1]);
+        }
+        else
+        {
+            PopulateQuizzElements();
+            return;
+        }
+        HideQuizz();
+        ResetBadAnswersFeedbacks();
+        ResetRightAnswersFeedbacks();
+        currentQuizzBadAnswersNb = 0;
+        currentQuizzRightAnswersNb = 0;
+    }
+
+    public void PopulateQuizzElements ()
+    {
+        if (currentQuizzRightAnswersNb == 0 && currentQuizzBadAnswersNb == 0)
+        {
+            foreach (Transform fb in rightAnswersSection)
+            {
+                fb.GetComponent<Image>().color = inactiveGoodAnswerFeedbackColor;
+            }
+        }
+        
+        int rndInt = Random.Range(0, quizzManagers[currentScanId-1].scriptableQuizzList.Count);
+        while (rndInt == previousQuestionId)
+        {
+            rndInt = Random.Range(0, quizzManagers[currentScanId - 1].scriptableQuizzList.Count);
+        }
+        for (int i = 0; i < quizzManagers[currentScanId - 1].scriptableQuizzList[rndInt].answerList.Length; i++)
+        {
+            quizzAnswersButtonsSection.GetChild(i).GetComponentInChildren<Text>().text = quizzManagers[currentScanId - 1].scriptableQuizzList[rndInt].answerList[i];
+        }
+        quizzQuestionText.text = quizzManagers[currentScanId - 1].scriptableQuizzList[rndInt].quizzQuestion;
+        EnableAnswersButtons();
+        DisplayQuizz();
+        previousQuestionId = rndInt;
+    }
+
+    public void DisplayQuizz()
+    {
+        quizzSection.SetActive(true);
+    }
+
+    public void HideQuizz()
+    {
+        quizzSection.SetActive(false);
+    }
+
+    public void OnPickAnswer ()
+    {
+        Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
+        if (cTrs.GetSiblingIndex() + 1 == quizzManagers[currentScanId - 1].scriptableQuizzList[previousQuestionId].rightAnswer)
+        {
+            cTrs.GetComponent<Image>().color = Color.green;
+            rightAnswersSection.GetChild(currentQuizzRightAnswersNb).GetComponent<Image>().color = activeGoodAnswerFeedbackColor;
+            currentQuizzRightAnswersNb++;
+            myAnim.SetTrigger("QuizzCorrect");
+        }
+        else if (cTrs.GetSiblingIndex() + 1 != quizzManagers[currentScanId - 1].scriptableQuizzList[previousQuestionId].rightAnswer)
+        {
+            cTrs.GetComponent<Image>().color = Color.red;
+            badAnswersSection.GetChild(currentQuizzBadAnswersNb).gameObject.SetActive(true);
+            currentQuizzBadAnswersNb++;
+            myAnim.SetTrigger("QuizzError");
+        }
+        DisableAnswersButtons();
+    }
+
+    public void EnableAnswersButtons()
+    {
+        foreach (Transform button in quizzAnswersButtonsSection)
+        {
+            button.GetComponent<Button>().interactable = true;
+            button.GetComponent<Image>().color = Color.white;
+        }
+    }
+
+    public void DisableAnswersButtons ()
+    {
+        foreach (Transform button in quizzAnswersButtonsSection)
+        {
+            button.GetComponent<Button>().interactable = false;
+        }
+    }
+
+    public void ResetRightAnswersFeedbacks()
+    {
+        foreach (Transform fb in rightAnswersSection)
+        {
+            fb.GetComponent<Image>().color = inactiveGoodAnswerFeedbackColor;
+        }
+    }
+
+    public void ResetBadAnswersFeedbacks()
+    {
+        foreach (Transform fb in badAnswersSection)
+        {
+            fb.gameObject.SetActive(false);
+        }
+    }
+
 
     #region Main Gallery
     [Header("Main Gallery")]
@@ -372,34 +613,6 @@ public class Interface_Manager : MonoBehaviour
     }
     #endregion
     
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        Debug.Log("Here");
-        //scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("z"))
-        {
-            AddScore(1);
-        }
-    }
-
     public void QuitAPK()
     {
         Application.Quit();

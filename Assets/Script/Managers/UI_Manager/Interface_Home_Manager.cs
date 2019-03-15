@@ -16,78 +16,17 @@ public class Interface_Home_Manager : MonoBehaviour
 
     [Header("Loading")]
     public Image loadingSprite;
-    //public GameObject deactiveButtons;
-    //public GameObject loadingScreen;
-
-    #region Sounds
-
-    //[Header("Sounds")]
-
-    //public AudioClip audioChangeMenu;
-    //public AudioMixerGroup[] mixerGroupChangeMenu;
-
-    //public AudioSource musicMainMenuToDeactivate;
-    //private bool stopMusicInGallery = false;
-
-    #endregion
-
-    #region Interface Manager
-
-    //public void ChangeMenu(int newIdxMenu)
-    //{
-    //    //Audio_Manager.audio.SoundsToPlay(audioChangeMenu);
-    //    //Audio_Manager.audio.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
-    //    homeScreens[currentScreenIdx].SetActive(false);
-    //    homeScreens[newIdxMenu].SetActive(true);
-    //    currentScreenIdx = newIdxMenu;
-
-    //    if (stopMusicInGallery)
-    //    {
-    //        DeactiveMusicMainMenu();
-    //    }
-    //}
-
-    //public void ShowElement(GameObject elementToActive)
-    //{
-    //    Debug.Log("Here");
-    //    elementToActive.SetActive(true);
-    //}
-
-    //public void UnShowElement(GameObject elementToDesactive)
-    //{
-    //    Debug.Log("Here");
-    //    elementToDesactive.SetActive(false);
-    //}
-
-
-    //public void DeactiveMusicMainMenu()//Musique à désactiver ou activer dans la galerie
-    //{
-    //    Debug.Log("Here");
-    //    if (stopMusicInGallery)
-    //    {
-    //        musicMainMenuToDeactivate.UnPause();
-    //        stopMusicInGallery = false;
-    //    }
-    //    else if (!stopMusicInGallery)
-    //    {
-    //        musicMainMenuToDeactivate.Pause();
-    //        stopMusicInGallery = true;
-    //    }
-    //}
-    #endregion
-
-    // Use this for initialization
-
+    
     public void LoadLevel(int level)
     {
         switch (level)
         {
             case 1:
-                DisplayScreen(2);
+                DisplayScreen(1);
                 StartCoroutine(LoadBordeauxScene());
                 break;
             case 2:
-                DisplayScreen(2);
+                DisplayScreen(1);
                 StartCoroutine(LoadBGFScene());
                 break;
         }
@@ -105,7 +44,7 @@ public class Interface_Home_Manager : MonoBehaviour
 
     IEnumerator LoadBGFScene()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene_BGF");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene_BGF_Redo");
         while (!asyncLoad.isDone)
         {
             loadingSprite.fillAmount = asyncLoad.progress;

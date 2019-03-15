@@ -4,15 +4,37 @@ using UnityEngine;
 using UnityEngine.UI;
 using Vuforia;
 using UnityEngine.Audio;
+using System;
 
 public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 {
+
+    //CODE YANNICK
+
+    [Header("Event Section")]
+    public int vumarkIdUnlockingEventGame = -1;
+    private bool eventGameStarted = false;
+    public List<TargetsRelatedMessage> targetsMessages;
+
+    [Serializable]
+    public class TargetsRelatedMessage
+    {
+        public string messageName;
+        public string messageToDisplay;
+        public Sprite imageToDisplay;
+    }
+
+    [Header("3D AR Section")]
+    public List<GameObject> elementsToSpawn;
+    public Transform staticSpawnPoints;
+    private GameObject currentDisplayedElement;
+
+    //END CODE YANNICK
+
     public static ScriptTracker Instance { get; private set; }
-
-
+    
     private void Awake()
     {
-
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -22,17 +44,14 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             Instance = this;
         }
     }
-
+    
     TrackableBehaviour mTrackableBehaviour;
     VuMarkManager mVuMarkManager;
-    public VuMarkTarget vumark;
+    //public VuMarkTarget vumark;
     public int vumarkID;
 
     public int vumarkRewardMinValue;
-
-    [Header("Tutoriel")]
-    public bool firstScan = true;
-
+    
     [Header("Quizz")]
     public int currentErrorCount;
     public bool quizzDone = false;
@@ -65,11 +84,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public GameObject feedBackFakeAR;
 
     [Header("FeedBackScan")]
-    public GameObject loadingScan;
-    public UnityEngine.UI.Image feedbackScan;
+    public GameObject feedbackScan;
+    public UnityEngine.UI.Image feedbackScanImage;
     public Text loadTextState;
     private bool loadingState = true;
-    public float scanWaitTime;
+    public float scanDuration;
 
     [Header("Textes")]
     public Text quizzText;
@@ -122,6 +141,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
         }
         mVuMarkManager = TrackerManager.Instance.GetStateManager().GetVuMarkManager();
+        
     }
 
 
@@ -140,22 +160,39 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
-        if(b_quizz_is_active == false)
+        foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
-            g_return_to_vumark.SetActive(false);
-            g_get_first_vumark.SetActive(false);
-            g_try_again.SetActive(false);
-            FillAmountScan();
-            loadingScan.SetActive(true);
-            loadingState = false;
+            vumarkID = (int)vumark.InstanceId.NumericValue;
+            i_current_vumark_index = vumarkID;
+        }
+
+
+        if (!eventGameStarted)
+        {
+            if (i_current_vumark_index == vumarkIdUnlockingEventGame)
+            {
+                Interface_Manager.Instance.StartScanning(i_current_vumark_index);
+            }
+            else if (i_current_vumark_index != vumarkIdUnlockingEventGame)
+            {
+                Interface_Manager.Instance.DisplayMessage(targetsMessages[0]);
+            }
+        }
+        else if (eventGameStarted)
+        {
+            Interface_Manager.Instance.StartScanning(i_current_vumark_index);
         }
     }
     
     public void OnTrackerLost()
     {
-        loadingScan.SetActive(false);
+        Interface_Manager.Instance.HideMessage();
+        Destroy(currentDisplayedElement);
+        return;
+
+        feedbackScan.SetActive(false);
         loadingState = false;
-        feedbackScan.fillAmount = 0;
+        feedbackScanImage.fillAmount = 0;
 
         if (i_current_vumark_index >= vumarkRewardMinValue)
         {
@@ -173,6 +210,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         //LeaveQuizz();
     }
 
+    public void ResetScanFeedback ()
+    {
+        feedbackScan.SetActive(false);
+        feedbackScanImage.fillAmount = 0;
+    }
+    
     void ScanIsDone()
     {
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
@@ -181,7 +224,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             i_current_vumark_index = vumarkID;
         }
 
-        if(b_first_vumark_is_unlock == true)
+        if (b_first_vumark_is_unlock == true)
         {
             if (b_quizz_is_done[vumarkID - 1] == false)
             {
@@ -202,11 +245,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 ActiveAnimation();
             }
         }
-        else if (i_current_vumark_index != 1)
+        else if (i_current_vumark_index != 10)
         {
             g_get_first_vumark.SetActive(true);
         }
-        else if(i_current_vumark_index == 1 && b_first_vumark_is_unlock == false)
+        else if(i_current_vumark_index == 10 && b_first_vumark_is_unlock == false)
         {
             QuizzDisplaying();
         }
@@ -248,7 +291,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             else
             {
 
-                currentQuizz = quizzAvailable[(Random.Range(0, quizzAvailable.Count))];
+                currentQuizz = quizzAvailable[(UnityEngine.Random.Range(0, quizzAvailable.Count))];
 
                 quizzInterface.SetActive(true);
 
@@ -424,14 +467,27 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         g_return_to_vumark.SetActive(true);
     }
 
-    private void ActiveAnimation() // Fait apparaître les récompenses liés au VuMark scanné
+    public void ActiveAnimation() // Fait apparaître les récompenses liés au VuMark scanné
     {
-        g_return_to_vumark.SetActive(false);
+        if (!eventGameStarted)
+        {
+            eventGameStarted = true;
+        }
+        
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
             int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
-            transform.GetChild(targetObj - 1).gameObject.SetActive(true);
-            Interface_Manager.Instance.CheckStateButton(targetObj - 1);
+            Transform vmp = transform.GetChild(targetObj - 1);
+            vmp.gameObject.SetActive(true);
+            LinkToStaticARElement lts = vmp.GetComponent<LinkToStaticARElement>();
+            if (lts != null)
+            {
+                currentDisplayedElement = Instantiate(elementsToSpawn[targetObj - 1], lts.GetStaticElement().position, lts.GetStaticElement().rotation, lts.GetStaticElement());
+                return;
+            }
+            currentDisplayedElement = Instantiate(elementsToSpawn[targetObj - 1], vmp.position, vmp.rotation, vmp);
+            
+            //Interface_Manager.Instance.CheckStateButton(targetObj - 1);
         }
     }
 
@@ -445,31 +501,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     {
         Destroy(currentReward);
     }
-
-
-    void FillAmountScan()
-    {
-        if (loadingState == false)
-        {
-            feedbackScan.fillAmount += Time.deltaTime/scanWaitTime;
-        }
-
-        loadTextState.text = (feedbackScan.fillAmount*100).ToString("F0") + "%";
-
-        if (feedbackScan.fillAmount == 1)
-        {
-            ScanIsDone();
-            loadingScan.SetActive(false);
-            loadingState = true;
-            feedbackScan.fillAmount = 1;
-        }
-    }
-
+    
     void Update()
     {
-        if(loadingState == false)
-        {
-            FillAmountScan();
-        }
+
     }
 }
