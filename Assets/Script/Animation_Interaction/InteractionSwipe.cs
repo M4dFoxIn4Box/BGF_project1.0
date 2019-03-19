@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum SwipeBehaviour { Toggle, LeftOrRight, Up}
-public enum SpawnOrientation { Horizontal, Vertical}
 
-//[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class InteractionSwipe : MonoBehaviour
 {
     public SwipeBehaviour swipeAction;
-    public SpawnOrientation spawnOrientation;
 
     [Tooltip("0 = infinite")]
     public int swipeAttempts = 0;
+    public float turnSpeed = 1f;
     public float swipeDistanceThreshold = 3;
+    public bool toggleStartsLeft = false;
     private bool swipeRight = true;
     
     public bool startsInteractable = false;
+    public Animator additionalAnimatorToTrigger;
     private Animator myAnim;
     private bool canSwipe = false;
 
@@ -35,11 +36,9 @@ public class InteractionSwipe : MonoBehaviour
         {
             EnableInteractionSwipe();
         }
-
-        if (spawnOrientation == SpawnOrientation.Vertical)
+        if (toggleStartsLeft)
         {
-            Quaternion newrot = new Quaternion(0.7f, 0, 0, 0.7f);
-            transform.localRotation = newrot;
+            swipeRight = false;
         }
     }
 
@@ -75,53 +74,66 @@ public class InteractionSwipe : MonoBehaviour
             //    }
             //}
 
-            //switch (swipeAction)
-            //{
-            //    case SwipeBehaviour.Toggle:
-            //        if (Input.GetMouseButtonDown(0))
-            //        {
-            //            startPosition = Input.mousePosition;
-            //        }
-            //        else if (Input.GetMouseButtonUp(0))
-            //        {
-            //            endPosition = Input.mousePosition;
-            //            if (Vector2.Distance(startPosition, endPosition) > swipeDistanceThreshold)
-            //            {
-            //                ToggleSwipeDirection();
-            //            }
-            //        }
-            //        break;
-            //    case SwipeBehaviour.LeftOrRight:
-            //        if (Input.GetMouseButtonDown(0))
-            //        {
-            //            startPosition = Input.mousePosition;
-            //        }
-            //        else if (Input.GetMouseButtonUp(0))
-            //        {
-            //            endPosition = Input.mousePosition;
-            //            if (Vector2.Distance(startPosition, endPosition) > swipeDistanceThreshold)
-            //            {
-            //                if (endPosition.x > startPosition.x)
-            //                {
-            //                    myRb.AddRelativeTorque(-Vector3.up, ForceMode.Impulse);
-            //                }
-            //                else if (endPosition.x < startPosition.x)
-            //                {
-            //                    myRb.AddRelativeTorque(Vector3.up, ForceMode.Impulse);
-            //                }
-            //            }
-            //        }
-            //        if (myRb.angularVelocity.y > 10f)
-            //        {
-            //            Vector3 rbav = new Vector3(0, 10, 0);
-            //            myRb.angularVelocity = rbav;
-            //        }
-            //        break;
-            //    case SwipeBehaviour.Up:
-            //        break;
-            //    default:
-            //        break;
-            //}
+            switch (swipeAction)
+            {
+                case SwipeBehaviour.Toggle:
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        startPosition = Input.mousePosition;
+                    }
+                    else if (Input.GetMouseButtonUp(0))
+                    {
+                        endPosition = Input.mousePosition;
+                        if (Vector2.Distance(startPosition, endPosition) > swipeDistanceThreshold)
+                        {
+                            ToggleSwipeDirection();
+                        }
+                    }
+                    break;
+                case SwipeBehaviour.LeftOrRight:
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        startPosition = Input.mousePosition;
+                    }
+                    else if (Input.GetMouseButtonUp(0))
+                    {
+                        endPosition = Input.mousePosition;
+                        if (Vector2.Distance(startPosition, endPosition) > swipeDistanceThreshold)
+                        {
+                            if (endPosition.x > startPosition.x)
+                            {
+                                myRb.AddRelativeTorque(-Vector3.up * turnSpeed, ForceMode.Impulse);
+                            }
+                            else if (endPosition.x < startPosition.x)
+                            {
+                                myRb.AddRelativeTorque(Vector3.up * turnSpeed, ForceMode.Impulse);
+                            }
+                        }
+                    }
+                    if (myRb.angularVelocity.y > 10f)
+                    {
+                        Vector3 rbav = new Vector3(0, 10, 0);
+                        myRb.angularVelocity = rbav;
+                    }
+                    break;
+                case SwipeBehaviour.Up:
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        startPosition = Input.mousePosition;
+                    }
+                    else if (Input.GetMouseButtonUp(0))
+                    {
+                        endPosition = Input.mousePosition;
+                        if (Vector2.Distance(startPosition, endPosition) > swipeDistanceThreshold)
+                        {
+                            if (endPosition.y > startPosition.y)
+                            {
+                                TriggerSwipeAnimation();
+                            }
+                        }
+                    }
+                    break;
+            }
         }
     }
 
@@ -147,5 +159,13 @@ public class InteractionSwipe : MonoBehaviour
     public void TriggerSwipeAnimation ()
     {
         myAnim.SetTrigger("Step");
+    }
+
+    public void TriggerAdditionalAnimation ()
+    {
+        if (additionalAnimatorToTrigger != null)
+        {
+            additionalAnimatorToTrigger.SetTrigger("Step");
+        }
     }
 }

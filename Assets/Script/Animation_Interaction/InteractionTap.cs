@@ -19,10 +19,7 @@ public class InteractionTap : MonoBehaviour
         if (startsInteractable)
         {
             EnableInteractionTap();
-        }
-        
-        Quaternion newrot = new Quaternion(0.7f, 0, 0, 0.7f);
-        transform.parent.localRotation = newrot;
+        }       
     }
 
     // Update is called once per frame
@@ -33,7 +30,6 @@ public class InteractionTap : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        Debug.Log("Test");
         if (canTap)
         {
             TriggerTapAnimation();
