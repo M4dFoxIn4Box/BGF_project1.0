@@ -12,6 +12,8 @@ public class InteractionTap : MonoBehaviour
     public int tapAttempts = 0;
     private int currentTapAttempts = 0;
 
+    public Animator additionalAnimatorToTrigger;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,5 +65,13 @@ public class InteractionTap : MonoBehaviour
     public void DisableInteractionTap()
     {
         canTap = false;
+    }
+
+    public void TriggerAdditionalAnimation()
+    {
+        if (additionalAnimatorToTrigger != null)
+        {
+            additionalAnimatorToTrigger.SetTrigger("Step");
+        }
     }
 }

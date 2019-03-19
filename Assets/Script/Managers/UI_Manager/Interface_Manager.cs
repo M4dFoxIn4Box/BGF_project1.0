@@ -43,6 +43,11 @@ public class Interface_Manager : MonoBehaviour
     public float scanDuration;
     private bool isScanning = false;
 
+    [Header("Games Section")]
+    public GameObject scoreSection;
+    public Text scoreText;
+    private int scoreValue = 0;
+
     public GameObject unlockFirstTargetSection;
 
     //END CODE YANNICK
@@ -87,6 +92,13 @@ public class Interface_Manager : MonoBehaviour
         messageText.text = "";
         messageImage.gameObject.SetActive(false);
         messageImage.sprite = null;
+    }
+
+    public void LostTracker ()
+    {
+        HideMessage();
+        HideScore();
+        EndScanning();
     }
 
     public void StartScanning (int vId)
@@ -135,6 +147,10 @@ public class Interface_Manager : MonoBehaviour
         }
         else if (quizzAnsweredId[currentScanId])
         {
+            if (currentScanId == 14)
+            {
+                DisplayScore();
+            }
             ScriptTracker.Instance.ActiveAnimation();
         }
     }
@@ -195,6 +211,29 @@ public class Interface_Manager : MonoBehaviour
     public void HideQuizz()
     {
         quizzSection.SetActive(false);
+    }
+
+    public void DisplayScore ()
+    {
+        scoreSection.SetActive(true);
+        ResetScoreSection();
+    }
+
+    public void HideScore()
+    {
+        scoreSection.SetActive(false);
+    }
+
+    public void AddScore()
+    {
+        scoreValue ++;
+        scoreText.text = scoreValue.ToString();
+    }
+
+    public void ResetScoreSection ()
+    {
+        scoreValue = 0;
+        scoreText.text = scoreValue.ToString();
     }
 
     public void OnPickAnswer ()
@@ -263,7 +302,7 @@ public class Interface_Manager : MonoBehaviour
     #region Score
     [Header("Scoring")]
 
-    public Text scoreText;//le texte pour afficher le score
+    //public Text scoreText;//le texte pour afficher le score
     public float score = 0;//le score
     public float limitToWin;//la limite pour finir l'application
     public GameObject victoryText;//texte de victoire pour la limittowin
@@ -277,50 +316,49 @@ public class Interface_Manager : MonoBehaviour
 
     //SCORING & PALIER
 
-    public void AddScore(int newScoreValue)
-    {
-        Debug.Log("Here");
-        score = score + newScoreValue;
-        currentQuestValue = score / limitToWin;
-        //scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
-        questImage.fillAmount = currentQuestValue;
-        //Save_Manager.saving.SavingScore((int)score);
-        UpdateScore();
-    }
+    //public void AddScore(int newScoreValue)
+    //{
+    //    Debug.Log("Here");
+    //    score = score + newScoreValue;
+    //    currentQuestValue = score / limitToWin;
+    //    //scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
+    //    questImage.fillAmount = currentQuestValue;
+    //    //Save_Manager.saving.SavingScore((int)score);
+    //    UpdateScore();
+    //}
 
+    //void UpdateScore()
+    //{
+    //    Debug.Log("Here");
+    //    if (score == palierScoreList[0])
+    //    {
+    //        rewardImgList[0].sprite = rewardSpriteList[1];
+    //        idxCrateStates[0] = 1;
 
-    void UpdateScore()
-    {
-        Debug.Log("Here");
-        if (score == palierScoreList[0])
-        {
-            rewardImgList[0].sprite = rewardSpriteList[1];
-            idxCrateStates[0] = 1;
+    //        //Save_Manager.saving.SavingCrateState(idxCrateStates);
 
-            //Save_Manager.saving.SavingCrateState(idxCrateStates);
+    //        //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
+    //    }
 
-            //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
-        }
+    //    if (score == palierScoreList[1])
+    //    {
+    //        rewardImgList[1].sprite = rewardSpriteList[1];
+    //        idxCrateStates[1] = 1;
 
-        if (score == palierScoreList[1])
-        {
-            rewardImgList[1].sprite = rewardSpriteList[1];
-            idxCrateStates[1] = 1;
+    //        //Save_Manager.saving.SavingCrateState(idxCrateStates);
 
-            //Save_Manager.saving.SavingCrateState(idxCrateStates);
+    //        //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[1]);
+    //    }
+    //    if (score == palierScoreList[2])
+    //    {
+    //        rewardImgList[2].sprite = rewardSpriteList[1];
+    //        idxCrateStates[2] = 1;
 
-            //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[1]);
-        }
-        if (score == palierScoreList[2])
-        {
-            rewardImgList[2].sprite = rewardSpriteList[1];
-            idxCrateStates[2] = 1;
+    //        //Save_Manager.saving.SavingCrateState(idxCrateStates);
 
-            //Save_Manager.saving.SavingCrateState(idxCrateStates);
-
-            //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
-        }
-    }
+    //        //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
+    //    }
+    //}
     #endregion
 
     #region Camera
@@ -517,21 +555,21 @@ public class Interface_Manager : MonoBehaviour
     #region LOAD Variable
     //LOADING VARIABLE
 
-    public void CheckStateButton(int idx)//changement de state de la galerie
-    {
-        Debug.Log("Here");
-        if (!scanIdx.Contains(idx))
-        {
-            scanIdx.Add(idx);
-            if (artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
-            {
-                artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
-                //Save_Manager.saving.SetToTrue(idx);
-                idxButton = idx;
-                AddScore(1);
-            }
-        }
-    }
+    //public void CheckStateButton(int idx)//changement de state de la galerie
+    //{
+    //    Debug.Log("Here");
+    //    if (!scanIdx.Contains(idx))
+    //    {
+    //        scanIdx.Add(idx);
+    //        if (artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
+    //        {
+    //            artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
+    //            //Save_Manager.saving.SetToTrue(idx);
+    //            idxButton = idx;
+    //            AddScore(1);
+    //        }
+    //    }
+    //}
 
     //public void ButtonState(List<bool> interactableButton)//load button ok dans la galerie
     //{

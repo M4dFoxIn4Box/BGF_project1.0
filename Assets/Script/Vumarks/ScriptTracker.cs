@@ -186,8 +186,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     
     public void OnTrackerLost()
     {
-        Interface_Manager.Instance.HideMessage();
         Destroy(currentDisplayedElement);
+        Interface_Manager.Instance.LostTracker();
         return;
 
         feedbackScan.SetActive(false);
@@ -452,12 +452,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             b_first_vumark_is_unlock = true;
         }
 
-        QuizzISDone();
+        QuizzIsDone();
         LeaveQuizz();
         ReturnToVumark();
     }
 
-    private void QuizzISDone()
+    private void QuizzIsDone()
     {
         b_quizz_is_done[i_current_vumark_index-1] = true;
     }
@@ -500,6 +500,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public void DestroyRewardSpawn()
     {
         Destroy(currentReward);
+        Interface_Manager.Instance.HideScore();
     }
     
     void Update()
