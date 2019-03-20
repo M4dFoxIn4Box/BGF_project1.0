@@ -230,6 +230,12 @@ public class Interface_Manager : MonoBehaviour
         scoreText.text = scoreValue.ToString();
     }
 
+    public void AddScore(int sValue)
+    {
+        scoreValue += sValue;
+        scoreText.text = scoreValue.ToString();
+    }
+
     public void ResetScoreSection ()
     {
         scoreValue = 0;

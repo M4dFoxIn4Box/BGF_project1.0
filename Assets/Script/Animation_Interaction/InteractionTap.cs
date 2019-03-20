@@ -12,7 +12,10 @@ public class InteractionTap : MonoBehaviour
     public int tapAttempts = 0;
     private int currentTapAttempts = 0;
 
+    public bool triggerOnlyAdditionalAnim = false;
     public Animator additionalAnimatorToTrigger;
+
+    public InteractionTap nextTapToTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +35,16 @@ public class InteractionTap : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
+        
+
         if (canTap)
         {
+            if (triggerOnlyAdditionalAnim)
+            {
+                TriggerAdditionalAnimation();
+                canTap = false;
+                return;
+            }
             TriggerTapAnimation();
         }
     }
@@ -42,17 +53,26 @@ public class InteractionTap : MonoBehaviour
     {
         if (tapAttempts == 0)
         {
-            myAnim.SetTrigger("Step");
+            if(myAnim != null)
+            {
+                myAnim.SetTrigger("Step");
+            }
             DisableInteractionTap();
         }
         else if (tapAttempts > 0)
         {
             currentTapAttempts++;
-            myAnim.SetTrigger("Step");
+            if (myAnim != null)
+            {
+                myAnim.SetTrigger("Step");
+            }
             DisableInteractionTap();
             if (currentTapAttempts >= tapAttempts)
             {
-                myAnim.SetTrigger("Reward");
+                if (myAnim != null)
+                {
+                    myAnim.SetTrigger("Reward");
+                }
             }
         }
     }
@@ -73,5 +93,10 @@ public class InteractionTap : MonoBehaviour
         {
             additionalAnimatorToTrigger.SetTrigger("Step");
         }
+    }
+
+    public void TriggerNextTap ()
+    {
+        nextTapToTrigger.EnableInteractionTap();
     }
 }
