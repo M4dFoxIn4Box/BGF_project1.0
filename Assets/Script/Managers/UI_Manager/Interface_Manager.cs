@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using System;
 
 public class Interface_Manager : MonoBehaviour
 {
@@ -19,7 +20,21 @@ public class Interface_Manager : MonoBehaviour
     public GameObject messageSection;
     public Text messageText;
     public Image messageImage;
-    public List<ScriptTracker.TargetsRelatedMessage> uiMessages;
+    public List<AppMessages> uiMessages;
+
+    [Serializable]
+    public class AppMessages
+    {
+        public string messageName;
+        public string messageToDisplay;
+        public Sprite imageToDisplay;
+    }
+
+    [Header("Main Menu")]
+    public GameObject mainMenuSection;
+    public GameObject loadingDoor;
+    private GameObject menuToDisplay;
+    private GameObject previousDisplayedMenu;
 
     [Header("Quizz Section")]
     public ScriptableQuizzManager[] quizzManagers;
@@ -37,6 +52,7 @@ public class Interface_Manager : MonoBehaviour
     private int previousQuestionId = -1;
 
     [Header("Scan Section")]
+    public GameObject ARModeMenu;
     public GameObject feedbackScan;
     public Image feedbackScanImage;
     public Text loadingTextState;
@@ -48,7 +64,15 @@ public class Interface_Manager : MonoBehaviour
     public Text scoreText;
     private int scoreValue = 0;
 
-    public GameObject unlockFirstTargetSection;
+    [Header("Map")]
+    public Transform mapSpots;//Parent map list
+    public Color foundSpotColor; //Couleur de l'image sur la map
+
+    [Header("Tutoriel")]
+    public GameObject tutoSection;
+    public List<AppMessages> tutoMessages;
+    private int tutoMsgIdx = 0;
+    private bool tutoDone = false;
 
     //END CODE YANNICK
 
@@ -72,16 +96,65 @@ public class Interface_Manager : MonoBehaviour
     void Start()
     {
         myAnim = GetComponent<Animator>();
+        //if (!tutoDone)
+        //{
+        //    SetupTuto();
+        //}
         //scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
     }
 
-    public void DisplayMessage (ScriptTracker.TargetsRelatedMessage dMsg)
+    public void DisplayLoadingDoor ()
+    {
+        loadingDoor.SetActive(true);
+    }
+
+    public void HideLoadingDoor()
+    {
+        loadingDoor.SetActive(false);
+    }
+
+    public void SetupTuto ()
+    {
+        tutoSection.SetActive(true);
+        DisplayMessage(tutoMessages[0]);
+    }
+
+    public void SetupMainMenu ()
+    {
+        if (tutoDone)
+        {
+            if (tutoSection.activeSelf)
+            {
+                tutoSection.SetActive(false);
+            }
+        }
+        mainMenuSection.SetActive(true);
+    }
+
+    public void OnClickNextTutoMessage ()
+    {
+        tutoMsgIdx++;
+        if (tutoMsgIdx == tutoMessages.Count)
+        {
+            tutoDone = true;
+            SetupMainMenu();
+            return;
+        }
+        DisplayMessage(tutoMessages[tutoMsgIdx]);
+    }
+
+    public void DisplayMessage (AppMessages dMsg)
     {
         messageText.text = dMsg.messageToDisplay;
         if (dMsg.imageToDisplay != null)
         {
             messageImage.sprite = dMsg.imageToDisplay;
             messageImage.gameObject.SetActive(true);
+        }
+        else if (dMsg.imageToDisplay == null)
+        {
+            messageImage.sprite = null;
+            messageImage.gameObject.SetActive(false);
         }
         messageSection.SetActive(true);
     }
@@ -188,10 +261,10 @@ public class Interface_Manager : MonoBehaviour
             }
         }
         
-        int rndInt = Random.Range(0, quizzManagers[currentScanId-1].scriptableQuizzList.Count);
+        int rndInt = UnityEngine.Random.Range(0, quizzManagers[currentScanId-1].scriptableQuizzList.Count);
         while (rndInt == previousQuestionId)
         {
-            rndInt = Random.Range(0, quizzManagers[currentScanId - 1].scriptableQuizzList.Count);
+            rndInt = UnityEngine.Random.Range(0, quizzManagers[currentScanId - 1].scriptableQuizzList.Count);
         }
         for (int i = 0; i < quizzManagers[currentScanId - 1].scriptableQuizzList[rndInt].answerList.Length; i++)
         {
@@ -375,23 +448,51 @@ public class Interface_Manager : MonoBehaviour
     public Camera uiCam;//UI Camera
     public Canvas mainCanvas;//Main canvas
     public Button buttonARMode;//Buton AR Mode
-    public GameObject vumarkPrefab;//Vumark to activate/deactivate
+    public GameObject vumarkSection;//Vumark to activate/deactivate
 
     public void OpenARCamera()//ALLUMER L AR CAM
     {
-        Debug.Log("Here");
         //mainCanvas.worldCamera = arCam;
         //menuToActivate[currentIdxMenu].SetActive(false);
         //ARModeMenu.SetActive(true);
-        vumarkPrefab.SetActive(true);
+        vumarkSection.SetActive(true);
         uiCam.gameObject.SetActive(false);
         arCam.gameObject.SetActive(true);
         menusBackground.SetActive(false);
+        mainMenuSection.SetActive(false);
+        ARModeMenu.SetActive(true);
+    }
+
+    public void ChangeMenu (GameObject newMenu)
+    {
+        myAnim.SetTrigger("TransitionDoor");
+        if (menuToDisplay != null)
+        {
+            previousDisplayedMenu = menuToDisplay;
+        }
+        menuToDisplay = newMenu;
+    }
+
+    public void DisplayNewMenu ()
+    {
+        menuToDisplay.SetActive(true);
+        if (previousDisplayedMenu != null)
+        {
+            previousDisplayedMenu.SetActive(false);
+        }
+        
+        if (menuToDisplay == ARModeMenu)
+        {
+            OpenARCamera();
+        }
+        else if (previousDisplayedMenu == ARModeMenu)
+        {
+            CloseARCamera();
+        }
     }
 
     public void CloseARCamera()//ETEINDRE AR CAM
     {
-        Debug.Log("Here");
         //if (score >= 1)
         //{
         //    Tuto_Manager.tuto.ActivatingTuto(3);
@@ -402,10 +503,12 @@ public class Interface_Manager : MonoBehaviour
         //    Tuto_Manager.tuto.ActivatingTuto(4);
         //}
         //mainCanvas.worldCamera = uiCam;
-        vumarkPrefab.SetActive(false);
+        vumarkSection.SetActive(false);
         uiCam.gameObject.SetActive(true);
         arCam.gameObject.SetActive(false);
         menusBackground.SetActive(true);
+        mainMenuSection.SetActive(true);
+        ARModeMenu.SetActive(false);
         //ARModeMenu.SetActive(false);
         //menuToActivate[currentIdxMenu].SetActive(true);
     }
@@ -413,18 +516,13 @@ public class Interface_Manager : MonoBehaviour
 
     #region Map
 
-    [Header("Map")]
-
-    public Transform mapList;//Parent map list
-    public Color mapColor; //Couleur de l'image sur la map
-    public Image[] imageZone;//Tableaux d'image pour la map
+    
 
     #endregion
 
     #region Menu
 
     [Header("Menu")]//Changer de menu
-    public GameObject ARModeMenu;//Menu de l'AR Mode
     private int currentIdxMenu = 0;//Idx du menu intro
     public GameObject[] menuToActivate;//menu à activer
    
@@ -484,8 +582,6 @@ public class Interface_Manager : MonoBehaviour
     //Pour changer de menu il faut renseigner le int sur le bouton
     public void ChangeMenu(int newScreenIdx)
     {
-        Debug.Log("Here");
-        
         AudioManager.s_Singleton.PlaySFX(audioChangeMenu);
         AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
         previousScreenIdx = currentScreenIdx;
@@ -550,10 +646,10 @@ public class Interface_Manager : MonoBehaviour
 
     //MAP MENU UPDATE
 
-    public void MapActivation(int vumarkNumber)//Maping
+    public void SpotFound (int vuMarkIdx)//Maping
     {
-        Debug.Log("Here");
-        imageZone[vumarkNumber].color = mapColor; ;
+        Debug.Log("updated spot");
+        mapSpots.GetChild(vuMarkIdx).GetComponent<Image>().color = foundSpotColor;
     }
 
     #endregion

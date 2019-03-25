@@ -27,6 +27,7 @@ public class Taupiqueur : MonoBehaviour
     public void TriggerTaupiqueur()
     {
         myAnim.SetTrigger("Step");
+        canBeHit = true;
     }
 
     private void OnMouseDown()

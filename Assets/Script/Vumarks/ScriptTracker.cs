@@ -12,18 +12,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     //CODE YANNICK
 
     [Header("Event Section")]
-    public int vumarkIdUnlockingEventGame = -1;
-    private bool eventGameStarted = false;
-    public List<TargetsRelatedMessage> targetsMessages;
-
-    [Serializable]
-    public class TargetsRelatedMessage
-    {
-        public string messageName;
-        public string messageToDisplay;
-        public Sprite imageToDisplay;
-    }
-
+    public int vumarkIdUnlockingBdxGame = -1;
+    public int vumarkIdUnlockingBGFGame = -1;
+    private bool bdxGameStarted = false;
+    private bool bGFGameStarted = false;
+    public List<Interface_Manager.AppMessages> targetsMessages;
+    
     [Header("3D AR Section")]
     public List<GameObject> elementsToSpawn;
     public Transform staticSpawnPoints;
@@ -53,15 +47,15 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public int vumarkRewardMinValue;
     
     [Header("Quizz")]
-    public int currentErrorCount;
-    public bool quizzDone = false;
-    public GameObject quizzInterface;
-    public GameObject congratulationsImage;
-    public List<GameObject> winCountList;
-    public List<GameObject> errorCountList;
-    public Sprite newErrorImage;
-    public GameObject winCounter;
-    public GameObject errorCounter;
+    //public int currentErrorCount;
+    //public bool quizzDone = false;
+    //public GameObject quizzInterface;
+    //public GameObject congratulationsImage;
+    //public List<GameObject> winCountList;
+    //public List<GameObject> errorCountList;
+    //public Sprite newErrorImage;
+    //public GameObject winCounter;
+    //public GameObject errorCounter;
 
     public GameObject parentErrorCount;
     public GameObject parentWinCount;
@@ -126,7 +120,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     [Header("ARManager")]
     public bool arIsLock;
-    public GameObject mainMenu;
 
     [Header("Sounds")]
     public AudioClip audioQuizzCorrectAnswer;
@@ -160,6 +153,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
 
     void OnTrackerFound()
     {
+        Debug.Log("Hello !");
         foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
         {
             vumarkID = (int)vumark.InstanceId.NumericValue;
@@ -167,18 +161,18 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         }
 
 
-        if (!eventGameStarted)
+        if (!bGFGameStarted)
         {
-            if (i_current_vumark_index == vumarkIdUnlockingEventGame)
+            if (i_current_vumark_index == vumarkIdUnlockingBGFGame)
             {
                 Interface_Manager.Instance.StartScanning(i_current_vumark_index);
             }
-            else if (i_current_vumark_index != vumarkIdUnlockingEventGame)
+            else if (i_current_vumark_index != vumarkIdUnlockingBGFGame)
             {
                 Interface_Manager.Instance.DisplayMessage(targetsMessages[0]);
             }
         }
-        else if (eventGameStarted)
+        else if (bGFGameStarted)
         {
             Interface_Manager.Instance.StartScanning(i_current_vumark_index);
         }
@@ -216,97 +210,97 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         feedbackScanImage.fillAmount = 0;
     }
     
-    void ScanIsDone()
-    {
-        foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
-        {
-            vumarkID = (int)vumark.InstanceId.NumericValue;
-            i_current_vumark_index = vumarkID;
-        }
+    //void ScanIsDone()
+    //{
+    //    foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
+    //    {
+    //        vumarkID = (int)vumark.InstanceId.NumericValue;
+    //        i_current_vumark_index = vumarkID;
+    //    }
 
-        if (b_first_vumark_is_unlock == true)
-        {
-            if (b_quizz_is_done[vumarkID - 1] == false)
-            {
-                if (vumarkID >= vumarkRewardMinValue) //Pour ouvrir un coffre (stand bgf)
-                {
-                    int idxToCast = vumarkID - vumarkRewardMinValue;
-                    Interface_Manager.Instance.RewardBoxOpened(idxToCast);
-                }
-                else
-                {
-                    quizzDone = false;
-                    QuizzDisplaying();
-                }
-            }
+    //    if (b_first_vumark_is_unlock == true)
+    //    {
+    //        if (b_quizz_is_done[vumarkID - 1] == false)
+    //        {
+    //            if (vumarkID >= vumarkRewardMinValue) //Pour ouvrir un coffre (stand bgf)
+    //            {
+    //                int idxToCast = vumarkID - vumarkRewardMinValue;
+    //                Interface_Manager.Instance.RewardBoxOpened(idxToCast);
+    //            }
+    //            else
+    //            {
+    //                quizzDone = false;
+    //                QuizzDisplaying();
+    //            }
+    //        }
 
-            else if (b_quizz_is_done[vumarkID - 1] == true)
-            {
-                ActiveAnimation();
-            }
-        }
-        else if (i_current_vumark_index != 10)
-        {
-            g_get_first_vumark.SetActive(true);
-        }
-        else if(i_current_vumark_index == 10 && b_first_vumark_is_unlock == false)
-        {
-            QuizzDisplaying();
-        }
-    }
+    //        else if (b_quizz_is_done[vumarkID - 1] == true)
+    //        {
+    //            ActiveAnimation();
+    //        }
+    //    }
+    //    else if (i_current_vumark_index != 10)
+    //    {
+    //        g_get_first_vumark.SetActive(true);
+    //    }
+    //    else if(i_current_vumark_index == 10 && b_first_vumark_is_unlock == false)
+    //    {
+    //        QuizzDisplaying();
+    //    }
+    //}
 
-    public void QuizzDisplaying ()
-    {
-        quizAnim.SetBool("Erreur", false);
+    //public void QuizzDisplaying ()
+    //{
+    //    quizAnim.SetBool("Erreur", false);
 
-        b_quizz_is_active = true;
+    //    b_quizz_is_active = true;
 
-            if (quizzDone == false)
-            {
-                currentQuizzList = quizzLists[vumarkID - 1];
-                scoreToReach = quizzLists[vumarkID - 1].scoreToWin;
+    //        if (quizzDone == false)
+    //        {
+    //            currentQuizzList = quizzLists[vumarkID - 1];
+    //            scoreToReach = quizzLists[vumarkID - 1].scoreToWin;
 
-                        for (int i = 0; i < scoreToReach; i++)
-                        {
-                            Instantiate(winCounter, parentWinCount.transform);
-                            winCountList.Add(winCounter);
-                            Debug.Log(winCountList);
-                        }
+    //                    for (int i = 0; i < scoreToReach; i++)
+    //                    {
+    //                        Instantiate(winCounter, parentWinCount.transform);
+    //                        winCountList.Add(winCounter);
+    //                        Debug.Log(winCountList);
+    //                    }
 
-                        for (int i = 0; i < currentQuizzList.errorLimit; i++)
-                        {
-                            Instantiate(errorCounter, parentErrorCount.transform);
-                            errorCountList.Add(errorCounter);
-                        }
+    //                    for (int i = 0; i < currentQuizzList.errorLimit; i++)
+    //                    {
+    //                        Instantiate(errorCounter, parentErrorCount.transform);
+    //                        errorCountList.Add(errorCounter);
+    //                    }
 
-                quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
-                quizzDone = true;
-            }
+    //            quizzAvailable.AddRange(currentQuizzList.scriptableQuizzList);
+    //            quizzDone = true;
+    //        }
 
 
-            if (quizzAvailable.Count == 0)
-            {
-                LeaveQuizz();
-            }
-            else
-            {
+    //        if (quizzAvailable.Count == 0)
+    //        {
+    //            LeaveQuizz();
+    //        }
+    //        else
+    //        {
 
-                currentQuizz = quizzAvailable[(UnityEngine.Random.Range(0, quizzAvailable.Count))];
+    //            currentQuizz = quizzAvailable[(UnityEngine.Random.Range(0, quizzAvailable.Count))];
 
-                quizzInterface.SetActive(true);
+    //            quizzInterface.SetActive(true);
 
-                quizzText.text = currentQuizz.quizzQuestion;
+    //            quizzText.text = currentQuizz.quizzQuestion;
 
-                // QUIZZ INITIALISATION
+    //            // QUIZZ INITIALISATION
 
-                for (int i = 0; i < buttonList.Length; i++)
-                {
-                    buttonList[i].interactable = true;
-                    answerBoardText[i].text = currentQuizz.answerList[i];
-                    buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
-                }
-            }                            
-    }
+    //            for (int i = 0; i < buttonList.Length; i++)
+    //            {
+    //                buttonList[i].interactable = true;
+    //                answerBoardText[i].text = currentQuizz.answerList[i];
+    //                buttonList[i].GetComponent<UnityEngine.UI.Image>().color = Color.white;
+    //            }
+    //        }                            
+    //}
 
     public void FakeARToDeactivate(GameObject fakeARObject)
     {
@@ -320,173 +314,175 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         arIsLock = !arIsLock;
     }
 
-    public void ButtonClick (int buttonIdx) //Lier la fonction au bouton de réponse au quizz
-    {
-        if (buttonIdx + 1 == currentQuizz.rightAnswer)
-        {
-            buttonList[buttonIdx].GetComponent<UnityEngine.UI.Image>().color = Color.green;
-            RightAnswer();
-        }
-        else
-        {
-            buttonList[buttonIdx].GetComponent<UnityEngine.UI.Image>().color = Color.red;
-            BadAnswer();
-        }
-    }
+    //public void ButtonClick (int buttonIdx) //Lier la fonction au bouton de réponse au quizz
+    //{
+    //    if (buttonIdx + 1 == currentQuizz.rightAnswer)
+    //    {
+    //        buttonList[buttonIdx].GetComponent<UnityEngine.UI.Image>().color = Color.green;
+    //        RightAnswer();
+    //    }
+    //    else
+    //    {
+    //        buttonList[buttonIdx].GetComponent<UnityEngine.UI.Image>().color = Color.red;
+    //        BadAnswer();
+    //    }
+    //}
 
-    public void LeaveQuizz()
-    {
-        quizzAvailable.Clear();
-        b_quizz_is_active = false;
+    //public void LeaveQuizz()
+    //{
+    //    quizzAvailable.Clear();
+    //    b_quizz_is_active = false;
 
-        if (feedBackFakeAR)
-        {
-            feedBackFakeAR.SetActive(false);
-        }
+    //    if (feedBackFakeAR)
+    //    {
+    //        feedBackFakeAR.SetActive(false);
+    //    }
 
-        for (int i = 0; i < winCountList.Count; i++)
-        {
-            Destroy(parentWinCount.transform.GetChild(i).gameObject);  
-        }
+    //    for (int i = 0; i < winCountList.Count; i++)
+    //    {
+    //        Destroy(parentWinCount.transform.GetChild(i).gameObject);  
+    //    }
 
-        for (int i = 0; i < errorCountList.Count; i++)
-        {
-            Destroy(parentErrorCount.transform.GetChild(i).gameObject);
-        }
+    //    for (int i = 0; i < errorCountList.Count; i++)
+    //    {
+    //        Destroy(parentErrorCount.transform.GetChild(i).gameObject);
+    //    }
 
-        errorCountList.Clear();
-        winCountList.Clear();
+    //    errorCountList.Clear();
+    //    winCountList.Clear();
 
-        for (int i = 0; i < buttonList.Length; i++)
-        {
-            buttonList[i].GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
-            buttonList[i].interactable = true;
-        }
+    //    for (int i = 0; i < buttonList.Length; i++)
+    //    {
+    //        buttonList[i].GetComponent<UnityEngine.UI.Image>().color = new Color(r, g, b);
+    //        buttonList[i].interactable = true;
+    //    }
 
-        quizzInterface.SetActive(false);
-        currentErrorCount = 0;
-        currentQuizzScore = 0;
+    //    quizzInterface.SetActive(false);
+    //    currentErrorCount = 0;
+    //    currentQuizzScore = 0;
 
-        if (congratulationsImage)
-        {
-            congratulationsImage.SetActive(false);
-        }
+    //    if (congratulationsImage)
+    //    {
+    //        congratulationsImage.SetActive(false);
+    //    }
 
-        if(currentFakeARObject != null)
-        {
-            Destroy(currentFakeARObject);
-        }
+    //    if(currentFakeARObject != null)
+    //    {
+    //        Destroy(currentFakeARObject);
+    //    }
         
-        if(arIsLock)
-        {
-            Interface_Manager.Instance.CloseARCamera();
-        }
-    }
+    //    if(arIsLock)
+    //    {
+    //        Interface_Manager.Instance.CloseARCamera();
+    //    }
+    //}
 
-    public void BadAnswer()
-    {
-        quizAnim.SetBool("Erreur", true);
-        AudioManager.s_Singleton.PlaySFX(audioQuizzBadAnswer);
-        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
-        parentErrorCount.transform.GetChild(currentErrorCount).GetComponent<UnityEngine.UI.Image>().sprite = newErrorImage;
-        currentErrorCount++;        
+    //public void BadAnswer()
+    //{
+    //    quizAnim.SetBool("Erreur", true);
+    //    AudioManager.s_Singleton.PlaySFX(audioQuizzBadAnswer);
+    //    AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
+    //    parentErrorCount.transform.GetChild(currentErrorCount).GetComponent<UnityEngine.UI.Image>().sprite = newErrorImage;
+    //    currentErrorCount++;        
 
-        for (int i = 0; i < buttonList.Length; i++)
-        {
-            buttonList[i].interactable = false;
-        }
+    //    for (int i = 0; i < buttonList.Length; i++)
+    //    {
+    //        buttonList[i].interactable = false;
+    //    }
 
-        StartCoroutine(TimeBeforeNextQuizz());
-    }
+    //    StartCoroutine(TimeBeforeNextQuizz());
+    //}
 
-    public void RightAnswer()
-    {
-        AudioManager.s_Singleton.PlaySFX(audioQuizzCorrectAnswer);
-        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
+    //public void RightAnswer()
+    //{
+    //    AudioManager.s_Singleton.PlaySFX(audioQuizzCorrectAnswer);
+    //    AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupQuizz[0];
 
-        for (int i = 0; i < buttonList.Length; i++)
-        {
-            buttonList[i].interactable = false;
-        }
+    //    for (int i = 0; i < buttonList.Length; i++)
+    //    {
+    //        buttonList[i].interactable = false;
+    //    }
 
-        parentWinCount.transform.GetChild(currentQuizzScore).GetComponent<UnityEngine.UI.Image>().color = Color.green;
-        currentQuizzScore++;
+    //    parentWinCount.transform.GetChild(currentQuizzScore).GetComponent<UnityEngine.UI.Image>().color = Color.green;
+    //    currentQuizzScore++;
 
-        if (currentQuizzScore == scoreToReach)
-        {
-            congratulationsImage.SetActive(true);
-            currentQuizzScore = 0;
-            StartCoroutine(GameWon());
-        }
-        else if (currentQuizzScore < scoreToReach)
-        {
-            StartCoroutine(TimeBeforeNextQuizz());
-        }
-    }
+    //    if (currentQuizzScore == scoreToReach)
+    //    {
+    //        congratulationsImage.SetActive(true);
+    //        currentQuizzScore = 0;
+    //        StartCoroutine(GameWon());
+    //    }
+    //    else if (currentQuizzScore < scoreToReach)
+    //    {
+    //        StartCoroutine(TimeBeforeNextQuizz());
+    //    }
+    //}
 
-    IEnumerator TimeBeforeNextQuizz ()
-    {
-        yield return new WaitForSeconds(1);
-        if (currentErrorCount == currentQuizzList.errorLimit)
-        {
-            yield return new WaitForSeconds(1);
-            LeaveQuizz();
-            g_try_again.SetActive(true);
+    //IEnumerator TimeBeforeNextQuizz ()
+    //{
+    //    yield return new WaitForSeconds(1);
+    //    if (currentErrorCount == currentQuizzList.errorLimit)
+    //    {
+    //        yield return new WaitForSeconds(1);
+    //        LeaveQuizz();
+    //        g_try_again.SetActive(true);
 
-        }
-        currentQuizz = null;    
-        QuizzDisplaying();
-    }
+    //    }
+    //    currentQuizz = null;    
+    //    QuizzDisplaying();
+    //}
 
-    IEnumerator GameWon()
-    {
-        yield return new WaitForSeconds(2);
-        // Reset du quizz
+    //IEnumerator GameWon()
+    //{
+    //    yield return new WaitForSeconds(2);
+    //    // Reset du quizz
 
-        congratulationsImage.SetActive(false);
-        quizzInterface.SetActive(false);       
-        quizzDone = false;
+    //    congratulationsImage.SetActive(false);
+    //    quizzInterface.SetActive(false);       
+    //    quizzDone = false;
 
-        if(i_current_vumark_index == 1 && b_first_vumark_is_unlock == false)
-        {
-            b_first_vumark_is_unlock = true;
-        }
+    //    if(i_current_vumark_index == 1 && b_first_vumark_is_unlock == false)
+    //    {
+    //        b_first_vumark_is_unlock = true;
+    //    }
 
-        QuizzIsDone();
-        LeaveQuizz();
-        ReturnToVumark();
-    }
+    //    QuizzIsDone();
+    //    LeaveQuizz();
+    //    ReturnToVumark();
+    //}
 
-    private void QuizzIsDone()
-    {
-        b_quizz_is_done[i_current_vumark_index-1] = true;
-    }
+    //private void QuizzIsDone()
+    //{
+    //    b_quizz_is_done[i_current_vumark_index-1] = true;
+    //}
 
-    private void ReturnToVumark()
-    {
-        g_return_to_vumark.SetActive(true);
-    }
+    //private void ReturnToVumark()
+    //{
+    //    g_return_to_vumark.SetActive(true);
+    //}
 
     public void ActiveAnimation() // Fait apparaître les récompenses liés au VuMark scanné
     {
-        if (!eventGameStarted)
+        if (!bGFGameStarted)
         {
-            eventGameStarted = true;
+            bGFGameStarted = true;
         }
         
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
-            int targetObj = System.Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
+            int targetObj = Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
             Transform vmp = transform.GetChild(targetObj - 1);
             vmp.gameObject.SetActive(true);
             LinkToStaticARElement lts = vmp.GetComponent<LinkToStaticARElement>();
             if (lts != null)
             {
                 currentDisplayedElement = Instantiate(elementsToSpawn[targetObj - 1], lts.GetStaticElement().position, lts.GetStaticElement().rotation, lts.GetStaticElement());
+                Interface_Manager.Instance.SpotFound(targetObj - 1);
                 return;
             }
             currentDisplayedElement = Instantiate(elementsToSpawn[targetObj - 1], vmp.position, vmp.rotation, vmp);
-            
+            Interface_Manager.Instance.SpotFound(targetObj - 1);
+
             //Interface_Manager.Instance.CheckStateButton(targetObj - 1);
         }
     }
