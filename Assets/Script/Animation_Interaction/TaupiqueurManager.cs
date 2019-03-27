@@ -28,6 +28,10 @@ public class TaupiqueurManager : MonoBehaviour
     void Start()
     {
         Interface_Manager.Instance.DisplayScore();
+        if (SaveManager.Data.PokemonScore > 0)
+        {
+            Interface_Manager.Instance.AddScore(SaveManager.Data.PokemonScore);
+        }
         currentSpawnCD = initialSpawnTimer;
         SpawnTaupiqueurCooldown();
     }
@@ -56,4 +60,15 @@ public class TaupiqueurManager : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        int pcScore = Interface_Manager.Instance.GetCurrentScore();
+        if (pcScore > SaveManager.Data.PokemonScore)
+        {
+            SaveManager.Data.PokemonScore = pcScore;
+            SaveManager.SaveToFile();
+        }
+    }
+        
 }

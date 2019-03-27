@@ -31,10 +31,11 @@ public class Interface_Manager : MonoBehaviour
     }
 
     [Header("Main Menu")]
-    public GameObject mainMenuSection;
+    public GameObject mapSection;
     public GameObject loadingDoor;
     private GameObject menuToDisplay;
     private GameObject previousDisplayedMenu;
+    public Transform bottomUIButtonsParent;
 
     [Header("Quizz Section")]
     public ScriptableQuizzManager[] quizzManagers;
@@ -43,19 +44,23 @@ public class Interface_Manager : MonoBehaviour
     public Transform badAnswersSection;
     public Text quizzQuestionText;
     public Transform quizzAnswersButtonsSection;
-    public Color inactiveGoodAnswerFeedbackColor;
-    public Color activeGoodAnswerFeedbackColor;
-    private List<bool> quizzAnsweredId = new List<bool>();
+    public Sprite rightAnswerButtonSprite;
+    public Sprite badAnswerButtonSprite;
+    public Sprite inactiveGoodAnswerSprite;
+    public Sprite activeGoodAnswerSprite;
+    public Sprite activeBadAnswerSprite;
+    public Image correctAnswersBackground;
+    public Image badAnswersBackground;
     private int currentScanId = -1;
     private int currentQuizzRightAnswersNb = 0;
     private int currentQuizzBadAnswersNb = 0;
     private int previousQuestionId = -1;
+    private bool canAnswer = true;
 
     [Header("Scan Section")]
     public GameObject ARModeMenu;
-    public GameObject feedbackScan;
     public Image feedbackScanImage;
-    public Text loadingTextState;
+    public Transform loadingArrowParent;
     public float scanDuration;
     private bool isScanning = false;
 
@@ -66,23 +71,17 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Map")]
     public Transform mapSpots;//Parent map list
-    public Color foundSpotColor; //Couleur de l'image sur la map
 
     [Header("Tutoriel")]
     public GameObject tutoSection;
     public List<AppMessages> tutoMessages;
     private int tutoMsgIdx = 0;
     private bool tutoDone = false;
-
+    
     //END CODE YANNICK
 
     private void Awake()
     {
-        quizzAnsweredId.Clear();
-        for (int i = 0; i < animationsParent.childCount; i++)
-        {
-            quizzAnsweredId.Add(false);
-        }
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -96,6 +95,7 @@ public class Interface_Manager : MonoBehaviour
     void Start()
     {
         myAnim = GetComponent<Animator>();
+        previousDisplayedMenu = mapSection;
         //if (!tutoDone)
         //{
         //    SetupTuto();
@@ -128,7 +128,7 @@ public class Interface_Manager : MonoBehaviour
                 tutoSection.SetActive(false);
             }
         }
-        mainMenuSection.SetActive(true);
+        mapSection.SetActive(true);
     }
 
     public void OnClickNextTutoMessage ()
@@ -176,21 +176,23 @@ public class Interface_Manager : MonoBehaviour
 
     public void StartScanning (int vId)
     {
-        if (feedbackScanImage.fillAmount >= 0 && !feedbackScan.activeSelf)
+        if (feedbackScanImage.fillAmount >= 0)
         {
             HideMessage();
             currentScanId = vId;
             feedbackScanImage.fillAmount = 0;
-            feedbackScan.SetActive(true);
             isScanning = true;
         }
     }
 
     public void EndScanning ()
     {
-        feedbackScan.SetActive(false);
         feedbackScanImage.fillAmount = 0;
         isScanning = false;
+        if (!quizzSection.activeSelf)
+        {
+            ARModeMenu.SetActive(true);
+        }
     }
 
     void Update()
@@ -198,7 +200,7 @@ public class Interface_Manager : MonoBehaviour
         if (isScanning)
         {
             feedbackScanImage.fillAmount += Time.deltaTime / scanDuration;
-            loadingTextState.text = (feedbackScanImage.fillAmount * 100).ToString("F0") + "%";
+            loadingArrowParent.Rotate(-transform.forward, 360/scanDuration * Time.deltaTime);
 
             if (feedbackScanImage.fillAmount >= 1)
             {
@@ -210,20 +212,15 @@ public class Interface_Manager : MonoBehaviour
     public void CheckQuizzState()
     {
         EndScanning();
-        if (!quizzAnsweredId[currentScanId])
+        if (!SaveManager.Data.quizzAnswered[currentScanId])
         {
             ResetBadAnswersFeedbacks();
             ResetRightAnswersFeedbacks();
-            currentQuizzRightAnswersNb = 0;
-            currentQuizzBadAnswersNb = 0;
             PopulateQuizzElements();
         }
-        else if (quizzAnsweredId[currentScanId])
+        else if (SaveManager.Data.quizzAnswered[currentScanId])
         {
-            if (currentScanId == 14)
-            {
-                DisplayScore();
-            }
+            ARModeMenu.SetActive(false);
             ScriptTracker.Instance.ActiveAnimation();
         }
     }
@@ -236,8 +233,11 @@ public class Interface_Manager : MonoBehaviour
         }
         else if (currentQuizzRightAnswersNb >= 2)
         {
-            quizzAnsweredId[currentScanId] = true;
+            SaveManager.Data.quizzAnswered[currentScanId] = true;
+            SaveManager.SaveToFile();
             DisplayMessage(uiMessages[1]);
+            ARModeMenu.SetActive(true);
+            myAnim.SetTrigger("ARMode");
         }
         else
         {
@@ -257,7 +257,7 @@ public class Interface_Manager : MonoBehaviour
         {
             foreach (Transform fb in rightAnswersSection)
             {
-                fb.GetComponent<Image>().color = inactiveGoodAnswerFeedbackColor;
+                fb.GetComponent<Image>().sprite = inactiveGoodAnswerSprite;
             }
         }
         
@@ -274,11 +274,17 @@ public class Interface_Manager : MonoBehaviour
         EnableAnswersButtons();
         DisplayQuizz();
         previousQuestionId = rndInt;
+        canAnswer = true;
     }
 
     public void DisplayQuizz()
     {
+        if (currentQuizzBadAnswersNb == 0 && currentQuizzRightAnswersNb == 0)
+        {
+            myAnim.SetTrigger("Idle");
+        }
         quizzSection.SetActive(true);
+        ARModeMenu.SetActive(false);
     }
 
     public void HideQuizz()
@@ -309,6 +315,11 @@ public class Interface_Manager : MonoBehaviour
         scoreText.text = scoreValue.ToString();
     }
 
+    public int GetCurrentScore ()
+    {
+        return scoreValue;
+    }
+
     public void ResetScoreSection ()
     {
         scoreValue = 0;
@@ -317,22 +328,26 @@ public class Interface_Manager : MonoBehaviour
 
     public void OnPickAnswer ()
     {
-        Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
-        if (cTrs.GetSiblingIndex() + 1 == quizzManagers[currentScanId - 1].scriptableQuizzList[previousQuestionId].rightAnswer)
+        if (canAnswer)
         {
-            cTrs.GetComponent<Image>().color = Color.green;
-            rightAnswersSection.GetChild(currentQuizzRightAnswersNb).GetComponent<Image>().color = activeGoodAnswerFeedbackColor;
-            currentQuizzRightAnswersNb++;
-            myAnim.SetTrigger("QuizzCorrect");
+            canAnswer = false;
+            Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
+            if (cTrs.GetSiblingIndex() + 1 == quizzManagers[currentScanId - 1].scriptableQuizzList[previousQuestionId].rightAnswer)
+            {
+                cTrs.GetComponent<Image>().sprite = rightAnswerButtonSprite;
+                rightAnswersSection.GetChild(currentQuizzRightAnswersNb).GetComponent<Image>().sprite = activeGoodAnswerSprite;
+                currentQuizzRightAnswersNb++;
+                myAnim.SetTrigger("QuizzCorrect");
+            }
+            else if (cTrs.GetSiblingIndex() + 1 != quizzManagers[currentScanId - 1].scriptableQuizzList[previousQuestionId].rightAnswer)
+            {
+                cTrs.GetComponent<Image>().sprite = badAnswerButtonSprite;
+                badAnswersSection.GetChild(currentQuizzBadAnswersNb).GetComponent<Image>().sprite = activeBadAnswerSprite;
+                currentQuizzBadAnswersNb++;
+                myAnim.SetTrigger("QuizzError");
+            }
+            DisableAnswersButtons(cTrs);
         }
-        else if (cTrs.GetSiblingIndex() + 1 != quizzManagers[currentScanId - 1].scriptableQuizzList[previousQuestionId].rightAnswer)
-        {
-            cTrs.GetComponent<Image>().color = Color.red;
-            badAnswersSection.GetChild(currentQuizzBadAnswersNb).gameObject.SetActive(true);
-            currentQuizzBadAnswersNb++;
-            myAnim.SetTrigger("QuizzError");
-        }
-        DisableAnswersButtons();
     }
 
     public void EnableAnswersButtons()
@@ -340,31 +355,36 @@ public class Interface_Manager : MonoBehaviour
         foreach (Transform button in quizzAnswersButtonsSection)
         {
             button.GetComponent<Button>().interactable = true;
-            button.GetComponent<Image>().color = Color.white;
+            button.GetComponent<Image>().sprite = badAnswerButtonSprite;
         }
     }
 
-    public void DisableAnswersButtons ()
+    public void DisableAnswersButtons (Transform exceptButton)
     {
         foreach (Transform button in quizzAnswersButtonsSection)
         {
-            button.GetComponent<Button>().interactable = false;
+            if (button != exceptButton)
+            {
+                button.GetComponent<Button>().interactable = false;
+            }
         }
     }
 
     public void ResetRightAnswersFeedbacks()
     {
+        currentQuizzRightAnswersNb = 0;
         foreach (Transform fb in rightAnswersSection)
         {
-            fb.GetComponent<Image>().color = inactiveGoodAnswerFeedbackColor;
+            fb.GetComponent<Image>().sprite = inactiveGoodAnswerSprite;
         }
     }
 
     public void ResetBadAnswersFeedbacks()
     {
+        currentQuizzBadAnswersNb = 0;
         foreach (Transform fb in badAnswersSection)
         {
-            fb.gameObject.SetActive(false);
+            fb.GetComponent<Image>().sprite = inactiveGoodAnswerSprite;
         }
     }
 
@@ -378,67 +398,7 @@ public class Interface_Manager : MonoBehaviour
     private int idxButton;
     #endregion
 
-    #region Score
-    [Header("Scoring")]
-
-    //public Text scoreText;//le texte pour afficher le score
-    public float score = 0;//le score
-    public float limitToWin;//la limite pour finir l'application
-    public GameObject victoryText;//texte de victoire pour la limittowin
-
-    private float currentQuestValue;//score à afficher sur la jauge dans le main menu
-    public Image questImage;//barre à fillamount
-    public List<int> palierScoreList;//index des paliers
-    public List<Image> rewardImgList;//lié à l'index des paliers 
-    public List<Sprite> rewardSpriteList;//lié à l'index des paliers coffres du menu principal
-
-
-    //SCORING & PALIER
-
-    //public void AddScore(int newScoreValue)
-    //{
-    //    Debug.Log("Here");
-    //    score = score + newScoreValue;
-    //    currentQuestValue = score / limitToWin;
-    //    //scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
-    //    questImage.fillAmount = currentQuestValue;
-    //    //Save_Manager.saving.SavingScore((int)score);
-    //    UpdateScore();
-    //}
-
-    //void UpdateScore()
-    //{
-    //    Debug.Log("Here");
-    //    if (score == palierScoreList[0])
-    //    {
-    //        rewardImgList[0].sprite = rewardSpriteList[1];
-    //        idxCrateStates[0] = 1;
-
-    //        //Save_Manager.saving.SavingCrateState(idxCrateStates);
-
-    //        //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[0]);
-    //    }
-
-    //    if (score == palierScoreList[1])
-    //    {
-    //        rewardImgList[1].sprite = rewardSpriteList[1];
-    //        idxCrateStates[1] = 1;
-
-    //        //Save_Manager.saving.SavingCrateState(idxCrateStates);
-
-    //        //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[1]);
-    //    }
-    //    if (score == palierScoreList[2])
-    //    {
-    //        rewardImgList[2].sprite = rewardSpriteList[1];
-    //        idxCrateStates[2] = 1;
-
-    //        //Save_Manager.saving.SavingCrateState(idxCrateStates);
-
-    //        //Story_Manager.story.ActivateStoryInGallery(idxStoryScriptableToActivate[2]);
-    //    }
-    //}
-    #endregion
+    
 
     #region Camera
 
@@ -452,25 +412,45 @@ public class Interface_Manager : MonoBehaviour
 
     public void OpenARCamera()//ALLUMER L AR CAM
     {
-        //mainCanvas.worldCamera = arCam;
-        //menuToActivate[currentIdxMenu].SetActive(false);
-        //ARModeMenu.SetActive(true);
         vumarkSection.SetActive(true);
         uiCam.gameObject.SetActive(false);
         arCam.gameObject.SetActive(true);
         menusBackground.SetActive(false);
-        mainMenuSection.SetActive(false);
-        ARModeMenu.SetActive(true);
+        myAnim.SetTrigger("ARMode");
+        SaveManager.RetrieveSaveData();
+    }
+
+    public void CloseARCamera()//ETEINDRE AR CAM
+    {
+        vumarkSection.SetActive(false);
+        uiCam.gameObject.SetActive(true);
+        arCam.gameObject.SetActive(false);
+        menusBackground.SetActive(true);
+        //myAnim.SetTrigger("Idle");
     }
 
     public void ChangeMenu (GameObject newMenu)
     {
+        HideMessage();
         myAnim.SetTrigger("TransitionDoor");
         if (menuToDisplay != null)
         {
             previousDisplayedMenu = menuToDisplay;
         }
         menuToDisplay = newMenu;
+    }
+
+    public void OnClickBottomUIButton ()
+    {
+        Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
+        cTrs.GetComponent<Button>().interactable = false;
+        for (int i = 0; i < bottomUIButtonsParent.childCount; i++)
+        {
+            if (bottomUIButtonsParent.GetChild(i) != cTrs)
+            {
+                bottomUIButtonsParent.GetChild(i).GetComponent<Button>().interactable = true;
+            }
+        }
     }
 
     public void DisplayNewMenu ()
@@ -490,34 +470,6 @@ public class Interface_Manager : MonoBehaviour
             CloseARCamera();
         }
     }
-
-    public void CloseARCamera()//ETEINDRE AR CAM
-    {
-        //if (score >= 1)
-        //{
-        //    Tuto_Manager.tuto.ActivatingTuto(3);
-        //    Story_Manager.story.ActivateStoryInGallery(0);
-        //}
-        //if (score >= 5)//Quick le joueur pour qu'il puisse découvrir le tuto pour expliquer la récompense
-        //{
-        //    Tuto_Manager.tuto.ActivatingTuto(4);
-        //}
-        //mainCanvas.worldCamera = uiCam;
-        vumarkSection.SetActive(false);
-        uiCam.gameObject.SetActive(true);
-        arCam.gameObject.SetActive(false);
-        menusBackground.SetActive(true);
-        mainMenuSection.SetActive(true);
-        ARModeMenu.SetActive(false);
-        //ARModeMenu.SetActive(false);
-        //menuToActivate[currentIdxMenu].SetActive(true);
-    }
-    #endregion
-
-    #region Map
-
-    
-
     #endregion
 
     #region Menu
@@ -535,24 +487,7 @@ public class Interface_Manager : MonoBehaviour
     public bool quizzDone;//bool si le tuto à été fait et qui envoyé au save manager
 
     #endregion
-
-    #region Reward
-    [Header("Reward & Box")]
-
-    public List<bool> rewardAlreadyDone;//si le coffre à été récupéré
-    public List<int> idxCrateStates;//index du coffre
-    private int rewardCounter;
-
-    public void RewardBoxOpened(int rewardBoxIdx)
-    {
-        Debug.Log("Here");
-        rewardImgList[rewardBoxIdx].sprite = rewardSpriteList[2];
-        idxCrateStates[rewardBoxIdx] = 2;
-        //Save_Manager.saving.SavingCrateState(idxCrateStates);
-    }
-
-    #endregion
-
+    
     #region Story
     [Header("Story")]
 
@@ -616,19 +551,6 @@ public class Interface_Manager : MonoBehaviour
         menuToActivate[currentScreenIdx].SetActive(true);
     }
 
-    public void ShowElement(GameObject elementToActive)
-    {
-        Debug.Log("Here");
-        elementToActive.SetActive(true);
-    }
-
-    public void UnShowElement(GameObject elementToDesactive)
-    {
-        Debug.Log("Here");
-        elementToDesactive.SetActive(false);
-    }
-
-
     public void DeactiveMusicMainMenu()//Musique à désactiver ou activer dans la galerie
     {
         Debug.Log("Here");
@@ -646,88 +568,20 @@ public class Interface_Manager : MonoBehaviour
 
     //MAP MENU UPDATE
 
-    public void SpotFound (int vuMarkIdx)//Maping
+    public void SpotFound(int vuMarkIdx)//Maping
     {
         Debug.Log("updated spot");
-        mapSpots.GetChild(vuMarkIdx).GetComponent<Image>().color = foundSpotColor;
+        mapSpots.GetChild(vuMarkIdx).GetComponent<MapARSpot>().SetSpotFound();
     }
 
     #endregion
-
-    #region LOAD Variable
-    //LOADING VARIABLE
-
-    //public void CheckStateButton(int idx)//changement de state de la galerie
-    //{
-    //    Debug.Log("Here");
-    //    if (!scanIdx.Contains(idx))
-    //    {
-    //        scanIdx.Add(idx);
-    //        if (artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable == false)
-    //        {
-    //            artifactsGallery.GetChild(idx).gameObject.GetComponent<Button>().interactable = true;
-    //            //Save_Manager.saving.SetToTrue(idx);
-    //            idxButton = idx;
-    //            AddScore(1);
-    //        }
-    //    }
-    //}
-
-    //public void ButtonState(List<bool> interactableButton)//load button ok dans la galerie
-    //{
-    //    Debug.Log("Here");
-    //    for (int i = 0; i < interactableButton.Count; i++)
-    //    {
-    //        artifactsGallery.GetChild(i).gameObject.GetComponent<Button>().interactable = interactableButton[i];
-    //        if (interactableButton[i] == true)
-    //        {
-    //            AddScore(1);
-    //        }
-    //    }
-    //}
-
-
-    //public void ImageState(List<bool> isImageCheck) //IMAGE ON MAP 
-    //{
-    //    Debug.Log("Here");
-    //    for (int j = 0; j < isImageCheck.Count; j++)
-    //    {
-    //        if (isImageCheck[j])
-    //        {
-    //            mapList.GetChild(j).gameObject.GetComponent<Image>().color = mapColor;
-    //        }
-
-    //    }
-    //}
 
     public void TutoIsDone(bool isTutoDone)
     {
         Debug.Log("Here");
         quizzDone = isTutoDone;
     }
-
-    //public void LoadScore(int scoring)//load score
-    //{
-    //    Debug.Log("Here");
-    //    score = scoring;
-    //    scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
-    //    currentQuestValue = score / limitToWin;
-    //    questImage.fillAmount = currentQuestValue;
-    //}
-
-    //public void LoadCrateImage(List<int> crateVumarkNumber)//load coffre
-    //{
-    //    Debug.Log("Here");
-    //    idxCrateStates = crateVumarkNumber;
-
-    //    for (int j = 0; j < rewardImgList.Count && crateVumarkNumber != null; j++)
-    //    {
-    //        rewardImgList[j].sprite = rewardSpriteList[crateVumarkNumber[j]];
-    //    }
-    //}
-
-    #endregion
-
+    
     #region Funfact
 
     [Header("FunFact")]

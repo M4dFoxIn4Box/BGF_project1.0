@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1011812026642798
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4678999311926584}
-  m_Layer: 0
-  m_Name: Vumark_Reward_02
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4678999311926584
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011812026642798}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99996966, y: 0.99996966, z: 0.99996966}
-  m_Children: []
-  m_Father: {fileID: 4966808575554108}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1022877430847518
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,36 +74,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correspondingStaticElement: {fileID: 0}
---- !u!1 &1179580011474630
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4291044161885424}
-  m_Layer: 0
-  m_Name: Vumark_Reward_03
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4291044161885424
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1179580011474630}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99996966, y: 0.99996966, z: 0.99996966}
-  m_Children: []
-  m_Father: {fileID: 4966808575554108}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1224688271659854
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,36 +148,6 @@ Transform:
   m_Father: {fileID: 4966808575554108}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 74.378006, y: -56.628002, z: -55.63}
---- !u!1 &1450571593646178
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4352770158265374}
-  m_Layer: 0
-  m_Name: Vumark_Reward_01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4352770158265374
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450571593646178}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4966808575554108}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1672895316672764
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,9 +195,6 @@ Transform:
   - {fileID: 5138894010723274029}
   - {fileID: 6710135495602666910}
   - {fileID: 7560226008448243178}
-  - {fileID: 4352770158265374}
-  - {fileID: 4678999311926584}
-  - {fileID: 4291044161885424}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
@@ -391,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vumarkIdUnlockingBdxGame: 1
-  vumarkIdUnlockingBGFGame: 10
+  vumarkIdUnlockingBGFGame: 7
   targetsMessages:
   - messageName: FirstTargetNotScanned
     messageToDisplay: "Tu dois d'abord scanner cet \xE9l\xE9ment \xE0 l'accueil du
@@ -414,37 +321,8 @@ MonoBehaviour:
   - {fileID: 5177254002601685552, guid: 0d9ed50da7841ae4a9e421b1b9ab22bb, type: 3}
   - {fileID: 1219390260632088, guid: f061aa095024a7948bb742e4f5263108, type: 3}
   staticSpawnPoints: {fileID: 0}
-  vumarkID: 0
-  vumarkRewardMinValue: 16
-  parentErrorCount: {fileID: 0}
-  parentWinCount: {fileID: 0}
-  quizAnim: {fileID: 0}
-  quizzAudioSource: {fileID: 0}
-  audioQuizz:
-  - {fileID: 0}
-  - {fileID: 0}
-  b_quizz_is_done: 000000000000000000000000000000
-  g_return_to_vumark: {fileID: 0}
-  g_try_again: {fileID: 0}
-  g_get_first_vumark: {fileID: 0}
-  feedBackFakeAR: {fileID: 0}
   feedbackScan: {fileID: 0}
   feedbackScanImage: {fileID: 0}
-  loadTextState: {fileID: 0}
-  scanDuration: 0
-  quizzText: {fileID: 0}
-  answerBoardText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  funFactParent: {fileID: 0}
-  funFactTxt: {fileID: 0}
-  buttonList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   quizzLists:
   - {fileID: 11400000, guid: 0fc78a54d9649a740acb8af09d88ac11, type: 2}
   - {fileID: 11400000, guid: e5345ec79c534de448b15d901d233283, type: 2}
@@ -462,15 +340,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fbb507d8e57ecb7459454ac3c9391007, type: 2}
   - {fileID: 11400000, guid: 541ac3f6b4eee3548a5e1c6f1d203431, type: 2}
   quizzAvailable: []
-  currentQuizz: {fileID: 0}
-  currentQuizzList: {fileID: 0}
   spawnPointReward: {fileID: 0}
   spawnPointFunFact: {fileID: 0}
   currentReward: {fileID: 0}
-  scoreToReach: 2
-  currentFakeARObject: {fileID: 0}
   arIsLock: 0
-  mainMenu: {fileID: 0}
   audioQuizzCorrectAnswer: {fileID: 8300000, guid: 53f15728d6f9a3f4787a9fccbd24998f,
     type: 3}
   audioQuizzBadAnswer: {fileID: 8300000, guid: 0fe78a95e93d55948b24c0aa297de826, type: 3}
