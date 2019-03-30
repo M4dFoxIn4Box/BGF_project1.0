@@ -408,11 +408,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1672895316672764, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 3}
       propertyPath: m_Name
-      value: VuMark_BGF
-      objectReference: {fileID: 0}
-    - target: {fileID: 1672895316672764, guid: 28b30ffd3e92b704e9305a0673c3ba8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: VuMark_Events
       objectReference: {fileID: 0}
     - target: {fileID: 114428691650512684, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 3}
@@ -482,7 +478,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1803375932}
+      objectReference: {fileID: 1159667435}
     - target: {fileID: 8930024482725834036, guid: 28b30ffd3e92b704e9305a0673c3ba8c,
         type: 3}
       propertyPath: correspondingStaticElement
@@ -518,6 +514,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2628292463876670672}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1159667435
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'BGFMaterial
+
+    -1462'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!4 &1177554297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2623529926875394137, guid: d235cfd1d1c4c8a4aa693c953474cf2e,
@@ -734,34 +758,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!21 &1803375932
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'BGFMaterial
-
-    -1116'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 38396c514b2b429581f5e8b1afda0e0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1837120656
 GameObject:
   m_ObjectHideFlags: 0
@@ -15327,7 +15323,7 @@ PrefabInstance:
     - target: {fileID: 1204362214969512247, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
         type: 3}
       propertyPath: m_Name
-      value: UIManager_BGF
+      value: UIManager_Events
       objectReference: {fileID: 0}
     - target: {fileID: 1204362214969512234, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
         type: 3}
@@ -15349,16 +15345,6 @@ PrefabInstance:
       propertyPath: uiCam
       value: 
       objectReference: {fileID: 20425748686572905}
-    - target: {fileID: 1204362214969512234, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: mainCanvas
-      value: 
-      objectReference: {fileID: 223722411527621131}
-    - target: {fileID: 1204362214969512234, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: buttonARMode
-      value: 
-      objectReference: {fileID: 114576429574665859}
     - target: {fileID: 1204362214969512234, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
         type: 3}
       propertyPath: vumarkSection
@@ -15624,66 +15610,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3212717993338178726, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3212717993338178726, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3212717993338178726, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3212717993338178726, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3212717993338178726, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3212717993338178726, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8248577536169550641, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8248577536169550641, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8248577536169550641, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8248577536169550641, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8248577536169550641, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8248577536169550641, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4242990421478770476, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -15712,16 +15638,6 @@ PrefabInstance:
     - target: {fileID: 4242990421478770476, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6932593108563260155, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5377907021129033332, guid: 1f8ed6315847eb34eb6e9eb674b3e75d,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

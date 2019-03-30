@@ -31,8 +31,11 @@ public class Interface_Manager : MonoBehaviour
     }
 
     [Header("Main Menu")]
-    public GameObject mapSection;
+    public GameObject teaserEventSection;
+    public GameObject mainEventSection;
     public GameObject loadingDoor;
+    public GameObject aRSection;
+    public GameObject menuBackground;
     private GameObject menuToDisplay;
     private GameObject previousDisplayedMenu;
     public Transform bottomUIButtonsParent;
@@ -95,12 +98,40 @@ public class Interface_Manager : MonoBehaviour
     void Start()
     {
         myAnim = GetComponent<Animator>();
-        previousDisplayedMenu = mapSection;
         //if (!tutoDone)
         //{
         //    SetupTuto();
         //}
         //scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
+    }
+
+    public int GetAppVuMarksCount ()
+    {
+        return animationsParent.childCount;
+    }
+
+    public void LoadSaveData ()
+    {
+        menuToDisplay = teaserEventSection;
+        previousDisplayedMenu = null;
+        if (!SaveManager.Initialized)
+        {
+            SaveManager.RetrieveSaveData();
+        }
+        if (SaveManager.Data.eventMainStarted)
+        {
+            UnlockMainEventUI();
+            previousDisplayedMenu = teaserEventSection;
+            menuToDisplay = mainEventSection;
+        }
+    }
+
+    public void UnlockMainEventUI ()
+    {
+        foreach (Transform button in bottomUIButtonsParent)
+        {
+            button.gameObject.SetActive(true);
+        }
     }
 
     public void DisplayLoadingDoor ()
@@ -112,7 +143,7 @@ public class Interface_Manager : MonoBehaviour
     {
         loadingDoor.SetActive(false);
     }
-
+    
     public void SetupTuto ()
     {
         tutoSection.SetActive(true);
@@ -128,7 +159,7 @@ public class Interface_Manager : MonoBehaviour
                 tutoSection.SetActive(false);
             }
         }
-        mapSection.SetActive(true);
+        mainEventSection.SetActive(true);
     }
 
     public void OnClickNextTutoMessage ()
@@ -179,7 +210,7 @@ public class Interface_Manager : MonoBehaviour
         if (feedbackScanImage.fillAmount >= 0)
         {
             HideMessage();
-            currentScanId = vId;
+            currentScanId = vId - 1;
             feedbackScanImage.fillAmount = 0;
             isScanning = true;
         }
@@ -212,6 +243,7 @@ public class Interface_Manager : MonoBehaviour
     public void CheckQuizzState()
     {
         EndScanning();
+        Debug.Log(currentScanId);
         if (!SaveManager.Data.quizzAnswered[currentScanId])
         {
             ResetBadAnswersFeedbacks();
@@ -244,11 +276,7 @@ public class Interface_Manager : MonoBehaviour
             PopulateQuizzElements();
             return;
         }
-        HideQuizz();
-        ResetBadAnswersFeedbacks();
-        ResetRightAnswersFeedbacks();
-        currentQuizzBadAnswersNb = 0;
-        currentQuizzRightAnswersNb = 0;
+        ResetQuizz();
     }
 
     public void PopulateQuizzElements ()
@@ -261,16 +289,16 @@ public class Interface_Manager : MonoBehaviour
             }
         }
         
-        int rndInt = UnityEngine.Random.Range(0, quizzManagers[currentScanId-1].scriptableQuizzList.Count);
+        int rndInt = UnityEngine.Random.Range(0, quizzManagers[currentScanId].scriptableQuizzList.Count);
         while (rndInt == previousQuestionId)
         {
-            rndInt = UnityEngine.Random.Range(0, quizzManagers[currentScanId - 1].scriptableQuizzList.Count);
+            rndInt = UnityEngine.Random.Range(0, quizzManagers[currentScanId].scriptableQuizzList.Count);
         }
-        for (int i = 0; i < quizzManagers[currentScanId - 1].scriptableQuizzList[rndInt].answerList.Length; i++)
+        for (int i = 0; i < quizzManagers[currentScanId].scriptableQuizzList[rndInt].answerList.Length; i++)
         {
-            quizzAnswersButtonsSection.GetChild(i).GetComponentInChildren<Text>().text = quizzManagers[currentScanId - 1].scriptableQuizzList[rndInt].answerList[i];
+            quizzAnswersButtonsSection.GetChild(i).GetComponentInChildren<Text>().text = quizzManagers[currentScanId].scriptableQuizzList[rndInt].answerList[i];
         }
-        quizzQuestionText.text = quizzManagers[currentScanId - 1].scriptableQuizzList[rndInt].quizzQuestion;
+        quizzQuestionText.text = quizzManagers[currentScanId].scriptableQuizzList[rndInt].quizzQuestion;
         EnableAnswersButtons();
         DisplayQuizz();
         previousQuestionId = rndInt;
@@ -290,6 +318,15 @@ public class Interface_Manager : MonoBehaviour
     public void HideQuizz()
     {
         quizzSection.SetActive(false);
+    }
+
+    public void ResetQuizz ()
+    {
+        HideQuizz();
+        ResetBadAnswersFeedbacks();
+        ResetRightAnswersFeedbacks();
+        currentQuizzBadAnswersNb = 0;
+        currentQuizzRightAnswersNb = 0;
     }
 
     public void DisplayScore ()
@@ -332,14 +369,14 @@ public class Interface_Manager : MonoBehaviour
         {
             canAnswer = false;
             Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
-            if (cTrs.GetSiblingIndex() + 1 == quizzManagers[currentScanId - 1].scriptableQuizzList[previousQuestionId].rightAnswer)
+            if (cTrs.GetSiblingIndex() + 1 == quizzManagers[currentScanId].scriptableQuizzList[previousQuestionId].rightAnswer)
             {
                 cTrs.GetComponent<Image>().sprite = rightAnswerButtonSprite;
                 rightAnswersSection.GetChild(currentQuizzRightAnswersNb).GetComponent<Image>().sprite = activeGoodAnswerSprite;
                 currentQuizzRightAnswersNb++;
                 myAnim.SetTrigger("QuizzCorrect");
             }
-            else if (cTrs.GetSiblingIndex() + 1 != quizzManagers[currentScanId - 1].scriptableQuizzList[previousQuestionId].rightAnswer)
+            else if (cTrs.GetSiblingIndex() + 1 != quizzManagers[currentScanId].scriptableQuizzList[previousQuestionId].rightAnswer)
             {
                 cTrs.GetComponent<Image>().sprite = badAnswerButtonSprite;
                 badAnswersSection.GetChild(currentQuizzBadAnswersNb).GetComponent<Image>().sprite = activeBadAnswerSprite;
@@ -397,17 +434,13 @@ public class Interface_Manager : MonoBehaviour
     private List<bool> buttonState = new List<bool>();
     private int idxButton;
     #endregion
-
     
-
     #region Camera
 
     [Header("Camera / AR Camera")]
 
     public Camera arCam;//AR Camera
     public Camera uiCam;//UI Camera
-    public Canvas mainCanvas;//Main canvas
-    public Button buttonARMode;//Buton AR Mode
     public GameObject vumarkSection;//Vumark to activate/deactivate
 
     public void OpenARCamera()//ALLUMER L AR CAM
@@ -415,9 +448,8 @@ public class Interface_Manager : MonoBehaviour
         vumarkSection.SetActive(true);
         uiCam.gameObject.SetActive(false);
         arCam.gameObject.SetActive(true);
-        menusBackground.SetActive(false);
+        menuBackground.SetActive(false);
         myAnim.SetTrigger("ARMode");
-        SaveManager.RetrieveSaveData();
     }
 
     public void CloseARCamera()//ETEINDRE AR CAM
@@ -425,8 +457,7 @@ public class Interface_Manager : MonoBehaviour
         vumarkSection.SetActive(false);
         uiCam.gameObject.SetActive(true);
         arCam.gameObject.SetActive(false);
-        menusBackground.SetActive(true);
-        //myAnim.SetTrigger("Idle");
+        menuBackground.SetActive(true);
     }
 
     public void ChangeMenu (GameObject newMenu)
@@ -436,12 +467,26 @@ public class Interface_Manager : MonoBehaviour
         if (menuToDisplay != null)
         {
             previousDisplayedMenu = menuToDisplay;
+            if (newMenu == teaserEventSection && SaveManager.Data.eventMainStarted)
+            {
+                menuToDisplay = mainEventSection;
+                return;
+            }
         }
         menuToDisplay = newMenu;
     }
 
+    public void OnClickARButton ()
+    {
+        for (int i = 0; i < bottomUIButtonsParent.childCount; i++)
+        {
+            bottomUIButtonsParent.GetChild(i).GetComponent<Button>().interactable = true;
+        }
+    }
+
     public void OnClickBottomUIButton ()
     {
+        ResetQuizz();
         Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
         cTrs.GetComponent<Button>().interactable = false;
         for (int i = 0; i < bottomUIButtonsParent.childCount; i++)
@@ -455,10 +500,22 @@ public class Interface_Manager : MonoBehaviour
 
     public void DisplayNewMenu ()
     {
-        menuToDisplay.SetActive(true);
         if (previousDisplayedMenu != null)
         {
+            if (previousDisplayedMenu == teaserEventSection || previousDisplayedMenu == mainEventSection)
+            {
+                aRSection.SetActive(false);
+            }
             previousDisplayedMenu.SetActive(false);
+        }
+
+        if (menuToDisplay != null)
+        {
+            if (menuToDisplay == teaserEventSection || menuToDisplay == mainEventSection)
+            {
+                aRSection.SetActive(true);
+            }
+            menuToDisplay.SetActive(true);
         }
         
         if (menuToDisplay == ARModeMenu)
@@ -507,74 +564,11 @@ public class Interface_Manager : MonoBehaviour
 
     #endregion
 
-    #region Interface
-    [Header("Interface")]
-
-    public GameObject menusBackground;
-    private int currentScreenIdx = 0;
-    private int previousScreenIdx = -1;
-
-    //Pour changer de menu il faut renseigner le int sur le bouton
-    public void ChangeMenu(int newScreenIdx)
-    {
-        AudioManager.s_Singleton.PlaySFX(audioChangeMenu);
-        AudioManager.s_Singleton.GetComponent<AudioSource>().outputAudioMixerGroup = mixerGroupChangeMenu[0];
-        previousScreenIdx = currentScreenIdx;
-        menuToActivate[currentIdxMenu].SetActive(false);
-        currentScreenIdx = newScreenIdx;
-        menuToActivate[newScreenIdx].SetActive(true);
-
-        if (stopMusicInGallery)
-        {
-            DeactiveMusicMainMenu();
-        }
-
-        switch (newScreenIdx)
-        {
-            case 4:
-                OpenARCamera();
-                break;
-        }
-    }
-
-    public void BackToPreviousScreen()
-    {
-        switch (currentScreenIdx)
-        {
-            case 4:
-                CloseARCamera();
-                break;
-        }
-        menuToActivate[currentScreenIdx].SetActive(false);
-        currentScreenIdx = previousScreenIdx;
-        previousScreenIdx = -1;
-        menuToActivate[currentScreenIdx].SetActive(true);
-    }
-
-    public void DeactiveMusicMainMenu()//Musique à désactiver ou activer dans la galerie
-    {
-        Debug.Log("Here");
-        if (stopMusicInGallery)
-        {
-            musicMainMenuToDeactivate.UnPause();
-            stopMusicInGallery = false;
-        }
-        else if (!stopMusicInGallery)
-        {
-            musicMainMenuToDeactivate.Pause();
-            stopMusicInGallery = true;
-        }
-    }
-
-    //MAP MENU UPDATE
-
     public void SpotFound(int vuMarkIdx)//Maping
     {
         Debug.Log("updated spot");
         mapSpots.GetChild(vuMarkIdx).GetComponent<MapARSpot>().SetSpotFound();
     }
-
-    #endregion
 
     public void TutoIsDone(bool isTutoDone)
     {

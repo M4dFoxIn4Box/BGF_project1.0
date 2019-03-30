@@ -13,8 +13,9 @@ public class SaveManager : MonoBehaviour
     {
         public DateTime VersionTime;
         public int UserId;
-        public bool eventBdxStarted;
-        public bool eventBGFStarted;
+        public bool eventTeaserStarted;
+        public bool eventTeaserLocked;
+        public bool eventMainStarted;
         public List<bool> quizzAnswered = new List<bool>();
         public int PokemonScore;
         //TODO: Add game data fields here
@@ -23,8 +24,9 @@ public class SaveManager : MonoBehaviour
         {
             VersionTime = DateTime.UtcNow;
             UserId = 1306;
-            eventBdxStarted = false;
-            eventBGFStarted = false;
+            eventTeaserStarted = false;
+            eventTeaserLocked = false;
+            eventMainStarted = false;
             PokemonScore = 0;
         }
     }
@@ -43,10 +45,23 @@ public class SaveManager : MonoBehaviour
     }
 
     public const string SAVE_FILENAME = "game_save.bin";
-
+    
     private void Awake()
     {
         Initialized = false;
+    }
+
+    public static void UnlockEventTeaser()
+    {
+        Data.eventTeaserStarted = true;
+        SaveToFile();
+    }
+
+    public static void UnlockEventMain ()
+    {
+        Data.eventMainStarted = true;
+        Data.eventTeaserLocked = true;
+        SaveToFile();
     }
 
     static bool LoadLocalData()
@@ -65,11 +80,11 @@ public class SaveManager : MonoBehaviour
     public static void ResetSaveData()
     {
         Data = new SaveData();
-        for (int i = 0; i < ScriptTracker.Instance.transform.childCount; i++)
+        int vumarksCount = Interface_Manager.Instance.GetAppVuMarksCount();
+        for (int i = 0; i < vumarksCount; i++)
         {
             Data.quizzAnswered.Add(false);
         }
-        Debug.Log(Data.quizzAnswered.Count);
         //TODO: Reset game data values here
     }
 

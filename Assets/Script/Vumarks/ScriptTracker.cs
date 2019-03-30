@@ -12,11 +12,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     //CODE YANNICK
 
     [Header("Event Section")]
-    public int vumarkIdUnlockingBdxGame = -1;
-    public int vumarkIdUnlockingBGFGame = -1;
+    public int vumarkIdUnlockingTeaserGame = -1;
+    public int vumarkIdUnlockingMainGame = -1;
     private int i_current_vumark_index;
-    private bool bdxGameStarted = false;
-    private bool bGFGameStarted = false;
     public List<Interface_Manager.AppMessages> targetsMessages;
     
     [Header("3D AR Section")]
@@ -42,11 +40,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     
     TrackableBehaviour mTrackableBehaviour;
     VuMarkManager mVuMarkManager;
-
-    [Header("FeedBackScan")]
-    public GameObject feedbackScan;
-    public UnityEngine.UI.Image feedbackScanImage;
-
+    
     [Header("Scriptable Section Quizz")]
     public ScriptableQuizzManager[] quizzLists;
     public List<ScriptableQuizz> quizzAvailable;
@@ -55,18 +49,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     public Transform spawnPointReward;
     public Text spawnPointFunFact;
     public GameObject currentReward;
-    //private int currentQuizzScore = 0;
-    //public int scoreToReach;
-    //private bool isAnswered = false;
-    //public GameObject currentFakeARObject;
-
-    [Header("ARManager")]
-    public bool arIsLock;
-
-    [Header("Sounds")]
-    public AudioClip audioQuizzCorrectAnswer;
-    public AudioClip audioQuizzBadAnswer;
-    public AudioMixerGroup[] mixerGroupQuizz;
 
     void Start()
     {
@@ -99,22 +81,74 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             i_current_vumark_index = (int)vumark.InstanceId.NumericValue;
         }
-
-
-        if (!SaveManager.Data.eventBGFStarted)
+        
+        //Si je scanne la cible qui débloque le Main Event...
+        if (i_current_vumark_index == vumarkIdUnlockingMainGame)
         {
-            if (i_current_vumark_index == vumarkIdUnlockingBGFGame)
+            //...et si c'est la première fois, je lock le Teaser Event et je débloque le Main Event
+            if (!SaveManager.Data.eventMainStarted)
             {
-                Interface_Manager.Instance.StartScanning(i_current_vumark_index);
+                SaveManager.UnlockEventMain();
+                Interface_Manager.Instance.UnlockMainEventUI();
             }
-            else if (i_current_vumark_index != vumarkIdUnlockingBGFGame)
-            {
-                Interface_Manager.Instance.DisplayMessage(targetsMessages[0]);
-            }
-        }
-        else if (SaveManager.Data.eventBGFStarted)
-        {
+            //Et je peux commencer à scanner dans le Main Event
             Interface_Manager.Instance.StartScanning(i_current_vumark_index);
+        }
+        //Sinon, si je scanne n'importe quelle autre cible...
+        else if (i_current_vumark_index != vumarkIdUnlockingMainGame)
+        {
+            //...si c'est une cible du Main Event...
+            if (i_current_vumark_index < vumarkIdUnlockingTeaserGame)
+            {
+                //...si je n'ai pas encore scanné la cible qui débloque le Main Event, j'obtiens un message qui m'indique quelle cible scanner à l'accueil
+                if (!SaveManager.Data.eventMainStarted)
+                {
+                    Interface_Manager.Instance.DisplayMessage(targetsMessages[0]);
+                }
+                //...si j'ai scanné la cible qui débloque le Main Event, je peux la scanner
+                else if (SaveManager.Data.eventMainStarted)
+                {
+                    Interface_Manager.Instance.StartScanning(i_current_vumark_index);
+                }
+            }
+            //...si c'est une cible du Teaser Event...
+            else if (i_current_vumark_index >= vumarkIdUnlockingTeaserGame)
+            {
+                //...si le Teaser Event est locké, j'obtiens un message qui m'indique que seules les cibles du Main Event sont désormais disponibles
+                if (SaveManager.Data.eventTeaserLocked)
+                {
+                    Interface_Manager.Instance.DisplayMessage(targetsMessages[2]);
+                }
+                //...si le Teaser Event n'est pas locké...
+                else if (!SaveManager.Data.eventTeaserLocked)
+                {
+                    //...si je scanne la cible qui débloque le Teaser Event...
+                    if (i_current_vumark_index == vumarkIdUnlockingTeaserGame)
+                    {
+                        //...si le Teaser Event n'a pas encore été débloqué, je le débloque
+                        if (!SaveManager.Data.eventTeaserStarted)
+                        {
+                            SaveManager.UnlockEventTeaser();
+                        }
+                        //Et je peux commencer à scanner dans le Teaser Event
+                        Interface_Manager.Instance.StartScanning(i_current_vumark_index);
+                    }
+                    //...si je scanne une des cibles du Teaser Event qui ne le débloque pas...
+                    else if (i_current_vumark_index > vumarkIdUnlockingTeaserGame)
+                    {
+                        //...si le Teaser Event n'a pas encore été débloqué, j'obtiens un message qui m'indique quelle cible scanner et où la trouver
+                        if (!SaveManager.Data.eventTeaserStarted)
+                        {
+                            Interface_Manager.Instance.DisplayMessage(targetsMessages[1]);
+                        }
+                        //...si le Teaser Event a été débloqué, je peux scanner la cible
+                        else if (SaveManager.Data.eventTeaserStarted)
+                        {
+                            Interface_Manager.Instance.StartScanning(i_current_vumark_index);
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -123,28 +157,9 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         Destroy(currentDisplayedElement);
         Interface_Manager.Instance.LostTracker();
     }
-
-    public void ResetScanFeedback ()
-    {
-        feedbackScan.SetActive(false);
-        feedbackScanImage.fillAmount = 0;
-    }
-
-    // QUIZZ // answer button section
-
-    public void ARLocker()
-    {
-        arIsLock = !arIsLock;
-    }
     
     public void ActiveAnimation() // Fait apparaître les récompenses liées au VuMark scanné
     {
-        if (!SaveManager.Data.eventBGFStarted)
-        {
-            SaveManager.Data.eventBGFStarted = true;
-            SaveManager.SaveToFile();
-        }
-        
         foreach (var item in mVuMarkManager.GetActiveBehaviours())
         {
             int targetObj = Convert.ToInt32(item.VuMarkTarget.InstanceId.NumericValue);
