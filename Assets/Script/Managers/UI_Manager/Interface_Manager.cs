@@ -13,6 +13,9 @@ public class Interface_Manager : MonoBehaviour
 
     //CODE YANNICK
 
+    [Header("Events")]
+    public int vumarkIdUnlockingTeaserGame = -1;
+    public int vumarkIdUnlockingMainGame = -1;
     public Transform animationsParent;
     private Animator myAnim;
 
@@ -32,6 +35,7 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Main Menu")]
     public GameObject teaserEventSection;
+    public Transform teaserChallengesSection;
     public GameObject mainEventSection;
     public GameObject loadingDoor;
     public GameObject aRSection;
@@ -66,6 +70,10 @@ public class Interface_Manager : MonoBehaviour
     public Transform loadingArrowParent;
     public float scanDuration;
     private bool isScanning = false;
+    private bool arCamWithScanEnabled = true;
+    public Camera arCam;
+    public Camera uiCam;
+    public GameObject vumarkSection;
 
     [Header("Games Section")]
     public GameObject scoreSection;
@@ -74,6 +82,13 @@ public class Interface_Manager : MonoBehaviour
 
     [Header("Map")]
     public Transform mapSpots;//Parent map list
+
+    [Header("Gallery")]
+    public List<GameObject> elementsToSpawn;
+    public Transform rewardSpawnPoint;
+    public Transform buttonsGallery;
+    private GameObject spawnedReward;
+    private int spawnedRewardIdx = -1;
 
     [Header("Tutoriel")]
     public GameObject tutoSection;
@@ -98,11 +113,6 @@ public class Interface_Manager : MonoBehaviour
     void Start()
     {
         myAnim = GetComponent<Animator>();
-        //if (!tutoDone)
-        //{
-        //    SetupTuto();
-        //}
-        //scoreText.text = "Trésors Découverts \n" + score + " / " + limitToWin;
     }
 
     public int GetAppVuMarksCount ()
@@ -117,12 +127,45 @@ public class Interface_Manager : MonoBehaviour
         if (!SaveManager.Initialized)
         {
             SaveManager.RetrieveSaveData();
+            UpdateUserEnvironment();
+        }
+        if (SaveManager.Data.eventMainStarted)
+        {
+            previousDisplayedMenu = teaserEventSection;
+            menuToDisplay = mainEventSection;
+        }
+    }
+
+    public int GetVuMarkUnlockingMainGame ()
+    {
+        return vumarkIdUnlockingMainGame;
+    }
+
+    public int GetVuMarkUnlockingTeaserGame()
+    {
+        return vumarkIdUnlockingTeaserGame;
+    }
+
+    public void UpdateUserEnvironment ()
+    {
+        if (SaveManager.Data.artefactsUnlocked[vumarkIdUnlockingTeaserGame - 1])
+        {
+            for (int j = vumarkIdUnlockingTeaserGame - 1; j < SaveManager.Data.artefactsUnlocked.Count - 1; j++)
+            {
+                TeaserSpotUnlocked(j);
+            }
         }
         if (SaveManager.Data.eventMainStarted)
         {
             UnlockMainEventUI();
-            previousDisplayedMenu = teaserEventSection;
-            menuToDisplay = mainEventSection;
+            int tmpArtfNb = SaveManager.Data.artefactsUnlocked.Count;
+            for (int i = 0; i < vumarkIdUnlockingTeaserGame - 1; i++)
+            {
+                if (SaveManager.Data.artefactsUnlocked[i])
+                {
+                    SpotFound(i);
+                }
+            }
         }
     }
 
@@ -190,6 +233,12 @@ public class Interface_Manager : MonoBehaviour
         messageSection.SetActive(true);
     }
 
+    public void DisplayMessage (string dMsg)
+    {
+        messageText.text = dMsg;
+        messageSection.SetActive(true);
+    }
+
     public void HideMessage()
     {
         messageSection.SetActive(false);
@@ -219,6 +268,7 @@ public class Interface_Manager : MonoBehaviour
     public void EndScanning ()
     {
         feedbackScanImage.fillAmount = 0;
+        loadingArrowParent.transform.rotation = Quaternion.identity;
         isScanning = false;
         if (!quizzSection.activeSelf)
         {
@@ -243,7 +293,6 @@ public class Interface_Manager : MonoBehaviour
     public void CheckQuizzState()
     {
         EndScanning();
-        Debug.Log(currentScanId);
         if (!SaveManager.Data.quizzAnswered[currentScanId])
         {
             ResetBadAnswersFeedbacks();
@@ -424,37 +473,25 @@ public class Interface_Manager : MonoBehaviour
             fb.GetComponent<Image>().sprite = inactiveGoodAnswerSprite;
         }
     }
-
-
-    #region Main Gallery
-    [Header("Main Gallery")]
-
-    public Transform artifactsGallery;
-    private List<int> scanIdx = new List<int>();
-    private List<bool> buttonState = new List<bool>();
-    private int idxButton;
-    #endregion
-    
-    #region Camera
-
-    [Header("Camera / AR Camera")]
-
-    public Camera arCam;//AR Camera
-    public Camera uiCam;//UI Camera
-    public GameObject vumarkSection;//Vumark to activate/deactivate
-
-    public void OpenARCamera()//ALLUMER L AR CAM
+        
+    public void OpenARCamera()
     {
-        vumarkSection.SetActive(true);
+        if (arCamWithScanEnabled)
+        {
+            vumarkSection.SetActive(true);
+            myAnim.SetTrigger("ARMode");
+        }
         uiCam.gameObject.SetActive(false);
         arCam.gameObject.SetActive(true);
         menuBackground.SetActive(false);
-        myAnim.SetTrigger("ARMode");
     }
 
-    public void CloseARCamera()//ETEINDRE AR CAM
+    public void CloseARCamera()
     {
-        vumarkSection.SetActive(false);
+        if (vumarkSection.activeSelf)
+        {
+            vumarkSection.SetActive(false);
+        }
         uiCam.gameObject.SetActive(true);
         arCam.gameObject.SetActive(false);
         menuBackground.SetActive(true);
@@ -463,6 +500,7 @@ public class Interface_Manager : MonoBehaviour
     public void ChangeMenu (GameObject newMenu)
     {
         HideMessage();
+        DestroySpawnedReward();
         myAnim.SetTrigger("TransitionDoor");
         if (menuToDisplay != null)
         {
@@ -478,6 +516,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void OnClickARButton ()
     {
+        arCamWithScanEnabled = true;
         for (int i = 0; i < bottomUIButtonsParent.childCount; i++)
         {
             bottomUIButtonsParent.GetChild(i).GetComponent<Button>().interactable = true;
@@ -496,6 +535,18 @@ public class Interface_Manager : MonoBehaviour
                 bottomUIButtonsParent.GetChild(i).GetComponent<Button>().interactable = true;
             }
         }
+    }
+
+    public void OnClickArtefactButton ()
+    {
+        Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
+        spawnedRewardIdx = cTrs.GetSiblingIndex();
+        arCamWithScanEnabled = false;
+        for (int i = 0; i < bottomUIButtonsParent.childCount; i++)
+        {
+            bottomUIButtonsParent.GetChild(i).GetComponent<Button>().interactable = true;
+        }
+        ChangeMenu(ARModeMenu);
     }
 
     public void DisplayNewMenu ()
@@ -520,6 +571,11 @@ public class Interface_Manager : MonoBehaviour
         
         if (menuToDisplay == ARModeMenu)
         {
+            if (!arCamWithScanEnabled)
+            {
+                menuToDisplay.SetActive(false);
+                SpawnGalleryRewardWithFunFact();
+            }
             OpenARCamera();
         }
         else if (previousDisplayedMenu == ARModeMenu)
@@ -527,96 +583,60 @@ public class Interface_Manager : MonoBehaviour
             CloseARCamera();
         }
     }
-    #endregion
 
-    #region Menu
-
-    [Header("Menu")]//Changer de menu
-    private int currentIdxMenu = 0;//Idx du menu intro
-    public GameObject[] menuToActivate;//menu à activer
-   
-    #endregion
-
-    #region Quizz
-    [Header("Tutoriel quizz")]
-
-    public int tutoQuizzIdx;//l'index du quizz
-    public bool quizzDone;//bool si le tuto à été fait et qui envoyé au save manager
-
-    #endregion
-    
-    #region Story
-    [Header("Story")]
-
-    public List<int> idxStoryScriptableToActivate;//index à envoyé pour activer la bonne histoire
-    private bool storyToActivate = false;
-
-    #endregion
-
-    #region Sounds
-    [Header("Sounds")]
-
-    public AudioClip audioChangeMenu;
-    public AudioMixerGroup[] mixerGroupChangeMenu;
-
-    public AudioSource musicMainMenuToDeactivate;
-    private bool stopMusicInGallery = false;
-
-    #endregion
-
-    public void SpotFound(int vuMarkIdx)//Maping
+    public void SpawnGalleryRewardWithFunFact ()
     {
-        Debug.Log("updated spot");
-        mapSpots.GetChild(vuMarkIdx).GetComponent<MapARSpot>().SetSpotFound();
+        Transform tmpSpawnTrs = rewardSpawnPoint.GetChild(spawnedRewardIdx);
+        spawnedReward = Instantiate(elementsToSpawn[spawnedRewardIdx], tmpSpawnTrs.position, tmpSpawnTrs.rotation, tmpSpawnTrs);
+        DisplayMessage(quizzManagers[spawnedRewardIdx].funFact);
     }
 
-    public void TutoIsDone(bool isTutoDone)
+    public void DestroySpawnedReward ()
     {
-        Debug.Log("Here");
-        quizzDone = isTutoDone;
-    }
-    
-    #region Funfact
-
-    [Header("FunFact")]
-
-    public GameObject funfact;
-    private bool isFunFactActive;
-    public Image imageFunfactState;
-    public Sprite[] spriteFunfactState;
-
-    public void FunFactToggle()
-    {
-        Debug.Log("Here");
-        if (funfact.activeSelf == true)
+        if (spawnedReward != null)
         {
-            funfact.SetActive(false);
-            imageFunfactState.sprite = spriteFunfactState[0];
-        }
-        else if (funfact.activeSelf == false)
-        {
-            funfact.SetActive(true);
-            imageFunfactState.sprite = spriteFunfactState[1];
+            Destroy(spawnedReward);
+            spawnedRewardIdx = -1;
         }
     }
-    #endregion
-    
+
+    public void TeaserSpotUnlocked (int newUnlockedSpot)
+    {
+        teaserChallengesSection.GetChild(newUnlockedSpot - vumarkIdUnlockingTeaserGame + 1).gameObject.SetActive(true);
+        if (SaveManager.Data.artefactsUnlocked[newUnlockedSpot])
+        {
+            TeaserSpotFound(newUnlockedSpot);
+        }
+    }
+    public void TeaserSpotFound (int spotIdx)
+    {
+        teaserChallengesSection.GetChild(spotIdx - vumarkIdUnlockingTeaserGame + 1).GetComponent<ChallengeState>().SetChallengeCompleted();
+        buttonsGallery.GetChild(spotIdx).GetComponent<Button>().interactable = true;
+        for (int i = 0; i < teaserChallengesSection.childCount - 1; i++)
+        {
+            if (!teaserChallengesSection.GetChild(i).GetComponent<ChallengeState>().IsChallengeCompleted())
+            {
+                return;
+            }
+        }
+        TeaserSpotUnlocked(SaveManager.Data.artefactsUnlocked.Count - 1);
+    }
+
+    public void SpotFound(int vuMarkIdx)
+    {
+        if (!SaveManager.Data.eventMainStarted)
+        {
+            TeaserSpotFound(vuMarkIdx);
+        }
+        else if (SaveManager.Data.eventMainStarted)
+        {
+            mapSpots.GetChild(vuMarkIdx).GetComponent<MapARSpot>().SetSpotFound();
+        }
+        buttonsGallery.GetChild(vuMarkIdx).GetComponent<Button>().interactable = true;
+    }
+
     public void QuitAPK()
     {
         Application.Quit();
-    } 
-
-    public void BackToHomeMenu()
-    {
-        StartCoroutine(LoadHomeScene());
-    }
-
-    IEnumerator LoadHomeScene()
-    {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene_Home");
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
     }
 }

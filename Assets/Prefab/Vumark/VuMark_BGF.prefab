@@ -195,6 +195,12 @@ Transform:
   - {fileID: 5138894010723274029}
   - {fileID: 6710135495602666910}
   - {fileID: 7560226008448243178}
+  - {fileID: 8079741676487633159}
+  - {fileID: 8798880084150176157}
+  - {fileID: 3886435733422319074}
+  - {fileID: 2118036098697756051}
+  - {fileID: 1770278374840383481}
+  - {fileID: 1380141118650752159}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
@@ -297,8 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd4987d6d780dbd418e2a16d8e189e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vumarkIdUnlockingTeaserGame: 16
-  vumarkIdUnlockingMainGame: 10
   targetsMessages:
   - messageName: MainEvent_FirstTargetNotScanned
     messageToDisplay: "Tu dois d'abord scanner cet \xE9l\xE9ment \xE0 l'accueil du
@@ -312,43 +316,7 @@ MonoBehaviour:
     messageToDisplay: "Tu n'as plus acc\xE8s \xE0 ces cibles. Seules celles du BGF
       sont disponibles !"
     imageToDisplay: {fileID: 0}
-  elementsToSpawn:
-  - {fileID: 1580752462188800, guid: 41b322b2ae5c10f41ae802a1b16c40ef, type: 3}
-  - {fileID: 1461929810596764, guid: 4dcf912e2803594488662fd1d987e160, type: 3}
-  - {fileID: 1513966125414362, guid: 79419ed9ad7bb974090984229b409a53, type: 3}
-  - {fileID: 1594288422467446, guid: 79584708ec184d846bbd044b82981ed3, type: 3}
-  - {fileID: 1423448056190370, guid: 54eec28e56ddc4e4a8001fddc67192b3, type: 3}
-  - {fileID: 2427349789274161917, guid: db149684bc26172409395983ee533ca5, type: 3}
-  - {fileID: 1985259539139206, guid: 4c48549cfea832b45ba19d671c1ff009, type: 3}
-  - {fileID: 5003151652942828721, guid: a1d24c5c0861c5141bd5b08c73f2afb7, type: 3}
-  - {fileID: 1252867559218086, guid: 4359a9ee88e6d084d8e5a4cc329a1a0b, type: 3}
-  - {fileID: 969379929427469592, guid: b1169ba28a342384abaa21c4467897fd, type: 3}
-  - {fileID: 1085734278869238, guid: ab8f552f7b302be46bf7e902def0bc0f, type: 3}
-  - {fileID: 1050231541992820, guid: e4e8e5cd65d10d54ea1a26e4057702ab, type: 3}
-  - {fileID: 1357698957172540, guid: 31c67950f2a1f8d4db3770cb5b8ef140, type: 3}
-  - {fileID: 5177254002601685552, guid: 0d9ed50da7841ae4a9e421b1b9ab22bb, type: 3}
-  - {fileID: 9122092831435127305, guid: cebaeb64093494046bc5326a72cba70a, type: 3}
   staticSpawnPoints: {fileID: 0}
-  quizzLists:
-  - {fileID: 11400000, guid: 0fc78a54d9649a740acb8af09d88ac11, type: 2}
-  - {fileID: 11400000, guid: e5345ec79c534de448b15d901d233283, type: 2}
-  - {fileID: 11400000, guid: f632a6cde92c0be42b55e4ad6238f333, type: 2}
-  - {fileID: 11400000, guid: b9e2e7e1bcedde5428c2940cdd0f4099, type: 2}
-  - {fileID: 11400000, guid: bcf6a027ecee4774f81a4cd9c4d62bf5, type: 2}
-  - {fileID: 11400000, guid: aaa4fad6854faa24dac29328f99cebb5, type: 2}
-  - {fileID: 11400000, guid: e1a03522de53b5949aaa852d43c2216f, type: 2}
-  - {fileID: 11400000, guid: 28e24002ead979245848b1ba4a7b48de, type: 2}
-  - {fileID: 11400000, guid: fb8f95b3895d0b24186ecd3f99e4e078, type: 2}
-  - {fileID: 11400000, guid: 654da742f1a72f34dafabc80e660150b, type: 2}
-  - {fileID: 11400000, guid: 45a0fc127c4ee4048a8fe612b06cdd49, type: 2}
-  - {fileID: 11400000, guid: 0337cb077f981504da3d23bc1548bd49, type: 2}
-  - {fileID: 11400000, guid: af8d96c091feee547af5514f2e0364fe, type: 2}
-  - {fileID: 11400000, guid: fbb507d8e57ecb7459454ac3c9391007, type: 2}
-  - {fileID: 11400000, guid: 541ac3f6b4eee3548a5e1c6f1d203431, type: 2}
-  quizzAvailable: []
-  spawnPointReward: {fileID: 0}
-  spawnPointFunFact: {fileID: 0}
-  currentReward: {fileID: 0}
 --- !u!1 &1856693427326034
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +391,50 @@ Transform:
   m_Father: {fileID: 4966808575554108}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &257375209677087306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1770278374840383481}
+  - component: {fileID: 7341810077887344282}
+  m_Layer: 0
+  m_Name: Vumark_20
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1770278374840383481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257375209677087306}
+  m_LocalRotation: {x: 0.104408376, y: 0.6899002, z: 0.6517265, w: 0.29730323}
+  m_LocalPosition: {x: -0.3, y: -3.37, z: -0.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4966808575554108}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 236.843, y: -92.75299, z: -103.609985}
+--- !u!114 &7341810077887344282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257375209677087306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65abafb27c9cf8047961a5a512d76111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correspondingStaticElement: {fileID: 0}
 --- !u!1 &1436487626391713176
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +711,184 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6152111706348914422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65abafb27c9cf8047961a5a512d76111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correspondingStaticElement: {fileID: 0}
+--- !u!1 &6968970008815297060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1380141118650752159}
+  m_Layer: 0
+  m_Name: Vumark_21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1380141118650752159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968970008815297060}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99996966, y: 0.99996966, z: 0.99996966}
+  m_Children: []
+  m_Father: {fileID: 4966808575554108}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7746090589179359730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8798880084150176157}
+  m_Layer: 0
+  m_Name: Vumark_17
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8798880084150176157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746090589179359730}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99996966, y: 0.99996966, z: 0.99996966}
+  m_Children: []
+  m_Father: {fileID: 4966808575554108}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!1 &8110282132366430825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8079741676487633159}
+  m_Layer: 0
+  m_Name: Vumark_16
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8079741676487633159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110282132366430825}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99996966, y: 0.99996966, z: 0.99996966}
+  m_Children: []
+  m_Father: {fileID: 4966808575554108}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8787881830862702348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2118036098697756051}
+  - component: {fileID: 8890520751569749954}
+  m_Layer: 0
+  m_Name: Vumark_19
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2118036098697756051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787881830862702348}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99996966, y: 0.99996966, z: 0.99996966}
+  m_Children: []
+  m_Father: {fileID: 4966808575554108}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8890520751569749954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787881830862702348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65abafb27c9cf8047961a5a512d76111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correspondingStaticElement: {fileID: 0}
+--- !u!1 &9136143412342114073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3886435733422319074}
+  - component: {fileID: 8877042809781846679}
+  m_Layer: 0
+  m_Name: Vumark_18
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3886435733422319074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136143412342114073}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99996966, y: 0.99996966, z: 0.99996966}
+  m_Children: []
+  m_Father: {fileID: 4966808575554108}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8877042809781846679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136143412342114073}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65abafb27c9cf8047961a5a512d76111, type: 3}

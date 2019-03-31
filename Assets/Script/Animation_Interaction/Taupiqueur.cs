@@ -32,7 +32,6 @@ public class Taupiqueur : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Hit");
         if (canBeHit)
         {
             canBeHit = false;

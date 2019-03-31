@@ -17,6 +17,7 @@ public class SaveManager : MonoBehaviour
         public bool eventTeaserLocked;
         public bool eventMainStarted;
         public List<bool> quizzAnswered = new List<bool>();
+        public List<bool> artefactsUnlocked = new List<bool>();
         public int PokemonScore;
         //TODO: Add game data fields here
 
@@ -84,6 +85,7 @@ public class SaveManager : MonoBehaviour
         for (int i = 0; i < vumarksCount; i++)
         {
             Data.quizzAnswered.Add(false);
+            Data.artefactsUnlocked.Add(false);
         }
         //TODO: Reset game data values here
     }
@@ -152,6 +154,8 @@ public class SaveManager : MonoBehaviour
         {
             DataSaved.Invoke();
         }
+
+        Interface_Manager.Instance.UpdateUserEnvironment();
 
         //EventAPI.Instance.PostGameData((long httpCode, string response) =>
         //{

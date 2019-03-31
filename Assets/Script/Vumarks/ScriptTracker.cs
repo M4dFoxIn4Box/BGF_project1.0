@@ -12,13 +12,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     //CODE YANNICK
 
     [Header("Event Section")]
-    public int vumarkIdUnlockingTeaserGame = -1;
-    public int vumarkIdUnlockingMainGame = -1;
+    
     private int i_current_vumark_index;
     public List<Interface_Manager.AppMessages> targetsMessages;
     
     [Header("3D AR Section")]
-    public List<GameObject> elementsToSpawn;
     public Transform staticSpawnPoints;
     private GameObject currentDisplayedElement;
 
@@ -41,15 +39,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     TrackableBehaviour mTrackableBehaviour;
     VuMarkManager mVuMarkManager;
     
-    [Header("Scriptable Section Quizz")]
-    public ScriptableQuizzManager[] quizzLists;
-    public List<ScriptableQuizz> quizzAvailable;
-    
-    [Header("Récompense")]
-    public Transform spawnPointReward;
-    public Text spawnPointFunFact;
-    public GameObject currentReward;
-
     void Start()
     {
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -81,7 +70,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
         {
             i_current_vumark_index = (int)vumark.InstanceId.NumericValue;
         }
-        
+
+        int vumarkIdUnlockingMainGame = Interface_Manager.Instance.GetVuMarkUnlockingMainGame();
+        int vumarkIdUnlockingTeaserGame = Interface_Manager.Instance.GetVuMarkUnlockingTeaserGame();
+
         //Si je scanne la cible qui débloque le Main Event...
         if (i_current_vumark_index == vumarkIdUnlockingMainGame)
         {
@@ -166,29 +158,20 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             Transform vmp = transform.GetChild(targetObj - 1);
             vmp.gameObject.SetActive(true);
             LinkToStaticARElement lts = vmp.GetComponent<LinkToStaticARElement>();
+            if (!SaveManager.Data.artefactsUnlocked[targetObj - 1])
+            {
+                SaveManager.Data.artefactsUnlocked[targetObj - 1] = true;
+                SaveManager.SaveToFile();
+            }
             if (lts != null)
             {
-                currentDisplayedElement = Instantiate(elementsToSpawn[targetObj - 1], lts.GetStaticElement().position, lts.GetStaticElement().rotation, lts.GetStaticElement());
+                currentDisplayedElement = Instantiate(Interface_Manager.Instance.elementsToSpawn[targetObj - 1], lts.GetStaticElement().position, lts.GetStaticElement().rotation, lts.GetStaticElement());
                 Interface_Manager.Instance.SpotFound(targetObj - 1);
                 return;
             }
-            currentDisplayedElement = Instantiate(elementsToSpawn[targetObj - 1], vmp.position, vmp.rotation, vmp);
+            currentDisplayedElement = Instantiate(Interface_Manager.Instance.elementsToSpawn[targetObj - 1], vmp.position, vmp.rotation, vmp);
             Interface_Manager.Instance.SpotFound(targetObj - 1);
-
-            //Interface_Manager.Instance.CheckStateButton(targetObj - 1);
         }
-    }
-
-    public void RewardButton(int rewardIdx) //Click sur le bouton de la galerie
-    {
-        currentReward = Instantiate(quizzLists[rewardIdx].rewardToSpawn, spawnPointReward);
-        spawnPointFunFact.text = quizzLists[rewardIdx].funFact;
-    }
-
-    public void DestroyRewardSpawn()
-    {
-        Destroy(currentReward);
-        Interface_Manager.Instance.HideScore();
     }
     
     void Update()
