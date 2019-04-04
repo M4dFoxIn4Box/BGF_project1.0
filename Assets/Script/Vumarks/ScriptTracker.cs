@@ -81,7 +81,6 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             if (!SaveManager.Data.eventMainStarted)
             {
                 SaveManager.UnlockEventMain();
-                Interface_Manager.Instance.UnlockMainEventUI();
             }
             //Et je peux commencer à scanner dans le Main Event
             Interface_Manager.Instance.StartScanning(i_current_vumark_index);

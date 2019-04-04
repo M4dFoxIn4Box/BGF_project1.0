@@ -157,7 +157,6 @@ public class Interface_Manager : MonoBehaviour
         }
         if (SaveManager.Data.eventMainStarted)
         {
-            UnlockMainEventUI();
             int tmpArtfNb = SaveManager.Data.artefactsUnlocked.Count;
             for (int i = 0; i < vumarkIdUnlockingTeaserGame - 1; i++)
             {
@@ -166,14 +165,6 @@ public class Interface_Manager : MonoBehaviour
                     SpotFound(i);
                 }
             }
-        }
-    }
-
-    public void UnlockMainEventUI ()
-    {
-        foreach (Transform button in bottomUIButtonsParent)
-        {
-            button.gameObject.SetActive(true);
         }
     }
 
