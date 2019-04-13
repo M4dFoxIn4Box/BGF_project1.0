@@ -16,6 +16,7 @@ public class Interface_Manager : MonoBehaviour
     [Header("Events")]
     public int vumarkIdUnlockingTeaserGame = -1;
     public int vumarkIdUnlockingMainGame = -1;
+    private AudioSource myAS;
     public Transform animationsParent;
     private Animator myAnim;
 
@@ -89,12 +90,16 @@ public class Interface_Manager : MonoBehaviour
     public List<GameObject> elementsToSpawn;
     public Transform rewardSpawnPoint;
     public Transform buttonsGallery;
+    public GameObject funFactUI;
     private GameObject spawnedReward;
     private int spawnedRewardIdx = -1;
 
+    [Header("Badges")]
+    public GameObject blackBG;
+    public Image zoomInBadgeImage;
+
     [Header("Tutoriel")]
     public List<AppMessages> tutoMessages;
-    public GameObject helpSection;
     public List<AppMessages> helpMessages;
     private int tutoMsgIdx = 0;
     
@@ -115,6 +120,7 @@ public class Interface_Manager : MonoBehaviour
     void Start()
     {
         myAnim = GetComponent<Animator>();
+        myAS = uiCam.GetComponent<AudioSource>();
     }
 
     public int GetAppVuMarksCount ()
@@ -254,6 +260,10 @@ public class Interface_Manager : MonoBehaviour
         messageText.text = "";
         messageImage.gameObject.SetActive(false);
         messageImage.sprite = null;
+        if (!arCamWithScanEnabled && arCam.gameObject.activeSelf)
+        {
+            funFactUI.SetActive(true);
+        }
     }
 
     public void LostTracker ()
@@ -503,6 +513,7 @@ public class Interface_Manager : MonoBehaviour
         uiCam.gameObject.SetActive(true);
         arCam.gameObject.SetActive(false);
         menuBackground.SetActive(true);
+        funFactUI.SetActive(false);
     }
 
     public void ChangeMenu (GameObject newMenu)
@@ -554,6 +565,39 @@ public class Interface_Manager : MonoBehaviour
             bottomUIButtonsParent.GetChild(i).GetComponent<Button>().interactable = true;
         }
         ChangeMenu(ARModeMenu);
+    }
+
+    public void OnClickBadgeButton()
+    {
+        Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
+        zoomInBadgeImage.sprite = cTrs.GetChild(0).GetComponent<Image>().sprite;
+        myAnim.SetTrigger("BadgeZoomIn");
+    }
+
+    public void OnClickBadgeZoomIn()
+    {
+        myAnim.SetTrigger("BadgeZoomOut");
+    }
+
+    public void ToggleBadgeBlackBG ()
+    {
+        blackBG.SetActive(!blackBG.activeSelf);
+        if (!blackBG.activeSelf)
+        {
+            myAnim.ResetTrigger("BadgeZoomOut");
+            myAnim.ResetTrigger("BadgeZoomIn");
+        }
+    }
+
+    public void OnClickShowFunFact ()
+    {
+        funFactUI.SetActive(false);
+        DisplayMessage(quizzManagers[spawnedRewardIdx].funFact);
+    }
+
+    public void OnClickMuteMusicToggle ()
+    {
+        myAS.mute = !myAS.mute;
     }
 
     public void DisplayNewMenu ()
@@ -625,7 +669,8 @@ public class Interface_Manager : MonoBehaviour
     {
         Transform tmpSpawnTrs = rewardSpawnPoint.GetChild(spawnedRewardIdx);
         spawnedReward = Instantiate(elementsToSpawn[spawnedRewardIdx], tmpSpawnTrs.position, tmpSpawnTrs.rotation, tmpSpawnTrs);
-        DisplayMessage(quizzManagers[spawnedRewardIdx].funFact);
+        funFactUI.SetActive(true);
+        //DisplayMessage(quizzManagers[spawnedRewardIdx].funFact);
     }
 
     public void DestroySpawnedReward ()
