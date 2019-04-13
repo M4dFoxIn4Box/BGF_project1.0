@@ -37,6 +37,8 @@ public class Interface_Manager : MonoBehaviour
     public GameObject teaserEventSection;
     public Transform teaserChallengesSection;
     public GameObject mainEventSection;
+    public GameObject menuGallerySection;
+    public GameObject menuBadgesSection;
     public GameObject loadingDoor;
     public GameObject aRSection;
     public GameObject menuBackground;
@@ -91,10 +93,10 @@ public class Interface_Manager : MonoBehaviour
     private int spawnedRewardIdx = -1;
 
     [Header("Tutoriel")]
-    public GameObject tutoSection;
     public List<AppMessages> tutoMessages;
+    public GameObject helpSection;
+    public List<AppMessages> helpMessages;
     private int tutoMsgIdx = 0;
-    private bool tutoDone = false;
     
     //END CODE YANNICK
 
@@ -122,17 +124,22 @@ public class Interface_Manager : MonoBehaviour
 
     public void LoadSaveData ()
     {
-        menuToDisplay = teaserEventSection;
         previousDisplayedMenu = null;
         if (!SaveManager.Initialized)
         {
             SaveManager.RetrieveSaveData();
             UpdateUserEnvironment();
         }
+
         if (SaveManager.Data.eventMainStarted)
         {
             previousDisplayedMenu = teaserEventSection;
             menuToDisplay = mainEventSection;
+        }
+        else if ((SaveManager.Data.eventTeaserStarted && !SaveManager.Data.eventMainStarted) || SaveManager.Data.firstTutoRead)
+        {
+            previousDisplayedMenu = null;
+            menuToDisplay = teaserEventSection;
         }
     }
 
@@ -148,6 +155,13 @@ public class Interface_Manager : MonoBehaviour
 
     public void UpdateUserEnvironment ()
     {
+        if (!SaveManager.Data.firstTutoRead)
+        {
+            Debug.Log("Tuto oui");
+            SetupTuto();
+            return;
+        }
+        bottomUIButtonsParent.gameObject.SetActive(true);
         if (SaveManager.Data.artefactsUnlocked[vumarkIdUnlockingTeaserGame - 1])
         {
             for (int j = vumarkIdUnlockingTeaserGame - 1; j < SaveManager.Data.artefactsUnlocked.Count - 1; j++)
@@ -180,32 +194,36 @@ public class Interface_Manager : MonoBehaviour
     
     public void SetupTuto ()
     {
-        tutoSection.SetActive(true);
         DisplayMessage(tutoMessages[0]);
     }
 
-    public void SetupMainMenu ()
+    public void OnClickNextMessage ()
     {
-        if (tutoDone)
+        if (!SaveManager.Data.firstTutoRead)
         {
-            if (tutoSection.activeSelf)
+            tutoMsgIdx++;
+            if (tutoMsgIdx == tutoMessages.Count)
             {
-                tutoSection.SetActive(false);
+                if (!bottomUIButtonsParent.gameObject.activeSelf)
+                {
+                    bottomUIButtonsParent.gameObject.SetActive(true);
+                }
+                ChangeMenu(teaserEventSection);
+                SaveManager.Data.firstTutoRead = true;
+                SaveManager.SaveToFile();
+                return;
             }
-        }
-        mainEventSection.SetActive(true);
-    }
-
-    public void OnClickNextTutoMessage ()
-    {
-        tutoMsgIdx++;
-        if (tutoMsgIdx == tutoMessages.Count)
-        {
-            tutoDone = true;
-            SetupMainMenu();
+            DisplayMessage(tutoMessages[tutoMsgIdx]);
             return;
         }
-        DisplayMessage(tutoMessages[tutoMsgIdx]);
+        HideMessage();
+    }
+
+    public void OnClickHelpButton ()
+    {
+        Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
+        int cEventIdx = cTrs.GetSiblingIndex();
+        DisplayMessage(helpMessages[cEventIdx]);
     }
 
     public void DisplayMessage (AppMessages dMsg)
@@ -240,7 +258,6 @@ public class Interface_Manager : MonoBehaviour
 
     public void LostTracker ()
     {
-        HideMessage();
         HideScore();
         EndScanning();
     }
@@ -490,7 +507,6 @@ public class Interface_Manager : MonoBehaviour
 
     public void ChangeMenu (GameObject newMenu)
     {
-        HideMessage();
         DestroySpawnedReward();
         myAnim.SetTrigger("TransitionDoor");
         if (menuToDisplay != null)
@@ -542,6 +558,10 @@ public class Interface_Manager : MonoBehaviour
 
     public void DisplayNewMenu ()
     {
+        if (SaveManager.Data.firstTutoRead)
+        {
+            HideMessage();
+        }
         if (previousDisplayedMenu != null)
         {
             if (previousDisplayedMenu == teaserEventSection || previousDisplayedMenu == mainEventSection)
@@ -556,7 +576,33 @@ public class Interface_Manager : MonoBehaviour
             if (menuToDisplay == teaserEventSection || menuToDisplay == mainEventSection)
             {
                 aRSection.SetActive(true);
+                if (menuToDisplay == teaserEventSection && !SaveManager.Data.teaserEventTutoRead)
+                {
+                    DisplayMessage(uiMessages[4]);
+                    SaveManager.Data.teaserEventTutoRead = true;
+                    SaveManager.SaveToFile();
+                }
+                else if (menuToDisplay == mainEventSection && !SaveManager.Data.mainEventTutoRead)
+                {
+                    DisplayMessage(uiMessages[5]);
+                    SaveManager.Data.mainEventTutoRead = true;
+                    SaveManager.SaveToFile();
+                }
             }
+
+            if (menuToDisplay == menuGallerySection && !SaveManager.Data.galleryTutoRead)
+            {
+                DisplayMessage(uiMessages[2]);
+                SaveManager.Data.galleryTutoRead = true;
+                SaveManager.SaveToFile();
+            }
+            else if (menuToDisplay == menuBadgesSection && !SaveManager.Data.badgeTutoRead)
+            {
+                DisplayMessage(uiMessages[3]);
+                SaveManager.Data.badgeTutoRead = true;
+                SaveManager.SaveToFile();
+            }
+
             menuToDisplay.SetActive(true);
         }
         

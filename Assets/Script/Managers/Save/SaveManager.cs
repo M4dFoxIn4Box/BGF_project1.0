@@ -13,6 +13,11 @@ public class SaveManager : MonoBehaviour
     {
         public DateTime VersionTime;
         public int UserId;
+        public bool firstTutoRead;
+        public bool teaserEventTutoRead;
+        public bool mainEventTutoRead;
+        public bool galleryTutoRead;
+        public bool badgeTutoRead;
         public bool eventTeaserStarted;
         public bool eventTeaserLocked;
         public bool eventMainStarted;
@@ -25,6 +30,11 @@ public class SaveManager : MonoBehaviour
         {
             VersionTime = DateTime.UtcNow;
             UserId = 1306;
+            firstTutoRead = false;
+            teaserEventTutoRead = false;
+            mainEventTutoRead = false;
+            galleryTutoRead = false;
+            badgeTutoRead = false;
             eventTeaserStarted = false;
             eventTeaserLocked = false;
             eventMainStarted = false;

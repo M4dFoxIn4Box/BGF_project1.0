@@ -145,7 +145,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     
     public void OnTrackerLost()
     {
-        Destroy(currentDisplayedElement);
+        if (currentDisplayedElement != null)
+        {
+            Destroy(currentDisplayedElement);
+        }
         Interface_Manager.Instance.LostTracker();
     }
     
@@ -175,6 +178,12 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     
     void Update()
     {
-
+        if (Input.GetKeyDown("f"))
+        {
+            foreach (VuMarkTarget vumark in TrackerManager.Instance.GetStateManager().GetVuMarkManager().GetActiveVuMarks())
+            {
+                Debug.Log((int)vumark.InstanceId.NumericValue);
+            }
+        }
     }
 }
