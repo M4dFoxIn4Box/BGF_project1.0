@@ -64,8 +64,10 @@ public class Interface_Manager : MonoBehaviour
     private int currentScanId = -1;
     private int currentQuizzRightAnswersNb = 0;
     private int currentQuizzBadAnswersNb = 0;
-    private int previousQuestionId = -1;
+    private int currentQuestionId = -1;
     private bool canAnswer = true;
+    private List<int> questionsAskedIdx = new List<int>();
+    private int questionsCountInQuizz = -1;
 
     [Header("Scan Section")]
     public GameObject ARModeMenu;
@@ -95,6 +97,7 @@ public class Interface_Manager : MonoBehaviour
     private int spawnedRewardIdx = -1;
 
     [Header("Badges")]
+    public Transform buttonsBadges;
     public GameObject blackBG;
     public Image zoomInBadgeImage;
 
@@ -149,6 +152,11 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    public int GetBadgesNumber ()
+    {
+        return buttonsBadges.childCount;
+    }
+
     public int GetVuMarkUnlockingMainGame ()
     {
         return vumarkIdUnlockingMainGame;
@@ -163,11 +171,14 @@ public class Interface_Manager : MonoBehaviour
     {
         if (!SaveManager.Data.firstTutoRead)
         {
-            Debug.Log("Tuto oui");
             SetupTuto();
             return;
         }
-        bottomUIButtonsParent.gameObject.SetActive(true);
+        if (!bottomUIButtonsParent.gameObject.activeSelf)
+        {
+            bottomUIButtonsParent.gameObject.SetActive(true);
+        }
+        
         if (SaveManager.Data.artefactsUnlocked[vumarkIdUnlockingTeaserGame - 1])
         {
             for (int j = vumarkIdUnlockingTeaserGame - 1; j < SaveManager.Data.artefactsUnlocked.Count - 1; j++)
@@ -175,6 +186,15 @@ public class Interface_Manager : MonoBehaviour
                 TeaserSpotUnlocked(j);
             }
         }
+
+        for (int k = 0; k < SaveManager.Data.badgesUnlocked.Count; k++)
+        {
+            if (SaveManager.Data.badgesUnlocked[k])
+            {
+                UnlockBadge(k);
+            }
+        }
+
         if (SaveManager.Data.eventMainStarted)
         {
             int tmpArtfNb = SaveManager.Data.artefactsUnlocked.Count;
@@ -313,8 +333,7 @@ public class Interface_Manager : MonoBehaviour
         EndScanning();
         if (!SaveManager.Data.quizzAnswered[currentScanId])
         {
-            ResetBadAnswersFeedbacks();
-            ResetRightAnswersFeedbacks();
+            ResetQuizzAnswersFeedbacks();
             PopulateQuizzElements();
         }
         else if (SaveManager.Data.quizzAnswered[currentScanId])
@@ -346,29 +365,48 @@ public class Interface_Manager : MonoBehaviour
         ResetQuizz();
     }
 
+    //Nouvelle question selon conditions
     public void PopulateQuizzElements ()
     {
-        if (currentQuizzRightAnswersNb == 0 && currentQuizzBadAnswersNb == 0)
+        //Si je viens de scanner une nouvelle target, je récupère le nb de questions possibles dans le quizz
+        if (questionsCountInQuizz == -1)
         {
-            foreach (Transform fb in rightAnswersSection)
-            {
-                fb.GetComponent<Image>().sprite = inactiveGoodAnswerSprite;
-            }
+            ResetQuizzAnswersFeedbacks();
+            questionsCountInQuizz = quizzManagers[currentScanId].scriptableQuizzList.Count;
         }
-        
-        int rndInt = UnityEngine.Random.Range(0, quizzManagers[currentScanId].scriptableQuizzList.Count);
-        while (rndInt == previousQuestionId)
+
+        //Si toutes les questions du quizz ont déjà été posées, je vide la liste des questions posées
+        if (questionsAskedIdx.Count == questionsCountInQuizz)
         {
-            rndInt = UnityEngine.Random.Range(0, quizzManagers[currentScanId].scriptableQuizzList.Count);
+            questionsAskedIdx.Clear();
         }
-        for (int i = 0; i < quizzManagers[currentScanId].scriptableQuizzList[rndInt].answerList.Length; i++)
+
+        //Je sélectionne une question au hasard parmi le nb de questions possibles dans le quizz
+        currentQuestionId = UnityEngine.Random.Range(0, questionsCountInQuizz);
+
+        //Si cette question a déjà été posée, j'en sélectionne une autre
+        while (questionsAskedIdx.Contains(currentQuestionId))
         {
-            quizzAnswersButtonsSection.GetChild(i).GetComponentInChildren<Text>().text = quizzManagers[currentScanId].scriptableQuizzList[rndInt].answerList[i];
+            currentQuestionId = UnityEngine.Random.Range(0, questionsCountInQuizz);
         }
-        quizzQuestionText.text = quizzManagers[currentScanId].scriptableQuizzList[rndInt].quizzQuestion;
+
+        //J'enregistre la nouvelle question comme faisant désormais partie des questions posées
+        questionsAskedIdx.Add(currentQuestionId);
+
+        //Je récupère les infos de la question : la question et les 4 réponses possibles
+        for (int i = 0; i < quizzManagers[currentScanId].scriptableQuizzList[currentQuestionId].answerList.Length; i++)
+        {
+            quizzAnswersButtonsSection.GetChild(i).GetComponentInChildren<Text>().text = quizzManagers[currentScanId].scriptableQuizzList[currentQuestionId].answerList[i];
+        }
+        quizzQuestionText.text = quizzManagers[currentScanId].scriptableQuizzList[currentQuestionId].quizzQuestion;
+
+        //Je rends les boutons 'réponse' interactifs
         EnableAnswersButtons();
+
+        //J'affiche le quizz : bulle, robot, questions et boutons 'réponse'
         DisplayQuizz();
-        previousQuestionId = rndInt;
+
+        //Je donne la possibilité au joueur de répondre
         canAnswer = true;
     }
 
@@ -390,10 +428,8 @@ public class Interface_Manager : MonoBehaviour
     public void ResetQuizz ()
     {
         HideQuizz();
-        ResetBadAnswersFeedbacks();
-        ResetRightAnswersFeedbacks();
-        currentQuizzBadAnswersNb = 0;
-        currentQuizzRightAnswersNb = 0;
+        ResetQuizzAnswersFeedbacks();
+        questionsCountInQuizz = -1;
     }
 
     public void DisplayScore ()
@@ -436,14 +472,14 @@ public class Interface_Manager : MonoBehaviour
         {
             canAnswer = false;
             Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
-            if (cTrs.GetSiblingIndex() + 1 == quizzManagers[currentScanId].scriptableQuizzList[previousQuestionId].rightAnswer)
+            if (cTrs.GetSiblingIndex() + 1 == quizzManagers[currentScanId].scriptableQuizzList[currentQuestionId].rightAnswer)
             {
                 cTrs.GetComponent<Image>().sprite = rightAnswerButtonSprite;
                 rightAnswersSection.GetChild(currentQuizzRightAnswersNb).GetComponent<Image>().sprite = activeGoodAnswerSprite;
                 currentQuizzRightAnswersNb++;
                 myAnim.SetTrigger("QuizzCorrect");
             }
-            else if (cTrs.GetSiblingIndex() + 1 != quizzManagers[currentScanId].scriptableQuizzList[previousQuestionId].rightAnswer)
+            else if (cTrs.GetSiblingIndex() + 1 != quizzManagers[currentScanId].scriptableQuizzList[currentQuestionId].rightAnswer)
             {
                 cTrs.GetComponent<Image>().sprite = badAnswerButtonSprite;
                 badAnswersSection.GetChild(currentQuizzBadAnswersNb).GetComponent<Image>().sprite = activeBadAnswerSprite;
@@ -474,24 +510,21 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
-    public void ResetRightAnswersFeedbacks()
+    public void ResetQuizzAnswersFeedbacks ()
     {
+        currentQuizzBadAnswersNb = 0;
         currentQuizzRightAnswersNb = 0;
+        foreach (Transform fb in badAnswersSection)
+        {
+            fb.GetComponent<Image>().sprite = inactiveGoodAnswerSprite;
+        }
         foreach (Transform fb in rightAnswersSection)
         {
             fb.GetComponent<Image>().sprite = inactiveGoodAnswerSprite;
         }
     }
 
-    public void ResetBadAnswersFeedbacks()
-    {
-        currentQuizzBadAnswersNb = 0;
-        foreach (Transform fb in badAnswersSection)
-        {
-            fb.GetComponent<Image>().sprite = inactiveGoodAnswerSprite;
-        }
-    }
-        
+
     public void OpenARCamera()
     {
         if (arCamWithScanEnabled)
@@ -690,6 +723,7 @@ public class Interface_Manager : MonoBehaviour
             TeaserSpotFound(newUnlockedSpot);
         }
     }
+
     public void TeaserSpotFound (int spotIdx)
     {
         teaserChallengesSection.GetChild(spotIdx - vumarkIdUnlockingTeaserGame + 1).GetComponent<ChallengeState>().SetChallengeCompleted();
@@ -715,6 +749,12 @@ public class Interface_Manager : MonoBehaviour
             mapSpots.GetChild(vuMarkIdx).GetComponent<MapARSpot>().SetSpotFound();
         }
         buttonsGallery.GetChild(vuMarkIdx).GetComponent<Button>().interactable = true;
+        UnlockBadge(vuMarkIdx);
+    }
+
+    public void UnlockBadge (int badgeIdx)
+    {
+        buttonsBadges.GetChild(badgeIdx).GetComponent<Button>().interactable = true;
     }
 
     public void QuitAPK()

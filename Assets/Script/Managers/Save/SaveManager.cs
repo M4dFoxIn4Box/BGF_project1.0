@@ -23,6 +23,7 @@ public class SaveManager : MonoBehaviour
         public bool eventMainStarted;
         public List<bool> quizzAnswered = new List<bool>();
         public List<bool> artefactsUnlocked = new List<bool>();
+        public List<bool> badgesUnlocked = new List<bool>();
         public int PokemonScore;
         //TODO: Add game data fields here
 
@@ -96,6 +97,10 @@ public class SaveManager : MonoBehaviour
         {
             Data.quizzAnswered.Add(false);
             Data.artefactsUnlocked.Add(false);
+        }
+        for (int j = 0; j < Interface_Manager.Instance.GetBadgesNumber(); j++)
+        {
+            Data.badgesUnlocked.Add(false);
         }
         //TODO: Reset game data values here
     }

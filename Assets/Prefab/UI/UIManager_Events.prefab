@@ -3850,7 +3850,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8454989516601909954}
   m_OnClick:
     m_PersistentCalls:
@@ -4278,26 +4278,26 @@ MonoBehaviour:
   - messageName: QuizzFailed
     messageToDisplay: Tu feras mieux la prochaine fois... Scanne la cible pour retenter
       ta chance !
-    imageToDisplay: {fileID: 0}
+    imageToDisplay: {fileID: 21300028, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
   - messageName: QuizzAnswered
     messageToDisplay: "F\xE9licitations ! Scanne la cible \xE0 nouveau pour d\xE9couvrir
       un nouvel \xE9l\xE9ment !"
-    imageToDisplay: {fileID: 0}
+    imageToDisplay: {fileID: 21300028, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
   - messageName: Galerie
     messageToDisplay: "La galerie te permet de revoir les artefacts d\xE9bloqu\xE9s"
-    imageToDisplay: {fileID: 0}
+    imageToDisplay: {fileID: 21300054, guid: a5a3cd98b0164b64fb3be6919213b714, type: 3}
   - messageName: Badges
     messageToDisplay: "D\xE9bloque les badges en accomplissant certaines actions...
       mais lesquelles ?!"
-    imageToDisplay: {fileID: 0}
+    imageToDisplay: {fileID: 21300050, guid: a5a3cd98b0164b64fb3be6919213b714, type: 3}
   - messageName: Bordeaux
     messageToDisplay: Trouve cette illustration sur une affiche du BGF dans Bordeaux
       !
-    imageToDisplay: {fileID: 21300000, guid: f22a5534619e213418b713292d0da112, type: 3}
+    imageToDisplay: {fileID: 21300000, guid: 2f2515b1cf56ecd4287ca02ccf1fe3ca, type: 3}
   - messageName: BGF
     messageToDisplay: "Bien jou\xE9 ! Tu as d\xE9cod\xE9 les emplacements \xE0 scanner
       sur la carte du BGF !! Bon courage !"
-    imageToDisplay: {fileID: 0}
+    imageToDisplay: {fileID: 21300030, guid: a5a3cd98b0164b64fb3be6919213b714, type: 3}
   teaserEventSection: {fileID: 994440579160901981}
   teaserChallengesSection: {fileID: 6430425645749464641}
   mainEventSection: {fileID: 7580593258875976088}
@@ -4381,6 +4381,7 @@ MonoBehaviour:
   rewardSpawnPoint: {fileID: 0}
   buttonsGallery: {fileID: 9053462439259952845}
   funFactUI: {fileID: 4523465589454858626}
+  buttonsBadges: {fileID: 5485813440979388460}
   blackBG: {fileID: 7314997282179460981}
   zoomInBadgeImage: {fileID: 4839627616100711793}
   tutoMessages:
@@ -4392,11 +4393,11 @@ MonoBehaviour:
     imageToDisplay: {fileID: 0}
   - messageName: Start Bordeaux
     messageToDisplay: Trouve cette illustration dans la ville de Bordeaux
-    imageToDisplay: {fileID: 21300000, guid: f22a5534619e213418b713292d0da112, type: 3}
+    imageToDisplay: {fileID: 21300000, guid: 2f2515b1cf56ecd4287ca02ccf1fe3ca, type: 3}
   - messageName: InfoAffiche
     messageToDisplay: "Elle est pr\xE9sente sur n'importe quelle affiche du BGF de
       la ville"
-    imageToDisplay: {fileID: 21300000, guid: b9d24b361b5820544bfe0984073ec538, type: 3}
+    imageToDisplay: {fileID: 21300000, guid: 2f2515b1cf56ecd4287ca02ccf1fe3ca, type: 3}
   - messageName: Start BGF
     messageToDisplay: "Tu peux \xE9galement commencer ton aventure au BGF..."
     imageToDisplay: {fileID: 21300000, guid: f22a5534619e213418b713292d0da112, type: 3}
@@ -4408,18 +4409,18 @@ MonoBehaviour:
     imageToDisplay: {fileID: 21300070, guid: a5a3cd98b0164b64fb3be6919213b714, type: 3}
   - messageName: Quizz
     messageToDisplay: "...r\xE9ponds correctement aux quizz que je te propose..."
-    imageToDisplay: {fileID: 0}
+    imageToDisplay: {fileID: 21300018, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
   - messageName: Reward
     messageToDisplay: "... et collectionne les artefacts que tu auras r\xE9v\xE9l\xE9s!"
-    imageToDisplay: {fileID: 0}
+    imageToDisplay: {fileID: 21300030, guid: a5a3cd98b0164b64fb3be6919213b714, type: 3}
   - messageName: GLHF
-    messageToDisplay: Bon chanss !
-    imageToDisplay: {fileID: 0}
+    messageToDisplay: Bonne chance !
+    imageToDisplay: {fileID: 21300030, guid: a5a3cd98b0164b64fb3be6919213b714, type: 3}
   helpMessages:
   - messageName: StartBordeaux
     messageToDisplay: "Pour commencer \xE0 jouer, scanne cette illustration sur une
       affiche du BGF dans Bordeaux"
-    imageToDisplay: {fileID: 21300000, guid: f22a5534619e213418b713292d0da112, type: 3}
+    imageToDisplay: {fileID: 21300000, guid: 2f2515b1cf56ecd4287ca02ccf1fe3ca, type: 3}
   - messageName: StartBGF
     messageToDisplay: "L'aventure commence \xE0 l'accueil du BGF, avec cette illustration
       \xE0 scanner !"
@@ -6446,7 +6447,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04999102, y: 0.02163489}
   m_AnchorMax: {x: 0.9544367, y: 0.8958461}
-  m_AnchoredPosition: {x: 7.675293, y: -44.263184}
+  m_AnchoredPosition: {x: 7.675293, y: -44.262695}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7377594657422374298
@@ -13821,7 +13822,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 9109683399671926955}
   m_OnClick:
     m_PersistentCalls:
@@ -18225,8 +18226,8 @@ RectTransform:
   m_Father: {fileID: 3270496947225826094}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.42498887}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.42498866}
+  m_AnchorMax: {x: 1, y: 0.9999999}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21486,8 +21487,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5344798497338288352}
   m_HandleRect: {fileID: 4992670180406919415}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.5750112
+  m_Value: 0.9999998
+  m_Size: 0.57501125
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23984,7 +23985,7 @@ GameObject:
   - component: {fileID: 7307418283557541845}
   - component: {fileID: 2952073363585405071}
   m_Layer: 5
-  m_Name: Content
+  m_Name: BadgesContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24029,7 +24030,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0002746582, y: -0.00016536383}
+  m_AnchoredPosition: {x: -0.0002746582, y: 0.0003226892}
   m_SizeDelta: {x: 0, y: 3806.18}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7307418283557541845
@@ -26495,7 +26496,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2007248447231958105}
   m_HandleRect: {fileID: 2283378972691537093}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

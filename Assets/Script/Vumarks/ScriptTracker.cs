@@ -162,6 +162,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             LinkToStaticARElement lts = vmp.GetComponent<LinkToStaticARElement>();
             if (!SaveManager.Data.artefactsUnlocked[targetObj - 1])
             {
+                SaveManager.Data.badgesUnlocked[targetObj - 1] = true;
                 SaveManager.Data.artefactsUnlocked[targetObj - 1] = true;
                 SaveManager.SaveToFile();
             }
