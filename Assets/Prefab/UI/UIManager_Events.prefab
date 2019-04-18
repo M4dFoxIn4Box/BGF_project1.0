@@ -4323,12 +4323,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af8d96c091feee547af5514f2e0364fe, type: 2}
   - {fileID: 11400000, guid: fbb507d8e57ecb7459454ac3c9391007, type: 2}
   - {fileID: 11400000, guid: 541ac3f6b4eee3548a5e1c6f1d203431, type: 2}
-  - {fileID: 11400000, guid: 654da742f1a72f34dafabc80e660150b, type: 2}
-  - {fileID: 11400000, guid: fbb507d8e57ecb7459454ac3c9391007, type: 2}
-  - {fileID: 11400000, guid: fb8f95b3895d0b24186ecd3f99e4e078, type: 2}
-  - {fileID: 11400000, guid: f632a6cde92c0be42b55e4ad6238f333, type: 2}
-  - {fileID: 11400000, guid: e5345ec79c534de448b15d901d233283, type: 2}
-  - {fileID: 11400000, guid: 654da742f1a72f34dafabc80e660150b, type: 2}
+  - {fileID: 11400000, guid: f396ccb0b3867064b85e4439273ce099, type: 2}
+  - {fileID: 11400000, guid: 99deaeb0b31af064e9141b7b93c270f8, type: 2}
+  - {fileID: 11400000, guid: 4e831b409e6b63b4bab8ca9793c96d6a, type: 2}
+  - {fileID: 11400000, guid: 80d159ed3e033b545882d8910c6a5a03, type: 2}
+  - {fileID: 11400000, guid: ba997605a846350439d6a05032ff8835, type: 2}
+  - {fileID: 11400000, guid: e4e0f25a40bb54d43a4a826615662754, type: 2}
   quizzSection: {fileID: 2070857722590797727}
   rightAnswersSection: {fileID: 5129075627297526718}
   badAnswersSection: {fileID: 7323873047369346878}
@@ -6447,7 +6447,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04999102, y: 0.02163489}
   m_AnchorMax: {x: 0.9544367, y: 0.8958461}
-  m_AnchoredPosition: {x: 7.675293, y: -44.262573}
+  m_AnchoredPosition: {x: 7.675293, y: -44.262695}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7377594657422374298
@@ -10153,7 +10153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04999102, y: 0.021634882}
   m_AnchorMax: {x: 0.9523592, y: 0.8958461}
-  m_AnchoredPosition: {x: 7.675293, y: -44.262573}
+  m_AnchoredPosition: {x: 7.675293, y: -44.262695}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &133461426156656619
@@ -32196,11 +32196,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot04
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32306,6 +32301,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot04
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -32343,10 +32343,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5129075627297526718}
     m_Modifications:
-    - target: {fileID: 1938939753608580, guid: 54e53d978cec3a64bbb11955cb0e2bac, type: 3}
-      propertyPath: m_Name
-      value: Image_Win_Counter01
-      objectReference: {fileID: 0}
     - target: {fileID: 224014737390921376, guid: 54e53d978cec3a64bbb11955cb0e2bac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32452,6 +32448,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1938939753608580, guid: 54e53d978cec3a64bbb11955cb0e2bac, type: 3}
+      propertyPath: m_Name
+      value: Image_Win_Counter01
+      objectReference: {fileID: 0}
     - target: {fileID: 114333714736516236, guid: 54e53d978cec3a64bbb11955cb0e2bac,
         type: 3}
       propertyPath: m_Sprite
@@ -32473,11 +32473,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot10
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32583,6 +32578,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot10
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -32620,11 +32620,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot09
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32729,6 +32724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot09
       objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
@@ -32902,11 +32902,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot06
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33012,6 +33007,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot06
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -33049,11 +33049,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot14
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33159,6 +33154,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot14
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -33196,11 +33196,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot07
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33306,6 +33301,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot07
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -33343,11 +33343,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot05
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33453,6 +33448,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot05
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -33490,10 +33490,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5129075627297526718}
     m_Modifications:
-    - target: {fileID: 1938939753608580, guid: 54e53d978cec3a64bbb11955cb0e2bac, type: 3}
-      propertyPath: m_Name
-      value: Image_Win_Counter02
-      objectReference: {fileID: 0}
     - target: {fileID: 224014737390921376, guid: 54e53d978cec3a64bbb11955cb0e2bac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33599,6 +33595,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1938939753608580, guid: 54e53d978cec3a64bbb11955cb0e2bac, type: 3}
+      propertyPath: m_Name
+      value: Image_Win_Counter02
+      objectReference: {fileID: 0}
     - target: {fileID: 114333714736516236, guid: 54e53d978cec3a64bbb11955cb0e2bac,
         type: 3}
       propertyPath: m_Sprite
@@ -33620,11 +33620,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot02
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33730,6 +33725,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot02
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -33767,11 +33767,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot13
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33877,6 +33872,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot13
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -33914,11 +33914,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot15
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34024,6 +34019,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot15
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -34061,11 +34061,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot12
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34170,6 +34165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot12
       objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
@@ -34343,11 +34343,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot03
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34453,6 +34448,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot03
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -34490,11 +34490,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot01
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34600,6 +34595,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot01
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -34637,11 +34637,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot08
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34747,6 +34742,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot08
+      objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: spotTofind
@@ -34784,11 +34784,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 434046055309461822}
     m_Modifications:
-    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
-        type: 3}
-      propertyPath: m_Name
-      value: Spot11
-      objectReference: {fileID: 0}
     - target: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34893,6 +34888,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732947819533823606, guid: f287382eb8e467044b3b54f4ea5559de,
+        type: 3}
+      propertyPath: m_Name
+      value: Spot11
       objectReference: {fileID: 0}
     - target: {fileID: 1987004821157720579, guid: f287382eb8e467044b3b54f4ea5559de,
         type: 3}
