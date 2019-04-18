@@ -54,7 +54,7 @@ public class XWing : MonoBehaviour
     public bool CheckWPAccessibility ()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, waypointsParent.GetChild(currentWaypointIdx).position - transform.position, out hit, 5f))
+        if (Physics.Raycast(transform.position, waypointsParent.GetChild(currentWaypointIdx).position - transform.position, out hit, 15f))
         {
             if (hit.collider.transform == waypointsParent.GetChild(currentWaypointIdx))
             {
@@ -64,15 +64,15 @@ public class XWing : MonoBehaviour
         return false;
     }
 
-    private void OnMouseDown()
-    {
-        Debug.Log("Hit");
-        if (canBeHit)
-        {
-            canBeHit = false;
-            StarWarsManager.s_Singleton.FireLaser(transform);
-            Interface_Manager.Instance.AddScore();
-            Destroy(gameObject, 0.15f);
-        }
-    }
+    //private void OnMouseDown()
+    //{
+    //    Debug.Log("Hit");
+    //    if (canBeHit)
+    //    {
+    //        canBeHit = false;
+    //        StarWarsManager.s_Singleton.FireLaser(transform);
+    //        Interface_Manager.Instance.AddScore();
+    //        Destroy(gameObject, 0.15f);
+    //    }
+    //}
 }

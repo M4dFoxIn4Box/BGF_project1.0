@@ -42,9 +42,12 @@ public class StarWarsManager : MonoBehaviour
 
     public void SpawnXWing()
     {
-        int tmpIdx = Random.Range(0, xWingSpawnpoints.childCount);
-        GameObject tmpXW = Instantiate(xWingPrefab, xWingSpawnpoints.GetChild(tmpIdx).position, xWingSpawnpoints.GetChild(tmpIdx).rotation, xWingSpawnpoints.GetChild(tmpIdx));
-        tmpXW.GetComponent<XWing>().RegisterWPParent(waypointsParent);
+        for (int i = 0; i < 4; i++)
+        {
+            int tmpIdx = Random.Range(0, xWingSpawnpoints.childCount);
+            GameObject tmpXW = Instantiate(xWingPrefab, xWingSpawnpoints.GetChild(tmpIdx).position, xWingSpawnpoints.GetChild(tmpIdx).rotation, xWingSpawnpoints.GetChild(tmpIdx));
+            tmpXW.GetComponent<XWing>().RegisterWPParent(waypointsParent);
+        }
     }
 
     // Update is called once per frame
