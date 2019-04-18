@@ -13,6 +13,7 @@ public class DragDropElement : MonoBehaviour
     public DragOrDrop behaviourType;
 
     public InfinityStones infinityStoneNb;
+    public float dragDistanceToCamera = 0.4f;
     private bool canBeDragged = true;
     private bool isDragged = false;
     public static bool isDragging = false;
@@ -31,7 +32,7 @@ public class DragDropElement : MonoBehaviour
         if (canBeDragged && isDragged)
         {
             mPos = Input.mousePosition;
-            mPos.z = 0.6f;
+            mPos.z = dragDistanceToCamera;
             mPos = Camera.main.ScreenToWorldPoint(mPos);
             transform.position = mPos;
         }
@@ -44,6 +45,7 @@ public class DragDropElement : MonoBehaviour
             isDragged = true;
             isDragging = true;
             stoneDragged = this;
+            stoneDragged.GetComponent<Collider>().enabled = false;
         }
     }
 
@@ -51,13 +53,10 @@ public class DragDropElement : MonoBehaviour
     {
         if (behaviourType == DragOrDrop.Drop)
         {
-            Debug.Log(isDragging);
             if (isDragging && behaviourType == DragOrDrop.Drop)
             {
-                Debug.Log("TestDrop");
                 if (stoneDragged.infinityStoneNb == infinityStoneNb)
                 {
-                    Debug.Log("TestNb");
                     stoneDragged.SetOnRightSpot(transform);
                 }
             }
@@ -70,7 +69,11 @@ public class DragDropElement : MonoBehaviour
         {
             isDragged = false;
             isDragging = false;
-            stoneDragged = null;
+            if (stoneDragged != null)
+            {
+                stoneDragged.GetComponent<Collider>().enabled = true;
+                stoneDragged = null;
+            }
         }
     }
 
@@ -81,9 +84,9 @@ public class DragDropElement : MonoBehaviour
         transform.rotation = rightSpot.rotation;
         isDragging = false;
         isDragged = false;
+        stoneDragged.GetComponent<Collider>().enabled = true;
         stoneDragged = null;
         stonesSetNb++;
-        Debug.Log(stonesSetNb);
         transform.SetParent(myITap.transform);
         if (stonesSetNb == 6)
         {

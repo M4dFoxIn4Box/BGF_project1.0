@@ -43,6 +43,7 @@ public class Interface_Manager : MonoBehaviour
     public GameObject loadingDoor;
     public GameObject aRSection;
     public GameObject menuBackground;
+    public GameObject menuTopUI;
     private GameObject menuToDisplay;
     private GameObject previousDisplayedMenu;
     public Transform bottomUIButtonsParent;
@@ -535,6 +536,7 @@ public class Interface_Manager : MonoBehaviour
         uiCam.gameObject.SetActive(false);
         arCam.gameObject.SetActive(true);
         menuBackground.SetActive(false);
+        menuTopUI.SetActive(false);
     }
 
     public void CloseARCamera()
@@ -547,6 +549,7 @@ public class Interface_Manager : MonoBehaviour
         arCam.gameObject.SetActive(false);
         menuBackground.SetActive(true);
         funFactUI.SetActive(false);
+        menuTopUI.SetActive(true);
     }
 
     public void ChangeMenu (GameObject newMenu)
