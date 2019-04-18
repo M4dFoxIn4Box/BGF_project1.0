@@ -480,8 +480,23 @@ PrefabInstance:
     - target: {fileID: 43276399922274305, guid: 0584ef4dfaf5c244db4336c6804db72e,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 4
+      value: 4.01
       objectReference: {fileID: 0}
+    - target: {fileID: 43276399922274305, guid: 0584ef4dfaf5c244db4336c6804db72e,
+        type: 3}
+      propertyPath: TrailModule.minVertexDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 43276399922274304, guid: 0584ef4dfaf5c244db4336c6804db72e,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 43276399922274304, guid: 0584ef4dfaf5c244db4336c6804db72e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0584ef4dfaf5c244db4336c6804db72e, type: 3}
 --- !u!4 &1834338739783250996 stripped
