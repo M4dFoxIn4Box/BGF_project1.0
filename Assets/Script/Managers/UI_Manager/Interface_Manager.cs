@@ -80,6 +80,7 @@ public class Interface_Manager : MonoBehaviour
     public Camera arCam;
     public Camera uiCam;
     public GameObject vumarkSection;
+    public List<AppMessages> scanErrorMessages;
 
     [Header("Games Section")]
     public GameObject scoreSection;
@@ -158,12 +159,12 @@ public class Interface_Manager : MonoBehaviour
         return buttonsBadges.childCount;
     }
 
-    public int GetVuMarkUnlockingMainGame ()
+    public int GetTargetIdUnlockingMainGame ()
     {
         return vumarkIdUnlockingMainGame;
     }
 
-    public int GetVuMarkUnlockingTeaserGame()
+    public int GetTargetIdUnlockingTeaserGame()
     {
         return vumarkIdUnlockingTeaserGame;
     }
@@ -275,6 +276,22 @@ public class Interface_Manager : MonoBehaviour
         messageSection.SetActive(true);
     }
 
+    public void DisplayScanErrorMessage(int msgId)
+    {
+        messageText.text = scanErrorMessages[msgId].messageToDisplay;
+        if (scanErrorMessages[msgId].imageToDisplay != null)
+        {
+            messageImage.sprite = scanErrorMessages[msgId].imageToDisplay;
+            messageImage.gameObject.SetActive(true);
+        }
+        else if (scanErrorMessages[msgId].imageToDisplay == null)
+        {
+            messageImage.sprite = null;
+            messageImage.gameObject.SetActive(false);
+        }
+        messageSection.SetActive(true);
+    }
+
     public void HideMessage()
     {
         messageSection.SetActive(false);
@@ -298,7 +315,7 @@ public class Interface_Manager : MonoBehaviour
         if (feedbackScanImage.fillAmount >= 0)
         {
             HideMessage();
-            currentScanId = vId - 1;
+            currentScanId = vId;
             feedbackScanImage.fillAmount = 0;
             isScanning = true;
         }
@@ -340,7 +357,7 @@ public class Interface_Manager : MonoBehaviour
         else if (SaveManager.Data.quizzAnswered[currentScanId])
         {
             ARModeMenu.SetActive(false);
-            ScriptTracker.Instance.ActiveAnimation();
+            RAManager.s_Singleton.ActiveAnimation(currentScanId);
         }
     }
 
@@ -741,18 +758,18 @@ public class Interface_Manager : MonoBehaviour
         TeaserSpotUnlocked(SaveManager.Data.artefactsUnlocked.Count - 1);
     }
 
-    public void SpotFound(int vuMarkIdx)
+    public void SpotFound(int targetIdx)
     {
         if (!SaveManager.Data.eventMainStarted)
         {
-            TeaserSpotFound(vuMarkIdx);
+            TeaserSpotFound(targetIdx);
         }
         else if (SaveManager.Data.eventMainStarted)
         {
-            mapSpots.GetChild(vuMarkIdx).GetComponent<MapARSpot>().SetSpotFound();
+            mapSpots.GetChild(targetIdx).GetComponent<MapARSpot>().SetSpotFound();
         }
-        buttonsGallery.GetChild(vuMarkIdx).GetComponent<Button>().interactable = true;
-        UnlockBadge(vuMarkIdx);
+        buttonsGallery.GetChild(targetIdx).GetComponent<Button>().interactable = true;
+        UnlockBadge(targetIdx);
     }
 
     public void UnlockBadge (int badgeIdx)

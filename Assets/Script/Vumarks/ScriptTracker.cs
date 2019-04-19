@@ -12,12 +12,10 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
     //CODE YANNICK
 
     [Header("Event Section")]
-    
-    private int i_current_vumark_index;
     public List<Interface_Manager.AppMessages> targetsMessages;
+    private int i_current_vumark_index;
     
     [Header("3D AR Section")]
-    public Transform staticSpawnPoints;
     private GameObject currentDisplayedElement;
 
     //END CODE YANNICK
@@ -71,8 +69,8 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             i_current_vumark_index = (int)vumark.InstanceId.NumericValue;
         }
 
-        int vumarkIdUnlockingMainGame = Interface_Manager.Instance.GetVuMarkUnlockingMainGame();
-        int vumarkIdUnlockingTeaserGame = Interface_Manager.Instance.GetVuMarkUnlockingTeaserGame();
+        int vumarkIdUnlockingMainGame = Interface_Manager.Instance.GetTargetIdUnlockingMainGame();
+        int vumarkIdUnlockingTeaserGame = Interface_Manager.Instance.GetTargetIdUnlockingTeaserGame();
 
         //Si je scanne la cible qui débloque le Main Event...
         if (i_current_vumark_index == vumarkIdUnlockingMainGame)
@@ -110,7 +108,7 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
                 {
                     Interface_Manager.Instance.DisplayMessage(targetsMessages[2]);
                 }
-                //...si le Teaser Event n'est pas locké...
+                //...si le Teaser Event n'est pas bloqué...
                 else if (!SaveManager.Data.eventTeaserLocked)
                 {
                     //...si je scanne la cible qui débloque le Teaser Event...
