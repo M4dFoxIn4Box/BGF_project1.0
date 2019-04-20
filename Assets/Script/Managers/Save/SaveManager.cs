@@ -92,7 +92,7 @@ public class SaveManager : MonoBehaviour
     public static void ResetSaveData()
     {
         Data = new SaveData();
-        int vumarksCount = Interface_Manager.Instance.GetAppVuMarksCount();
+        int vumarksCount = Interface_Manager.Instance.GetAppTargetsCount();
         for (int i = 0; i < vumarksCount; i++)
         {
             Data.quizzAnswered.Add(false);
@@ -170,7 +170,7 @@ public class SaveManager : MonoBehaviour
             DataSaved.Invoke();
         }
 
-        Interface_Manager.Instance.UpdateUserEnvironment();
+        //Interface_Manager.Instance.UpdateUserEnvironment();
 
         //EventAPI.Instance.PostGameData((long httpCode, string response) =>
         //{

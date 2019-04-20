@@ -167,11 +167,11 @@ public class ScriptTracker : MonoBehaviour, ITrackableEventHandler
             if (lts != null)
             {
                 currentDisplayedElement = Instantiate(Interface_Manager.Instance.elementsToSpawn[targetObj - 1], lts.GetStaticElement().position, lts.GetStaticElement().rotation, lts.GetStaticElement());
-                Interface_Manager.Instance.SpotFound(targetObj - 1);
+                Interface_Manager.Instance.CompleteChallenge(targetObj - 1);
                 return;
             }
             currentDisplayedElement = Instantiate(Interface_Manager.Instance.elementsToSpawn[targetObj - 1], vmp.position, vmp.rotation, vmp);
-            Interface_Manager.Instance.SpotFound(targetObj - 1);
+            Interface_Manager.Instance.CompleteChallenge(targetObj - 1);
         }
     }
     

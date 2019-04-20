@@ -107,49 +107,37 @@ public class RAManager : MonoBehaviour
         }
     }
 
-    public void ActiveAnimation(int targetId) // Fait apparaître les récompenses liées au VuMark scanné
+    public void DisplayAnimation(int targetId) // Fait apparaître les récompenses liées au VuMark scanné
     {
+        //Si c'est la première fois que cette cible est scannée...
         if (!SaveManager.Data.artefactsUnlocked[targetId])
         {
-            int badgesCount = SaveManager.Data.badgesUnlocked.Count;
+            //Je débloque le badge et l'artefact correspondants...
+            
             SaveManager.Data.badgesUnlocked[targetId] = true;
             SaveManager.Data.artefactsUnlocked[targetId] = true;
-            if (targetId == SaveManager.Data.artefactsUnlocked.Count- 3)
-            {
-                SaveManager.Data.badgesUnlocked[badgesCount - 2] = true;
-            }
-
-            if (!SaveManager.Data.badgesUnlocked[badgesCount - 1])
-            {
-                int afUnlocked = 0;
-                for (int i = 0; i < SaveManager.Data.artefactsUnlocked.Count; i++)
-                {
-                    if (SaveManager.Data.artefactsUnlocked[i])
-                    {
-                        afUnlocked++;
-                    }
-                }
-                if (afUnlocked == SaveManager.Data.artefactsUnlocked.Count)
-                {
-                    SaveManager.Data.badgesUnlocked[badgesCount - 1] = true;
-                }
-            }
+            
             SaveManager.SaveToFile();
         }
 
+        //Si l'animation doit se jouer en statique...
         Transform scanTargetParent = transform.GetChild(targetId);
         LinkToStaticARElement lts = scanTargetParent.GetComponent<LinkToStaticARElement>();
         if (lts != null)
         {
+            //...je l'affiche au bon emplacement et je débloque le spot sur l'event correspondant
             currentDisplayedElement = Instantiate(Interface_Manager.Instance.elementsToSpawn[targetId], lts.GetStaticElement().position, lts.GetStaticElement().rotation, lts.GetStaticElement());
-            Interface_Manager.Instance.SpotFound(targetId);
+            Interface_Manager.Instance.CompleteChallenge(targetId);
             return;
         }
+
+        //...sinon, je l'affiche en RA
         currentDisplayedElement = Instantiate(Interface_Manager.Instance.elementsToSpawn[targetId], scanTargetParent.position, scanTargetParent.rotation, scanTargetParent);
-        Interface_Manager.Instance.SpotFound(targetId);
+        Interface_Manager.Instance.CompleteChallenge(targetId);
     }
 
-    public void DestroyAnimation() // Fait apparaître les récompenses liées au VuMark scanné
+    //Détruit l'objet 3D animé en cours d'affichage et réinitialise l'UI
+    public void DestroyAnimation()
     {
         if (currentDisplayedElement != null)
         {

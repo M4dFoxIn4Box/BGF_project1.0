@@ -47,32 +47,6 @@ public class InteractionSwipe : MonoBehaviour
     {
         if (canSwipe)
         {
-            //if (interactionType == InteractionTypes.SwipeTurn && Input.touchCount == 1)
-            //{
-            //    var touch = Input.touches[0];
-            //    switch (touch.phase)
-            //    {
-            //        case TouchPhase.Began:
-            //            // Stockage du point de départ
-            //            startPosition = touch.position;
-            //            break;
-            //        case TouchPhase.Ended:
-            //            // Stockage du point de fin
-            //            endPosition = touch.position;
-            //            if (Vector2.Distance(startPosition, endPosition) > swipeDistanceThreshold)
-            //            {
-            //                if (endPosition.x > startPosition.x)
-            //{
-            //    myRb.AddRelativeTorque(-Vector3.up, ForceMode.Impulse);
-            //}
-            //        else if (endPosition.x < startPosition.x)
-            //{
-            //    myRb.AddRelativeTorque(Vector3.up, ForceMode.Impulse);
-            //}
-            //            }
-            //            break;
-            //    }
-            //}
 
             switch (swipeAction)
             {

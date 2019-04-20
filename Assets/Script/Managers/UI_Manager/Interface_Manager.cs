@@ -14,8 +14,11 @@ public class Interface_Manager : MonoBehaviour
     //CODE YANNICK
 
     [Header("Events")]
-    public int vumarkIdUnlockingTeaserGame = -1;
-    public int vumarkIdUnlockingMainGame = -1;
+    public int targetIdUnlockingTeaserGame = -1;
+    public int targetIdUnlockingMainGame = -1;
+    private int currentSpotFound = -1;
+    private int spotsCountToUnlockBonus = 0;
+    public int spotsCountToUnlockAfterFirstTeaserScan = 4;
     private AudioSource myAS;
     public Transform animationsParent;
     private Animator myAnim;
@@ -88,7 +91,7 @@ public class Interface_Manager : MonoBehaviour
     private int scoreValue = 0;
 
     [Header("Map")]
-    public Transform mapSpots;//Parent map list
+    public Transform mapSpots; //Parent map spots list
 
     [Header("Gallery")]
     public List<GameObject> elementsToSpawn;
@@ -126,20 +129,28 @@ public class Interface_Manager : MonoBehaviour
     {
         myAnim = GetComponent<Animator>();
         myAS = uiCam.GetComponent<AudioSource>();
+        for (int i = 0; i < teaserChallengesSection.childCount; i++)
+        {
+            if (teaserChallengesSection.GetChild(i).GetComponent<ChallengeState>().UnlockBonus())
+            {
+                spotsCountToUnlockBonus++;
+            }
+        }
     }
 
-    public int GetAppVuMarksCount ()
+    public int GetAppTargetsCount ()
     {
         return animationsParent.childCount;
     }
 
+    //Au lancement de l'appli, charge les données précédemment sauvegardées
     public void LoadSaveData ()
     {
         previousDisplayedMenu = null;
         if (!SaveManager.Initialized)
         {
             SaveManager.RetrieveSaveData();
-            UpdateUserEnvironment();
+            SetupStartUserEnvironment();
         }
 
         if (SaveManager.Data.eventMainStarted)
@@ -161,70 +172,72 @@ public class Interface_Manager : MonoBehaviour
 
     public int GetTargetIdUnlockingMainGame ()
     {
-        return vumarkIdUnlockingMainGame;
+        return targetIdUnlockingMainGame;
     }
 
     public int GetTargetIdUnlockingTeaserGame()
     {
-        return vumarkIdUnlockingTeaserGame;
+        return targetIdUnlockingTeaserGame;
     }
 
-    public void UpdateUserEnvironment ()
+    public void SetupStartUserEnvironment ()
     {
+        //Si le joueur n'a pas encore fait le tuto, je l'affiche
         if (!SaveManager.Data.firstTutoRead)
         {
             SetupTuto();
             return;
         }
+
+        //Si l'UI au bas de l'appli n'est pas affichée, l'affiche
         if (!bottomUIButtonsParent.gameObject.activeSelf)
         {
             bottomUIButtonsParent.gameObject.SetActive(true);
         }
         
-        if (SaveManager.Data.artefactsUnlocked[vumarkIdUnlockingTeaserGame - 1])
-        {
-            for (int j = vumarkIdUnlockingTeaserGame - 1; j < SaveManager.Data.artefactsUnlocked.Count - 1; j++)
-            {
-                TeaserSpotUnlocked(j);
-            }
-        }
-
-        for (int k = 0; k < SaveManager.Data.badgesUnlocked.Count; k++)
-        {
-            if (SaveManager.Data.badgesUnlocked[k])
-            {
-                UnlockBadge(k);
-            }
-        }
-
+        //Si le joueur a déjà commencé le Main Event...
         if (SaveManager.Data.eventMainStarted)
         {
-            int tmpArtfNb = SaveManager.Data.artefactsUnlocked.Count;
-            for (int i = 0; i < vumarkIdUnlockingTeaserGame - 1; i++)
+            //...pour chaque cible...
+            for (int i = 0; i < targetIdUnlockingTeaserGame; i++)
             {
+                //...si le joueur l'a déjà scannée, je le mets à jour sur la carte
                 if (SaveManager.Data.artefactsUnlocked[i])
                 {
-                    SpotFound(i);
+                    CompleteChallenge(i);
                 }
+            }
+        }
+        else if (!SaveManager.Data.eventMainStarted)
+        {
+            //Si le premier Teaser Spot a déjà été scanné...
+            if (SaveManager.Data.artefactsUnlocked[targetIdUnlockingTeaserGame])
+            {
+                //...je le valide
+                CompleteChallenge(targetIdUnlockingTeaserGame);
             }
         }
     }
 
+    //Affiche la porte au début de l'animation (depuis l'Animator)
     public void DisplayLoadingDoor ()
     {
         loadingDoor.SetActive(true);
     }
 
+    //Masque la porte à la fin de l'animation (depuis l'Animator)
     public void HideLoadingDoor()
     {
         loadingDoor.SetActive(false);
     }
     
+    //Affiche le premier message du tuto
     public void SetupTuto ()
     {
         DisplayMessage(tutoMessages[0]);
     }
 
+    //Fait dérouler les messages du tuto lorsque le joueur appuie sur "Suivant"
     public void OnClickNextMessage ()
     {
         if (!SaveManager.Data.firstTutoRead)
@@ -247,6 +260,7 @@ public class Interface_Manager : MonoBehaviour
         HideMessage();
     }
 
+    //Affiche un message d'aide depuis le menu "Help"
     public void OnClickHelpButton ()
     {
         Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
@@ -254,6 +268,7 @@ public class Interface_Manager : MonoBehaviour
         DisplayMessage(helpMessages[cEventIdx]);
     }
 
+    //Affiche un message du robot
     public void DisplayMessage (AppMessages dMsg)
     {
         messageText.text = dMsg.messageToDisplay;
@@ -270,12 +285,14 @@ public class Interface_Manager : MonoBehaviour
         messageSection.SetActive(true);
     }
 
+    //Affiche un message du robot
     public void DisplayMessage (string dMsg)
     {
         messageText.text = dMsg;
         messageSection.SetActive(true);
     }
 
+    //Affiche un message d'erreur lorsque le joueur ne scanne pas les cibles dans l'ordre chronologique
     public void DisplayScanErrorMessage(int msgId)
     {
         messageText.text = scanErrorMessages[msgId].messageToDisplay;
@@ -292,6 +309,7 @@ public class Interface_Manager : MonoBehaviour
         messageSection.SetActive(true);
     }
 
+    //Masque le message du robot
     public void HideMessage()
     {
         messageSection.SetActive(false);
@@ -304,12 +322,14 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    //Comportement de l'UI de l'appli si la cible est perdue de vue par la caméra
     public void LostTracker ()
     {
         HideScore();
         EndScanning();
     }
 
+    //Prépare un affichage UI propre et lance le scan
     public void StartScanning (int vId)
     {
         if (feedbackScanImage.fillAmount >= 0)
@@ -321,6 +341,7 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    //Réinitialise l'UI du scan
     public void EndScanning ()
     {
         feedbackScanImage.fillAmount = 0;
@@ -334,6 +355,7 @@ public class Interface_Manager : MonoBehaviour
 
     void Update()
     {
+        //Animation de scan lorsque la RA a détecté une cible
         if (isScanning)
         {
             feedbackScanImage.fillAmount += Time.deltaTime / scanDuration;
@@ -346,6 +368,7 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    //Vérifie si le quizz doit s'afficher ou si le joueur l'a déjà fait, et donc doit afficher l'objet 3D animé
     public void CheckQuizzState()
     {
         EndScanning();
@@ -357,10 +380,11 @@ public class Interface_Manager : MonoBehaviour
         else if (SaveManager.Data.quizzAnswered[currentScanId])
         {
             ARModeMenu.SetActive(false);
-            RAManager.s_Singleton.ActiveAnimation(currentScanId);
+            RAManager.s_Singleton.DisplayAnimation(currentScanId);
         }
     }
 
+    //Vérifie si le joueur a donné 2 bonnes réponses au quizz, ou 2 mauvaises, ou si le quizz est en cours
     public void CheckAnswersStatus ()
     {
         if (currentQuizzBadAnswersNb >= 2)
@@ -428,6 +452,7 @@ public class Interface_Manager : MonoBehaviour
         canAnswer = true;
     }
 
+    //Affiche l'UI du quizz
     public void DisplayQuizz()
     {
         if (currentQuizzBadAnswersNb == 0 && currentQuizzRightAnswersNb == 0)
@@ -438,11 +463,13 @@ public class Interface_Manager : MonoBehaviour
         ARModeMenu.SetActive(false);
     }
 
+    //Masque l'UI du quizz
     public void HideQuizz()
     {
         quizzSection.SetActive(false);
     }
 
+    //Lance le Reset du quizz
     public void ResetQuizz ()
     {
         HideQuizz();
@@ -477,13 +504,14 @@ public class Interface_Manager : MonoBehaviour
     {
         return scoreValue;
     }
-
+    
     public void ResetScoreSection ()
     {
         scoreValue = 0;
         scoreText.text = scoreValue.ToString();
     }
 
+    //Vérifie si la réponse donnée par le joueur au quizz est bonne ou pas
     public void OnPickAnswer ()
     {
         if (canAnswer)
@@ -508,6 +536,7 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    //Active les boutons Réponse du quizz pour que le joueur puisse répondre
     public void EnableAnswersButtons()
     {
         foreach (Transform button in quizzAnswersButtonsSection)
@@ -517,6 +546,7 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    //Désactive les boutons Réponse du quizz après une réponse donnée par le joueur
     public void DisableAnswersButtons (Transform exceptButton)
     {
         foreach (Transform button in quizzAnswersButtonsSection)
@@ -528,6 +558,7 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    //Réinitialise l'UI du quizz
     public void ResetQuizzAnswersFeedbacks ()
     {
         currentQuizzBadAnswersNb = 0;
@@ -542,7 +573,7 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
-
+    //Lance la RA
     public void OpenARCamera()
     {
         if (arCamWithScanEnabled)
@@ -556,6 +587,7 @@ public class Interface_Manager : MonoBehaviour
         menuTopUI.SetActive(false);
     }
 
+    //Ferme le menu RA
     public void CloseARCamera()
     {
         if (vumarkSection.activeSelf)
@@ -569,6 +601,7 @@ public class Interface_Manager : MonoBehaviour
         menuTopUI.SetActive(true);
     }
 
+    //Masque le menu en cours et déclenche l'animation de la porte qui se ferme
     public void ChangeMenu (GameObject newMenu)
     {
         DestroySpawnedReward();
@@ -585,6 +618,7 @@ public class Interface_Manager : MonoBehaviour
         menuToDisplay = newMenu;
     }
 
+    //Prépare l'affichage de la RA et ferme le menu "Map"
     public void OnClickARButton ()
     {
         arCamWithScanEnabled = true;
@@ -594,6 +628,7 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    //S'exécute quand un bouton du menu au bas de l'appli est cliqué
     public void OnClickBottomUIButton ()
     {
         ResetQuizz();
@@ -608,6 +643,7 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    //Prépare l'affichage de l'artefact en mode Galerie et ferme le menu "Galerie" pour ouvrir la RA
     public void OnClickArtefactButton ()
     {
         Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
@@ -620,6 +656,7 @@ public class Interface_Manager : MonoBehaviour
         ChangeMenu(ARModeMenu);
     }
 
+    //Permet de zoomer sur un badge en cliquant dessus
     public void OnClickBadgeButton()
     {
         Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
@@ -627,11 +664,13 @@ public class Interface_Manager : MonoBehaviour
         myAnim.SetTrigger("BadgeZoomIn");
     }
 
+    //Permet de dézoomer sur le badge zoomé en cliquant dessus
     public void OnClickBadgeZoomIn()
     {
         myAnim.SetTrigger("BadgeZoomOut");
     }
 
+    //Appelé depuis l'animator lors du zoom/dézoom d'un badge 
     public void ToggleBadgeBlackBG ()
     {
         blackBG.SetActive(!blackBG.activeSelf);
@@ -642,12 +681,14 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    //Affiche le fun fact
     public void OnClickShowFunFact ()
     {
         funFactUI.SetActive(false);
         DisplayMessage(quizzManagers[spawnedRewardIdx].funFact);
     }
 
+    //Toggle de la musique
     public void OnClickMuteMusicToggle ()
     {
         myAS.mute = !myAS.mute;
@@ -720,63 +761,137 @@ public class Interface_Manager : MonoBehaviour
 
     public void SpawnGalleryRewardWithFunFact ()
     {
+        //Affiche l'objet 3D animé et le fun fact dans la galerie
         Transform tmpSpawnTrs = rewardSpawnPoint.GetChild(spawnedRewardIdx);
         spawnedReward = Instantiate(elementsToSpawn[spawnedRewardIdx], tmpSpawnTrs.position, tmpSpawnTrs.rotation, tmpSpawnTrs);
         funFactUI.SetActive(true);
-        //DisplayMessage(quizzManagers[spawnedRewardIdx].funFact);
     }
 
     public void DestroySpawnedReward ()
     {
+        //Détruit l'objet 3D animé dans la galerie
         if (spawnedReward != null)
         {
             Destroy(spawnedReward);
             spawnedRewardIdx = -1;
         }
     }
-
-    public void TeaserSpotUnlocked (int newUnlockedSpot)
+    
+    public void CompleteChallenge (int spotIdx)
     {
-        teaserChallengesSection.GetChild(newUnlockedSpot - vumarkIdUnlockingTeaserGame + 1).gameObject.SetActive(true);
-        if (SaveManager.Data.artefactsUnlocked[newUnlockedSpot])
-        {
-            TeaserSpotFound(newUnlockedSpot);
-        }
-    }
+        //Débloque l'artefact et le badge correspondants s'ils ne sont pas déjà débloqués
+        UnlockArtefact(spotIdx);
+        UnlockBadge(spotIdx);
 
-    public void TeaserSpotFound (int spotIdx)
-    {
-        teaserChallengesSection.GetChild(spotIdx - vumarkIdUnlockingTeaserGame + 1).GetComponent<ChallengeState>().SetChallengeCompleted();
-        buttonsGallery.GetChild(spotIdx).GetComponent<Button>().interactable = true;
-        for (int i = 0; i < teaserChallengesSection.childCount - 1; i++)
-        {
-            if (!teaserChallengesSection.GetChild(i).GetComponent<ChallengeState>().IsChallengeCompleted())
-            {
-                return;
-            }
-        }
-        TeaserSpotUnlocked(SaveManager.Data.artefactsUnlocked.Count - 1);
-    }
-
-    public void SpotFound(int targetIdx)
-    {
+        //Si c'est le Teaser Event qui est actif, remplit la barre de complétion et affiche les étoiles...
         if (!SaveManager.Data.eventMainStarted)
         {
-            TeaserSpotFound(targetIdx);
+            teaserChallengesSection.GetChild(spotIdx - targetIdUnlockingTeaserGame).GetComponent<ChallengeState>().SetChallengeCompleted();
+
+            //... et si c'est le premier challenge qui est complété, débloque les éléments suivants
+            if (spotIdx == targetIdUnlockingTeaserGame)
+            {
+                UnlockNextTeaserSpotsToScan();
+            }
+            //...sinon, si ce n'est pas l'Easter Egg qui est scanné, vérifie s'il doit être débloqué
+            else if (spotIdx - targetIdUnlockingTeaserGame != teaserChallengesSection.childCount - 1)
+            {
+                CheckIfUnlockBonusSpot();
+            }
         }
+        //...sinon, je mets à jour le spot sur la carte
         else if (SaveManager.Data.eventMainStarted)
         {
-            mapSpots.GetChild(targetIdx).GetComponent<MapARSpot>().SetSpotFound();
+            mapSpots.GetChild(spotIdx).GetComponent<MapARSpot>().SetSpotFound();
         }
-        buttonsGallery.GetChild(targetIdx).GetComponent<Button>().interactable = true;
-        UnlockBadge(targetIdx);
     }
 
+    public void UnlockNextTeaserSpotsToScan ()
+    {
+        //Débloque tous les spots que le premier challenge indique
+        for (int i = 1; i <= spotsCountToUnlockAfterFirstTeaserScan; i++)
+        {
+            UnlockNewTeaserSpotToScan(i);
+        }
+    }
+
+    public void UnlockNewTeaserSpotToScan(int teaserSpotIdx)
+    {
+        //Affiche le nouveau spot à scanner
+        teaserChallengesSection.GetChild(teaserSpotIdx).gameObject.SetActive(true);
+        int realIdx = teaserSpotIdx + targetIdUnlockingTeaserGame;
+        if (SaveManager.Data.artefactsUnlocked[realIdx])
+        {
+            CompleteChallenge(realIdx);
+        }
+    }
+
+    //Vérifie si le Bonus Spot doit être débloqué
+    public void CheckIfUnlockBonusSpot ()
+    {
+        int bonusSpotsCountCheck = 0;
+        for (int i = 0; i < teaserChallengesSection.childCount; i++)
+        {
+            ChallengeState tmpCS = teaserChallengesSection.GetChild(i).GetComponent<ChallengeState>();
+            if (tmpCS.IsChallengeCompleted() && tmpCS.UnlockBonus())
+            {
+                bonusSpotsCountCheck++;
+            }
+        }
+        if (bonusSpotsCountCheck == spotsCountToUnlockBonus)
+        {
+            UnlockNewTeaserSpotToScan(teaserChallengesSection.childCount - 1);
+        }
+    }
+
+    //Débloque un artefact dans le menu "Galerie"
+    public void UnlockArtefact (int afIdx)
+    {
+        Button tmpBtn = buttonsGallery.GetChild(afIdx).GetComponent<Button>();
+        if (!tmpBtn.interactable)
+        {
+            tmpBtn.interactable = true;
+        }
+    }
+
+    //Débloque les badges associés aux artefacts, et les badges bonus
     public void UnlockBadge (int badgeIdx)
     {
-        buttonsBadges.GetChild(badgeIdx).GetComponent<Button>().interactable = true;
-    }
+        int badgesCount = SaveManager.Data.badgesUnlocked.Count;
+        Button tmpBtn = buttonsBadges.GetChild(badgeIdx).GetComponent<Button>();
+        if (!tmpBtn.interactable)
+        {
+            buttonsBadges.GetChild(badgeIdx).GetComponent<Button>().interactable = true;
+        }
 
+        //Si l'Easter Egg vient d'être scanné, débloque le badge de récompense du Teaser Event
+        if (badgeIdx == SaveManager.Data.artefactsUnlocked.Count -1)
+        {
+            SaveManager.Data.badgesUnlocked[badgesCount - 2] = true;
+            buttonsBadges.GetChild(badgesCount - 2).GetComponent<Button>().interactable = true;
+        }
+
+        //Si le dernier badge n'est pas débloqué...
+        if (!SaveManager.Data.badgesUnlocked[badgesCount - 1])
+        {
+            //...je compte combien d'artefacts des deux events ont été débloqués.
+            int afUnlocked = 0;
+            for (int i = 0; i < SaveManager.Data.artefactsUnlocked.Count; i++)
+            {
+                if (SaveManager.Data.artefactsUnlocked[i])
+                {
+                    afUnlocked++;
+                }
+            }
+            //Si le joueur a débloqué TOUS les artefacts des deux events, je débloque le dernier badge
+            if (afUnlocked == SaveManager.Data.artefactsUnlocked.Count)
+            {
+                SaveManager.Data.badgesUnlocked[badgesCount - 1] = true;
+                buttonsBadges.GetChild(badgesCount - 1).GetComponent<Button>().interactable = true;
+            }
+        }
+    }
+    
     public void QuitAPK()
     {
         Application.Quit();

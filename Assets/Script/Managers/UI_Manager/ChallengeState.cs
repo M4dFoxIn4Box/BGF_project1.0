@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ChallengeState : MonoBehaviour
 {
-
+    public bool unlockBonus = false;
     public Image challengeGauge;
     public GameObject challengeStars;
     private bool isCompleted;
@@ -32,5 +32,10 @@ public class ChallengeState : MonoBehaviour
     public bool IsChallengeCompleted()
     {
         return isCompleted;
+    }
+
+    public bool UnlockBonus ()
+    {
+        return unlockBonus;
     }
 }

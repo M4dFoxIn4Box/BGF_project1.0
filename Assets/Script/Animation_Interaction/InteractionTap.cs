@@ -35,8 +35,6 @@ public class InteractionTap : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        
-
         if (canTap)
         {
             if (triggerOnlyAdditionalAnim)
