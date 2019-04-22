@@ -98,6 +98,7 @@ public class Interface_Manager : MonoBehaviour
     public Transform rewardSpawnPoint;
     public Transform buttonsGallery;
     public GameObject funFactUI;
+    public Text funFactText;
     private GameObject spawnedReward;
     private int spawnedRewardIdx = -1;
 
@@ -260,6 +261,19 @@ public class Interface_Manager : MonoBehaviour
         HideMessage();
     }
 
+    //Affiche et remplit l'UI du fun fact
+    public void DisplayAndFillFunFactUI ()
+    {
+        funFactUI.SetActive(true);
+        funFactText.text = quizzManagers[spawnedRewardIdx].funFact;
+    }
+
+    //Lance l'animation d'apparition.disparition du fun fact
+    public void OnClickShowFunFact()
+    {
+        myAnim.SetTrigger("FunFactToggle");
+    }
+    
     //Affiche un message d'aide depuis le menu "Help"
     public void OnClickHelpButton ()
     {
@@ -316,10 +330,6 @@ public class Interface_Manager : MonoBehaviour
         messageText.text = "";
         messageImage.gameObject.SetActive(false);
         messageImage.sprite = null;
-        if (!arCamWithScanEnabled && arCam.gameObject.activeSelf)
-        {
-            funFactUI.SetActive(true);
-        }
     }
 
     //Comportement de l'UI de l'appli si la cible est perdue de vue par la caméra
@@ -680,14 +690,7 @@ public class Interface_Manager : MonoBehaviour
             myAnim.ResetTrigger("BadgeZoomIn");
         }
     }
-
-    //Affiche le fun fact
-    public void OnClickShowFunFact ()
-    {
-        funFactUI.SetActive(false);
-        DisplayMessage(quizzManagers[spawnedRewardIdx].funFact);
-    }
-
+    
     //Toggle de la musique
     public void OnClickMuteMusicToggle ()
     {
@@ -764,7 +767,7 @@ public class Interface_Manager : MonoBehaviour
         //Affiche l'objet 3D animé et le fun fact dans la galerie
         Transform tmpSpawnTrs = rewardSpawnPoint.GetChild(spawnedRewardIdx);
         spawnedReward = Instantiate(elementsToSpawn[spawnedRewardIdx], tmpSpawnTrs.position, tmpSpawnTrs.rotation, tmpSpawnTrs);
-        funFactUI.SetActive(true);
+        DisplayAndFillFunFactUI();
     }
 
     public void DestroySpawnedReward ()

@@ -47,8 +47,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &4725245642958281077
-BoxCollider:
+--- !u!64 &9029477579698352062
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -57,9 +57,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 56.051437, y: 56.051437, z: 13.516626}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 46539e82c582c1f46a9e9a9b9f3d0d87, type: 3}
 --- !u!95 &948556802729115064
 Animator:
   serializedVersion: 3
@@ -93,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swipeAction: 1
   swipeAttempts: 0
-  turnSpeed: 1
+  turnSpeed: 0.01
   swipeDistanceThreshold: 3
   toggleStartsLeft: 0
   startsInteractable: 1
@@ -115,19 +116,6 @@ MonoBehaviour:
   triggerOnlyAdditionalAnim: 0
   additionalAnimatorToTrigger: {fileID: 0}
   nextTapToTrigger: {fileID: 0}
---- !u!114 &813450579070626720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8457116495422648908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 252af95b86719204c9fd9ec2b85b914f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  matToModify: {fileID: 2100000, guid: 4f5bfe46cf1603e499ecbd486505a8b8, type: 2}
 --- !u!1001 &8457116495422616812
 PrefabInstance:
   m_ObjectHideFlags: 0
