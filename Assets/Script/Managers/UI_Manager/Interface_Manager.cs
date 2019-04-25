@@ -106,6 +106,7 @@ public class Interface_Manager : MonoBehaviour
     public Transform buttonsBadges;
     public GameObject blackBG;
     public Image zoomInBadgeImage;
+    private List<int> badgesUnlocked = new List<int>();
 
     [Header("Tutoriel")]
     public List<AppMessages> tutoMessages;
@@ -330,6 +331,10 @@ public class Interface_Manager : MonoBehaviour
         messageText.text = "";
         messageImage.gameObject.SetActive(false);
         messageImage.sprite = null;
+        if (buttonsBadges.gameObject.activeSelf)
+        {
+            UnlockBadgesInBadgesMenu();
+        }
     }
 
     //Comportement de l'UI de l'appli si la cible est perdue de vue par la caméra
@@ -669,15 +674,28 @@ public class Interface_Manager : MonoBehaviour
     //Permet de zoomer sur un badge en cliquant dessus
     public void OnClickBadgeButton()
     {
-        Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
-        zoomInBadgeImage.sprite = cTrs.GetChild(0).GetComponent<Image>().sprite;
+        GameObject cObj = EventSystem.current.currentSelectedGameObject;
+        zoomInBadgeImage.sprite = cObj.GetComponent<Image>().sprite;
         myAnim.SetTrigger("BadgeZoomIn");
     }
-
+    
     //Permet de dézoomer sur le badge zoomé en cliquant dessus
     public void OnClickBadgeZoomIn()
     {
         myAnim.SetTrigger("BadgeZoomOut");
+    }
+    
+    //Déclenche l'animation des badges débloqués à l'ouverture du menu des badges et vide la liste temporaire
+    public void UnlockBadgesInBadgesMenu()
+    {
+        if (badgesUnlocked.Count > 0)
+        {
+            for (int i = 0; i < badgesUnlocked.Count; i++)
+            {
+                buttonsBadges.GetChild(badgesUnlocked[i]).GetComponent<AnimatableButton>().TriggerBadgeOwnedAnimation();
+            }
+        }
+        badgesUnlocked.Clear();
     }
 
     //Appelé depuis l'animator lors du zoom/dézoom d'un badge 
@@ -730,18 +748,20 @@ public class Interface_Manager : MonoBehaviour
                     SaveManager.SaveToFile();
                 }
             }
-
-            if (menuToDisplay == menuGallerySection && !SaveManager.Data.galleryTutoRead)
+            else if (menuToDisplay == menuGallerySection && !SaveManager.Data.galleryTutoRead)
             {
                 DisplayMessage(uiMessages[2]);
                 SaveManager.Data.galleryTutoRead = true;
                 SaveManager.SaveToFile();
             }
-            else if (menuToDisplay == menuBadgesSection && !SaveManager.Data.badgeTutoRead)
+            else if (menuToDisplay == menuBadgesSection)
             {
-                DisplayMessage(uiMessages[3]);
-                SaveManager.Data.badgeTutoRead = true;
-                SaveManager.SaveToFile();
+                if (!SaveManager.Data.badgeTutoRead)
+                {
+                    DisplayMessage(uiMessages[3]);
+                    SaveManager.Data.badgeTutoRead = true;
+                    SaveManager.SaveToFile();
+                }
             }
 
             menuToDisplay.SetActive(true);
@@ -870,8 +890,8 @@ public class Interface_Manager : MonoBehaviour
         //Si l'Easter Egg vient d'être scanné, débloque le badge de récompense du Teaser Event
         if (badgeIdx == SaveManager.Data.artefactsUnlocked.Count -1)
         {
-            SaveManager.Data.badgesUnlocked[badgesCount - 2] = true;
-            buttonsBadges.GetChild(badgesCount - 2).GetComponent<Button>().interactable = true;
+            SaveManager.Data.badgesUnlocked[badgesCount - 3] = true;
+            buttonsBadges.GetChild(badgesCount - 3).GetComponent<Button>().interactable = true;
         }
 
         //Si le dernier badge n'est pas débloqué...
@@ -894,7 +914,45 @@ public class Interface_Manager : MonoBehaviour
             }
         }
     }
-    
+
+    //Ajoute dans une liste temporaire les badges débloqués par le joueur lorsqu'il scanne un artefact
+    public void UnlockBadgeByScanning (int badgeIdx)
+    {
+        int badgesCount = SaveManager.Data.badgesUnlocked.Count;
+        Button tmpBtn = buttonsBadges.GetChild(badgeIdx).GetComponent<Button>();
+        if (!tmpBtn.interactable)
+        {
+            badgesUnlocked.Add(badgeIdx);
+        }
+
+        //Si l'Easter Egg vient d'être scanné, débloque le badge de récompense du Teaser Event
+        if (badgeIdx == SaveManager.Data.artefactsUnlocked.Count - 1)
+        {
+            SaveManager.Data.badgesUnlocked[badgesCount - 3] = true;
+            badgesUnlocked.Add(badgesCount - 3);
+        }
+
+        //Si le dernier badge n'est pas débloqué...
+        if (!SaveManager.Data.badgesUnlocked[badgesCount - 1])
+        {
+            //...je compte combien d'artefacts des deux events ont été débloqués.
+            int afUnlocked = 0;
+            for (int i = 0; i < SaveManager.Data.artefactsUnlocked.Count; i++)
+            {
+                if (SaveManager.Data.artefactsUnlocked[i])
+                {
+                    afUnlocked++;
+                }
+            }
+            //Si le joueur a débloqué TOUS les artefacts des deux events, je débloque le dernier badge
+            if (afUnlocked == SaveManager.Data.artefactsUnlocked.Count)
+            {
+                SaveManager.Data.badgesUnlocked[badgesCount - 1] = true;
+                badgesUnlocked.Add(badgesCount - 1);
+            }
+        }
+    }
+
     public void QuitAPK()
     {
         Application.Quit();

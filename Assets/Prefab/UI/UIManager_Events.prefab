@@ -300,7 +300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8016138089432292368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -805,7 +805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &175666615161243607
 RectTransform:
   m_ObjectHideFlags: 0
@@ -915,7 +915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9006328257882985963
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1815,7 +1815,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Dr Strange
 --- !u!1 &563474917641119722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,7 +2293,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Album
 --- !u!1 &781463489494359786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,7 +2372,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: DC Comics
 --- !u!1 &806225051807728331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2497,8 @@ GameObject:
   - component: {fileID: 3616525524546543449}
   - component: {fileID: 4883465427524518783}
   - component: {fileID: 8167259990808766164}
+  - component: {fileID: 2454099848072023475}
+  - component: {fileID: 2700167294743419051}
   m_Layer: 5
   m_Name: Button_Badge02
   m_TagString: Untagged
@@ -2520,10 +2522,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1103.75, y: -175}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3616525524546543449
 CanvasRenderer:
@@ -2553,7 +2555,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e613aae8c36f06a42a9ae94c9c68e745, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2590,8 +2592,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -2615,6 +2617,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2454099848072023475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873878509038383346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &2700167294743419051
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873878509038383346}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &878402038933522352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,7 +2665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7013381905790901103
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2775,6 +2808,8 @@ GameObject:
   - component: {fileID: 6203328413267326138}
   - component: {fileID: 2766222895277208506}
   - component: {fileID: 5858039101400978993}
+  - component: {fileID: 2319487889783592300}
+  - component: {fileID: 4097999827270601321}
   m_Layer: 5
   m_Name: Button_Badge19
   m_TagString: Untagged
@@ -2798,10 +2833,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650.25, y: -3137.44}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6203328413267326138
 CanvasRenderer:
@@ -2831,7 +2866,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0f1c93ca51b4ba47b9946376d0ef126, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2868,8 +2903,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -2893,6 +2928,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2319487889783592300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940660436674493328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &4097999827270601321
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940660436674493328}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &955339187358532334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,6 +3724,8 @@ GameObject:
   - component: {fileID: 1621365735192218984}
   - component: {fileID: 8454989516601909954}
   - component: {fileID: 3125074524079985334}
+  - component: {fileID: 5860480732788147600}
+  - component: {fileID: 7796642980149550015}
   m_Layer: 5
   m_Name: Button_Badge11
   m_TagString: Untagged
@@ -3681,10 +3749,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1103.75, y: -1656.22}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1621365735192218984
 CanvasRenderer:
@@ -3714,7 +3782,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eaa82102a6a6a4e4796f5772a276bdd7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3751,8 +3819,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -3776,6 +3844,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &5860480732788147600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117318452965001443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &7796642980149550015
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117318452965001443}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1161352857284599204
 GameObject:
   m_ObjectHideFlags: 0
@@ -3854,7 +3953,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Alien
 --- !u!1 &1194112857342894515
 GameObject:
   m_ObjectHideFlags: 0
@@ -4873,7 +4972,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Mascotte
 --- !u!1 &1263893375539897455
 GameObject:
   m_ObjectHideFlags: 0
@@ -5039,6 +5138,8 @@ GameObject:
   - component: {fileID: 6811988053006569936}
   - component: {fileID: 5434730304182251542}
   - component: {fileID: 6382413889196138126}
+  - component: {fileID: 8319841375550058937}
+  - component: {fileID: 1851406356413333006}
   m_Layer: 5
   m_Name: Button_Badge12
   m_TagString: Untagged
@@ -5062,10 +5163,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.75, y: -2149.96}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6811988053006569936
 CanvasRenderer:
@@ -5095,7 +5196,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6eed8cc4e8f50343b84bffcacc6c431, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5132,8 +5233,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -5157,6 +5258,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &8319841375550058937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297032087475152453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1851406356413333006
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297032087475152453}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1297916757014831700
 GameObject:
   m_ObjectHideFlags: 0
@@ -5205,6 +5337,8 @@ GameObject:
   - component: {fileID: 798846433811471214}
   - component: {fileID: 9096406272056289849}
   - component: {fileID: 8770120547381345944}
+  - component: {fileID: 6602725147058023101}
+  - component: {fileID: 8283697782474817952}
   m_Layer: 5
   m_Name: Button_Badge14
   m_TagString: Untagged
@@ -5228,10 +5362,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1103.75, y: -2149.96}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &798846433811471214
 CanvasRenderer:
@@ -5298,8 +5432,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -5323,6 +5457,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &6602725147058023101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308737149003240246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &8283697782474817952
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308737149003240246}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1369440902611330340
 GameObject:
   m_ObjectHideFlags: 0
@@ -5480,7 +5645,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: FNAC
 --- !u!1 &1384416002736825058
 GameObject:
   m_ObjectHideFlags: 0
@@ -5861,6 +6026,8 @@ GameObject:
   - component: {fileID: 61416301725775882}
   - component: {fileID: 3135597411989138010}
   - component: {fileID: 9023580095482039756}
+  - component: {fileID: 2313589682535340954}
+  - component: {fileID: 5185464305401409716}
   m_Layer: 5
   m_Name: Button_Badge08
   m_TagString: Untagged
@@ -5884,10 +6051,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1103.75, y: -1162.48}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &61416301725775882
 CanvasRenderer:
@@ -5917,7 +6084,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e23e8324fdb1ba4389068bd0a4df9df, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5954,8 +6121,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -5979,6 +6146,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2313589682535340954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527440610154054680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &5185464305401409716
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527440610154054680}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1544373634516030110
 GameObject:
   m_ObjectHideFlags: 0
@@ -6183,7 +6381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04999102, y: 0.02163489}
   m_AnchorMax: {x: 0.9544367, y: 0.8958461}
-  m_AnchoredPosition: {x: 7.675293, y: -44.262207}
+  m_AnchoredPosition: {x: 7.675293, y: -44.261597}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7377594657422374298
@@ -6978,7 +7176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &16919878508052978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7501,7 +7699,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Star Wars
 --- !u!1 &1958677873500728053
 GameObject:
   m_ObjectHideFlags: 0
@@ -8756,7 +8954,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Easter Egg
 --- !u!1 &2208509419568599859
 GameObject:
   m_ObjectHideFlags: 0
@@ -8917,6 +9115,8 @@ GameObject:
   - component: {fileID: 3267083169230206941}
   - component: {fileID: 389904798947022503}
   - component: {fileID: 6350625739575165424}
+  - component: {fileID: 3630210774902615505}
+  - component: {fileID: 2792046702806691034}
   m_Layer: 5
   m_Name: Button_Badge01
   m_TagString: Untagged
@@ -8940,10 +9140,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650.25, y: -175}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3267083169230206941
 CanvasRenderer:
@@ -8973,7 +9173,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 681e66ed214e9d149946febd063bb890, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9010,8 +9210,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -9035,6 +9235,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &3630210774902615505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264873655222574158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &2792046702806691034
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264873655222574158}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2282984748218869254
 GameObject:
   m_ObjectHideFlags: 0
@@ -9279,7 +9510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6075552940898129371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9448,7 +9679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04999102, y: 0.021634882}
   m_AnchorMax: {x: 0.9523592, y: 0.8958461}
-  m_AnchoredPosition: {x: 7.675293, y: -44.262207}
+  m_AnchoredPosition: {x: 7.675293, y: -44.261597}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &133461426156656619
@@ -10072,7 +10303,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Vikings
 --- !u!1 &2672394134957067852
 GameObject:
   m_ObjectHideFlags: 0
@@ -10085,6 +10316,8 @@ GameObject:
   - component: {fileID: 5135988603849626278}
   - component: {fileID: 3192653577069263324}
   - component: {fileID: 2499766486460591858}
+  - component: {fileID: 2758920969209134545}
+  - component: {fileID: 7931356837544679532}
   m_Layer: 5
   m_Name: Button_Badge21
   m_TagString: Untagged
@@ -10108,10 +10341,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.75, y: -3631.18}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5135988603849626278
 CanvasRenderer:
@@ -10141,7 +10374,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c432415a68ef9d47b7976bddd4a7a53, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10178,8 +10411,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -10203,6 +10436,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2758920969209134545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672394134957067852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &7931356837544679532
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672394134957067852}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2704797040466600125
 GameObject:
   m_ObjectHideFlags: 0
@@ -10524,6 +10788,80 @@ MonoBehaviour:
   m_FillCenter: 1
   m_FillMethod: 0
   m_FillAmount: 0.763
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!1 &2830610266690945529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4755833628857520826}
+  - component: {fileID: 1084601031882514741}
+  - component: {fileID: 2182060231525748809}
+  m_Layer: 5
+  m_Name: Picto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &4755833628857520826
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830610266690945529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4344386078694420820}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.16488639, y: 0.16173506}
+  m_AnchorMax: {x: 0.8408914, y: 0.8382635}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1084601031882514741
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830610266690945529}
+  m_CullTransparentMesh: 0
+--- !u!114 &2182060231525748809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830610266690945529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: fd72a2c0230a32c4ca5d697c3dc25bb5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -11233,7 +11571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7205124645268352219
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11381,6 +11719,8 @@ GameObject:
   - component: {fileID: 1984526764332995060}
   - component: {fileID: 3474849794210977152}
   - component: {fileID: 7470928649135764086}
+  - component: {fileID: 56266743727745168}
+  - component: {fileID: 106665946957307278}
   m_Layer: 5
   m_Name: Button_Badge22
   m_TagString: Untagged
@@ -11404,10 +11744,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650.25, y: -3631.18}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1984526764332995060
 CanvasRenderer:
@@ -11437,7 +11777,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d59ea1c1552b1494c9d9b59697e0f2d0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11474,8 +11814,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -11499,6 +11839,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &56266743727745168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200995400124466832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &106665946957307278
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200995400124466832}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3218945850583757191
 GameObject:
   m_ObjectHideFlags: 0
@@ -13334,6 +13705,8 @@ GameObject:
   - component: {fileID: 5703499651354979975}
   - component: {fileID: 9109683399671926955}
   - component: {fileID: 1575302183900130071}
+  - component: {fileID: 6674283384975202431}
+  - component: {fileID: 8402754180713603383}
   m_Layer: 5
   m_Name: Button_Badge05
   m_TagString: Untagged
@@ -13357,10 +13730,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1103.75, y: -668.74}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5703499651354979975
 CanvasRenderer:
@@ -13390,7 +13763,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 812bf77d508628b49a031de0b926c29e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13427,8 +13800,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -13452,6 +13825,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &6674283384975202431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956502404458566857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &8402754180713603383
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956502404458566857}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3963539390556722555
 GameObject:
   m_ObjectHideFlags: 0
@@ -13894,6 +14298,8 @@ GameObject:
   - component: {fileID: 8308755830729582052}
   - component: {fileID: 304659952591013740}
   - component: {fileID: 6753772760448077404}
+  - component: {fileID: 7115365940095420016}
+  - component: {fileID: 9218037970404404631}
   m_Layer: 5
   m_Name: Button_Badge18
   m_TagString: Untagged
@@ -13917,10 +14323,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.75, y: -3137.44}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8308755830729582052
 CanvasRenderer:
@@ -13950,7 +14356,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3ec23fccc8bee94fa1952ddec69827b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13987,8 +14393,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -14012,6 +14418,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7115365940095420016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072199436869062749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &9218037970404404631
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072199436869062749}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4087727246582167522
 GameObject:
   m_ObjectHideFlags: 0
@@ -14360,7 +14797,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: "Biblioth\xE8que"
 --- !u!1 &4207919896517849736
 GameObject:
   m_ObjectHideFlags: 0
@@ -14439,7 +14876,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Minecraft
 --- !u!1 &4215356916648103394
 GameObject:
   m_ObjectHideFlags: 0
@@ -15155,6 +15592,8 @@ GameObject:
   - component: {fileID: 3540627002939286072}
   - component: {fileID: 6758410584550362154}
   - component: {fileID: 6734033954525325888}
+  - component: {fileID: 989737006168000467}
+  - component: {fileID: 7606926716941003615}
   m_Layer: 5
   m_Name: Button_Badge03
   m_TagString: Untagged
@@ -15178,10 +15617,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.75, y: -668.74}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3540627002939286072
 CanvasRenderer:
@@ -15211,7 +15650,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 972f2ffb7ca6cdd4e88d9d1605b6d7bf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15248,8 +15687,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -15273,6 +15712,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &989737006168000467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331134887567605948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &7606926716941003615
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331134887567605948}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4331781979759064084
 GameObject:
   m_ObjectHideFlags: 0
@@ -15448,7 +15918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6166248805586304836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15730,7 +16200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7365334490757862747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15957,7 +16427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2668474019104783720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16380,7 +16850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1131270376376752853
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16823,7 +17293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8233705867790269285
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17055,7 +17525,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Descartes
 --- !u!1 &4715871466244095121
 GameObject:
   m_ObjectHideFlags: 0
@@ -17300,9 +17770,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: -17}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7842731325393709927
 MonoBehaviour:
@@ -17465,6 +17935,8 @@ GameObject:
   - component: {fileID: 8273259162916987353}
   - component: {fileID: 1300444562410809764}
   - component: {fileID: 8545799453300672304}
+  - component: {fileID: 7206430417674165277}
+  - component: {fileID: 6145046850152147001}
   m_Layer: 5
   m_Name: Button_Badge13
   m_TagString: Untagged
@@ -17488,10 +17960,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650.25, y: -2149.96}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8273259162916987353
 CanvasRenderer:
@@ -17521,7 +17993,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9880d24bc163db94fb6fcb9acbeb6a57, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17558,8 +18030,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -17583,6 +18055,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7206430417674165277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4972653823025206534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &6145046850152147001
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4972653823025206534}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4990259994630825812
 GameObject:
   m_ObjectHideFlags: 0
@@ -17884,8 +18387,8 @@ RectTransform:
   m_Father: {fileID: 3270496947225826094}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.42498863}
-  m_AnchorMax: {x: 1, y: 0.9999999}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18561,7 +19064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7091897527011828628
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19992,7 +20495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7372916060239301510
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20145,7 +20648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5797300070415263691
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20359,7 +20862,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bordeaux !
+  m_Text: GG Bronze
 --- !u!1 &5668122004554375527
 GameObject:
   m_ObjectHideFlags: 0
@@ -20720,7 +21223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Super Mario
 --- !u!1 &5775484336259378334
 GameObject:
   m_ObjectHideFlags: 0
@@ -21229,9 +21732,9 @@ RectTransform:
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: -17}
+  m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &3798752723775420508
 CanvasRenderer:
@@ -21309,8 +21812,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5344798497338288352}
   m_HandleRect: {fileID: 4992670180406919415}
   m_Direction: 2
-  m_Value: 0.9999997
-  m_Size: 0.57501125
+  m_Value: 1
+  m_Size: 0.50898534
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -21772,7 +22275,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Legend of Zelda
 --- !u!1 &6090847537782307342
 GameObject:
   m_ObjectHideFlags: 0
@@ -21903,80 +22406,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &6168443827339196614
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4193044240661375088}
-  - component: {fileID: 7796626437453884903}
-  - component: {fileID: 9054626406988436627}
-  m_Layer: 5
-  m_Name: PH_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4193044240661375088
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6168443827339196614}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5485813440979388460}
-  m_RootOrder: 23
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1103.75, y: -3631.18}
-  m_SizeDelta: {x: 393.5, y: 350}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7796626437453884903
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6168443827339196614}
-  m_CullTransparentMesh: 0
---- !u!114 &9054626406988436627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6168443827339196614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
 --- !u!1 &6176640026670822836
 GameObject:
   m_ObjectHideFlags: 0
@@ -22190,6 +22619,85 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &6288725579809944012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6705213640044100791}
+  - component: {fileID: 4763524554665696326}
+  - component: {fileID: 3399158322030917165}
+  m_Layer: 5
+  m_Name: Button_Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6705213640044100791
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6288725579809944012}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4344386078694420820}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.013999224, y: -0.21350951}
+  m_AnchorMax: {x: 0.9806418, y: -0.06661086}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4763524554665696326
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6288725579809944012}
+  m_CullTransparentMesh: 0
+--- !u!114 &3399158322030917165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6288725579809944012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: GG Gold
 --- !u!1 &6306261198505989212
 GameObject:
   m_ObjectHideFlags: 0
@@ -23133,7 +23641,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5096080102666388692
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23245,7 +23753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6368655713008328667
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23388,6 +23896,8 @@ GameObject:
   - component: {fileID: 3433505511888311925}
   - component: {fileID: 894301705003129993}
   - component: {fileID: 369192224465489399}
+  - component: {fileID: 8132905522268023118}
+  - component: {fileID: 3895248150992444497}
   m_Layer: 5
   m_Name: Button_Badge06
   m_TagString: Untagged
@@ -23411,10 +23921,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.75, y: -1162.48}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3433505511888311925
 CanvasRenderer:
@@ -23444,7 +23954,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8094adca4cb66e245a931dd8311edc12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23481,8 +23991,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -23506,6 +24016,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &8132905522268023118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735546145300572586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &3895248150992444497
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735546145300572586}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6744465789952383115
 GameObject:
   m_ObjectHideFlags: 0
@@ -23720,6 +24261,8 @@ GameObject:
   - component: {fileID: 8695266197473314209}
   - component: {fileID: 625156657265020131}
   - component: {fileID: 4835156537889447503}
+  - component: {fileID: 7412001279633309529}
+  - component: {fileID: 6446473864119695382}
   m_Layer: 5
   m_Name: Button_Badge04
   m_TagString: Untagged
@@ -23743,10 +24286,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650.25, y: -668.74}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8695266197473314209
 CanvasRenderer:
@@ -23776,7 +24319,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e6e2fac3e5eb164aa96da3935f66151, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23813,8 +24356,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -23838,6 +24381,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7412001279633309529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765274094021195738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &6446473864119695382
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765274094021195738}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6765349636724243494
 GameObject:
   m_ObjectHideFlags: 0
@@ -23916,7 +24490,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Street Fighter
 --- !u!1 &6767420418183354735
 GameObject:
   m_ObjectHideFlags: 0
@@ -23969,14 +24543,14 @@ RectTransform:
   - {fileID: 7646308797319958815}
   - {fileID: 4242135039938497546}
   - {fileID: 4340890273189540069}
-  - {fileID: 4193044240661375088}
+  - {fileID: 4344386078694420820}
   m_Father: {fileID: 6358487331441273347}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0002746582, y: 0.0003226892}
-  m_SizeDelta: {x: 0, y: 3806.18}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0.00050144596}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7307418283557541845
 MonoBehaviour:
@@ -23998,7 +24572,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 393.5, y: 350}
+  m_CellSize: {x: 390, y: 350}
   m_Spacing: {x: 60, y: 143.74}
   m_Constraint: 1
   m_ConstraintCount: 3
@@ -24236,7 +24810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1464439085351061648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24742,7 +25316,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -24800,7 +25374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1153870588480885641
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24869,6 +25443,8 @@ GameObject:
   - component: {fileID: 3621769272782585646}
   - component: {fileID: 8137006402531701135}
   - component: {fileID: 3984847214473925797}
+  - component: {fileID: 3209240977704635154}
+  - component: {fileID: 7928680815423130281}
   m_Layer: 5
   m_Name: Button_Badge15
   m_TagString: Untagged
@@ -24892,10 +25468,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.75, y: -2643.7}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3621769272782585646
 CanvasRenderer:
@@ -24925,7 +25501,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 243396c200b44b5479f9b14575509d4f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24962,8 +25538,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -24987,6 +25563,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &3209240977704635154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7063113038263795920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &7928680815423130281
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7063113038263795920}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7063990376594470788
 GameObject:
   m_ObjectHideFlags: 0
@@ -25321,7 +25928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7859024454382623338
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25530,7 +26137,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bordeaux !
+  m_Text: GG Silver
 --- !u!1 &7187671064970734743
 GameObject:
   m_ObjectHideFlags: 0
@@ -25642,6 +26249,169 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &7221662927008765942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4344386078694420820}
+  - component: {fileID: 6566898963182103525}
+  - component: {fileID: 476713453114523850}
+  - component: {fileID: 7610828029286981521}
+  - component: {fileID: 4858755216854061353}
+  - component: {fileID: 8524198866693282601}
+  m_Layer: 5
+  m_Name: Button_Badge23
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4344386078694420820
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221662927008765942}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4755833628857520826}
+  - {fileID: 6705213640044100791}
+  m_Father: {fileID: 5485813440979388460}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6566898963182103525
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221662927008765942}
+  m_CullTransparentMesh: 0
+--- !u!114 &476713453114523850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221662927008765942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.61960787}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: cacc337493d4fdd40bf61ecdcd6ddf45, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!114 &7610828029286981521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221662927008765942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 476713453114523850}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1204362214969512234}
+        m_MethodName: OnClickBadgeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &4858755216854061353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221662927008765942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &8524198866693282601
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221662927008765942}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7224057325086211929
 GameObject:
   m_ObjectHideFlags: 0
@@ -25952,7 +26722,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Avengers
+  m_Text: Marvel
 --- !u!1 &7301184404007310875
 GameObject:
   m_ObjectHideFlags: 0
@@ -26497,9 +27267,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 20}
+  m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &3821276621441122860
 CanvasRenderer:
@@ -26577,7 +27347,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2007248447231958105}
   m_HandleRect: {fileID: 2283378972691537093}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -26663,7 +27433,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Pokemon
 --- !u!1 &7395812938904938070
 GameObject:
   m_ObjectHideFlags: 0
@@ -26676,6 +27446,8 @@ GameObject:
   - component: {fileID: 7075409331945301322}
   - component: {fileID: 4907520877181188974}
   - component: {fileID: 8204753828975091815}
+  - component: {fileID: 3752295473806143288}
+  - component: {fileID: 2937552855366778837}
   m_Layer: 5
   m_Name: Button_Badge09
   m_TagString: Untagged
@@ -26699,10 +27471,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.75, y: -1656.22}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7075409331945301322
 CanvasRenderer:
@@ -26732,7 +27504,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3385d2da95625074a8264fdad9924557, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26769,8 +27541,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -26794,6 +27566,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &3752295473806143288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395812938904938070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &2937552855366778837
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395812938904938070}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7397146968104611929
 GameObject:
   m_ObjectHideFlags: 0
@@ -27069,6 +27872,8 @@ GameObject:
   - component: {fileID: 3977653135614546605}
   - component: {fileID: 1767027663060392541}
   - component: {fileID: 661097173647313042}
+  - component: {fileID: 7177943231370040556}
+  - component: {fileID: 3746290934765891157}
   m_Layer: 5
   m_Name: Button_Badge17
   m_TagString: Untagged
@@ -27092,10 +27897,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1103.75, y: -2643.7}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3977653135614546605
 CanvasRenderer:
@@ -27125,7 +27930,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5aacf5cddb05fd149beee2d8428f8ffd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27162,8 +27967,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -27187,6 +27992,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7177943231370040556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474724840162331796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &3746290934765891157
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474724840162331796}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7477405033722150236
 GameObject:
   m_ObjectHideFlags: 0
@@ -27756,7 +28592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &905911891369416453
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27904,7 +28740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1570058528209203748
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28140,6 +28976,8 @@ GameObject:
   - component: {fileID: 289609070606216662}
   - component: {fileID: 3313941310729809850}
   - component: {fileID: 5405019890979201055}
+  - component: {fileID: 2643608773260375590}
+  - component: {fileID: 4560231146363234710}
   m_Layer: 5
   m_Name: Button_Badge07
   m_TagString: Untagged
@@ -28163,10 +29001,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650.25, y: -1162.48}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &289609070606216662
 CanvasRenderer:
@@ -28196,7 +29034,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0083f726ac825944e91ca5fd4d24eaa1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28233,8 +29071,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -28258,6 +29096,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2643608773260375590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836999114869827395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &4560231146363234710
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7836999114869827395}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7865591738154829086
 GameObject:
   m_ObjectHideFlags: 0
@@ -28465,7 +29334,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: Starcraft
 --- !u!1 &7903077685485647859
 GameObject:
   m_ObjectHideFlags: 0
@@ -28685,6 +29554,8 @@ GameObject:
   - component: {fileID: 5856291821936852572}
   - component: {fileID: 5811498314110897743}
   - component: {fileID: 7905700451613672344}
+  - component: {fileID: 5163762605094190776}
+  - component: {fileID: 7893835011737467373}
   m_Layer: 5
   m_Name: Button_Badge20
   m_TagString: Untagged
@@ -28708,10 +29579,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1103.75, y: -3137.44}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5856291821936852572
 CanvasRenderer:
@@ -28741,7 +29612,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f80c0a390b41b8f448c7044fdd42fefc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28778,8 +29649,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -28803,6 +29674,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &5163762605094190776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8024486649013416781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &7893835011737467373
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8024486649013416781}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8092010268896180935
 GameObject:
   m_ObjectHideFlags: 0
@@ -29142,6 +30044,8 @@ GameObject:
   - component: {fileID: 581605849395636107}
   - component: {fileID: 2259585880194615055}
   - component: {fileID: 8813251689815682314}
+  - component: {fileID: 2652240110061499035}
+  - component: {fileID: 7012677709763181366}
   m_Layer: 5
   m_Name: Button_Badge10
   m_TagString: Untagged
@@ -29165,10 +30069,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650.25, y: -1656.22}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &581605849395636107
 CanvasRenderer:
@@ -29198,7 +30102,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6ab6d8d79552e84d9e94fa3f8fd6893, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29235,8 +30139,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -29260,6 +30164,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2652240110061499035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277148083553614802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &7012677709763181366
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277148083553614802}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8290538146589442386
 GameObject:
   m_ObjectHideFlags: 0
@@ -29747,7 +30682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5907763885994644943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30249,6 +31184,8 @@ GameObject:
   - component: {fileID: 7300572792514018464}
   - component: {fileID: 2473254412755528268}
   - component: {fileID: 3748272574181750992}
+  - component: {fileID: 3313670839918492242}
+  - component: {fileID: 5346440591271002307}
   m_Layer: 5
   m_Name: Button_Badge16
   m_TagString: Untagged
@@ -30272,10 +31209,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650.25, y: -2643.7}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7300572792514018464
 CanvasRenderer:
@@ -30305,7 +31242,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d230be7f0bc281a44bc5aa8e97018dd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30342,8 +31279,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -30367,6 +31304,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &3313670839918492242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477967959101248174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &5346440591271002307
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477967959101248174}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8489173039045944840
 GameObject:
   m_ObjectHideFlags: 0
@@ -30645,6 +31613,8 @@ GameObject:
   - component: {fileID: 2515493305982483209}
   - component: {fileID: 9174675489582194642}
   - component: {fileID: 7644160789365555396}
+  - component: {fileID: 8177231484427604924}
+  - component: {fileID: 3391986836886629276}
   m_Layer: 5
   m_Name: Button_Badge00
   m_TagString: Untagged
@@ -30668,10 +31638,10 @@ RectTransform:
   m_Father: {fileID: 5485813440979388460}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.75, y: -175}
-  m_SizeDelta: {x: 393.5, y: 350}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2515493305982483209
 CanvasRenderer:
@@ -30701,7 +31671,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c49c682b480f4b49871bb4c0ce23901, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30738,8 +31708,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300006, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
-    m_DisabledSprite: {fileID: 21300010, guid: 7aff8433c318dfd47bfadb52aa81b66d, type: 3}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 6bd1f64d057851b49b84d97a1cad12c5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -30763,6 +31733,37 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!95 &8177231484427604924
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643033649524163227}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ffe0f29b50175a42a39653c62f6c646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3391986836886629276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643033649524163227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e37b9d5098d5e944bac9d41e426dd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8681604322862423854
 GameObject:
   m_ObjectHideFlags: 0
@@ -31376,7 +32377,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nom du badge
+  m_Text: BGF
 --- !u!1 &8973405470032339800
 GameObject:
   m_ObjectHideFlags: 0
@@ -32268,12 +33269,6 @@ PrefabInstance:
       objectReference: {fileID: 1500059087262500905}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
---- !u!1 &1500059087262500905 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
-    type: 3}
-  m_PrefabInstance: {fileID: 234875531719992957}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6637877063696141941 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
@@ -32283,6 +33278,12 @@ RectTransform:
 --- !u!1 &6439720379963892730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
+    type: 3}
+  m_PrefabInstance: {fileID: 234875531719992957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1500059087262500905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 234875531719992957}
   m_PrefabAsset: {fileID: 0}
@@ -32692,12 +33693,6 @@ PrefabInstance:
       objectReference: {fileID: 1152853664388501511}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
---- !u!1 &1152853664388501511 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
-    type: 3}
-  m_PrefabInstance: {fileID: 1760053731893411411}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4787605780731132884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
@@ -32707,6 +33702,12 @@ GameObject:
 --- !u!224 &5129880914852107867 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
+    type: 3}
+  m_PrefabInstance: {fileID: 1760053731893411411}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1152853664388501511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 1760053731893411411}
   m_PrefabAsset: {fileID: 0}
@@ -33127,15 +34128,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3529839839292454136}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7701308461090533759 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
-    type: 3}
-  m_PrefabInstance: {fileID: 3529839839292454136}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8043581396188912880 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
+    type: 3}
+  m_PrefabInstance: {fileID: 3529839839292454136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7701308461090533759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 3529839839292454136}
   m_PrefabAsset: {fileID: 0}
@@ -33268,12 +34269,6 @@ PrefabInstance:
       objectReference: {fileID: 2636022166254849357}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
---- !u!1 &7573423355082745502 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
-    type: 3}
-  m_PrefabInstance: {fileID: 3676694273963860761}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7807612270474660625 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
@@ -33283,6 +34278,12 @@ RectTransform:
 --- !u!1 &2636022166254849357 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
+    type: 3}
+  m_PrefabInstance: {fileID: 3676694273963860761}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7573423355082745502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 3676694273963860761}
   m_PrefabAsset: {fileID: 0}
@@ -33415,6 +34416,12 @@ PrefabInstance:
       objectReference: {fileID: 2613502591760089688}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
+--- !u!1 &7622969749887773067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
+    type: 3}
+  m_PrefabInstance: {fileID: 3735229038954114060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2613502591760089688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
@@ -33424,12 +34431,6 @@ GameObject:
 --- !u!224 &7821128631301620740 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
-    type: 3}
-  m_PrefabInstance: {fileID: 3735229038954114060}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7622969749887773067 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 3735229038954114060}
   m_PrefabAsset: {fileID: 0}
@@ -33692,6 +34693,12 @@ PrefabInstance:
       objectReference: {fileID: 6208733608460056342}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
+--- !u!1 &1992532814167137477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
+    type: 3}
+  m_PrefabInstance: {fileID: 4736361384075548994}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6208733608460056342 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
@@ -33701,12 +34708,6 @@ GameObject:
 --- !u!224 &2226721730086891850 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
-    type: 3}
-  m_PrefabInstance: {fileID: 4736361384075548994}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1992532814167137477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 4736361384075548994}
   m_PrefabAsset: {fileID: 0}
@@ -33839,6 +34840,12 @@ PrefabInstance:
       objectReference: {fileID: 6700323634866780596}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
+--- !u!224 &1455622653859725288 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
+    type: 3}
+  m_PrefabInstance: {fileID: 5435670062853412832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6700323634866780596 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
@@ -33848,12 +34855,6 @@ GameObject:
 --- !u!1 &1257463634201989735 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
-    type: 3}
-  m_PrefabInstance: {fileID: 5435670062853412832}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1455622653859725288 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 5435670062853412832}
   m_PrefabAsset: {fileID: 0}
@@ -33986,6 +34987,12 @@ PrefabInstance:
       objectReference: {fileID: 5326469661402931863}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
+--- !u!224 &82285390129767627 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
+    type: 3}
+  m_PrefabInstance: {fileID: 6807294364241890499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5326469661402931863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
@@ -33995,12 +35002,6 @@ GameObject:
 --- !u!1 &316474306041645380 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
-    type: 3}
-  m_PrefabInstance: {fileID: 6807294364241890499}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &82285390129767627 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 6807294364241890499}
   m_PrefabAsset: {fileID: 0}
@@ -34133,9 +35134,9 @@ PrefabInstance:
       objectReference: {fileID: 8512968037602870112}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
---- !u!1 &8512968037602870112 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
+--- !u!224 &4533751107047933244 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 7041121369163820340}
   m_PrefabAsset: {fileID: 0}
@@ -34145,9 +35146,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7041121369163820340}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &4533751107047933244 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
+--- !u!1 &8512968037602870112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 7041121369163820340}
   m_PrefabAsset: {fileID: 0}
@@ -34415,9 +35416,9 @@ PrefabInstance:
       objectReference: {fileID: 8866892136176761608}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
---- !u!1 &8866892136176761608 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
+--- !u!224 &3729748657985535316 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 7826889657215096156}
   m_PrefabAsset: {fileID: 0}
@@ -34427,9 +35428,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7826889657215096156}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &3729748657985535316 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
+--- !u!1 &8866892136176761608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 7826889657215096156}
   m_PrefabAsset: {fileID: 0}
@@ -34562,15 +35563,15 @@ PrefabInstance:
       objectReference: {fileID: 7249600486262125114}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
---- !u!1 &2960269446965402089 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
-    type: 3}
-  m_PrefabInstance: {fileID: 8289144479623814254}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3194456162780427366 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
+    type: 3}
+  m_PrefabInstance: {fileID: 8289144479623814254}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2960269446965402089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 8289144479623814254}
   m_PrefabAsset: {fileID: 0}
@@ -34709,9 +35710,9 @@ PrefabInstance:
       objectReference: {fileID: 8044666099123797195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
---- !u!1 &2462159933560395544 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
+--- !u!224 &2840461838550055575 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 8662481426335109791}
   m_PrefabAsset: {fileID: 0}
@@ -34721,9 +35722,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8662481426335109791}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &2840461838550055575 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
+--- !u!1 &2462159933560395544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 8662481426335109791}
   m_PrefabAsset: {fileID: 0}
@@ -34856,12 +35857,6 @@ PrefabInstance:
       objectReference: {fileID: 7548784361526463453}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f287382eb8e467044b3b54f4ea5559de, type: 3}
---- !u!1 &2687970829990928398 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
-    type: 3}
-  m_PrefabInstance: {fileID: 9174288352910124425}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7548784361526463453 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1698760617373544020, guid: f287382eb8e467044b3b54f4ea5559de,
@@ -34871,6 +35866,12 @@ GameObject:
 --- !u!224 &2309667859069767041 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6871375962027304968, guid: f287382eb8e467044b3b54f4ea5559de,
+    type: 3}
+  m_PrefabInstance: {fileID: 9174288352910124425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2687970829990928398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6493075329422099847, guid: f287382eb8e467044b3b54f4ea5559de,
     type: 3}
   m_PrefabInstance: {fileID: 9174288352910124425}
   m_PrefabAsset: {fileID: 0}
