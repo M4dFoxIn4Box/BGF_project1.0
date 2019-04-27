@@ -8,6 +8,7 @@ public enum SwipeBehaviour { Toggle, LeftOrRight, Up}
 public class InteractionSwipe : MonoBehaviour
 {
     public SwipeBehaviour swipeAction;
+    public GameObject swipeFB;
 
     [Tooltip("0 = infinite")]
     public int swipeAttempts = 0;
@@ -74,6 +75,10 @@ public class InteractionSwipe : MonoBehaviour
                         endPosition = Input.mousePosition;
                         if (Vector2.Distance(startPosition, endPosition) > swipeDistanceThreshold)
                         {
+                            if (swipeFB != null)
+                            {
+                                swipeFB.SetActive(false);
+                            }
                             if (endPosition.x > startPosition.x)
                             {
                                 myRb.AddRelativeTorque(-Vector3.up * turnSpeed, ForceMode.Impulse);
@@ -141,5 +146,10 @@ public class InteractionSwipe : MonoBehaviour
         {
             additionalAnimatorToTrigger.SetTrigger("Step");
         }
+    }
+
+    public bool CanSwipe ()
+    {
+        return canSwipe;
     }
 }

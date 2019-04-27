@@ -710,9 +710,9 @@ public class Interface_Manager : MonoBehaviour
     }
     
     //Toggle de la musique
-    public void OnClickMuteMusicToggle ()
+    public void OnClickMuteMusicToggle (bool isOn)
     {
-        myAS.mute = !myAS.mute;
+        myAS.mute = isOn;
     }
 
     public void DisplayNewMenu ()
