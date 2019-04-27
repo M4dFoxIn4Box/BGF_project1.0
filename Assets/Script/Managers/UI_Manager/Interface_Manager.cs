@@ -16,6 +16,8 @@ public class Interface_Manager : MonoBehaviour
     [Header("Events")]
     public int targetIdUnlockingTeaserGame = -1;
     public int targetIdUnlockingMainGame = -1;
+    private bool teaserCompleted = false;
+    private bool mainCompleted = false;
     private int currentSpotFound = -1;
     private int spotsCountToUnlockBonus = 0;
     public int spotsCountToUnlockAfterFirstTeaserScan = 4;
@@ -78,12 +80,16 @@ public class Interface_Manager : MonoBehaviour
     public Image feedbackScanImage;
     public Transform loadingArrowParent;
     public float scanDuration;
+    public Image unlockedBadgeImage;
     private bool isScanning = false;
     private bool arCamWithScanEnabled = true;
     public Camera arCam;
     public Camera uiCam;
     public GameObject vumarkSection;
     public List<AppMessages> scanErrorMessages;
+    public List<AppMessages> teaserCongratsMessages;
+    public List<AppMessages> mainCongratsMessages;
+    private int congratsMsgIdx;
 
     [Header("Games Section")]
     public GameObject scoreSection;
@@ -191,7 +197,7 @@ public class Interface_Manager : MonoBehaviour
             return;
         }
 
-        //Si l'UI au bas de l'appli n'est pas affichée, l'affiche
+        //Si l'UI au bas de l'appli n'est pas affichée, je l'affiche
         if (!bottomUIButtonsParent.gameObject.activeSelf)
         {
             bottomUIButtonsParent.gameObject.SetActive(true);
@@ -200,8 +206,8 @@ public class Interface_Manager : MonoBehaviour
         //Si le joueur a déjà commencé le Main Event...
         if (SaveManager.Data.eventMainStarted)
         {
-            //...pour chaque cible...
-            for (int i = 0; i < targetIdUnlockingTeaserGame; i++)
+            //...pour chaque cible du Main Event ET du Teaser Event...
+            for (int i = 0; i < SaveManager.Data.artefactsUnlocked.Count; i++)
             {
                 //...si le joueur l'a déjà scannée, je le mets à jour sur la carte
                 if (SaveManager.Data.artefactsUnlocked[i])
@@ -210,6 +216,7 @@ public class Interface_Manager : MonoBehaviour
                 }
             }
         }
+        //Si le joue encore au Teaser Event, ou s'il y a déjà joué...
         else if (!SaveManager.Data.eventMainStarted)
         {
             //Si le premier Teaser Spot a déjà été scanné...
@@ -239,6 +246,18 @@ public class Interface_Manager : MonoBehaviour
         DisplayMessage(tutoMessages[0]);
     }
 
+    //Affiche le premier message du tuto
+    public void TriggerTeaserCongrats()
+    {
+        DisplayMessage(teaserCongratsMessages[0]);
+    }
+    
+    //Affiche le premier message du tuto
+    public void TriggerMainCongrats()
+    {
+        DisplayMessage(mainCongratsMessages[0]);
+    }
+
     //Fait dérouler les messages du tuto lorsque le joueur appuie sur "Suivant"
     public void OnClickNextMessage ()
     {
@@ -259,7 +278,67 @@ public class Interface_Manager : MonoBehaviour
             DisplayMessage(tutoMessages[tutoMsgIdx]);
             return;
         }
+        else if (teaserEventSection.activeInHierarchy && !SaveManager.Data.gotTeaserCongrats && teaserCompleted)
+        {
+            congratsMsgIdx++;
+            if (congratsMsgIdx == teaserCongratsMessages.Count)
+            {
+                congratsMsgIdx = 0;
+                SaveManager.Data.gotTeaserCongrats = true;
+                SaveManager.SaveToFile();
+                return;
+            }
+            DisplayMessage(teaserCongratsMessages[congratsMsgIdx]);
+            return;
+        }
+        else if (mainEventSection.activeInHierarchy && !SaveManager.Data.gotMainCongrats && mainCompleted)
+        {
+            congratsMsgIdx++;
+            if (congratsMsgIdx == mainCongratsMessages.Count)
+            {
+                congratsMsgIdx = 0;
+                SaveManager.Data.gotMainCongrats = true;
+                SaveManager.SaveToFile();
+                return;
+            }
+            DisplayMessage(mainCongratsMessages[congratsMsgIdx]);
+            return;
+        }
         HideMessage();
+    }
+
+    public bool TeaserChallengesCompleted ()
+    {
+        int challengesDone = 0;
+        for (int i = 0; i < teaserChallengesSection.childCount; i++)
+        {
+            if (teaserChallengesSection.GetChild(i).GetComponent<ChallengeState>().IsChallengeCompleted())
+            {
+                challengesDone++;
+            }
+        }
+        if (challengesDone == teaserChallengesSection.childCount)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool MainChallengesCompleted ()
+    {
+        int challengesDone = 0;
+        for (int i = 0; i < mapSpots.childCount; i++)
+        {
+            if (mapSpots.GetChild(i).GetComponent<MapARSpot>().SpotFound())
+            {
+                challengesDone++;
+            }
+        }
+        if (challengesDone == mapSpots.childCount)
+        {
+            return true;
+        }
+        return false;
     }
 
     //Affiche et remplit l'UI du fun fact
@@ -476,6 +555,12 @@ public class Interface_Manager : MonoBehaviour
         }
         quizzSection.SetActive(true);
         ARModeMenu.SetActive(false);
+        unlockedBadgeImage.transform.parent.gameObject.SetActive(false);
+    }
+
+    public bool CanScan ()
+    {
+        return !quizzSection.activeSelf;
     }
 
     //Masque l'UI du quizz
@@ -614,6 +699,7 @@ public class Interface_Manager : MonoBehaviour
         menuBackground.SetActive(true);
         funFactUI.SetActive(false);
         menuTopUI.SetActive(true);
+        unlockedBadgeImage.transform.parent.gameObject.SetActive(false);
     }
 
     //Masque le menu en cours et déclenche l'animation de la porte qui se ferme
@@ -647,6 +733,10 @@ public class Interface_Manager : MonoBehaviour
     public void OnClickBottomUIButton ()
     {
         ResetQuizz();
+        if (blackBG.activeSelf)
+        {
+            ToggleBadgeBlackBG();
+        }
         Transform cTrs = EventSystem.current.currentSelectedGameObject.transform;
         cTrs.GetComponent<Button>().interactable = false;
         for (int i = 0; i < bottomUIButtonsParent.childCount; i++)
@@ -717,6 +807,13 @@ public class Interface_Manager : MonoBehaviour
 
     public void DisplayNewMenu ()
     {
+        for (int i = 0; i < myAnim.parameters.Length; i++)
+        {
+            if (myAnim.parameters[i].type == AnimatorControllerParameterType.Trigger)
+            {
+                myAnim.ResetTrigger(myAnim.parameters[i].name);
+            }
+        }
         if (SaveManager.Data.firstTutoRead)
         {
             HideMessage();
@@ -735,17 +832,31 @@ public class Interface_Manager : MonoBehaviour
             if (menuToDisplay == teaserEventSection || menuToDisplay == mainEventSection)
             {
                 aRSection.SetActive(true);
-                if (menuToDisplay == teaserEventSection && !SaveManager.Data.teaserEventTutoRead)
+                if (menuToDisplay == teaserEventSection)
                 {
-                    DisplayMessage(uiMessages[4]);
-                    SaveManager.Data.teaserEventTutoRead = true;
-                    SaveManager.SaveToFile();
+                    if (!SaveManager.Data.teaserEventTutoRead)
+                    {
+                        DisplayMessage(uiMessages[4]);
+                        SaveManager.Data.teaserEventTutoRead = true;
+                        SaveManager.SaveToFile();
+                    }
+                    else if (!SaveManager.Data.gotTeaserCongrats && teaserCompleted)
+                    {
+                        TriggerTeaserCongrats();
+                    }
                 }
-                else if (menuToDisplay == mainEventSection && !SaveManager.Data.mainEventTutoRead)
+                else if (menuToDisplay == mainEventSection)
                 {
-                    DisplayMessage(uiMessages[5]);
-                    SaveManager.Data.mainEventTutoRead = true;
-                    SaveManager.SaveToFile();
+                    if (!SaveManager.Data.mainEventTutoRead)
+                    {
+                        DisplayMessage(uiMessages[5]);
+                        SaveManager.Data.mainEventTutoRead = true;
+                        SaveManager.SaveToFile();
+                    }
+                    else if (!SaveManager.Data.gotMainCongrats && mainCompleted)
+                    {
+                        TriggerMainCongrats();
+                    }
                 }
             }
             else if (menuToDisplay == menuGallerySection && !SaveManager.Data.galleryTutoRead)
@@ -810,6 +921,7 @@ public class Interface_Manager : MonoBehaviour
         if (!SaveManager.Data.eventMainStarted)
         {
             teaserChallengesSection.GetChild(spotIdx - targetIdUnlockingTeaserGame).GetComponent<ChallengeState>().SetChallengeCompleted();
+            teaserCompleted = TeaserChallengesCompleted();
 
             //... et si c'est le premier challenge qui est complété, débloque les éléments suivants
             if (spotIdx == targetIdUnlockingTeaserGame)
@@ -823,9 +935,10 @@ public class Interface_Manager : MonoBehaviour
             }
         }
         //...sinon, je mets à jour le spot sur la carte
-        else if (SaveManager.Data.eventMainStarted)
+        else if (SaveManager.Data.eventMainStarted && spotIdx < targetIdUnlockingTeaserGame)
         {
             mapSpots.GetChild(spotIdx).GetComponent<MapARSpot>().SetSpotFound();
+            mainCompleted = MainChallengesCompleted();
         }
     }
 
@@ -847,6 +960,16 @@ public class Interface_Manager : MonoBehaviour
         {
             CompleteChallenge(realIdx);
         }
+    }
+
+    public bool CanScanEasterEgg ()
+    {
+        return teaserChallengesSection.GetChild(teaserChallengesSection.childCount - 1).gameObject.activeSelf;
+    }
+
+    public int GetEasterEggIndex ()
+    {
+        return teaserChallengesSection.childCount - 1 + targetIdUnlockingTeaserGame;
     }
 
     //Vérifie si le Bonus Spot doit être débloqué
@@ -884,11 +1007,23 @@ public class Interface_Manager : MonoBehaviour
         Button tmpBtn = buttonsBadges.GetChild(badgeIdx).GetComponent<Button>();
         if (!tmpBtn.interactable)
         {
+            if (arCam.gameObject.activeSelf)
+            {
+                unlockedBadgeImage.sprite = buttonsBadges.GetChild(badgeIdx).GetComponent<Image>().sprite;
+                if (unlockedBadgeImage.transform.parent.gameObject.activeSelf)
+                {
+                    unlockedBadgeImage.transform.parent.gameObject.GetComponent<Animator>().Play("BadgeInRA", 0, 0f);
+                }
+                else
+                {
+                    unlockedBadgeImage.transform.parent.gameObject.SetActive(true);
+                }
+            }
             buttonsBadges.GetChild(badgeIdx).GetComponent<Button>().interactable = true;
         }
 
         //Si l'Easter Egg vient d'être scanné, débloque le badge de récompense du Teaser Event
-        if (badgeIdx == SaveManager.Data.artefactsUnlocked.Count -1)
+        if (badgeIdx == teaserChallengesSection.childCount - 1 + targetIdUnlockingTeaserGame)
         {
             SaveManager.Data.badgesUnlocked[badgesCount - 3] = true;
             buttonsBadges.GetChild(badgesCount - 3).GetComponent<Button>().interactable = true;
@@ -913,6 +1048,10 @@ public class Interface_Manager : MonoBehaviour
                 buttonsBadges.GetChild(badgesCount - 1).GetComponent<Button>().interactable = true;
             }
         }
+        else
+        {
+            buttonsBadges.GetChild(badgesCount - 1).GetComponent<Button>().interactable = true;
+        }
     }
 
     //Ajoute dans une liste temporaire les badges débloqués par le joueur lorsqu'il scanne un artefact
@@ -926,7 +1065,7 @@ public class Interface_Manager : MonoBehaviour
         }
 
         //Si l'Easter Egg vient d'être scanné, débloque le badge de récompense du Teaser Event
-        if (badgeIdx == SaveManager.Data.artefactsUnlocked.Count - 1)
+        if (badgeIdx == teaserChallengesSection.childCount - 1 + targetIdUnlockingTeaserGame)
         {
             SaveManager.Data.badgesUnlocked[badgesCount - 3] = true;
             badgesUnlocked.Add(badgesCount - 3);

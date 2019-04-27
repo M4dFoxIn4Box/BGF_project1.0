@@ -29,7 +29,10 @@ public class ScanTarget : MonoBehaviour, ITrackableEventHandler
     {
         if (newStatus == TrackableBehaviour.Status.DETECTED || newStatus == TrackableBehaviour.Status.TRACKED || newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
-            RAManager.s_Singleton.TargetScanned(transform.GetSiblingIndex());
+            if (Interface_Manager.Instance.CanScan())
+            {
+                RAManager.s_Singleton.TargetScanned(transform.GetSiblingIndex());
+            }
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED && newStatus == TrackableBehaviour.Status.NO_POSE)
         {

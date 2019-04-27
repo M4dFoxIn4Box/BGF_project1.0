@@ -31,4 +31,9 @@ public class MapARSpot : MonoBehaviour
         spotTofind.SetActive(false);
         spotFound.SetActive(true);
     }
+
+    public bool SpotFound ()
+    {
+        return spotFound.activeSelf;
+    }
 }

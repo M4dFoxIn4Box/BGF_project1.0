@@ -74,7 +74,7 @@ public class RAManager : MonoBehaviour
                 {
                     Interface_Manager.Instance.DisplayScanErrorMessage(2);
                 }
-                //...si le Teaser Event n'est pas bloqué...
+                //...si le Teaser Event n'a pas été commencé puis verrouillé...
                 else if (!SaveManager.Data.eventTeaserLocked)
                 {
                     //...si je scanne la cible qui débloque le Teaser Event...
@@ -96,10 +96,28 @@ public class RAManager : MonoBehaviour
                         {
                             Interface_Manager.Instance.DisplayScanErrorMessage(1);
                         }
-                        //...si le Teaser Event a été débloqué, je peux scanner la cible
+                        //...si le Teaser Event a été débloqué...
                         else if (SaveManager.Data.eventTeaserStarted)
                         {
-                            Interface_Manager.Instance.StartScanning(targetId);
+                            //...et si je scanne l'Easter Egg...
+                            if (targetId == Interface_Manager.Instance.GetEasterEggIndex())
+                            {
+                                //...si je peux le scanner, le scan se lance
+                                if (Interface_Manager.Instance.CanScanEasterEgg())
+                                {
+                                    Interface_Manager.Instance.StartScanning(targetId);
+                                }
+                                //...sinon, j'indique qu'il faut terminer les autres challenges d'abord
+                                else
+                                {
+                                    Interface_Manager.Instance.DisplayScanErrorMessage(3);
+                                }
+                            }
+                            //...sinon, si je scanne une autre cible que l'Easter Egg, je lance le scan
+                            else
+                            {
+                                Interface_Manager.Instance.StartScanning(targetId);
+                            }
                         }
                     }
                 }
@@ -113,7 +131,6 @@ public class RAManager : MonoBehaviour
         if (!SaveManager.Data.artefactsUnlocked[targetId])
         {
             //Je débloque le badge et l'artefact correspondants dans la sauvegarde...
-            
             SaveManager.Data.badgesUnlocked[targetId] = true;
             SaveManager.Data.artefactsUnlocked[targetId] = true;
             SaveManager.SaveToFile();

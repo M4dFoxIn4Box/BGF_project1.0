@@ -14,6 +14,8 @@ public class SaveManager : MonoBehaviour
         public DateTime VersionTime;
         public int UserId;
         public bool firstTutoRead;
+        public bool gotTeaserCongrats;
+        public bool gotMainCongrats;
         public bool teaserEventTutoRead;
         public bool mainEventTutoRead;
         public bool galleryTutoRead;
@@ -24,7 +26,8 @@ public class SaveManager : MonoBehaviour
         public List<bool> quizzAnswered = new List<bool>();
         public List<bool> artefactsUnlocked = new List<bool>();
         public List<bool> badgesUnlocked = new List<bool>();
-        public int PokemonScore;
+        public int pokemonScore;
+        public int axeScore;
         //TODO: Add game data fields here
 
         public SaveData()
@@ -32,6 +35,8 @@ public class SaveManager : MonoBehaviour
             VersionTime = DateTime.UtcNow;
             UserId = 1306;
             firstTutoRead = false;
+            gotTeaserCongrats = false;
+            gotMainCongrats = false;
             teaserEventTutoRead = false;
             mainEventTutoRead = false;
             galleryTutoRead = false;
@@ -39,7 +44,8 @@ public class SaveManager : MonoBehaviour
             eventTeaserStarted = false;
             eventTeaserLocked = false;
             eventMainStarted = false;
-            PokemonScore = 0;
+            pokemonScore = 0;
+            axeScore = 0;
         }
     }
 
