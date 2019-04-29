@@ -7,11 +7,13 @@ public class VikingManager : MonoBehaviour
 
     public GameObject axePrefab;
     public Transform axeSpawnPoint;
-    public Transform target;
-    public Vector2 turnTargetMinMax;
-    private bool timerCDOn = false;
-    public float cDBetweenActions = 0.3f;
-    private float currentActionCD = 0;
+    public Transform targets;
+    private int currentActivePhase = -1;
+    private int nbOfIdleTargets = 0;
+    private List<int> currentTurnedTargets = new List<int>();
+    private int nbOfTargetsToTurn = 0;
+
+    public List<GamePhases> vikingsGamePhases;
 
     public static VikingManager s_Singleton;
 
@@ -31,33 +33,72 @@ public class VikingManager : MonoBehaviour
     void Start()
     {
         Interface_Manager.Instance.SetupGame(0);
-        //currentActionCD = cDBetweenActions;
-        //TurnTargetCooldown();
+        for (int i = 0; i < vikingsGamePhases.Count; i++)
+        {
+            vikingsGamePhases[i].isActive = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (timerCDOn)
-        //{
-        //    currentActionCD -= Time.deltaTime;
-        //    if (currentActionCD <= 0)
-        //    {
-        //        timerCDOn = false;
-        //        currentActionCD = cDBetweenActions;
-        //        TurnTarget();
-        //    }
-        //}
+        CheckTimerAndSwitchPhase();
     }
 
-    public void TurnTargetCooldown()
+    public void CheckTimerAndSwitchPhase ()
     {
-        timerCDOn = true;
+        int currentTimer = Interface_Manager.Instance.GetTimerValue();
+
+        for (int i = 0; i < vikingsGamePhases.Count; i++)
+        {
+            if (i + 1 < vikingsGamePhases.Count)
+            {
+                if (currentTimer < vikingsGamePhases[i].triggerTime && currentTimer > vikingsGamePhases[i+1].triggerTime && !vikingsGamePhases[i].isActive)
+                {
+                    currentActivePhase = i;
+                    vikingsGamePhases[i].isActive = true;
+                    nbOfTargetsToTurn = vikingsGamePhases[i].targetsNumber;
+                    if (i == 0)
+                    {
+                        TurnTargets();
+                    }
+                }
+            }
+            else if (i + 1 >= vikingsGamePhases.Count)
+            {
+                if (currentTimer < vikingsGamePhases[i].triggerTime && currentTimer > 0 && !vikingsGamePhases[i].isActive)
+                {
+                    currentActivePhase = i;
+                    vikingsGamePhases[i].isActive = true;
+                    nbOfTargetsToTurn = vikingsGamePhases[i].targetsNumber;
+                }
+            }
+        }
     }
 
-    public void TurnTarget()
+    public void TurnTargets()
     {
-        target.GetComponent<Animator>().SetTrigger("TurnFace");
+        for (int i = 0; i < vikingsGamePhases[currentActivePhase].targetsNumber; i++)
+        {
+            int rndTarget = Random.Range(0, targets.childCount);
+            while (currentTurnedTargets.Contains(rndTarget))
+            {
+                rndTarget = Random.Range(0, targets.childCount);
+            }
+            currentTurnedTargets.Add(rndTarget);
+            targets.GetChild(rndTarget).GetComponent<TargetRoot>().TriggerTarget(vikingsGamePhases[currentActivePhase].availableTimeToAct);
+        }
+    }
+
+    public void TriggerNextTargetsWave ()
+    {
+        nbOfIdleTargets++;
+        if (nbOfIdleTargets == currentTurnedTargets.Count)
+        {
+            currentTurnedTargets.Clear();
+            TurnTargets();
+            nbOfIdleTargets = 0;
+        }
     }
 
     public void ShootAxe (Transform toParent)
@@ -69,6 +110,9 @@ public class VikingManager : MonoBehaviour
 
     public void StopGame ()
     {
-        timerCDOn = false;
+        foreach (Transform target in targets)
+        {
+            target.GetComponent<TargetRoot>().EndGame();
+        }
     }
 }

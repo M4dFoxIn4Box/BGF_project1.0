@@ -7,6 +7,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System;
 
+[Serializable]
+public class GamePhases
+{
+    public string phaseName;
+    public int triggerTime;
+    public int targetsNumber;
+    public bool isActive;
+    public float availableTimeToAct;
+}
+
 public class Interface_Manager : MonoBehaviour
 {
     public static Interface_Manager Instance { get; private set; }
@@ -114,7 +124,7 @@ public class Interface_Manager : MonoBehaviour
         public string goalScoreHitMsg;
         public ChallengeState challengeStateScript;
     }
-
+    
     [Header("Map")]
     public Transform mapSpots; //Parent map spots list
 
@@ -499,6 +509,11 @@ public class Interface_Manager : MonoBehaviour
         }
     }
 
+    public int GetTimerValue ()
+    {
+        return (int)timerValue;
+    }
+
     //Vérifie si le quizz doit s'afficher ou si le joueur l'a déjà fait, et donc doit afficher l'objet 3D animé
     public void CheckQuizzState()
     {
@@ -672,7 +687,7 @@ public class Interface_Manager : MonoBehaviour
                 }
                 break;
         }
-
+        
         if (savedScore >= currentGameInfo.scoreToReach)
         {
             if (!currentGameInfo.challengeStateScript.IsChallengeCompleted())
@@ -691,8 +706,17 @@ public class Interface_Manager : MonoBehaviour
                 //...et si le score actuel est meilleur que le score enregistré, je le sauvegarde...
                 if (scoreValue > savedScore)
                 {
-                    SaveManager.Data.pokemonScore = scoreValue;
-                    SaveManager.SaveToFile();
+                    switch (currentGamePlaying)
+                    {
+                        case 0: //Jeu Vikings
+                            SaveManager.Data.axeScore = scoreValue;
+                            SaveManager.SaveToFile();
+                            break;
+                        case 1: //Jeu Pokemon
+                            SaveManager.Data.pokemonScore = scoreValue;
+                            SaveManager.SaveToFile();
+                            break;
+                    }
                     //...et si le score actuel a dépassé le score à atteindre, j'affiche un message de félicitations et je complète le challenge
                     if (scoreValue >= currentGameInfo.scoreToReach)
                     {
@@ -706,10 +730,10 @@ public class Interface_Manager : MonoBehaviour
                         DisplayMessage(currentGameInfo.bestScoreBeatenMsg);
                     }
                 }
-                //...sinon, si le jeu est en train de charger les données, il a besoin de ce bloc
-                else if (scoreValue <= savedScore)
+                //...sinon, affiche le meilleur score du joueur
+                else
                 {
-                    currentGameInfo.challengeStateScript.UpdateChallengeGauge(scoreValue, currentGameInfo.scoreToReach);
+                    currentGameInfo.challengeStateScript.UpdateChallengeGauge(savedScore, currentGameInfo.scoreToReach);
                 }
             }
         }

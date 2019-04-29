@@ -16,21 +16,7 @@ public class Target : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (canBeHit)
-        //{
-        //    if (Input.GetMouseButtonDown(0))
-        //    {
-        //        RaycastHit hit;
-        //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //        if (Physics.Raycast(ray, out hit))
-        //        {
-        //            canBeHit = false;
-        //            Debug.Log(reward);
-        //            VikingManager.s_Singleton.ShootAxe(hit.point, hit.transform);
-        //            Interface_Manager.Instance.AddScore(reward);
-        //        }
-        //    }
-        //}
+
     }
 
     private void OnMouseDown()
@@ -38,6 +24,7 @@ public class Target : MonoBehaviour
         if (canBeHit)
         {
             canBeHit = false;
+            GetComponentInParent<TargetRoot>().SetTargetInactive();
             VikingManager.s_Singleton.ShootAxe(transform);
             Interface_Manager.Instance.AddScore(reward);
         }
