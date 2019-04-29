@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: 1a42b851f0496dc42ae5de0d850a5eb7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Root_Hips
+    100004: Root_Hips001
+    100006: Root_Hips002
+    100008: Root_LArm1
+    100010: Root_LLeg1
+    100012: Root_LLeg2
+    100014: Root_LLegAnkle
+    100016: Root_RArm1
+    100018: Root_RLeg1
+    100020: Root_RLeg2
+    100022: Root_RLegAnkle
+    100024: Root_Spine
+    100026: Root_Spine 1
+    400000: //RootNode
+    400002: Root_Hips
+    400004: Root_Hips001
+    400006: Root_Hips002
+    400008: Root_LArm1
+    400010: Root_LLeg1
+    400012: Root_LLeg2
+    400014: Root_LLegAnkle
+    400016: Root_RArm1
+    400018: Root_RLeg1
+    400020: Root_RLeg2
+    400022: Root_RLegAnkle
+    400024: Root_Spine
+    400026: Root_Spine 1
+    7400000: Egg_Reveal
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Egg_Reveal
+      takeName: Take 001
+      firstFrame: 139
+      lastFrame: 450
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton:
+    - name: Mascotte_TPose(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Robot
+      parentName: Mascotte_TPose(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 5.0759945, y: 2.7455, z: 8.543953}
+    - name: Root_Hips
+      parentName: Mascotte_TPose(Clone)
+      position: {x: 2.6529138e-14, y: 0.2721927, z: -0.000000084510184}
+      rotation: {x: 0.50000006, y: -0.5, z: -0.4999999, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root_RLeg1
+      parentName: Root_Hips
+      position: {x: 0.008701401, y: -0.001732359, z: -0.15549782}
+      rotation: {x: -0.039805416, y: 0.9991917, z: -0.0054843123, w: -0.0011612287}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Root_RLeg2
+      parentName: Root_RLeg1
+      position: {x: -0.10838526, y: 0.00000039815902, z: -0.0000000667572}
+      rotation: {x: 0.0025227275, y: -0.008847697, z: 0.074746914, w: 0.99716014}
+      scale: {x: 1, y: 0.9999999, z: 1.0000001}
+    - name: Root_RLegAnkle
+      parentName: Root_RLeg2
+      position: {x: -0.08745281, y: 2.9802322e-10, z: 0.000000009536743}
+      rotation: {x: -0.009554787, y: 0.005875754, z: -0.2809685, w: 0.95965147}
+      scale: {x: 1.0000011, y: 0.9999989, z: 1}
+    - name: Root_Spine
+      parentName: Root_Hips
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 1.00864065e-14, y: 0.0000000042099777, z: 0.027881244, w: 0.99961126}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root_Hips001
+      parentName: Root_Spine
+      position: {x: -0.4067902, y: 0.0000000023841857, z: -4.2632563e-16}
+      rotation: {x: -5.54629e-15, y: -0.0000000042099777, z: -0.027881244, w: 0.99961126}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root_Spine 1
+      parentName: Root_Hips001
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 6.9329126e-15, y: -0.000000006137671, z: -0.040648133, w: 0.9991735}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root_Hips002
+      parentName: Root_Spine 1
+      position: {x: -0.29139182, y: 0, z: 0}
+      rotation: {x: -1.233303e-14, y: 0.000000006137671, z: 0.040648133, w: 0.9991735}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Root_RArm1
+      parentName: Root_Hips001
+      position: {x: -0, y: 0.027737526, z: -0.28843102}
+      rotation: {x: -0.012577664, y: 0.9999209, z: -5.4978616e-10, w: 0.000000043707928}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root_LArm1
+      parentName: Root_Hips001
+      position: {x: -0, y: 0.027737526, z: 0.28843102}
+      rotation: {x: -0.012577664, y: 0.9999209, z: -5.4978616e-10, w: 0.000000043707928}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root_LLeg1
+      parentName: Root_Hips
+      position: {x: 0.008701363, y: -0.0017323592, z: 0.15549782}
+      rotation: {x: -0.039800223, y: 0.9991922, z: 0.005375751, w: -0.00143203}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root_LLeg2
+      parentName: Root_LLeg1
+      position: {x: -0.108385466, y: 0.00000040531157, z: 0.000000038146972}
+      rotation: {x: -0.0024915412, y: 0.003128287, z: 0.07459517, w: 0.9972059}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: Root_LLegAnkle
+      parentName: Root_LLeg2
+      position: {x: -0.08744519, y: 0, z: 0}
+      rotation: {x: 0.008608168, y: -0.0030946045, z: -0.28086618, w: 0.9597034}
+      scale: {x: 0.99999976, y: 1.0000001, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: acd351cdb83edb84d91a880f8e74676a,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

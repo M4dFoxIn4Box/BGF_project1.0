@@ -27,11 +27,7 @@ public class TaupiqueurManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Interface_Manager.Instance.DisplayScore();
-        if (SaveManager.Data.pokemonScore > 0)
-        {
-            Interface_Manager.Instance.AddScore(SaveManager.Data.pokemonScore);
-        }
+        Interface_Manager.Instance.SetupGame(1);
         currentSpawnCD = initialSpawnTimer;
         SpawnTaupiqueurCooldown();
     }
@@ -61,14 +57,13 @@ public class TaupiqueurManager : MonoBehaviour
         }
     }
 
+    public void StopGame ()
+    {
+        timerCDOn = false;
+    }
+
     private void OnDestroy()
     {
-        int pcScore = Interface_Manager.Instance.GetCurrentScore();
-        if (pcScore > SaveManager.Data.pokemonScore)
-        {
-            SaveManager.Data.pokemonScore = pcScore;
-            SaveManager.SaveToFile();
-        }
-    }
-        
+        Interface_Manager.Instance.EndGame();
+    } 
 }

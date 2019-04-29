@@ -92,9 +92,28 @@ public class Interface_Manager : MonoBehaviour
     private int congratsMsgIdx;
 
     [Header("Games Section")]
+    public List<AppGames> gamesInfo;
     public GameObject scoreSection;
+    public GameObject timerSection;
+    public Text timerText;
+    private float timerValue = 0f;
+    private bool timerOn = false;
     public Text scoreText;
+    public Image gameIcon;
     private int scoreValue = 0;
+    private int currentGamePlaying = -1;
+
+    [Serializable]
+    public class AppGames
+    {
+        public string gameName;
+        public Sprite gameIcon;
+        public int scoreToReach;
+        public float timeAmount;
+        public string bestScoreBeatenMsg;
+        public string goalScoreHitMsg;
+        public ChallengeState challengeStateScript;
+    }
 
     [Header("Map")]
     public Transform mapSpots; //Parent map spots list
@@ -215,14 +234,21 @@ public class Interface_Manager : MonoBehaviour
                     CompleteChallenge(i);
                 }
             }
+            
+            //...pour chaque mini-jeu du Main Event, je mets l'UI des scores à jour
+            for (int j = 0; j < gamesInfo.Count; j++)
+            {
+                currentGamePlaying = j;
+                EndGame();
+            }
         }
-        //Si le joue encore au Teaser Event, ou s'il y a déjà joué...
+        //Si je joue encore au Teaser Event...
         else if (!SaveManager.Data.eventMainStarted)
         {
             //Si le premier Teaser Spot a déjà été scanné...
             if (SaveManager.Data.artefactsUnlocked[targetIdUnlockingTeaserGame])
             {
-                //...je le valide
+                //...je le valide, ce qui entraîne l'apparition des suivants
                 CompleteChallenge(targetIdUnlockingTeaserGame);
             }
         }
@@ -258,7 +284,7 @@ public class Interface_Manager : MonoBehaviour
         DisplayMessage(mainCongratsMessages[0]);
     }
 
-    //Fait dérouler les messages du tuto lorsque le joueur appuie sur "Suivant"
+    //Fait dérouler les messages en cours lorsque le joueur appuie sur "Suivant"
     public void OnClickNextMessage ()
     {
         if (!SaveManager.Data.firstTutoRead)
@@ -419,7 +445,7 @@ public class Interface_Manager : MonoBehaviour
     //Comportement de l'UI de l'appli si la cible est perdue de vue par la caméra
     public void LostTracker ()
     {
-        HideScore();
+        EndGame();
         EndScanning();
     }
 
@@ -460,6 +486,17 @@ public class Interface_Manager : MonoBehaviour
                 CheckQuizzState();
             }
         }
+
+        if (timerOn)
+        {
+            timerValue -= Time.deltaTime;
+            timerText.text = timerValue.ToString("0:00");
+            if (timerValue <= 0f)
+            {
+                timerValue = 0f;
+                EndGame();
+            }
+        }
     }
 
     //Vérifie si le quizz doit s'afficher ou si le joueur l'a déjà fait, et donc doit afficher l'objet 3D animé
@@ -483,6 +520,8 @@ public class Interface_Manager : MonoBehaviour
     {
         if (currentQuizzBadAnswersNb >= 2)
         {
+            ARModeMenu.SetActive(true);
+            myAnim.SetTrigger("ARMode");
             DisplayMessage(uiMessages[0]);
         }
         else if (currentQuizzRightAnswersNb >= 2)
@@ -577,15 +616,104 @@ public class Interface_Manager : MonoBehaviour
         questionsCountInQuizz = -1;
     }
 
-    public void DisplayScore ()
+    public void SetupGame (int gameIdx)
     {
-        scoreSection.SetActive(true);
-        ResetScoreSection();
+        currentGamePlaying = gameIdx;
+        gameIcon.sprite = gamesInfo[currentGamePlaying].gameIcon;
+        DisplayTimer();
+        DisplayScore();
     }
 
-    public void HideScore()
+    private void DisplayTimer ()
+    {
+        if (gamesInfo[currentGamePlaying].timeAmount == 0)
+        {
+            return;
+        }
+        timerValue = gamesInfo[currentGamePlaying].timeAmount;
+        timerText.text = timerValue.ToString("0:00");
+        timerSection.SetActive(true);
+        timerOn = true;
+    }
+
+    private void DisplayScore ()
+    {
+        if (gamesInfo[currentGamePlaying].scoreToReach == 0)
+        {
+            return;
+        }
+        scoreValue = 0;
+        scoreText.text = scoreValue.ToString() + " / " + gamesInfo[currentGamePlaying].scoreToReach.ToString();
+        scoreSection.SetActive(true);
+    }
+
+    public void EndGame()
     {
         scoreSection.SetActive(false);
+        timerSection.SetActive(false);
+        timerOn = false;
+        AppGames currentGameInfo = gamesInfo[currentGamePlaying];
+        int savedScore = -1;
+
+        switch (currentGamePlaying)
+        {
+            case 0: //Jeu Vikings
+                savedScore = SaveManager.Data.axeScore;
+                if (VikingManager.s_Singleton)
+                {
+                    VikingManager.s_Singleton.StopGame();
+                }
+                break;
+            case 1: //Jeu Pokemon
+                savedScore = SaveManager.Data.pokemonScore;
+                if (TaupiqueurManager.s_Singleton)
+                {
+                    TaupiqueurManager.s_Singleton.StopGame();
+                }
+                break;
+        }
+
+        if (savedScore >= currentGameInfo.scoreToReach)
+        {
+            if (!currentGameInfo.challengeStateScript.IsChallengeCompleted())
+            {
+                currentGameInfo.challengeStateScript.SetChallengeCompleted();
+                currentGamePlaying = -1;
+                return;
+            }
+        }
+
+        if (savedScore > -1)
+        {
+            //Si le meilleur score enregistré est inférieur au maximum à atteindre...
+            if (savedScore < currentGameInfo.scoreToReach)
+            {
+                //...et si le score actuel est meilleur que le score enregistré, je le sauvegarde...
+                if (scoreValue > savedScore)
+                {
+                    SaveManager.Data.pokemonScore = scoreValue;
+                    SaveManager.SaveToFile();
+                    //...et si le score actuel a dépassé le score à atteindre, j'affiche un message de félicitations et je complète le challenge
+                    if (scoreValue >= currentGameInfo.scoreToReach)
+                    {
+                        currentGameInfo.challengeStateScript.SetChallengeCompleted();
+                        DisplayMessage(currentGameInfo.goalScoreHitMsg);
+                    }
+                    //...sinon, si le score actuel reste inférieur au score à atteindre, j'affiche un bravo et j'update la barre de progression
+                    else if (scoreValue < currentGameInfo.scoreToReach)
+                    {
+                        currentGameInfo.challengeStateScript.UpdateChallengeGauge(scoreValue, currentGameInfo.scoreToReach);
+                        DisplayMessage(currentGameInfo.bestScoreBeatenMsg);
+                    }
+                }
+                //...sinon, si le jeu est en train de charger les données, il a besoin de ce bloc
+                else if (scoreValue <= savedScore)
+                {
+                    currentGameInfo.challengeStateScript.UpdateChallengeGauge(scoreValue, currentGameInfo.scoreToReach);
+                }
+            }
+        }
+        currentGamePlaying = -1;
     }
 
     public void AddScore()
@@ -603,12 +731,6 @@ public class Interface_Manager : MonoBehaviour
     public int GetCurrentScore ()
     {
         return scoreValue;
-    }
-    
-    public void ResetScoreSection ()
-    {
-        scoreValue = 0;
-        scoreText.text = scoreValue.ToString();
     }
 
     //Vérifie si la réponse donnée par le joueur au quizz est bonne ou pas

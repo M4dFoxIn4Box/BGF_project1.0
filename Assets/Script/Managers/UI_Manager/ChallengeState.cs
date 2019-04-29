@@ -8,6 +8,7 @@ public class ChallengeState : MonoBehaviour
     public bool unlockBonus = false;
     public Image challengeGauge;
     public GameObject challengeStars;
+    public Text scoreText;
     private bool isCompleted;
 
     // Start is called before the first frame update
@@ -20,6 +21,12 @@ public class ChallengeState : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateChallengeGauge (int playerBestScore, int scoreToReach)
+    {
+        challengeGauge.fillAmount = (playerBestScore * 1f) / (scoreToReach * 1f);
+        scoreText.text = playerBestScore.ToString() + " / " + scoreToReach.ToString();
     }
 
     public void SetChallengeCompleted ()

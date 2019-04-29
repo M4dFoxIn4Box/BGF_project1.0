@@ -30,7 +30,7 @@ public class VikingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Interface_Manager.Instance.DisplayScore();
+        Interface_Manager.Instance.SetupGame(0);
         //currentActionCD = cDBetweenActions;
         //TurnTargetCooldown();
     }
@@ -65,5 +65,10 @@ public class VikingManager : MonoBehaviour
         axeSpawnPoint.rotation = Quaternion.LookRotation(toParent.position - transform.position, Vector3.up);
         GameObject tmpAxe = Instantiate(axePrefab, axeSpawnPoint.position, Quaternion.identity);
         tmpAxe.GetComponent<Axe>().FlyTo(toParent);
+    }
+
+    public void StopGame ()
+    {
+        timerCDOn = false;
     }
 }
