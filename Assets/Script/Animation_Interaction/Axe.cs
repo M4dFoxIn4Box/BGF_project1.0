@@ -11,7 +11,7 @@ public class Axe : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 3f);
+
     }
 
     // Update is called once per frame
@@ -25,6 +25,7 @@ public class Axe : MonoBehaviour
                 isSet = true;
                 transform.SetParent(newParent);
                 GetComponentInParent<TargetRoot>().TargetShot();
+                VikingManager.s_Singleton.AddAxeToDestroyList(gameObject);
             }
         }
     }

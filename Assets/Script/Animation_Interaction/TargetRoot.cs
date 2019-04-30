@@ -8,6 +8,7 @@ public class TargetRoot : MonoBehaviour
     private Animator myAnim;
     private float myTimer = 0f;
     private bool canPlay = true;
+    private bool canShoot = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,7 @@ public class TargetRoot : MonoBehaviour
                 {
                     myTimer = 0f;
                     TriggerAnim();
-                    SetTargetInactive();
-                    VikingManager.s_Singleton.TriggerNextTargetsWave();
+                    SetCantShoot();
                 }
             }
         }
@@ -45,6 +45,12 @@ public class TargetRoot : MonoBehaviour
         {
             goChild.gameObject.SetActive(true);
         }
+        Target[] rootTargets = GetComponentsInChildren<Target>();
+        foreach (Target targ in rootTargets)
+        {
+            targ.SetCanBeHit();
+        }
+        canShoot = true;
     }
 
     public void SetTargetInactive ()
@@ -55,10 +61,24 @@ public class TargetRoot : MonoBehaviour
         }
     }
 
+    public void SetCanShoot ()
+    {
+        canShoot = true;
+    }
+
+    public void SetCantShoot()
+    {
+        canShoot = false;
+    }
+
+    public bool GetCanShoot()
+    {
+        return canShoot;
+    }
+
     public void TriggerTarget (float timeToShoot)
     {
         TriggerAnim();
-        SetTargetActive();
         myTimer = timeToShoot;
     }
 
@@ -67,10 +87,16 @@ public class TargetRoot : MonoBehaviour
         myTimer = Time.deltaTime;
     }
 
+    public void TurnedBackTargetNotifyManager ()
+    {
+        VikingManager.s_Singleton.TriggerNextTargetsWave();
+    }
+
     public void EndGame ()
     {
         canPlay = false;
         SetTargetInactive();
+        canShoot = false;
         myAnim.SetTrigger("EndGame");
     }
 }

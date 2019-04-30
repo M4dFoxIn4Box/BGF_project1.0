@@ -11,7 +11,7 @@ public class VikingManager : MonoBehaviour
     private int currentActivePhase = -1;
     private int nbOfIdleTargets = 0;
     private List<int> currentTurnedTargets = new List<int>();
-    private int nbOfTargetsToTurn = 0;
+    private List<GameObject> waveThrownAxes = new List<GameObject>();
 
     public List<GamePhases> vikingsGamePhases;
 
@@ -57,7 +57,6 @@ public class VikingManager : MonoBehaviour
                 {
                     currentActivePhase = i;
                     vikingsGamePhases[i].isActive = true;
-                    nbOfTargetsToTurn = vikingsGamePhases[i].targetsNumber;
                     if (i == 0)
                     {
                         TurnTargets();
@@ -70,7 +69,6 @@ public class VikingManager : MonoBehaviour
                 {
                     currentActivePhase = i;
                     vikingsGamePhases[i].isActive = true;
-                    nbOfTargetsToTurn = vikingsGamePhases[i].targetsNumber;
                 }
             }
         }
@@ -96,6 +94,10 @@ public class VikingManager : MonoBehaviour
         if (nbOfIdleTargets == currentTurnedTargets.Count)
         {
             currentTurnedTargets.Clear();
+            for (int i = 0; i < waveThrownAxes.Count; i++)
+            {
+                Destroy(waveThrownAxes[i]);
+            }
             TurnTargets();
             nbOfIdleTargets = 0;
         }
@@ -106,6 +108,11 @@ public class VikingManager : MonoBehaviour
         axeSpawnPoint.rotation = Quaternion.LookRotation(toParent.position - transform.position, Vector3.up);
         GameObject tmpAxe = Instantiate(axePrefab, axeSpawnPoint.position, Quaternion.identity);
         tmpAxe.GetComponent<Axe>().FlyTo(toParent);
+    }
+
+    public void AddAxeToDestroyList (GameObject shotAxe)
+    {
+        waveThrownAxes.Add(shotAxe);
     }
 
     public void StopGame ()

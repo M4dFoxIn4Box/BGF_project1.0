@@ -141,7 +141,7 @@ public class Interface_Manager : MonoBehaviour
     public Transform buttonsBadges;
     public GameObject blackBG;
     public Image zoomInBadgeImage;
-    private List<int> badgesUnlocked = new List<int>();
+    private int badgesCount = 0;
 
     [Header("Tutoriel")]
     public List<AppMessages> tutoMessages;
@@ -231,7 +231,9 @@ public class Interface_Manager : MonoBehaviour
         {
             bottomUIButtonsParent.gameObject.SetActive(true);
         }
-        
+
+        badgesCount = buttonsBadges.childCount;
+
         //Si le joueur a déjà commencé le Main Event...
         if (SaveManager.Data.eventMainStarted)
         {
@@ -446,10 +448,6 @@ public class Interface_Manager : MonoBehaviour
         messageText.text = "";
         messageImage.gameObject.SetActive(false);
         messageImage.sprite = null;
-        if (buttonsBadges.gameObject.activeSelf)
-        {
-            UnlockBadgesInBadgesMenu();
-        }
     }
 
     //Comportement de l'UI de l'appli si la cible est perdue de vue par la caméra
@@ -662,6 +660,22 @@ public class Interface_Manager : MonoBehaviour
         scoreSection.SetActive(true);
     }
 
+    public void CheckGamesChallengesStatesForBadgeUnlocking ()
+    {
+        int wonGamesChallengesIdx = 0;
+        for (int i = 0; i < gamesInfo.Count; i++)
+        {
+            if (gamesInfo[i].challengeStateScript.IsChallengeCompleted())
+            {
+                wonGamesChallengesIdx++;
+            }
+        }
+        if (wonGamesChallengesIdx == gamesInfo.Count)
+        {
+            UnlockBadge(badgesCount - 2);
+        }
+    }
+
     public void EndGame()
     {
         scoreSection.SetActive(false);
@@ -693,9 +707,11 @@ public class Interface_Manager : MonoBehaviour
             if (!currentGameInfo.challengeStateScript.IsChallengeCompleted())
             {
                 currentGameInfo.challengeStateScript.SetChallengeCompleted();
+                currentGameInfo.challengeStateScript.UpdateChallengeGauge(savedScore, currentGameInfo.scoreToReach);
                 currentGamePlaying = -1;
-                return;
             }
+            CheckGamesChallengesStatesForBadgeUnlocking();
+            return;
         }
 
         if (savedScore > -1)
@@ -920,19 +936,6 @@ public class Interface_Manager : MonoBehaviour
     {
         myAnim.SetTrigger("BadgeZoomOut");
     }
-    
-    //Déclenche l'animation des badges débloqués à l'ouverture du menu des badges et vide la liste temporaire
-    public void UnlockBadgesInBadgesMenu()
-    {
-        if (badgesUnlocked.Count > 0)
-        {
-            for (int i = 0; i < badgesUnlocked.Count; i++)
-            {
-                buttonsBadges.GetChild(badgesUnlocked[i]).GetComponent<AnimatableButton>().TriggerBadgeOwnedAnimation();
-            }
-        }
-        badgesUnlocked.Clear();
-    }
 
     //Appelé depuis l'animator lors du zoom/dézoom d'un badge 
     public void ToggleBadgeBlackBG ()
@@ -1149,7 +1152,6 @@ public class Interface_Manager : MonoBehaviour
     //Débloque les badges associés aux artefacts, et les badges bonus
     public void UnlockBadge (int badgeIdx)
     {
-        int badgesCount = SaveManager.Data.badgesUnlocked.Count;
         Button tmpBtn = buttonsBadges.GetChild(badgeIdx).GetComponent<Button>();
         if (!tmpBtn.interactable)
         {
@@ -1171,70 +1173,24 @@ public class Interface_Manager : MonoBehaviour
         //Si l'Easter Egg vient d'être scanné, débloque le badge de récompense du Teaser Event
         if (badgeIdx == teaserChallengesSection.childCount - 1 + targetIdUnlockingTeaserGame)
         {
-            SaveManager.Data.badgesUnlocked[badgesCount - 3] = true;
+            //SaveManager.Data.badgesUnlocked[badgesCount - 3] = true;
+            //SaveManager.SaveToFile();
             buttonsBadges.GetChild(badgesCount - 3).GetComponent<Button>().interactable = true;
         }
-
-        //Si le dernier badge n'est pas débloqué...
-        if (!SaveManager.Data.badgesUnlocked[badgesCount - 1])
+        
+        //...je compte combien d'artefacts des deux events ont été débloqués.
+        int afUnlocked = 0;
+        for (int i = 0; i < SaveManager.Data.artefactsUnlocked.Count; i++)
         {
-            //...je compte combien d'artefacts des deux events ont été débloqués.
-            int afUnlocked = 0;
-            for (int i = 0; i < SaveManager.Data.artefactsUnlocked.Count; i++)
+            if (SaveManager.Data.artefactsUnlocked[i])
             {
-                if (SaveManager.Data.artefactsUnlocked[i])
-                {
-                    afUnlocked++;
-                }
-            }
-            //Si le joueur a débloqué TOUS les artefacts des deux events, je débloque le dernier badge
-            if (afUnlocked == SaveManager.Data.artefactsUnlocked.Count)
-            {
-                SaveManager.Data.badgesUnlocked[badgesCount - 1] = true;
-                buttonsBadges.GetChild(badgesCount - 1).GetComponent<Button>().interactable = true;
+                afUnlocked++;
             }
         }
-        else
+        //Si le joueur a débloqué TOUS les artefacts des deux events, je débloque le dernier badge
+        if (afUnlocked == SaveManager.Data.artefactsUnlocked.Count)
         {
             buttonsBadges.GetChild(badgesCount - 1).GetComponent<Button>().interactable = true;
-        }
-    }
-
-    //Ajoute dans une liste temporaire les badges débloqués par le joueur lorsqu'il scanne un artefact
-    public void UnlockBadgeByScanning (int badgeIdx)
-    {
-        int badgesCount = SaveManager.Data.badgesUnlocked.Count;
-        Button tmpBtn = buttonsBadges.GetChild(badgeIdx).GetComponent<Button>();
-        if (!tmpBtn.interactable)
-        {
-            badgesUnlocked.Add(badgeIdx);
-        }
-
-        //Si l'Easter Egg vient d'être scanné, débloque le badge de récompense du Teaser Event
-        if (badgeIdx == teaserChallengesSection.childCount - 1 + targetIdUnlockingTeaserGame)
-        {
-            SaveManager.Data.badgesUnlocked[badgesCount - 3] = true;
-            badgesUnlocked.Add(badgesCount - 3);
-        }
-
-        //Si le dernier badge n'est pas débloqué...
-        if (!SaveManager.Data.badgesUnlocked[badgesCount - 1])
-        {
-            //...je compte combien d'artefacts des deux events ont été débloqués.
-            int afUnlocked = 0;
-            for (int i = 0; i < SaveManager.Data.artefactsUnlocked.Count; i++)
-            {
-                if (SaveManager.Data.artefactsUnlocked[i])
-                {
-                    afUnlocked++;
-                }
-            }
-            //Si le joueur a débloqué TOUS les artefacts des deux events, je débloque le dernier badge
-            if (afUnlocked == SaveManager.Data.artefactsUnlocked.Count)
-            {
-                SaveManager.Data.badgesUnlocked[badgesCount - 1] = true;
-                badgesUnlocked.Add(badgesCount - 1);
-            }
         }
     }
 
