@@ -7,8 +7,11 @@ public class TaupiqueurManager : MonoBehaviour
 {
     public Transform spawnParent;
     public float initialSpawnTimer = 2.5f;
-    private float currentSpawnCD = 0f;
-    private bool timerCDOn = false;
+    private int currentActivePhase = -1;
+    private int nbOfTaupiqueursDown = 0;
+    private List<int> currentTaupiqueursOut = new List<int>();
+
+    public List<GamePhases> pokemonGamePhases;
 
     public static TaupiqueurManager s_Singleton;
 
@@ -28,38 +31,77 @@ public class TaupiqueurManager : MonoBehaviour
     void Start()
     {
         Interface_Manager.Instance.SetupGame(1);
-        currentSpawnCD = initialSpawnTimer;
-        SpawnTaupiqueurCooldown();
+        for (int i = 0; i < pokemonGamePhases.Count; i++)
+        {
+            pokemonGamePhases[i].isActive = false;
+        }
+        //currentSpawnCD = initialSpawnTimer;
+        //CheckHiddenTaupiqueursForNextWave();
     }
 
-    public void SpawnTaupiqueurCooldown ()
+    public void CheckHiddenTaupiqueursForNextWave ()
     {
-        timerCDOn = true;
+        nbOfTaupiqueursDown++;
+        if (nbOfTaupiqueursDown == currentTaupiqueursOut.Count)
+        {
+            currentTaupiqueursOut.Clear();
+            SpawnTaupiqueur();
+            nbOfTaupiqueursDown = 0;
+        }
     }
 
     public void SpawnTaupiqueur()
     {
-        spawnParent.GetChild(Random.Range(0, spawnParent.childCount)).GetComponentInChildren<Taupiqueur>().TriggerTaupiqueur();
+        for (int i = 0; i < pokemonGamePhases[currentActivePhase].targetsNumber; i++)
+        {
+            int rndTarget = Random.Range(0, spawnParent.childCount);
+            while (currentTaupiqueursOut.Contains(rndTarget))
+            {
+                rndTarget = Random.Range(0, spawnParent.childCount);
+            }
+            currentTaupiqueursOut.Add(rndTarget);
+            spawnParent.GetChild(rndTarget).GetComponentInChildren<Taupiqueur>().TriggerTaupiqueur();
+        }
     }
     
     // Update is called once per frame
     void Update()
     {
-        if (timerCDOn)
+        CheckTimerAndSwitchPhase();
+    }
+
+    public void CheckTimerAndSwitchPhase()
+    {
+        int currentTimer = Interface_Manager.Instance.GetTimerValue();
+
+        for (int i = 0; i < pokemonGamePhases.Count; i++)
         {
-            currentSpawnCD -= Time.deltaTime;
-            if (currentSpawnCD <= 0)
+            if (i + 1 < pokemonGamePhases.Count)
             {
-                timerCDOn = false;
-                currentSpawnCD = initialSpawnTimer;
-                SpawnTaupiqueur();
+                if (currentTimer < pokemonGamePhases[i].triggerTime && currentTimer > pokemonGamePhases[i + 1].triggerTime && !pokemonGamePhases[i].isActive)
+                {
+                    currentActivePhase = i;
+                    pokemonGamePhases[i].isActive = true;
+                    if (i == 0)
+                    {
+                        SpawnTaupiqueur();
+                    }
+                }
+            }
+            else if (i + 1 >= pokemonGamePhases.Count)
+            {
+                if (currentTimer < pokemonGamePhases[i].triggerTime && currentTimer > 0 && !pokemonGamePhases[i].isActive)
+                {
+                    currentActivePhase = i;
+                    pokemonGamePhases[i].isActive = true;
+                }
             }
         }
     }
 
     public void StopGame ()
     {
-        timerCDOn = false;
+        
     }
 
     private void OnDestroy()

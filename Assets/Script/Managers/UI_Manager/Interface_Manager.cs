@@ -498,6 +498,13 @@ public class Interface_Manager : MonoBehaviour
         if (timerOn)
         {
             timerValue -= Time.deltaTime;
+
+            //Vraiment pas propre : A redévelopper si d'autres jeux sont à faire
+            if (timerValue > 98f && timerValue < 100f)
+            {
+                timerValue = 59f;
+            }
+
             timerText.text = timerValue.ToString("0:00");
             if (timerValue <= 0f)
             {
@@ -737,7 +744,9 @@ public class Interface_Manager : MonoBehaviour
                     if (scoreValue >= currentGameInfo.scoreToReach)
                     {
                         currentGameInfo.challengeStateScript.SetChallengeCompleted();
+                        currentGameInfo.challengeStateScript.UpdateChallengeGauge(savedScore, currentGameInfo.scoreToReach);
                         DisplayMessage(currentGameInfo.goalScoreHitMsg);
+                        CheckGamesChallengesStatesForBadgeUnlocking();
                     }
                     //...sinon, si le score actuel reste inférieur au score à atteindre, j'affiche un bravo et j'update la barre de progression
                     else if (scoreValue < currentGameInfo.scoreToReach)

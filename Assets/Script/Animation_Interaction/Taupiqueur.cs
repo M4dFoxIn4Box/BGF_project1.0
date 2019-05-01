@@ -42,6 +42,6 @@ public class Taupiqueur : MonoBehaviour
 
     public void TaupiqueurHiding ()
     {
-        TaupiqueurManager.s_Singleton.SpawnTaupiqueurCooldown();
+        TaupiqueurManager.s_Singleton.CheckHiddenTaupiqueursForNextWave();
     }
 }

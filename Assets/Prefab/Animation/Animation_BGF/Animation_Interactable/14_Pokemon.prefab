@@ -200,7 +200,7 @@ BoxCollider:
   m_GameObject: {fileID: 1774277187612480797}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 30}
   m_Center: {x: 0, y: -0.3934556, z: 21.43173}
@@ -543,7 +543,7 @@ BoxCollider:
   m_GameObject: {fileID: 2052287312724966673}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 30}
   m_Center: {x: 0, y: -0.3934556, z: 21.43173}
@@ -809,7 +809,7 @@ BoxCollider:
   m_GameObject: {fileID: 2508306274187061135}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 30}
   m_Center: {x: 0, y: -0.3934556, z: 21.43173}
@@ -1121,7 +1121,7 @@ BoxCollider:
   m_GameObject: {fileID: 2843758533588453698}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 30}
   m_Center: {x: 0, y: -0.3934556, z: 21.43173}
@@ -1464,7 +1464,7 @@ BoxCollider:
   m_GameObject: {fileID: 3343706727289154174}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 30}
   m_Center: {x: 0, y: -0.3934556, z: 21.43173}
@@ -1987,6 +1987,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnParent: {fileID: 5177254002465643347}
   initialSpawnTimer: 2.5
+  pokemonGamePhases:
+  - phaseName: Phase01
+    triggerTime: 152
+    targetsNumber: 1
+    isActive: 0
+    availableTimeToAct: 0
+  - phaseName: Phase02
+    triggerTime: 144
+    targetsNumber: 2
+    isActive: 0
+    availableTimeToAct: 0
+  - phaseName: Phase03
+    triggerTime: 132
+    targetsNumber: 3
+    isActive: 0
+    availableTimeToAct: 0
+  - phaseName: Phase04
+    triggerTime: 100
+    targetsNumber: 4
+    isActive: 0
+    availableTimeToAct: 0
+  - phaseName: Phase05
+    triggerTime: 35
+    targetsNumber: 5
+    isActive: 0
+    availableTimeToAct: 0
+  - phaseName: Phase06
+    triggerTime: 20
+    targetsNumber: 6
+    isActive: 0
+    availableTimeToAct: 0
 --- !u!82 &2263409084956552157
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2283,7 +2314,7 @@ BoxCollider:
   m_GameObject: {fileID: 6492255157529274631}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 30}
   m_Center: {x: 0, y: -0.3934556, z: 21.43173}
@@ -2672,7 +2703,7 @@ BoxCollider:
   m_GameObject: {fileID: 7178864221770939230}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 30}
   m_Center: {x: 0, y: -0.3934556, z: 21.43173}
@@ -2907,7 +2938,7 @@ BoxCollider:
   m_GameObject: {fileID: 7254317454657413356}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 30}
   m_Center: {x: 0, y: -0.3934556, z: 21.43173}
@@ -3142,7 +3173,7 @@ BoxCollider:
   m_GameObject: {fileID: 7306322265101580881}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 30}
   m_Center: {x: 0, y: -0.3934556, z: 21.43173}
