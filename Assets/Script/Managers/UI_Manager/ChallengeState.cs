@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ChallengeState : MonoBehaviour
 {
+    public bool isTargetToScan = false;
     public bool unlockBonus = false;
     public Image challengeGauge;
     public GameObject challengeStars;
@@ -34,6 +35,10 @@ public class ChallengeState : MonoBehaviour
         challengeGauge.fillAmount = 1f;
         challengeStars.SetActive(true);
         isCompleted = true;
+        if (isTargetToScan)
+        {
+            scoreText.text = "1 / 1";
+        }
     }
 
     public bool IsChallengeCompleted()

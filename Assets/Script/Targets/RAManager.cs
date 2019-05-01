@@ -130,8 +130,7 @@ public class RAManager : MonoBehaviour
         //Si c'est la première fois que cette cible est scannée...
         if (!SaveManager.Data.artefactsUnlocked[targetId])
         {
-            //Je débloque le badge et l'artefact correspondants dans la sauvegarde...
-            //SaveManager.Data.badgesUnlocked[targetId] = true;
+            //Je débloque l'artefact correspondants dans la sauvegarde...
             SaveManager.Data.artefactsUnlocked[targetId] = true;
             SaveManager.SaveToFile();
         }

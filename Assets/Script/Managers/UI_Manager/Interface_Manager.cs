@@ -475,7 +475,7 @@ public class Interface_Manager : MonoBehaviour
         feedbackScanImage.fillAmount = 0;
         loadingArrowParent.transform.rotation = Quaternion.identity;
         isScanning = false;
-        if (!quizzSection.activeSelf)
+        if (!quizzSection.activeSelf && arCamWithScanEnabled)
         {
             ARModeMenu.SetActive(true);
         }
@@ -588,7 +588,7 @@ public class Interface_Manager : MonoBehaviour
         //J'enregistre la nouvelle question comme faisant désormais partie des questions posées
         questionsAskedIdx.Add(currentQuestionId);
 
-        //Je récupère les infos de la question : la question et les 4 réponses possibles
+        //Je récupère les infos de la question : la question et les 4 réponses possibles, et je les affiche
         for (int i = 0; i < quizzManagers[currentScanId].scriptableQuizzList[currentQuestionId].answerList.Length; i++)
         {
             quizzAnswersButtonsSection.GetChild(i).GetComponentInChildren<Text>().text = quizzManagers[currentScanId].scriptableQuizzList[currentQuestionId].answerList[i];
@@ -619,7 +619,11 @@ public class Interface_Manager : MonoBehaviour
 
     public bool CanScan ()
     {
-        return !quizzSection.activeSelf;
+        if (!quizzSection.activeSelf && arCamWithScanEnabled)
+        {
+            return true;
+        }
+        return false;
     }
 
     //Masque l'UI du quizz
@@ -633,6 +637,7 @@ public class Interface_Manager : MonoBehaviour
     {
         HideQuizz();
         ResetQuizzAnswersFeedbacks();
+        questionsAskedIdx.Clear();
         questionsCountInQuizz = -1;
     }
 
@@ -688,6 +693,10 @@ public class Interface_Manager : MonoBehaviour
         scoreSection.SetActive(false);
         timerSection.SetActive(false);
         timerOn = false;
+        if (currentGamePlaying == -1)
+        {
+            return;
+        }
         AppGames currentGameInfo = gamesInfo[currentGamePlaying];
         int savedScore = -1;
 
@@ -849,9 +858,9 @@ public class Interface_Manager : MonoBehaviour
     {
         if (arCamWithScanEnabled)
         {
-            vumarkSection.SetActive(true);
             myAnim.SetTrigger("ARMode");
         }
+        vumarkSection.SetActive(true);
         uiCam.gameObject.SetActive(false);
         arCam.gameObject.SetActive(true);
         menuBackground.SetActive(false);
@@ -1182,8 +1191,7 @@ public class Interface_Manager : MonoBehaviour
         //Si l'Easter Egg vient d'être scanné, débloque le badge de récompense du Teaser Event
         if (badgeIdx == teaserChallengesSection.childCount - 1 + targetIdUnlockingTeaserGame)
         {
-            //SaveManager.Data.badgesUnlocked[badgesCount - 3] = true;
-            //SaveManager.SaveToFile();
+            Debug.Log(badgesCount - 3);
             buttonsBadges.GetChild(badgesCount - 3).GetComponent<Button>().interactable = true;
         }
         
