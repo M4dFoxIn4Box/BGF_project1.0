@@ -219,6 +219,7 @@ public class Interface_Manager : MonoBehaviour
 
     public void SetupStartUserEnvironment ()
     {
+        badgesCount = buttonsBadges.childCount;
         //Si le joueur n'a pas encore fait le tuto, je l'affiche
         if (!SaveManager.Data.firstTutoRead)
         {
@@ -231,9 +232,7 @@ public class Interface_Manager : MonoBehaviour
         {
             bottomUIButtonsParent.gameObject.SetActive(true);
         }
-
-        badgesCount = buttonsBadges.childCount;
-
+        
         //Si le joueur a déjà commencé le Main Event...
         if (SaveManager.Data.eventMainStarted)
         {
