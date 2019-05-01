@@ -96,7 +96,10 @@ public class VikingManager : MonoBehaviour
             currentTurnedTargets.Clear();
             for (int i = 0; i < waveThrownAxes.Count; i++)
             {
-                Destroy(waveThrownAxes[i]);
+                if (waveThrownAxes[i])
+                {
+                    Destroy(waveThrownAxes[i]);
+                }
             }
             TurnTargets();
             nbOfIdleTargets = 0;
