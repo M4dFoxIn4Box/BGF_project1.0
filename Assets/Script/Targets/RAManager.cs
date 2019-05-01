@@ -74,7 +74,7 @@ public class RAManager : MonoBehaviour
                 {
                     Interface_Manager.Instance.DisplayScanErrorMessage(2);
                 }
-                //...si le Teaser Event n'a pas été commencé puis verrouillé...
+                //...si le Teaser Event n'a pas été commencé puis verrouillé, et qu'il est donc en cours...
                 else if (!SaveManager.Data.eventTeaserLocked)
                 {
                     //...si je scanne la cible qui débloque le Teaser Event...
@@ -92,7 +92,7 @@ public class RAManager : MonoBehaviour
                     else if (targetId > targetIdUnlockingTeaserGame)
                     {
                         //...si le Teaser Event n'a pas encore été débloqué, j'obtiens un message qui m'indique quelle cible scanner et où la trouver
-                        if (!SaveManager.Data.eventTeaserStarted)
+                        if (!SaveManager.Data.eventTeaserStarted || !Interface_Manager.Instance.IsTeaserChallengeCompleted(targetIdUnlockingTeaserGame))
                         {
                             Interface_Manager.Instance.DisplayScanErrorMessage(1);
                         }

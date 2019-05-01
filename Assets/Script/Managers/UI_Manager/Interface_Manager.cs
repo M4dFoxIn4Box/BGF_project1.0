@@ -1108,6 +1108,10 @@ public class Interface_Manager : MonoBehaviour
             mainCompleted = MainChallengesCompleted();
         }
     }
+    public bool IsTeaserChallengeCompleted (int tChallengeId)
+    {
+        return teaserChallengesSection.GetChild(tChallengeId - targetIdUnlockingTeaserGame).GetComponent<ChallengeState>().IsChallengeCompleted();
+    }
 
     public void UnlockNextTeaserSpotsToScan ()
     {
