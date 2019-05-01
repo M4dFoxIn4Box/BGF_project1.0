@@ -7,6 +7,8 @@ public class InteractionTap : MonoBehaviour
     private bool canTap = false;
     public bool startsInteractable = false;
     private Animator myAnim;
+    public AudioClip myAudioClip;
+    private AudioSource myAudioSource;
     
     [Tooltip("0 = infinite")]
     public int tapAttempts = 0;
@@ -21,6 +23,7 @@ public class InteractionTap : MonoBehaviour
     void Start()
     {
         myAnim = GetComponent<Animator>();
+        myAudioSource = GetComponent<AudioSource>();
         if (startsInteractable)
         {
             EnableInteractionTap();
@@ -44,6 +47,7 @@ public class InteractionTap : MonoBehaviour
                 return;
             }
             TriggerTapAnimation();
+            myAudioSource.PlayOneShot(myAudioClip);
         }
     }
 
