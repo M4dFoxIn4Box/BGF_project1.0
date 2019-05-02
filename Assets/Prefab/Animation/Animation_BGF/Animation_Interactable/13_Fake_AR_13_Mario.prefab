@@ -904,11 +904,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4843782169439362}
-  - {fileID: 4496041281825638}
-  - {fileID: 4963473617665308}
-  - {fileID: 4895866388230662}
-  - {fileID: 4748491099798498624}
+  - {fileID: 8325562954718895610}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -1194,9 +1190,9 @@ Transform:
   m_GameObject: {fileID: 1399856951427988}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -0.59, y: 3.78, z: 0.53}
-  m_LocalScale: {x: 1.1057271, y: 0.38022196, z: 0.7658829}
+  m_LocalScale: {x: 1.1057276, y: 0.38022208, z: 0.76588315}
   m_Children: []
-  m_Father: {fileID: 4029218137413854}
+  m_Father: {fileID: 8325562954718895610}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!33 &33984844061286952
@@ -1284,10 +1280,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406634046899336}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.37999964, y: -1, z: 0.74621165}
+  m_LocalPosition: {x: 0.37999967, y: -1, z: 0.7462116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4029218137413854}
+  m_Father: {fileID: 8325562954718895610}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 90}
 --- !u!33 &33095582964337440
@@ -1403,7 +1399,7 @@ Transform:
   - {fileID: 4577066264064292}
   - {fileID: 646732628445688364}
   - {fileID: 3842366980317370507}
-  m_Father: {fileID: 4029218137413854}
+  m_Father: {fileID: 8325562954718895610}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &95613698442070702
@@ -1451,6 +1447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startsInteractable: 1
+  myAudioClip: {fileID: 0}
   tapAttempts: 0
   triggerOnlyAdditionalAnim: 0
   additionalAnimatorToTrigger: {fileID: 95190120890489280}
@@ -2092,10 +2089,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705967745466838}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -0, y: 1.9449999, z: 0}
-  m_LocalScale: {x: 1.3970001, y: 1.3970001, z: 1.3970001}
+  m_LocalPosition: {x: 0, y: 1.9449999, z: 0}
+  m_LocalScale: {x: 1.3970001, y: 1.3970003, z: 1.3970003}
   m_Children: []
-  m_Father: {fileID: 4029218137413854}
+  m_Father: {fileID: 8325562954718895610}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
 --- !u!33 &33596456001577240
@@ -7404,6 +7401,41 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &3246625056133167098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8325562954718895610}
+  m_Layer: 0
+  m_Name: Mario
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8325562954718895610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3246625056133167098}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Children:
+  - {fileID: 4843782169439362}
+  - {fileID: 4496041281825638}
+  - {fileID: 4963473617665308}
+  - {fileID: 4895866388230662}
+  - {fileID: 4748491099798498624}
+  m_Father: {fileID: 4029218137413854}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3842366980317370510
 GameObject:
   m_ObjectHideFlags: 0
@@ -12130,10 +12162,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4748491099798008160}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -0, y: 0, z: 2.26}
-  m_LocalScale: {x: 0.020326002, y: 0.020326015, z: 0.020326013}
+  m_LocalPosition: {x: 0, y: 0, z: 2.26}
+  m_LocalScale: {x: 0.020326002, y: 0.020326018, z: 0.020326016}
   m_Children: []
-  m_Father: {fileID: 4029218137413854}
+  m_Father: {fileID: 8325562954718895610}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4748491099799268704
@@ -12207,6 +12239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startsInteractable: 0
+  myAudioClip: {fileID: 0}
   tapAttempts: 0
   triggerOnlyAdditionalAnim: 1
   additionalAnimatorToTrigger: {fileID: 95613698442070702}
