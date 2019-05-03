@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System;
-//using Firebase.Analytics;
+using Firebase.Analytics;
 
 [Serializable]
 public class GamePhases
@@ -223,7 +223,7 @@ public class Interface_Manager : MonoBehaviour
         //Si le joueur n'a pas encore fait le tuto, je l'affiche
         if (!SaveManager.Data.firstTutoRead)
         {
-            //FirebaseAnalytics.LogEvent("tutorial_begin");
+            FirebaseAnalytics.LogEvent("tutorial_begin");
             SetupTuto();
             return;
         }
@@ -311,7 +311,7 @@ public class Interface_Manager : MonoBehaviour
                 ChangeMenu(teaserEventSection);
                 SaveManager.Data.firstTutoRead = true;
                 SaveManager.SaveToFile();
-                //FirebaseAnalytics.LogEvent("tutorial_complete");
+                FirebaseAnalytics.LogEvent("tutorial_complete");
                 return;
             }
             DisplayMessage(tutoMessages[tutoMsgIdx]);
@@ -356,9 +356,11 @@ public class Interface_Manager : MonoBehaviour
                 challengesDone++;
             }
         }
+
+        //TODO : pregame terminé dans Bordeaux
         if (challengesDone == teaserChallengesSection.childCount)
         {
-            //FirebaseAnalytics.LogEvent("pregame_completed");
+            FirebaseAnalytics.LogEvent("pregame_completed");
             return true;
         }
         return false;
@@ -376,20 +378,20 @@ public class Interface_Manager : MonoBehaviour
         }
         if (challengesDone == mapSpots.childCount)
         {
-            //FirebaseAnalytics.LogEvent("scan_amount_15");
+            FirebaseAnalytics.LogEvent("scan_amount_15");
             return true;
         }
         else if (challengesDone == 10)
         {
-            //FirebaseAnalytics.LogEvent("scan_amount_10");
+            FirebaseAnalytics.LogEvent("scan_amount_10");
         }
         else if (challengesDone == 5)
         {
-            //FirebaseAnalytics.LogEvent("scan_amount_5");
+            FirebaseAnalytics.LogEvent("scan_amount_5");
         }
         else if (challengesDone == 1)
         {
-            //FirebaseAnalytics.LogEvent("scan_amount_1");
+            FirebaseAnalytics.LogEvent("scan_amount_1");
         }
         return false;
     }
@@ -545,7 +547,7 @@ public class Interface_Manager : MonoBehaviour
         }
         else if (SaveManager.Data.quizzAnswered[currentScanId])
         {
-            //FirebaseAnalytics.LogEvent("vumark_scanned", "content_id", currentScanId);
+            FirebaseAnalytics.LogEvent("vumark_scanned", "content_id", currentScanId);
             ARModeMenu.SetActive(false);
             RAManager.s_Singleton.DisplayAnimation(currentScanId);
         }
