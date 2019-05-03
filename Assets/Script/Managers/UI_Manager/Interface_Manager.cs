@@ -890,6 +890,7 @@ public class Interface_Manager : MonoBehaviour
         {
             vumarkSection.SetActive(false);
         }
+        ARModeMenu.SetActive(false);
         uiCam.gameObject.SetActive(true);
         arCam.gameObject.SetActive(false);
         menuBackground.SetActive(true);
@@ -1057,7 +1058,7 @@ public class Interface_Manager : MonoBehaviour
                     SaveManager.SaveToFile();
                 }
             }
-
+            ARModeMenu.SetActive(false);
             menuToDisplay.SetActive(true);
         }
         
