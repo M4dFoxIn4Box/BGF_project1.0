@@ -104,10 +104,6 @@ public class SaveManager : MonoBehaviour
             Data.quizzAnswered.Add(false);
             Data.artefactsUnlocked.Add(false);
         }
-        //for (int j = 0; j < Interface_Manager.Instance.GetBadgesNumber(); j++)
-        //{
-        //    Data.badgesUnlocked.Add(false);
-        //}
         //TODO: Reset game data values here
     }
 
@@ -175,9 +171,7 @@ public class SaveManager : MonoBehaviour
         {
             DataSaved.Invoke();
         }
-
-        //Interface_Manager.Instance.UpdateUserEnvironment();
-
+        
         //EventAPI.Instance.PostGameData((long httpCode, string response) =>
         //{
         //    if(httpCode == 200)
